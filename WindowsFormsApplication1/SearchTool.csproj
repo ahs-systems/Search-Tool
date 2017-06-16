@@ -222,7 +222,6 @@
     <Content Include="images\report-icon-13319-16x16.ico" />
     <Content Include="images\Report.png" />
     <Content Include="images\save.png" />
-    <Content Include="images\scott.jpg" />
     <Content Include="images\Zoom-icon.png" />
     <None Include="images\20170316_144735.jpg" />
   </ItemGroup>

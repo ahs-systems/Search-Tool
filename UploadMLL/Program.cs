@@ -23,6 +23,8 @@ namespace UploadMLL
 
         private static void UploadMLL(string _filename)
         {
+            int xctr = 0;
+
             try
             {
                 using (OdbcConnection myConnection = new OdbcConnection())
@@ -53,15 +55,16 @@ namespace UploadMLL
 
                             for (int i = 10; i <= totalRows; i++)
                             {
+                                xctr = i;
                                 myCommand.CommandText = "INSERT into TRAININGS (empNum, empName, emailAdd, jobTitle, dept, site, city, zone, manager, regDate, status, statDate, course) values " +
-                                    "('" + excelWorksheet.Cells[i, 5].Value.ToString().Replace("'", "`") + // empNum
-                                    "', '" + excelWorksheet.Cells[i, 6].Value.ToString().ToUpper().Replace("'", "`") + //empName
-                                    "', '" + excelWorksheet.Cells[i, 9].Value.ToString().Replace("'", "`") + //email address
-                                    "', '" + excelWorksheet.Cells[i, 16].Value.ToString().Replace("'", "`") + // jobTitle
-                                    "', '" + excelWorksheet.Cells[i, 18].Value.ToString().Replace("'", "`") + // dept
-                                    "', '" + excelWorksheet.Cells[i, 19].Value.ToString().Replace("'", "`") + // site
-                                    "', '" + excelWorksheet.Cells[i, 20].Value.ToString().Replace("'", "`") + // city
-                                    "', '" + excelWorksheet.Cells[i, 21].Value.ToString().Replace("'", "`") + // zone
+                                    "('" + (excelWorksheet.Cells[i, 5].Value == null ? "" : excelWorksheet.Cells[i, 5].Value.ToString().Replace("'", "`")) + // empNum
+                                    "', '" + (excelWorksheet.Cells[i, 6].Value == null ? "" : excelWorksheet.Cells[i, 6].Value.ToString().ToUpper().Replace("'", "`")) + //empName
+                                    "', '" + (excelWorksheet.Cells[i, 9].Value == null ? "" : excelWorksheet.Cells[i, 9].Value.ToString().Replace("'", "`")) + //email address
+                                    "', '" + (excelWorksheet.Cells[i, 16].Value == null ? "" : excelWorksheet.Cells[i, 16].Value.ToString().Replace("'", "`")) + // jobTitle
+                                    "', '" + (excelWorksheet.Cells[i, 18].Value == null ? "" : excelWorksheet.Cells[i, 18].Value.ToString().Replace("'", "`")) + // dept
+                                    "', '" + (excelWorksheet.Cells[i, 19].Value == null ? "" : excelWorksheet.Cells[i, 19].Value.ToString().Replace("'", "`")) + // site
+                                    "', '" + (excelWorksheet.Cells[i, 20].Value == null ? "" : excelWorksheet.Cells[i, 20].Value.ToString().Replace("'", "`")) + // city
+                                    "', '" + (excelWorksheet.Cells[i, 21].Value == null ? "" : excelWorksheet.Cells[i, 21].Value.ToString().Replace("'", "`")) + // zone
                                     "', '" + (excelWorksheet.Cells[i, 22].Value == null ? "" : excelWorksheet.Cells[i, 22].Value.ToString().Replace("'", "`")) + // manager
                                     "', #" + excelWorksheet.Cells[i, 23].Value + // regDate
                                     "#, '" + excelWorksheet.Cells[i, 24].Value.ToString().Replace("'", "`") + // status
@@ -80,7 +83,7 @@ namespace UploadMLL
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message + ": " + xctr);
                 Console.ReadLine();
             }
         }
