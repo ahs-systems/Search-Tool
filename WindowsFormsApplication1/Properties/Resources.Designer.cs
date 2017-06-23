@@ -59,15 +59,5 @@ namespace WindowsFormsApplication1.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _20170316_144735 {
-            get {
-                object obj = ResourceManager.GetObject("20170316_144735", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

@@ -180,7 +180,7 @@ namespace WindowsFormsApplication1
             {
                 _conn.ConnectionString = @"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;";
 
-                this.TopMost = true;
+                TopMost = true;
 
                 // Show pay period
                 lblPayPeriod.Text = "Pay Period: " + GetPP(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
@@ -472,7 +472,17 @@ namespace WindowsFormsApplication1
         }
 
         private void btnFile2_Click(object sender, EventArgs e)
-        {
+        {          
+
+            TopMost = false;
+
+            frmUploadItems _frm = new frmUploadItems();            
+            _frm.ShowDialog();
+            UploadItemsParams _uploadParams = _frm.attr;
+            _frm.Dispose();
+
+            TopMost = true;
+
             try
             {
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -543,8 +553,10 @@ namespace WindowsFormsApplication1
                     int lineCtr = 2;
 
                     bool firstEmp = true;
-                    string currEmp = "", currUnit = "", currOcc = "", currStat = "", currFTE = "";
+                    string currEmp = "", currUnit = "", currOcc = "", currStat = "", currFTE = "", prevUnit = "", prevOcc = "";
                     bool switchColor = true, ThersAChange = false;
+
+                    bool changeInUnit = false, changeInOcc = false;
 
                     foreach (string line in lines)
                     {
@@ -560,25 +572,26 @@ namespace WindowsFormsApplication1
                             {
                                 if (currEmp != values[1]) // change in empno
                                 {
-                                    currEmp = values[1]; currUnit = values[20]; currOcc = values[21]; currStat = values[22]; currFTE = values[23];
-                                    ThersAChange = false;
+                                    currEmp = values[1]; currUnit = prevUnit = values[20]; currOcc = prevOcc = values[21]; currStat = values[22]; currFTE = values[23]; // reset the base values
+                                    ThersAChange = false; //reset the flags
                                     switchColor = !switchColor;
                                 }
                             }
-
-                            if (currUnit != values[20])
+                            if (currUnit != values[20]) // change in unit
                             {
                                 worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(values[1].Substring(0, 8));
                                 worksheet.Cells[lineCtr, 7].Style.Font.Bold = true;
+                                prevUnit = currUnit;
                                 currUnit = values[20];
-                                ThersAChange = true;
+                                ThersAChange = changeInUnit = true;
                             }
-                            if (currOcc != values[21])
+                            if (currOcc != values[21]) // change in occupation
                             {
                                 if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(values[1].Substring(0, 8));
                                 worksheet.Cells[lineCtr, 8].Style.Font.Bold = true;
+                                prevOcc = currOcc;
                                 currOcc = values[21];
-                                ThersAChange = true;
+                                ThersAChange = changeInOcc = true;
                             }
                             if (currStat != values[22])
                             {
@@ -600,6 +613,48 @@ namespace WindowsFormsApplication1
                                 currFTE = values[23];
                                 ThersAChange = true;
                             }
+
+                            #region AutoInsertInItemsReport                          
+                            if (_uploadParams.uploadToItems)
+                            {
+                                if (changeInUnit)
+                                {
+                                    if (InsertInItems(new ChangeInUnitAndOrOcc
+                                    {
+                                        empNo = values[1].Trim(),
+                                        prevUnit = prevUnit.Trim(),
+                                        currUnit = currUnit.Trim(),
+                                        prevPosCode = changeInOcc ? prevOcc : values[21].Trim(),
+                                        currPosCode = values[21].Trim(),
+                                        stat = values[22].Trim(),
+                                        pp = _uploadParams.pp,
+                                        ppYear = _uploadParams.ppYear,
+                                        itemsReportLetter = _uploadParams.itemsReportLetter
+                                    }))
+                                    {
+                                        values[0] = values[0] + "  ©";
+                                    };
+                                }
+                                else if (!changeInUnit && changeInOcc)
+                                {
+                                    if (InsertInItems(new ChangeInOcc
+                                    {
+                                        empNo = values[1].Trim(),
+                                        unit = currUnit.Trim(),
+                                        prevPosCode = prevOcc,
+                                        currPosCode = currOcc,
+                                        pp = _uploadParams.pp,
+                                        ppYear = _uploadParams.ppYear,
+                                        itemsReportLetter = _uploadParams.itemsReportLetter
+                                    }))
+                                    {
+                                        values[0] = values[0] + "  ©";
+                                    };
+                                }
+                            }
+
+                            changeInUnit = changeInOcc = false;
+                            #endregion
 
                             worksheet.Row(lineCtr).Height = 25;
                             worksheet.Row(lineCtr).Style.Font.Size = 12;
@@ -650,6 +705,146 @@ namespace WindowsFormsApplication1
                 btnFile2.Text = "Format File 2";
                 Cursor.Current = Cursors.Default;
             }
+        }
+
+        private bool InsertInItems(ChangeInOcc _data)
+        {
+            if (GetSiteNum_ShortDesc(_data.unit) == -1) return false; // the unit is not existing
+
+            bool _ret;
+
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection())
+                {
+                    myConnection.ConnectionString = Common.SystemsServer; //@"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\items.mdb;Uid=Admin;Pwd=;";
+                    myConnection.Open();
+
+                    SqlCommand myCommand = myConnection.CreateCommand();
+
+                    myCommand.CommandText = "Insert into ItemsRpt_OccupationChange (ItemsReportLetter, PayPeriod, PayPeriod_Year, Site, Emp_Num, Emp_Name, Unit, OccFrom, OccTo, Comments, EnteredBy) values " +
+                        "(@_ItemsReportLetter, @_PayPeriod, @_PayPeriod_Year, @_Site, @_Emp_Num, @_Emp_Name, @_Unit, @_OccFrom, @_OccTo, @_Comments, @_EnteredBy)";
+                   
+
+                    myCommand.Parameters.AddWithValue("_ItemsReportLetter", _data.itemsReportLetter);
+                    myCommand.Parameters.AddWithValue("_PayPeriod", _data.pp);
+                    myCommand.Parameters.AddWithValue("_PayPeriod_Year", _data.ppYear);
+                    myCommand.Parameters.AddWithValue("_Site", (GetSiteNum_ShortDesc(_data.unit) + 1));
+                    myCommand.Parameters.AddWithValue("_Emp_Num", _data.empNo);
+                    myCommand.Parameters.AddWithValue("_Emp_Name", GetEmpName(_data.empNo.Substring(0, 8)));
+                    myCommand.Parameters.AddWithValue("_Unit", _data.unit);
+                    myCommand.Parameters.AddWithValue("_OccFrom", GetPosition(_data.prevPosCode));
+                    myCommand.Parameters.AddWithValue("_OccTo", GetPosition(_data.currPosCode));
+                    myCommand.Parameters.AddWithValue("_Comments", "");
+                    myCommand.Parameters.AddWithValue("_EnteredBy", "AutoSystem");
+
+                    myCommand.ExecuteNonQuery();
+                    myCommand.Dispose();
+
+                    _ret = true;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error in Auto Inserting 'Change in Occupation' [" + _data.empNo + "]: " + ex.Message, "ERROR");
+                _ret = false;
+            }
+
+            return _ret;
+        }
+
+        private int GetSiteNum_ShortDesc(string _unitShortDesc)
+        {
+            int _ret = -1;
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection())
+                {
+                    myConnection.ConnectionString = Common.ESPServer;
+                    myConnection.Open();
+
+                    SqlCommand myCommand = myConnection.CreateCommand();
+
+                    myCommand.CommandText = "select Substring(U_Desc,1,2) AS U_PREFIX from unit where UPPER(U_ShortDesc) = UPPER(@_ShortDesc)";
+                    myCommand.Parameters.AddWithValue("_ShortDesc", _unitShortDesc);
+
+                    SqlDataReader myReader = myCommand.ExecuteReader();
+
+                    if (myReader.HasRows)
+                    {
+                        myReader.Read();
+                        if (myReader["U_PREFIX"].ToString() == "S2")
+                        {
+                            _ret = 5;
+                        }
+                        else
+                        {
+                            _ret = Convert.ToInt16(myReader["U_PREFIX"]) - 1;
+                        }
+                        if (_ret > 5) // invalid site number
+                        {
+                            _ret = -1;
+                        }
+                    }
+                    myCommand.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ooops, there's an error (GetSiteNum_ShortDesc): " + ex.Message, "ERROR");
+            }            
+
+            return _ret;
+        }
+
+        private bool InsertInItems(ChangeInUnitAndOrOcc _data)
+        {
+            if (GetSiteNum_ShortDesc(_data.prevUnit) == -1) return false;
+
+            bool _ret = false;
+
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection())
+                {
+                    myConnection.ConnectionString = Common.SystemsServer; //@"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\items.mdb;Uid=Admin;Pwd=;";
+                    myConnection.Open();
+
+                    SqlCommand myCommand = myConnection.CreateCommand();
+
+                    myCommand.CommandText = "Insert into ItemsRpt_UnitToUnitTransfer (ItemsReportLetter, PayPeriod, PayPeriod_Year, Site, Emp_Num, Emp_Name, UnitFrom, UnitTo, Occupation, Status, ChangeInOccupation, ChangeInSite, Comments, EnteredBy) values " +
+                            "(@_ItemsReportLetter, @_PayPeriod, @_PayPeriod_Year, @_Site, @_Emp_Num, @_Emp_Name, @_UnitFrom, @_UnitTo, @_Occupation, @_Status, @_ChangeInOccupation, @_ChangeInSite, @_Comments, @_EnteredBy)";
+                    
+                    myCommand.Parameters.AddWithValue("_ItemsReportLetter", _data.itemsReportLetter);
+                    myCommand.Parameters.AddWithValue("_PayPeriod", _data.pp);
+                    myCommand.Parameters.AddWithValue("_PayPeriod_Year", _data.ppYear);
+                    myCommand.Parameters.AddWithValue("_Site", (GetSiteNum_ShortDesc(_data.prevUnit)+1));
+                    myCommand.Parameters.AddWithValue("_Emp_Num", _data.empNo);
+                    myCommand.Parameters.AddWithValue("_Emp_Name", GetEmpName(_data.empNo.Substring(0,8)));
+                    myCommand.Parameters.AddWithValue("_UnitFrom", _data.prevUnit);
+                    myCommand.Parameters.AddWithValue("_UnitTo", _data.currUnit);
+                    myCommand.Parameters.AddWithValue("_Occupation", GetPosition(_data.currPosCode));
+                    myCommand.Parameters.AddWithValue("_Status", _data.stat);
+                    myCommand.Parameters.AddWithValue("_ChangeInOccupation", (_data.prevPosCode != _data.currPosCode).ToString());
+                    myCommand.Parameters.AddWithValue("_ChangeInSite", (GetSiteNum_ShortDesc(_data.prevUnit) != GetSiteNum_ShortDesc(_data.currUnit)).ToString());
+                    myCommand.Parameters.AddWithValue("_Comments", "");
+                    myCommand.Parameters.AddWithValue("_EnteredBy", "AutoSystem");
+
+                    myCommand.ExecuteNonQuery();
+                    myCommand.Dispose();
+
+                    _ret = true;
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error in Auto Inserting 'Change in Site' [" + _data.empNo + "]: " + ex.Message, "ERROR");
+                _ret = false;
+            }
+
+            return _ret;
         }
 
         private void btnFile6_Click(object sender, EventArgs e)
