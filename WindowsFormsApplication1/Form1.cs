@@ -1107,6 +1107,16 @@ namespace WindowsFormsApplication1
 
         private void ProcessFile2(string _sourceFile, string _destFolder)
         {
+
+            TopMost = false;
+
+            frmUploadItems _frm = new frmUploadItems();
+            _frm.ShowDialog();
+            UploadItemsParams _uploadParams = _frm.attr;
+            _frm.Dispose();
+
+            TopMost = true;
+
             try
             {
                 using (var package = new ExcelPackage())
@@ -1157,8 +1167,10 @@ namespace WindowsFormsApplication1
                     int lineCtr = 2;
 
                     bool firstEmp = true;
-                    string currEmp = "", currUnit = "", currOcc = "", currStat = "", currFTE = "";
+                    string currEmp = "", currUnit = "", currOcc = "", currStat = "", currFTE = "", prevUnit = "", prevOcc = "";
                     bool switchColor = true, ThersAChange = false;
+
+                    bool changeInUnit = false, changeInOcc = false;
 
                     foreach (string line in lines)
                     {
@@ -1174,25 +1186,26 @@ namespace WindowsFormsApplication1
                             {
                                 if (currEmp != values[1]) // change in empno
                                 {
-                                    currEmp = values[1]; currUnit = values[20]; currOcc = values[21]; currStat = values[22]; currFTE = values[23];
-                                    ThersAChange = false;
+                                    currEmp = values[1]; currUnit = prevUnit = values[20]; currOcc = prevOcc = values[21]; currStat = values[22]; currFTE = values[23]; // reset the base values
+                                    ThersAChange = false; //reset the flags
                                     switchColor = !switchColor;
                                 }
                             }
-
-                            if (currUnit != values[20])
+                            if (currUnit != values[20]) // change in unit
                             {
                                 worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(values[1].Substring(0, 8));
                                 worksheet.Cells[lineCtr, 7].Style.Font.Bold = true;
+                                prevUnit = currUnit;
                                 currUnit = values[20];
-                                ThersAChange = true;
+                                ThersAChange = changeInUnit = true;
                             }
-                            if (currOcc != values[21])
+                            if (currOcc != values[21]) // change in occupation
                             {
                                 if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(values[1].Substring(0, 8));
                                 worksheet.Cells[lineCtr, 8].Style.Font.Bold = true;
+                                prevOcc = currOcc;
                                 currOcc = values[21];
-                                ThersAChange = true;
+                                ThersAChange = changeInOcc = true;
                             }
                             if (currStat != values[22])
                             {
@@ -1214,6 +1227,48 @@ namespace WindowsFormsApplication1
                                 currFTE = values[23];
                                 ThersAChange = true;
                             }
+
+                            #region AutoInsertInItemsReport                          
+                            if (_uploadParams.uploadToItems)
+                            {
+                                if (changeInUnit)
+                                {
+                                    if (InsertInItems(new ChangeInUnitAndOrOcc
+                                    {
+                                        empNo = values[1].Trim(),
+                                        prevUnit = prevUnit.Trim(),
+                                        currUnit = currUnit.Trim(),
+                                        prevPosCode = changeInOcc ? prevOcc : values[21].Trim(),
+                                        currPosCode = values[21].Trim(),
+                                        stat = values[22].Trim(),
+                                        pp = _uploadParams.pp,
+                                        ppYear = _uploadParams.ppYear,
+                                        itemsReportLetter = _uploadParams.itemsReportLetter
+                                    }))
+                                    {
+                                        values[0] = values[0] + " (UT)";
+                                    };
+                                }
+                                else if (!changeInUnit && changeInOcc)
+                                {
+                                    if (InsertInItems(new ChangeInOcc
+                                    {
+                                        empNo = values[1].Trim(),
+                                        unit = currUnit.Trim(),
+                                        prevPosCode = prevOcc,
+                                        currPosCode = currOcc,
+                                        pp = _uploadParams.pp,
+                                        ppYear = _uploadParams.ppYear,
+                                        itemsReportLetter = _uploadParams.itemsReportLetter
+                                    }))
+                                    {
+                                        values[0] = values[0] + " (OC)";
+                                    };
+                                }
+                            }
+
+                            changeInUnit = changeInOcc = false;
+                            #endregion
 
                             worksheet.Row(lineCtr).Height = 25;
                             worksheet.Row(lineCtr).Style.Font.Size = 12;
