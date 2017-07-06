@@ -849,6 +849,8 @@ namespace WindowsFormsApplication1
 
         private void btnFile6_Click(object sender, EventArgs e)
         {
+            //string[] _temp;
+
             try
             {
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -924,11 +926,13 @@ namespace WindowsFormsApplication1
                                 worksheet.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
                                 worksheet.Cells[lineCtr, 1].Value = values[0];
                                 worksheet.Cells[lineCtr, 2].Value = values[1];
-                                worksheet.Cells[lineCtr, 3].Value = DateTime.ParseExact(values[18].PadLeft(8, '0'), "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("ddMMMyyyy");
+                                worksheet.Cells[lineCtr, 3].Value = values[18] == "" ? "" : DateTime.ParseExact(values[18].PadLeft(8, '0'), "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("ddMMMyyyy");
                                 worksheet.Cells[lineCtr, 4].Value = GetEmpName(values[1].Substring(0, 8));
                                 lineCtr++;
                             }
                         }
+
+                        //_temp = values;
                     }
 
                     SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -944,7 +948,7 @@ namespace WindowsFormsApplication1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR IN PROCESSING FILE 6: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -1360,7 +1364,7 @@ namespace WindowsFormsApplication1
                                 worksheet.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
                                 worksheet.Cells[lineCtr, 1].Value = values[0];
                                 worksheet.Cells[lineCtr, 2].Value = values[1];
-                                worksheet.Cells[lineCtr, 3].Value = DateTime.ParseExact(values[18].PadLeft(8, '0'), "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("ddMMMyyyy");
+                                worksheet.Cells[lineCtr, 3].Value = values[18] == "" ? "" : DateTime.ParseExact(values[18].PadLeft(8, '0'), "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("ddMMMyyyy");
                                 worksheet.Cells[lineCtr, 4].Value = GetEmpName(values[1].Substring(0, 8));
                                 lineCtr++;
                             }

@@ -170,12 +170,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSendEmail});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 28);
             // 
             // mnuSendEmail
             // 
             this.mnuSendEmail.Name = "mnuSendEmail";
-            this.mnuSendEmail.Size = new System.Drawing.Size(188, 22);
+            this.mnuSendEmail.Size = new System.Drawing.Size(191, 24);
             this.mnuSendEmail.Text = "Send Email To SSO";
             // 
             // btnFile126
@@ -639,7 +639,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.05.17";
+            this.Text = "SömëKindä Tööl v2017.07.06";
             this.Activated += new System.EventHandler(this.frmSearch_Activated);
             this.Deactivate += new System.EventHandler(this.frmSearch_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSearch_FormClosing);
