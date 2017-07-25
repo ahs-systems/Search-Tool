@@ -163,7 +163,7 @@ namespace WindowsFormsApplication1
                 _comm.Parameters.Add(new SqlParameter("V_START_DATE_PP", GetStartPPDate(DateTime.Today.AddDays(-3).ToString("yyyy-MM-dd"))));
                 SqlDataReader _reader = _comm.ExecuteReader();
 
-                string temp; temp =  GetStartPPDate(DateTime.Today.ToString("yyyy-MM-dd"));
+                //string temp; temp =  GetStartPPDate(DateTime.Today.ToString("yyyy-MM-dd"));
 
                 //if (_EmpNum == "01030201" || _EmpNum == "01119963")
                 //{                    

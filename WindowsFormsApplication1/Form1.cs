@@ -1906,7 +1906,7 @@ namespace WindowsFormsApplication1
 
         private bool IsSystemsMember(string _userName)
         {
-            List<string> systemMembers = new List<string>() { "BOLSON02", "SCOTTHASTINGS", "NSALAMAT", "ROTCHELOSANTOS", "DARWINDIZON", "BSANTOS", "LOURDESSHAHPORI", "ADELACRUZ02" };
+            List<string> systemMembers = new List<string>() { "BOLSON02", "SCOTTHASTINGS", "MIKAELMANAGAT", "ROTCHELOSANTOS", "DARWINDIZON", "BSANTOS", "LOURDESSHAHPORI", "ADELACRUZ02" };
 
             return systemMembers.Contains(_userName.Trim().ToUpper());
         }

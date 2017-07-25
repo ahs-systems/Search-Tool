@@ -639,7 +639,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.07.06";
+            this.Text = "SömëKindä Tööl v2017.07.24";
             this.Activated += new System.EventHandler(this.frmSearch_Activated);
             this.Deactivate += new System.EventHandler(this.frmSearch_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSearch_FormClosing);
