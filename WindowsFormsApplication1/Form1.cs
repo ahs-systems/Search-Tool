@@ -1080,6 +1080,8 @@ namespace WindowsFormsApplication1
                                 range.Style.Font.Size = 11;                                
                                 range.Style.Font.Bold = range.Style.Font.Italic = true;                                
                             }
+
+                            worksheet.Cells[i - 10, 10].Value = worksheet.Cells[i - 10, 10].Value + Common.CheckIfMultiJob(worksheet.Cells[i - 10, 4].Value.ToString().Trim());
                         }
 
                         //worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
@@ -1108,6 +1110,8 @@ namespace WindowsFormsApplication1
                 Update();
             }
         }
+
+        
 
         private void ProcessFile2(string _sourceFile, string _destFolder)
         {

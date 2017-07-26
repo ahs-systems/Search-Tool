@@ -41,6 +41,42 @@ namespace WindowsFormsApplication1
                 if (_conn.State == System.Data.ConnectionState.Open) _conn.Close();
             }
         }
+
+        public static string CheckIfMultiJob(string _empNbr)
+        {
+            SqlConnection _conn = new SqlConnection(ESPServer);
+
+            try
+            {
+                string _ret = "";
+
+                _conn.Open();
+                SqlCommand _comm = _conn.CreateCommand();
+                _comm.CommandText = "select e.E_EmpNbr, count(ep.EP_PrimaryInd) as 'Primary Positions' " +
+                        "from Emp e  " +
+                        "join EmpPosition ep " +
+                        "on e.E_EmpID = ep.EP_EmpID " +
+                        "where ep.EP_ToDate > getdate() " +
+                        "and ep.EP_PrimaryInd = 1 " +
+                        "and e.E_EmpNbr = @V_EmpNbr " +
+                        "group by e.E_EmpNbr " +
+                        "having count(ep.EP_PrimaryInd) > 1 ";
+                _comm.Parameters.Add(new SqlParameter("V_EmpNbr", _empNbr));
+                SqlDataReader _reader = _comm.ExecuteReader();
+                _ret = _reader.HasRows ? "(M)" : "";
+                if (_reader.IsClosed != true) _reader.Close();
+
+                return _ret;
+            }
+            catch
+            {
+                return "(e)";
+            }
+            finally
+            {
+                if (_conn.State == System.Data.ConnectionState.Open) _conn.Close();
+            }
+        }
     }
 
     public class ChangeInUnitAndOrOcc
