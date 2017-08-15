@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace SearchLDAP
 {
     partial class frmLDAP
     {
@@ -95,18 +95,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(151, 9);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(165, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 15);
+            this.label2.Size = new System.Drawing.Size(96, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Search By Emp ID:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 81);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(44, 84);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(254, 15);
+            this.label3.Size = new System.Drawing.Size(217, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Search By First Name or Last Name (or both):";
             // 
@@ -153,10 +155,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(11, 176);
+            this.label1.Location = new System.Drawing.Point(15, 176);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 15);
+            this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 38;
             this.label1.Text = "LDAP Name:";
             // 
@@ -181,10 +184,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Maroon;
-            this.label6.Location = new System.Drawing.Point(282, 178);
+            this.label6.Location = new System.Drawing.Point(285, 178);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 15);
+            this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 40;
             this.label6.Text = "Email:";
             // 
@@ -200,10 +204,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Maroon;
-            this.label7.Location = new System.Drawing.Point(16, 150);
+            this.label7.Location = new System.Drawing.Point(22, 150);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 15);
+            this.label7.Size = new System.Drawing.Size(61, 13);
             this.label7.TabIndex = 42;
             this.label7.Text = "Emp Name:";
             // 
@@ -230,10 +235,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Maroon;
             this.label8.Location = new System.Drawing.Point(292, 152);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 15);
+            this.label8.Size = new System.Drawing.Size(28, 13);
             this.label8.TabIndex = 45;
             this.label8.Text = "Mgr:";
             // 
@@ -249,10 +255,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Maroon;
             this.label9.Location = new System.Drawing.Point(43, 123);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 15);
+            this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 47;
             this.label9.Text = "Emp #:";
             // 
@@ -269,9 +276,10 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(124, 49);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(142, 52);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(136, 15);
+            this.label10.Size = new System.Drawing.Size(119, 13);
             this.label10.TabIndex = 50;
             this.label10.Text = "Search By LDAP Name;";
             // 
@@ -317,7 +325,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLDAP";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search LDAP and Email";
             this.Load += new System.EventHandler(this.frmLDAP_Load);
             this.Shown += new System.EventHandler(this.frmLDAP_Shown);

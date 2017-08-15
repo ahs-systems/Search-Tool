@@ -1,4 +1,4 @@
-﻿using Microsoft.Exchange.WebServices.Data;
+﻿//using Microsoft.Exchange.WebServices.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,12 +6,12 @@ using System.DirectoryServices;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using VisualEffects;
-using VisualEffects.Animations.Effects;
-using VisualEffects.Easing;
+//using VisualEffects;
+//using VisualEffects.Animations.Effects;
+//using VisualEffects.Easing;
 //using EASendEmail;
 
-namespace WindowsFormsApplication1
+namespace SearchLDAP
 {
     public partial class frmLDAP : Form
     {
@@ -254,12 +254,12 @@ namespace WindowsFormsApplication1
 
         private void frmLDAP_Shown(object sender, EventArgs e)
         {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 384, 1000, 0);
+            //this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 384, 1000, 0);
         }
 
         private void frmLDAP_Load(object sender, EventArgs e)
         {
-            Height = 0;
+            //Height = 0;
         }
 
         private void firstNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -315,71 +315,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            try
-            {
-                #region Send an email using EWS
-                //var service = new ExchangeService(ExchangeVersion.Exchange2007_SP1);
-                //service.Credentials = new WebCredentials("RSSS.Help@albertahealthservices.ca", "Support2016c");
-                //service.TraceEnabled = true;
-                //service.TraceFlags = TraceFlags.All;
-                //service.AutodiscoverUrl("RSSS.Help@albertahealthservices.ca", RedirectionUrlValidationCallback);
-                //EmailMessage email = new EmailMessage(service);
-
-                //email.ToRecipients.Add("darwin.dizon@albertahealthservices.ca");
-                //email.Subject = "HelloWorld";
-                //email.Importance = Importance.High;
-                //email.Body = new MessageBody("2nd email using EWS Managed API");
-                //email.Body.BodyType = BodyType.HTML;
-                //email.Send();
-                //MessageBox.Show("sent!");
-                #endregion
-
-                var service = new ExchangeService(ExchangeVersion.Exchange2007_SP1);
-                service.Credentials = new WebCredentials("RSSS.Help@albertahealthservices.ca", "Support2016c");                
-                service.AutodiscoverUrl("RSSS.Help@albertahealthservices.ca", RedirectionUrlValidationCallback);
-
-                //FindItemsResults<Item> findResults = service.FindItems(WellKnownFolderName.Inbox, "darwin", new ItemView(100));
-                //foreach (Item item in findResults.Items)
-                //    Console.WriteLine(item.Subject);
-                //MessageBox.Show("Done!");
-
-                int ctr = 0;
-                int offset = 0;
-                int pageSize = 50;
-                bool more = true;
-                ItemView view = new ItemView(pageSize, offset, OffsetBasePoint.Beginning);
-                //view.PropertySet = PropertySet.IdOnly;
-                //view.PropertySet = PropertySet.FirstClassProperties;
-                FindItemsResults<Item> findResults = null;
-                List<EmailMessage> emails = new List<EmailMessage>();
-
-                while (more)
-                {                    
-                    findResults = service.FindItems(WellKnownFolderName.Inbox, view);
-                    service.LoadPropertiesForItems(findResults.Items, new PropertySet(EmailMessageSchema.Sender, EmailMessageSchema.Subject, EmailMessageSchema.Body));
-                    foreach (var item in findResults.Items)
-                    {
-                        //emails.Add((EmailMessage)item);
-                        if (item.Subject.ToUpper().IndexOf("SENIORITY") > -1)
-                        {
-                            emails.Add((EmailMessage)item);
-                            ctr++;
-                        }
-                    }
-                    more = findResults.MoreAvailable;
-                    if (more)
-                    {
-                        view.Offset += pageSize;
-                    }
-                }              
-
-                MessageBox.Show(ctr + " found. " + WebUtility.HtmlDecode(Regex.Replace(emails[0].Body.Text, "<[^>]*(>|$)", string.Empty))); 
-                //MessageBox.Show(ctr + " found. " + emails[0].Body.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
         }
 
         private static bool RedirectionUrlValidationCallback(string redirectionUrl)

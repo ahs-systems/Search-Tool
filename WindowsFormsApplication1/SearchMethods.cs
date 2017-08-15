@@ -41,6 +41,9 @@ namespace WindowsFormsApplication1
                     //_ret = CheckIfAUPE_AUX(_EmpNum) ? "A09" : "(Not AUPE Aux)";
                     _ret = "(Invalid code)";
                     break;
+                case "A06":
+                    _ret = "-----";
+                    break;
             }
 
             return _ret;
