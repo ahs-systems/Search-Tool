@@ -2198,10 +2198,12 @@ namespace WindowsFormsApplication1
 
         private void btnUserTrainings_Click(object sender, EventArgs e)
         {
-            HideMe();
-            frmTrainings _frm = new frmTrainings();
-            _frm.ShowDialog();
-            ShowMe();
+            WindowState = FormWindowState.Minimized;
+            System.Diagnostics.Process.Start("http://wssql07v03/Reports_PRDINST03/Pages/Report.aspx?ItemPath=%2fMyLearningLink%2fWorkforce+ESP%2fPSS+(Workforce+ESP)+Courses+-+Learner+Completions+Lookup&ViewMode=Detail");
+            //HideMe();
+            //frmTrainings _frm = new frmTrainings();
+            //_frm.ShowDialog();
+            //ShowMe();
         }
 
         private void ShowMe()
