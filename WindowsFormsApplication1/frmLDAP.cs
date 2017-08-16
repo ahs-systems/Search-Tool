@@ -24,53 +24,9 @@ namespace WindowsFormsApplication1
         {
             var employeeID = textBox1.Text.Trim();
 
-            try
-            {
+            SearchResultCollection results = FindByID("healthy.bewell.ca", employeeID);
 
-                SearchResultCollection results = FindByID("healthy.bewell.ca", employeeID);
-
-                listBox1.Items.Clear();
-
-                if (results.Count > 0)
-                {
-
-                    foreach (SearchResult result in results)
-                    {
-                        string _empNo = result.Properties["employeeNumber"].Count > 0 ? result.Properties["employeeNumber"][0].ToString() : "No EmpNo";
-                        string _ldapName = result.Properties["sAMAccountName"].Count > 0 ? result.Properties["sAMAccountName"][0].ToString() : "No LDAP Name";
-                        string _firstName = result.Properties["givenName"].Count > 0 ? result.Properties["givenName"][0].ToString() : "No FirstName";
-                        string _lastName = result.Properties["sn"].Count > 0 ? result.Properties["sn"][0].ToString() : "No LastName";
-                        string _mail = result.Properties["mail"].Count > 0 ? result.Properties["mail"][0].ToString() : "No email";
-                        string _manager = result.Properties["manager"].Count > 0 ? SearchDisplayName("healthy.bewell.ca", result.Properties["manager"][0].ToString()) : "Mgr Not Found";
-                        //string _manager = result.Properties["manager"].Count > 0 ? result.Properties["manager"][0].ToString() : "Mgr Not Found";
-
-                        //foreach (string propName in result.Properties.PropertyNames)
-                        //{
-                        //    ResultPropertyValueCollection valueCollection = result.Properties[propName];
-                        //    foreach (Object propertyValue in valueCollection)
-                        //    {
-                        //        Console.WriteLine("Property: " + propName + ": " + propertyValue.ToString());
-                        //    }
-                        //}
-
-
-                        listBox1.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " + _manager);
-                    }
-
-                    if (listBox1.Items.Count == 1)
-                    {
-                        listBox1.SelectedIndex = 0;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Not Found.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ERROR: " +ex.Message, "Ooops, may mali.");
-            }
+            ShowData(results, listBox1);            
         }
 
         public static SearchResultCollection FindByName(string domain, string firstName, string lastName)
@@ -215,11 +171,17 @@ namespace WindowsFormsApplication1
                 return;
             }
 
+            SearchResultCollection results = FindByName("healthy.bewell.ca", firstName, lastName);
+
+            ShowData(results, listBox1);
+            
+        }
+
+        private void ShowData(SearchResultCollection results, ListBox _listBox)
+        {
             try
             {
-                SearchResultCollection results = FindByName("healthy.bewell.ca", firstName, lastName);                
-
-                listBox1.Items.Clear();
+                _listBox.Items.Clear();
 
                 if (results.Count > 0)
                 {
@@ -233,12 +195,23 @@ namespace WindowsFormsApplication1
                         string _mail = result.Properties["mail"].Count > 0 ? result.Properties["mail"][0].ToString() : "No email";
                         string _manager = result.Properties["manager"].Count > 0 ? SearchDisplayName("healthy.bewell.ca", result.Properties["manager"][0].ToString()) : "Mgr Not Found";
 
-                        listBox1.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " + _manager);                        
+                        _listBox.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " + _manager);
                     }
 
-                    if (listBox1.Items.Count == 1)
+                    //string _manager = result.Properties["manager"].Count > 0 ? result.Properties["manager"][0].ToString() : "Mgr Not Found";
+
+                    //foreach (string propName in result.Properties.PropertyNames)
+                    //{
+                    //    ResultPropertyValueCollection valueCollection = result.Properties[propName];
+                    //    foreach (Object propertyValue in valueCollection)
+                    //    {
+                    //        Console.WriteLine("Property: " + propName + ": " + propertyValue.ToString());
+                    //    }
+                    //}
+
+                    if (_listBox.Items.Count == 1)
                     {
-                        listBox1.SelectedIndex = 0;
+                        _listBox.SelectedIndex = 0;
                     }
                 }
                 else
@@ -248,7 +221,7 @@ namespace WindowsFormsApplication1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);                
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -393,53 +366,9 @@ namespace WindowsFormsApplication1
         {
             var ldapName = txtSearchByLDAP.Text.Trim();
 
-            try
-            {
+            SearchResultCollection results = FindByLDAP("healthy.bewell.ca", ldapName);
 
-                SearchResultCollection results = FindByLDAP("healthy.bewell.ca", ldapName);
-
-                listBox1.Items.Clear();
-
-                if (results.Count > 0)
-                {
-
-                    foreach (SearchResult result in results)
-                    {
-                        string _empNo = result.Properties["employeeNumber"].Count > 0 ? result.Properties["employeeNumber"][0].ToString() : "No EmpNo";
-                        string _ldapName = result.Properties["sAMAccountName"].Count > 0 ? result.Properties["sAMAccountName"][0].ToString() : "No LDAP Name";
-                        string _firstName = result.Properties["givenName"].Count > 0 ? result.Properties["givenName"][0].ToString() : "No FirstName";
-                        string _lastName = result.Properties["sn"].Count > 0 ? result.Properties["sn"][0].ToString() : "No LastName";
-                        string _mail = result.Properties["mail"].Count > 0 ? result.Properties["mail"][0].ToString() : "No email";
-                        string _manager = result.Properties["manager"].Count > 0 ? SearchDisplayName("healthy.bewell.ca", result.Properties["manager"][0].ToString()) : "Mgr Not Found";
-                        //string _manager = result.Properties["manager"].Count > 0 ? result.Properties["manager"][0].ToString() : "Mgr Not Found";
-
-                        //foreach (string propName in result.Properties.PropertyNames)
-                        //{
-                        //    ResultPropertyValueCollection valueCollection = result.Properties[propName];
-                        //    foreach (Object propertyValue in valueCollection)
-                        //    {
-                        //        Console.WriteLine("Property: " + propName + ": " + propertyValue.ToString());
-                        //    }
-                        //}
-
-
-                        listBox1.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " + _manager);
-                    }
-
-                    if (listBox1.Items.Count == 1)
-                    {
-                        listBox1.SelectedIndex = 0;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Not Found.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ERROR: " + ex.Message, "Ooops, may mali.");
-            }
+            ShowData(results, listBox1);            
         }
 
         private void txtSearchByLDAP_KeyPress(object sender, KeyPressEventArgs e)
