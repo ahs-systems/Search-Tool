@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.DirectoryServices;
+using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -385,6 +386,128 @@ namespace SearchLDAP
                 btnSearchByLDAP_Click(sender, e);
                 ((TextBox)sender).SelectionStart = 0;
                 ((TextBox)sender).SelectionLength = ((TextBox)sender).Text.Length;
+            }
+        }
+
+        private void btnBatchByID_Click(object sender, EventArgs e)
+        {
+            string _origBtnText = ((Button)sender).Text;
+
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Title = "Select the comma delimited file that contains the employee ID's";
+                openFileDialog1.Filter = "CSV Files|*.csv|Text Files|*.txt";
+                openFileDialog1.FilterIndex = 1;
+
+                bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+                if (!userClickedOK) return;
+
+                ((Button)sender).Text = "Processing...";
+                Cursor.Current = Cursors.WaitCursor;
+                this.Enabled = false;
+                Update();
+
+                string text;
+                var fileStream = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read);
+                using (var streamReader = new StreamReader(fileStream, System.Text.Encoding.UTF8))
+                {
+                    text = streamReader.ReadToEnd();
+                }
+
+                string[] _sourceIDs = text.Split(',','\n');
+
+                if (_sourceIDs.Length == 0)
+                {
+                    MessageBox.Show("No ID's to process on the file.");
+                    return;
+                }
+                else if (_sourceIDs.Length > 1000)
+                {
+                    MessageBox.Show("The app can only process max of 1000 ID's at a time.");
+                    return;
+                }
+
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Filter = "CSV files (*.csv)|*.csv";
+                saveFileDialog1.FilterIndex = 1;
+                //saveFileDialog1.FileName = "Terms " + CheckTermsAndTransStartDate(DateTime.Today.ToString("yyyy-MM-dd")) + " - " + DateTime.Today.AddDays(-1).ToString("ddMMMyy");
+                if (saveFileDialog1.ShowDialog() != DialogResult.OK || saveFileDialog1.FileName.Trim() == "")
+                {
+                    //package.SaveAs(new FileInfo(saveFileDialog1.FileName));
+                    //System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                    return;
+                }
+
+
+                using (StreamWriter writer = new StreamWriter(saveFileDialog1.FileName))
+                {
+                    writer.WriteLine("Employee #, LDAP Name, Last Name, First Name, Email Address");
+
+                    foreach (string _id in _sourceIDs)
+                    {
+                        string _data = "";
+
+                        if (_id.Trim().Length == 0)
+                        {
+                            continue;
+                        }
+                        else if (_id.Trim().Length < 8)
+                        {
+                            _data = _id.Trim() + ", '---INVALID ID---";
+                        }
+                        else
+                        {
+                            SearchResultCollection results = FindByID("healthy.bewell.ca", _id.Trim().Substring(0, 8));
+
+                            if (results.Count > 0)
+                            {
+
+                                foreach (SearchResult result in results)
+                                {
+                                    string _empNo = result.Properties["employeeNumber"].Count > 0 ? result.Properties["employeeNumber"][0].ToString() : "No EmpNo";
+                                    string _ldapName = result.Properties["sAMAccountName"].Count > 0 ? result.Properties["sAMAccountName"][0].ToString() : "No LDAP Name";
+                                    string _firstName = result.Properties["givenName"].Count > 0 ? result.Properties["givenName"][0].ToString() : "No FirstName";
+                                    string _lastName = result.Properties["sn"].Count > 0 ? result.Properties["sn"][0].ToString() : "No LastName";
+                                    string _mail = result.Properties["mail"].Count > 0 ? result.Properties["mail"][0].ToString() : "No email";
+                                    string _manager = result.Properties["manager"].Count > 0 ? SearchDisplayName("healthy.bewell.ca", result.Properties["manager"][0].ToString()) : "Mgr Not Found";
+
+                                    _data = "'" + _empNo + ", " + _ldapName + ", " + _lastName + ", " + _firstName + ", " + _mail;
+                                }
+
+                                if (listBox1.Items.Count == 1)
+                                {
+                                    listBox1.SelectedIndex = 0;
+                                }
+                            }
+                            else
+                            {
+                                _data = _id.Trim() + ", '---Data NOT FOUND---";
+                            }
+                        }
+
+                        writer.WriteLine(_data);
+
+                        Update();
+                    }
+                                        
+                }
+
+                MessageBox.Show("Done!");
+
+                System.Diagnostics.Process.Start(saveFileDialog1.FileName);                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ((Button)sender).Text = _origBtnText;
+                Cursor.Current = Cursors.Default;
+                this.Enabled = true;
             }
         }
     }

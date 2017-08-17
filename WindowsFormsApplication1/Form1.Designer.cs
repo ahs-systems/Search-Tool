@@ -63,8 +63,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnExceptionLookup = new MBGlassStyleButton.MBGlassButton();
             this.btnItemsReport = new MBGlassStyleButton.MBGlassButton();
+            this.mnuCopyFromList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuCopyEmpNum = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCopyEmpName = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCopyBothNameAndNum = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.mnuCopyFromList.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstResult
@@ -82,6 +87,7 @@
             this.lstResult.DoubleClick += new System.EventHandler(this.lstResult_DoubleClick);
             this.lstResult.MouseLeave += new System.EventHandler(this.lstResult_MouseLeave);
             this.lstResult.MouseHover += new System.EventHandler(this.lstResult_MouseHover);
+            this.lstResult.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lstResult_MouseUp);
             // 
             // txtOCode
             // 
@@ -603,6 +609,41 @@
             this.btnItemsReport.UseVisualStyleBackColor = false;
             this.btnItemsReport.Click += new System.EventHandler(this.btnItemsReport_Click);
             // 
+            // mnuCopyFromList
+            // 
+            this.mnuCopyFromList.ImageScalingSize = new System.Drawing.Size(18, 18);
+            this.mnuCopyFromList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuCopyEmpNum,
+            this.mnuCopyEmpName,
+            this.mnuCopyBothNameAndNum});
+            this.mnuCopyFromList.Name = "mnuCopyFromList";
+            this.mnuCopyFromList.Size = new System.Drawing.Size(312, 76);
+            this.mnuCopyFromList.Text = "CopyFromList";
+            // 
+            // mnuCopyEmpNum
+            // 
+            this.mnuCopyEmpNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpNum.Image")));
+            this.mnuCopyEmpNum.Name = "mnuCopyEmpNum";
+            this.mnuCopyEmpNum.Size = new System.Drawing.Size(311, 24);
+            this.mnuCopyEmpNum.Text = "Copy Emp # to clipboard";
+            this.mnuCopyEmpNum.Click += new System.EventHandler(this.mnuCopyEmpNum_Click);
+            // 
+            // mnuCopyEmpName
+            // 
+            this.mnuCopyEmpName.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpName.Image")));
+            this.mnuCopyEmpName.Name = "mnuCopyEmpName";
+            this.mnuCopyEmpName.Size = new System.Drawing.Size(311, 24);
+            this.mnuCopyEmpName.Text = "Copy Emp Name to clipboard";
+            this.mnuCopyEmpName.Click += new System.EventHandler(this.mnuCopyEmpName_Click);
+            // 
+            // mnuCopyBothNameAndNum
+            // 
+            this.mnuCopyBothNameAndNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyBothNameAndNum.Image")));
+            this.mnuCopyBothNameAndNum.Name = "mnuCopyBothNameAndNum";
+            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(311, 24);
+            this.mnuCopyBothNameAndNum.Text = "Copy Both Emp Name and # to clipboard";
+            this.mnuCopyBothNameAndNum.Click += new System.EventHandler(this.mnuCopyBothNameAndNum_Click);
+            // 
             // frmSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -639,7 +680,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.08.16";
+            this.Text = "SömëKindä Tööl v2017.08.17";
             this.Activated += new System.EventHandler(this.frmSearch_Activated);
             this.Deactivate += new System.EventHandler(this.frmSearch_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSearch_FormClosing);
@@ -649,6 +690,7 @@
             this.Resize += new System.EventHandler(this.frmSearch_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.mnuCopyFromList.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -689,6 +731,10 @@
         private MBGlassStyleButton.MBGlassButton btnGetLDAP;
         private MBGlassStyleButton.MBGlassButton btnExceptionLookup;
         private MBGlassStyleButton.MBGlassButton btnItemsReport;
+        private System.Windows.Forms.ContextMenuStrip mnuCopyFromList;
+        private System.Windows.Forms.ToolStripMenuItem mnuCopyEmpNum;
+        private System.Windows.Forms.ToolStripMenuItem mnuCopyEmpName;
+        private System.Windows.Forms.ToolStripMenuItem mnuCopyBothNameAndNum;
     }
 }
 

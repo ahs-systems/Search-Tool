@@ -203,10 +203,13 @@ namespace WindowsFormsApplication1
         {
             if (lstResult.SelectedIndex != -1)
             {
-                if (_searchMode == 1) Clipboard.SetText(lstResult.Items[lstResult.SelectedIndex].ToString().Trim());
-                else Clipboard.SetText(lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(15));
-                lblMsg.Text = "Copied to clipboard !";
-                timer1.Enabled = true;
+                if (_searchMode == 1)
+                {
+                    Clipboard.SetText(lstResult.Items[lstResult.SelectedIndex].ToString().Trim());
+                    // else Clipboard.SetText(lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(15));
+                    lblMsg.Text = "Copied to clipboard !";
+                    timer1.Enabled = true;
+                }
             }
         }
 
@@ -1557,7 +1560,7 @@ namespace WindowsFormsApplication1
             if (lstResult.Items.Count > 0)
             {
                 if (_searchMode == 1) lblMsg.Text = "Double click to copy the selected occupation to the clipboard."; // searching occupation
-                else if (_searchMode == 2) lblMsg.Text = "Double click to copy the selected EE name to the clipboard."; // searching employee
+                else if (_searchMode == 2) lblMsg.Text = "Select an EE and right click to copy it to clipboard."; // searching employee
             }
         }
 
@@ -2257,6 +2260,45 @@ namespace WindowsFormsApplication1
             else
             {
                 MessageBox.Show("Cannot Find 'ItemsReport.exe' in 'Automated Files' folder.","Cannot Find File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }        
+
+        private void mnuCopyEmpNum_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(0,10));
+            MessageBox.Show("Employee number copied to clipboard!");
+        }
+
+        private void mnuCopyEmpName_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(15));
+            MessageBox.Show("Employee name copied to clipboard!");
+        }
+
+        private void lstResult_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void mnuCopyBothNameAndNum_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(0));
+            MessageBox.Show("Employee number and employee name copied to clipboard!");
+        }        
+
+        private void lstResult_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (_searchMode == 1 || lstResult.Items.Count == 0 || lstResult.SelectedIndex == -1)
+            {
+                return;
+            }
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    {
+                        mnuCopyFromList.Show(lstResult, new Point(e.X, e.Y));
+                    }
+                    break;
             }
         }
     }
