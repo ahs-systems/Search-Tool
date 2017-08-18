@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLDAP));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -56,6 +57,7 @@
             this.btnBatchByID = new System.Windows.Forms.Button();
             this.btnBatchByLDAPName = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // textBox1
@@ -303,6 +305,8 @@
             this.btnBatchByID.TabIndex = 52;
             this.btnBatchByID.Text = "Batch By ID";
             this.btnBatchByID.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnBatchByID, "Tip: You can copy the whole column from an Excel file that \r\ncontains the Employe" +
+        "e ID\'s and paste it on a Notepad, save it \r\nand use that as the source file.");
             this.btnBatchByID.UseVisualStyleBackColor = true;
             this.btnBatchByID.Click += new System.EventHandler(this.btnBatchByID_Click);
             // 
@@ -328,6 +332,13 @@
             this.label11.TabIndex = 54;
             this.label11.Text = "( Comma or Line Feed Delimited Text File )";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 10000;
+            this.toolTip1.InitialDelay = 1000;
+            this.toolTip1.IsBalloon = true;
+            this.toolTip1.ReshowDelay = 100;
             // 
             // frmLDAP
             // 
@@ -403,6 +414,7 @@
         private System.Windows.Forms.Button btnBatchByID;
         private System.Windows.Forms.Button btnBatchByLDAPName;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

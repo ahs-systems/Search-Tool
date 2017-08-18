@@ -2265,25 +2265,23 @@ namespace WindowsFormsApplication1
 
         private void mnuCopyEmpNum_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(0,10));
-            MessageBox.Show("Employee number copied to clipboard!");
+            string _clipText = lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(0, 10);
+            Clipboard.SetText(_clipText);
+            MessageBox.Show("'" + _clipText + "' copied to clipboard!");
         }
 
         private void mnuCopyEmpName_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(15));
-            MessageBox.Show("Employee name copied to clipboard!");
-        }
-
-        private void lstResult_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
+            string _clipText = lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(15);
+            Clipboard.SetText(_clipText);
+            MessageBox.Show("'" + _clipText + "' copied to clipboard!");
+        }      
 
         private void mnuCopyBothNameAndNum_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(0));
-            MessageBox.Show("Employee number and employee name copied to clipboard!");
+            string _clipText = lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(0);
+            Clipboard.SetText(_clipText);
+            MessageBox.Show("'" + _clipText + "' copied to clipboard!");
         }        
 
         private void lstResult_MouseUp(object sender, MouseEventArgs e)
