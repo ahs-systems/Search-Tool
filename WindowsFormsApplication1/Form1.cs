@@ -2212,7 +2212,7 @@ namespace WindowsFormsApplication1
         private void ShowMe()
         {
             Show();
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 324, 1000, 0);
+            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 357, 1000, 0);
         }
 
         private void HideMe()
@@ -2231,7 +2231,7 @@ namespace WindowsFormsApplication1
 
         private void frmSearch_Shown(object sender, EventArgs e)
         {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 324, 1000, 0);
+            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 357, 1000, 0);
         }
 
         private void btnGetLDAP_Click(object sender, EventArgs e)
@@ -2297,6 +2297,77 @@ namespace WindowsFormsApplication1
                         mnuCopyFromList.Show(lstResult, new Point(e.X, e.Y));
                     }
                     break;
+            }
+        }
+
+        private void btnSickOnStat_Click(object sender, EventArgs e)
+        {
+            var _btn = (Button)sender;
+
+            string _origBtnText = _btn.Text;
+
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Title = "Select the file that came from ePeople";
+                openFileDialog1.Filter = "XLS Files (.xls)|*.xls|CSV Files (.csv)|*.csv|All Files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 1;
+
+                bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+                if (!userClickedOK) return;
+
+                _btn.Text = "Processing...";
+                Cursor.Current = Cursors.WaitCursor;
+                Update();
+
+                string[] lines = File.ReadAllLines(openFileDialog1.FileName);
+
+                int _ctr = 0;
+                using (SqlConnection myConnection = new SqlConnection())
+                {
+                    myConnection.ConnectionString = Common.BooServer;
+                    myConnection.Open();
+
+                    SqlCommand myCommand = myConnection.CreateCommand();
+
+                    // clear the table 
+                    myCommand.CommandText = "TRUNCATE TABLE CAL_EXCEL_SOURCE";
+                    myCommand.ExecuteNonQuery();
+                    
+                    foreach (string line in lines)
+                    {
+                        string[] values = line.Replace("\"", "").Split(',');
+                        if (values.Count() == 13)
+                        {
+                            if (values[10] == "001")
+                            {
+                                myCommand.CommandText = "INSERT INTO CAL_EXCEL_SOURCE (ID, Name, [Rpt Dt], Quantity, Workgroup) VALUES (" +
+                                    "@_id, @_name, @_rptDt, @_qty, @_workGroup)";
+                                myCommand.Parameters.Clear();
+                                myCommand.Parameters.AddWithValue("_id",values[0]);
+                                myCommand.Parameters.AddWithValue("_name", values[2].Trim() + ", " + values[3].Trim());
+                                myCommand.Parameters.AddWithValue("_rptDt", values[5]);
+                                myCommand.Parameters.AddWithValue("_qty", values[8]);
+                                myCommand.Parameters.AddWithValue("_workGroup", values[11]);
+                                myCommand.ExecuteNonQuery();
+                                _ctr++;
+                            }
+                        }
+                    }                    
+                    myCommand.Dispose();
+                    MessageBox.Show(_ctr + " record(s) uploaded to Boo Database\n\n[CAL_EXCEL_SOURCE table]","Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                _btn.Text = _origBtnText;
+                Cursor.Current = Cursors.Default;
             }
         }
     }
