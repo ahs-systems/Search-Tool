@@ -15,6 +15,7 @@ using VisualEffects.Animations.Effects;
 using VisualEffects;
 using VisualEffects.Easing;
 
+
 namespace WindowsFormsApplication1
 {
     public partial class frmSearch : Form
@@ -635,8 +636,8 @@ namespace WindowsFormsApplication1
                                         itemsReportLetter = _uploadParams.itemsReportLetter
                                     }))
                                     {
-                                        values[0] = values[0] + "  ©";
-                                    };
+                                        values[0] = "(Unit Trns)";                                        
+                                    }
                                 }
                                 else if (!changeInUnit && changeInOcc)
                                 {
@@ -651,7 +652,7 @@ namespace WindowsFormsApplication1
                                         itemsReportLetter = _uploadParams.itemsReportLetter
                                     }))
                                     {
-                                        values[0] = values[0] + "  ©";
+                                        values[0] = "(Occ Chg)";                                        
                                     };
                                 }
                             }
@@ -1058,7 +1059,7 @@ namespace WindowsFormsApplication1
                                 worksheet.Cells[i - 10, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                                 worksheet.Cells[i - 10, 10].Style.Font.Italic = true;
                                 worksheet.Cells[i - 10, 10].Style.Font.Color.SetColor(Color.Gray);
-                                if (worksheet.Cells[i - 10, 10].Value.ToString().IndexOf('(') > -1)
+                                if (worksheet.Cells[i - 10, 10].Value.ToString().IndexOf('(') > -1) // check for opening parenthesis in column 10 for notes
                                 {
                                     worksheet.Cells[i - 10, 10].Style.Font.Italic = false;
                                     if (worksheet.Cells[i - 10, 10].Value.ToString().IndexOf("A0U") > -1)
@@ -1070,6 +1071,22 @@ namespace WindowsFormsApplication1
                                         worksheet.Cells[i - 10, 10].Style.Font.Size = 6;
                                     }
                                 }
+
+                                #region compute the split in timecard
+                                //string[] _split = GetTheSplit(worksheet.Cells[i - 10, 4].Value.ToString().Trim(), worksheet.Cells[i - 10, 5].Value.ToString().Trim(),
+                                //    Convert.ToDouble(worksheet.Cells[i - 10, 7].Value), Convert.ToDouble(worksheet.Cells[i - 10, 8].Value), Convert.ToDouble(worksheet.Cells[i - 10, 9].Value));
+                                //for (int i2 = 11; i2 < _split.Length + 11; i2++)
+                                //{
+                                //    worksheet.Cells[i - 10, i2].Value = _split[i2 - 11];
+                                //    if (i2==11) // if column date, reduce the font size
+                                //    {
+                                //        worksheet.Cells[i - 10, i2].Style.Font.Size = 8;
+                                //    }
+                                //    worksheet.Cells[i - 10, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                //}
+                                #endregion
+
+
                             }
                             catch (Exception ex)
                             {
@@ -1114,6 +1131,70 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private string[] GetTheSplit(string _empNo, string _offCode, double _off, double _bnkHrs, double _diff)
+        {
+            string[] _ret = new string[] { "", "", "", "" }; //_ret[0] = date, _ret[1] = estimated raw value,  _ret[2] = actual value, _ret[3] = unpaid bal
+
+            if (_offCode == "A06") return _ret;
+
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection())
+                {
+                    myConnection.ConnectionString = Common.ESPServer; //@"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\items.mdb;Uid=Admin;Pwd=;";
+                    myConnection.Open();
+
+                    SqlCommand myCommand = myConnection.CreateCommand();
+
+                    myCommand.CommandText = "SELECT Format(TCE.TCE_Date,'ddMMMyyyy') as TCE_Date, TCE.TCE_Quantity FROM TimeCardEntry as tce " +
+                                "JOIN paycode as pc on tce.TCE_PayCodeID = pc.pc_paycodeid  " +
+                                "WHERE tce.TCE_TimeCardID =  " +
+                                "(SELECT TC_TimeCardID FROM timecard WHERE " +
+                                "TC_EmpID = (SELECT E_EmpID FROM emp WHERE E_EmpNbr = @_empNum)  " +
+                                "AND TC_PayPeriodID = (SELECT PP_PayPeriodID FROM PayPeriod WHERE GETDATE()-3 between PP_StartDate AND PP_EndDate)) " +
+                                "AND tce.TCE_EntryTypeInd IN(1, 2, 38, 70, 94, 166, 198, 262, 294) AND tce.TCE_PayCodeType = 2 " +
+                                "AND pc.PC_Type = 2 AND pc.PC_Nbr = @_offCode " +
+                                "ORDER BY tce.tce_date, tce.TCE_DateEntered";
+
+                    myCommand.Parameters.AddWithValue("_empNum", _empNo);
+                    myCommand.Parameters.AddWithValue("_offCode", _offCode);
+
+                    SqlDataReader _dr = myCommand.ExecuteReader();
+
+                    double _total = 0;
+                    double _curr = 0;
+                    double _prevTotal = 0;
+                    while (_dr.Read())
+                    {
+                        _curr = Convert.ToDouble(_dr["TCE_Quantity"]);
+                        _total = Math.Round(_total + _curr,2);                        
+                        if (_bnkHrs < _total)
+                        {
+                            _ret[0] = _dr["TCE_Date"].ToString();
+                            if (_off % 7.75 == 0 && (_bnkHrs - _prevTotal) != 0)
+                            {
+                                _ret[1] = ((_bnkHrs - _prevTotal) + .5).ToString();
+                            }
+                            else if (_off % 11.08 == 0 && (_bnkHrs - _prevTotal) != 0)
+                            {
+                                _ret[1] = ((_bnkHrs - _prevTotal) + 1.17).ToString();
+                            }
+                            _ret[2] = (_bnkHrs - _prevTotal).ToString();
+                            _ret[3] = (_total - _bnkHrs).ToString();
+                            break;
+                        }
+                        _prevTotal = _total;
+                    }
+                }
+            }
+            catch 
+            {                
+                _ret = new string[] { "Err", "Err", "Err" };
+            }
+
+            return _ret;
+                
+        }
         
 
         private void ProcessFile2(string _sourceFile, string _destFolder)
@@ -1257,7 +1338,7 @@ namespace WindowsFormsApplication1
                                         itemsReportLetter = _uploadParams.itemsReportLetter
                                     }))
                                     {
-                                        values[0] = values[0] + " (UT)";
+                                        values[0] = "(Unit Trns)";
                                     };
                                 }
                                 else if (!changeInUnit && changeInOcc)
@@ -1273,7 +1354,7 @@ namespace WindowsFormsApplication1
                                         itemsReportLetter = _uploadParams.itemsReportLetter
                                     }))
                                     {
-                                        values[0] = values[0] + " (OC)";
+                                        values[0] = "(Occ Chg)";
                                     };
                                 }
                             }
