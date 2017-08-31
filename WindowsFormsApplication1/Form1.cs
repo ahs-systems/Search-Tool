@@ -1073,17 +1073,25 @@ namespace WindowsFormsApplication1
                                 }
 
                                 #region compute the split in timecard
-                                //string[] _split = GetTheSplit(worksheet.Cells[i - 10, 4].Value.ToString().Trim(), worksheet.Cells[i - 10, 5].Value.ToString().Trim(),
-                                //    Convert.ToDouble(worksheet.Cells[i - 10, 7].Value), Convert.ToDouble(worksheet.Cells[i - 10, 8].Value), Convert.ToDouble(worksheet.Cells[i - 10, 9].Value));
-                                //for (int i2 = 11; i2 < _split.Length + 11; i2++)
-                                //{
-                                //    worksheet.Cells[i - 10, i2].Value = _split[i2 - 11];
-                                //    if (i2==11) // if column date, reduce the font size
-                                //    {
-                                //        worksheet.Cells[i - 10, i2].Style.Font.Size = 8;
-                                //    }
-                                //    worksheet.Cells[i - 10, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                //}
+
+                                // check if the unpaid code start with "(" ex (Aupe aux), else get the first 3 letters (ex. A24(M) => A24)
+                                string _unpaidCode = "";
+                                if (!worksheet.Cells[i - 10, 10].Value.ToString().StartsWith("(") && worksheet.Cells[i - 10, 10].Value.ToString().Length > 2)
+                                {
+                                    _unpaidCode = worksheet.Cells[i - 10, 10].Value.ToString().Substring(0, 3);
+                                }
+
+                                string[] _split = GetTheSplit(worksheet.Cells[i - 10, 4].Value.ToString().Trim(), worksheet.Cells[i - 10, 5].Value.ToString().Trim(), _unpaidCode,
+                                    Convert.ToDouble(worksheet.Cells[i - 10, 7].Value), Convert.ToDouble(worksheet.Cells[i - 10, 8].Value), Convert.ToDouble(worksheet.Cells[i - 10, 9].Value));
+                                for (int i2 = 11; i2 < _split.Length + 11; i2++)
+                                {
+                                    worksheet.Cells[i - 10, i2].Value = _split[i2 - 11];
+                                    if (i2 == 11) // if column date, reduce the font size
+                                    {
+                                        worksheet.Cells[i - 10, i2].Style.Font.Size = 8;
+                                    }
+                                    worksheet.Cells[i - 10, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                }
                                 #endregion
 
 
@@ -1113,8 +1121,47 @@ namespace WindowsFormsApplication1
                         saveFileDialog1.FileName = "Banks Compare";
                         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                         {
-                            package2.SaveAs(new FileInfo(saveFileDialog1.FileName));
-                            System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                            #region Without Split Computation
+                            //package2.SaveAs(new FileInfo(saveFileDialog1.FileName));
+                            //System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                            #endregion
+
+                            #region With Split Computation
+                            int lastCharPosition = saveFileDialog1.FileName.LastIndexOf('\\');
+                            string tempFile = saveFileDialog1.FileName.Substring(0, lastCharPosition + 1) + "temp.xlsx";
+                            package2.SaveAs(new FileInfo(tempFile));
+
+                            // Save a copy to be use by SSO
+                            using (ExcelPackage packageCopy = new ExcelPackage(new FileInfo(tempFile)))
+                            {
+                                ExcelWorkbook workBookCopy = packageCopy.Workbook;
+                                ExcelWorksheet worksheetCopy = workBookCopy.Worksheets.First();
+                                for (int i = 0; i < 4; i++) //delete the last 4 columns
+                                {
+                                    worksheetCopy.DeleteColumn(11);
+                                }
+                                packageCopy.SaveAs(new FileInfo(saveFileDialog1.FileName));
+                            }
+
+                            // Save a copy for RSSS use
+                            using (ExcelPackage packageCopy = new ExcelPackage(new FileInfo(tempFile)))
+                            {
+                                ExcelWorkbook workBookCopy = packageCopy.Workbook;
+                                ExcelWorksheet worksheetCopy = workBookCopy.Worksheets.First();
+                                for (int i = 0; i < 2; i++) // Delete the first 2 columns
+                                {
+                                    worksheetCopy.DeleteColumn(1);
+                                }
+                                worksheetCopy.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                                worksheetCopy.Cells.AutoFitColumns();
+                                lastCharPosition = saveFileDialog1.FileName.LastIndexOf('.');
+                                packageCopy.SaveAs(new FileInfo(saveFileDialog1.FileName.Insert(lastCharPosition," - for RSSS")));
+                                System.Diagnostics.Process.Start(saveFileDialog1.FileName.Insert(lastCharPosition, " - for RSSS"));
+                            }
+
+                            // Delete the temp file
+                            File.Delete(tempFile);
+                            #endregion 
                         }
                     }
                 }
@@ -1131,7 +1178,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private string[] GetTheSplit(string _empNo, string _offCode, double _off, double _bnkHrs, double _diff)
+        private string[] GetTheSplit(string _empNo, string _offCode, string _unpaidCode, double _off, double _bnkHrs, double _diff)
         {
             string[] _ret = new string[] { "", "", "", "" }; //_ret[0] = date, _ret[1] = estimated raw value,  _ret[2] = actual value, _ret[3] = unpaid bal
 
@@ -1164,6 +1211,7 @@ namespace WindowsFormsApplication1
                     double _total = 0;
                     double _curr = 0;
                     double _prevTotal = 0;
+                    string _offCodeSuffix = "  (" + _offCode + ")";
                     while (_dr.Read())
                     {
                         _curr = Convert.ToDouble(_dr["TCE_Quantity"]);
@@ -1173,14 +1221,14 @@ namespace WindowsFormsApplication1
                             _ret[0] = _dr["TCE_Date"].ToString();
                             if (_off % 7.75 == 0 && (_bnkHrs - _prevTotal) != 0)
                             {
-                                _ret[1] = ((_bnkHrs - _prevTotal) + .5).ToString();
+                                _ret[1] = ((_bnkHrs - _prevTotal) + .5) + _offCodeSuffix;
                             }
                             else if (_off % 11.08 == 0 && (_bnkHrs - _prevTotal) != 0)
                             {
-                                _ret[1] = ((_bnkHrs - _prevTotal) + 1.17).ToString();
+                                _ret[1] = ((_bnkHrs - _prevTotal) + 1.17) + _offCodeSuffix;
                             }
-                            _ret[2] = (_bnkHrs - _prevTotal).ToString();
-                            _ret[3] = (_total - _bnkHrs).ToString();
+                            _ret[2] = (_bnkHrs - _prevTotal) + _offCodeSuffix;
+                            _ret[3] = (_total - _bnkHrs) + "  (" + _unpaidCode + ")";
                             break;
                         }
                         _prevTotal = _total;
