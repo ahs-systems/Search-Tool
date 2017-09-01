@@ -1056,24 +1056,19 @@ namespace WindowsFormsApplication1
                                 worksheet.Cells[i - 10, 8].Value = Math.Floor(Convert.ToDouble(currentWorksheet.Cells[i, 13].Value) * 100) / 100; worksheet.Cells[i - 10, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                                 worksheet.Cells[i - 10, 9].Value = Math.Round(Convert.ToDouble(currentWorksheet.Cells[i, 11].Value) - (Math.Floor(Convert.ToDouble(currentWorksheet.Cells[i, 13].Value) * 100) / 100), 3); worksheet.Cells[i - 10, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                                 worksheet.Cells[i - 10, 10].Value = SearchMethods.ChangeTo(currentWorksheet.Cells[i, 8].Value.ToString(), currentWorksheet.Cells[i, 7].Value.ToString().Trim());
+
+                                // Check for multiple primaries
+                                worksheet.Cells[i - 10, 10].Value = worksheet.Cells[i - 10, 10].Value + Common.CheckIfMultiJob(worksheet.Cells[i - 10, 4].Value.ToString().Trim());
+
                                 worksheet.Cells[i - 10, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                                 worksheet.Cells[i - 10, 10].Style.Font.Italic = true;
                                 worksheet.Cells[i - 10, 10].Style.Font.Color.SetColor(Color.Gray);
                                 if (worksheet.Cells[i - 10, 10].Value.ToString().IndexOf('(') > -1) // check for opening parenthesis in column 10 for notes
                                 {
-                                    worksheet.Cells[i - 10, 10].Style.Font.Italic = false;
-                                    if (worksheet.Cells[i - 10, 10].Value.ToString().IndexOf("A0U") > -1)
-                                    {
-                                        worksheet.Cells[i - 10, 10].Style.Font.Size = 8;
-                                    }
-                                    else
-                                    {
-                                        worksheet.Cells[i - 10, 10].Style.Font.Size = 6;
-                                    }
+                                    worksheet.Cells[i - 10, 10].Style.Font.Size = 8;
                                 }
 
                                 #region compute the split in timecard
-
                                 // check if the unpaid code start with "(" ex (Aupe aux), else get the first 3 letters (ex. A24(M) => A24)
                                 string _unpaidCode = "";
                                 if (!worksheet.Cells[i - 10, 10].Value.ToString().StartsWith("(") && worksheet.Cells[i - 10, 10].Value.ToString().Length > 2)
@@ -1086,11 +1081,13 @@ namespace WindowsFormsApplication1
                                 for (int i2 = 11; i2 < _split.Length + 11; i2++)
                                 {
                                     worksheet.Cells[i - 10, i2].Value = _split[i2 - 11];
-                                    if (i2 == 11) // if column date, reduce the font size
-                                    {
-                                        worksheet.Cells[i - 10, i2].Style.Font.Size = 8;
-                                    }
-                                    worksheet.Cells[i - 10, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                    worksheet.Cells[i - 10, i2].Style.Font.Color.SetColor(Color.FromArgb(169, 169, 169));
+                                    worksheet.Cells[i - 10, i2].Style.Font.Italic = true;
+                                    worksheet.Cells[i - 10, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Dotted);
+                                    worksheet.Cells[i - 10, i2].Style.Border.Top.Color.SetColor(Color.Gray);
+                                    worksheet.Cells[i - 10, i2].Style.Border.Right.Color.SetColor(Color.Gray);
+                                    worksheet.Cells[i - 10, i2].Style.Border.Bottom.Color.SetColor(Color.Gray);
+                                    worksheet.Cells[i - 10, i2].Style.Border.Left.Color.SetColor(Color.Gray);
                                 }
                                 #endregion
 
@@ -1109,7 +1106,7 @@ namespace WindowsFormsApplication1
                                 range.Style.Font.Bold = range.Style.Font.Italic = true;                                
                             }
 
-                            worksheet.Cells[i - 10, 10].Value = worksheet.Cells[i - 10, 10].Value + Common.CheckIfMultiJob(worksheet.Cells[i - 10, 4].Value.ToString().Trim());
+                            
                         }
 
                         //worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
@@ -1140,6 +1137,8 @@ namespace WindowsFormsApplication1
                                 {
                                     worksheetCopy.DeleteColumn(11);
                                 }
+                                var rangeCopy = worksheetCopy.Cells[2, 10, worksheetCopy.Dimension.End.Row, 10];
+                                rangeCopy.Value = "";
                                 packageCopy.SaveAs(new FileInfo(saveFileDialog1.FileName));
                             }
 
@@ -1180,9 +1179,24 @@ namespace WindowsFormsApplication1
 
         private string[] GetTheSplit(string _empNo, string _offCode, string _unpaidCode, double _off, double _bnkHrs, double _diff)
         {
-            string[] _ret = new string[] { "", "", "", "" }; //_ret[0] = date, _ret[1] = estimated raw value,  _ret[2] = actual value, _ret[3] = unpaid bal
+            string[] _ret = new string[] { "-----", "", "-----", "-----" }; //_ret[0] = date, _ret[1] = estimated raw value,  _ret[2] = actual value, _ret[3] = unpaid bal
 
             if (_offCode == "A06") return _ret;
+
+            _off = Math.Round(_off, 2);
+            _bnkHrs = Math.Round(_bnkHrs, 2);
+            _diff = Math.Round(_diff, 2);
+
+            // Check if its a Sick Time, then check for all sick time off codes in the timecard for the current pay period
+            string _listOfOffCodes = "";
+            if ("A15, A0K, A0L, A0M".IndexOf(_offCode) > -1)
+            {
+                _listOfOffCodes = "'A15','A0K','A0L','A0M'";
+            }
+            else // else just check the specific off code
+            {
+                _listOfOffCodes = "'" + _offCode + "'";
+            }
 
             try
             {
@@ -1193,18 +1207,17 @@ namespace WindowsFormsApplication1
 
                     SqlCommand myCommand = myConnection.CreateCommand();
 
-                    myCommand.CommandText = "SELECT Format(TCE.TCE_Date,'ddMMMyyyy') as TCE_Date, TCE.TCE_Quantity FROM TimeCardEntry as tce " +
+                    myCommand.CommandText = "SELECT Format(TCE.TCE_Date,'MMM-dd') as TCE_Date, TCE.TCE_Quantity FROM TimeCardEntry as tce " +
                                 "JOIN paycode as pc on tce.TCE_PayCodeID = pc.pc_paycodeid  " +
                                 "WHERE tce.TCE_TimeCardID =  " +
                                 "(SELECT TC_TimeCardID FROM timecard WHERE " +
                                 "TC_EmpID = (SELECT E_EmpID FROM emp WHERE E_EmpNbr = @_empNum)  " +
                                 "AND TC_PayPeriodID = (SELECT PP_PayPeriodID FROM PayPeriod WHERE GETDATE()-3 between PP_StartDate AND PP_EndDate)) " +
                                 "AND tce.TCE_EntryTypeInd IN(1, 2, 38, 70, 94, 166, 198, 262, 294) AND tce.TCE_PayCodeType = 2 " +
-                                "AND pc.PC_Type = 2 AND pc.PC_Nbr = @_offCode " +
+                                "AND pc.PC_Type = 2 AND pc.PC_Nbr IN (" + _listOfOffCodes + ") " +
                                 "ORDER BY tce.tce_date, tce.TCE_DateEntered";
 
                     myCommand.Parameters.AddWithValue("_empNum", _empNo);
-                    myCommand.Parameters.AddWithValue("_offCode", _offCode);
 
                     SqlDataReader _dr = myCommand.ExecuteReader();
 
@@ -1218,6 +1231,11 @@ namespace WindowsFormsApplication1
                         _total = Math.Round(_total + _curr,2);                        
                         if (_bnkHrs < _total)
                         {
+
+                            //if (_empNo == "00478339-0")
+                            //{
+                            //    ;
+                            //}
                             _ret[0] = _dr["TCE_Date"].ToString();
                             if (_off % 7.75 == 0 && (_bnkHrs - _prevTotal) != 0)
                             {
@@ -1227,8 +1245,12 @@ namespace WindowsFormsApplication1
                             {
                                 _ret[1] = ((_bnkHrs - _prevTotal) + 1.17) + _offCodeSuffix;
                             }
-                            _ret[2] = (_bnkHrs - _prevTotal) + _offCodeSuffix;
-                            _ret[3] = (_total - _bnkHrs) + "  (" + _unpaidCode + ")";
+                            else if (_off % 11.25 == 0 && (_bnkHrs - _prevTotal) != 0)
+                            {
+                                _ret[1] = ((_bnkHrs - _prevTotal) + 1) + _offCodeSuffix;
+                            }
+                            _ret[2] = Math.Round((_bnkHrs - _prevTotal),2) + _offCodeSuffix;
+                            _ret[3] = Math.Round((_total - _bnkHrs),2) + "  (" + _unpaidCode + ")";
                             break;
                         }
                         _prevTotal = _total;
