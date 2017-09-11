@@ -476,246 +476,32 @@ namespace WindowsFormsApplication1
         }
 
         private void btnFile2_Click(object sender, EventArgs e)
-        {          
+        {
 
-            TopMost = false;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Title = "Please select the File 2 CSV File";
+            openFileDialog1.Filter = "CSV Files (.csv)|*.csv|All Files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
 
-            frmUploadItems _frm = new frmUploadItems();            
-            _frm.ShowDialog();
-            UploadItemsParams _uploadParams = _frm.attr;
-            _frm.Dispose();
+            bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
 
-            TopMost = true;
+            if (!userClickedOK) return;
 
-            try
-            {
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
-                openFileDialog1.Title = "Please select the File 2 CSV File";
-                openFileDialog1.Filter = "CSV Files (.csv)|*.csv|All Files (*.*)|*.*";
-                openFileDialog1.FilterIndex = 1;
+            btnFile2.Text = "Processing...";
+            Cursor.Current = Cursors.WaitCursor;
+            Update();
 
-                bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+            ProcessFile2(openFileDialog1.FileName, "");
 
-                if (!userClickedOK) return;
-
-                btnFile2.Text = "Processing...";
-                Cursor.Current = Cursors.WaitCursor;
-                Update();
-
-                // Set the file name and get the output directory
-                var fileName = "Example.xlsx";
-                var outputDir = Application.StartupPath;
-
-                // Create the file using the FileInfo object
-                var file = new FileInfo(outputDir + @"\" + fileName);
-
-                using (var package = new ExcelPackage())
-                {
-                    // add a new worksheet to the empty workbook
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(openFileDialog1.SafeFileName);
-
-                    // Set Page Settings
-                    worksheet.PrinterSettings.Orientation = eOrientation.Landscape;
-                    worksheet.PrinterSettings.ShowGridLines = true;
-                    worksheet.PrinterSettings.HorizontalCentered = true;
-                    worksheet.PrinterSettings.TopMargin = (decimal)1.5 / 2.54M;
-                    worksheet.PrinterSettings.BottomMargin = (decimal)1.5 / 2.54M;
-                    worksheet.PrinterSettings.LeftMargin = (decimal)0.25 / 2.54M;
-                    worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
-                    worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
-                    worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
-                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
-                    worksheet.HeaderFooter.OddHeader.CenteredText = "Positions Report";
-                    worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
-                    worksheet.View.PageBreakView = true;
-                    worksheet.PrinterSettings.RepeatRows = new ExcelAddress("$1:$1");
-                    worksheet.PrinterSettings.FitToPage = true; worksheet.PrinterSettings.FitToWidth = 1; worksheet.PrinterSettings.FitToHeight = 0;
-
-
-                    //Setting Header Style
-                    //worksheet.Row(1).Height = 42;
-                    //worksheet.Column(1).Width = 3.29;
-                    worksheet.Cells[1, 2].Value = "EE ID #"; worksheet.Cells[1, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    worksheet.Cells[1, 3].Value = "POS"; worksheet.Cells[1, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    worksheet.Cells[1, 4].Value = "Prim"; worksheet.Cells[1, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    worksheet.Cells[1, 5].Value = "Start Date"; worksheet.Cells[1, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    worksheet.Cells[1, 6].Value = "End Date"; worksheet.Cells[1, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    worksheet.Cells[1, 7].Value = "Unit"; worksheet.Cells[1, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    worksheet.Cells[1, 8].Value = "Occ"; worksheet.Cells[1, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    worksheet.Cells[1, 9].Value = "Stat"; worksheet.Cells[1, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    worksheet.Cells[1, 10].Value = "FTE"; worksheet.Cells[1, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    worksheet.Cells[1, 11].Value = "Comments"; worksheet.Cells[1, 11].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-
-                    var range = worksheet.Cells[1, 1, 1, 11];
-                    range.Style.Font.Bold = true;
-                    range.Style.Font.Size = 12;
-                    range.Style.Font.Name = "Arial";
-
-                    string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
-
-                    int lineCtr = 2;
-
-                    bool firstEmp = true;
-                    string currEmp = "", currUnit = "", currOcc = "", currStat = "", currFTE = "", prevUnit = "", prevOcc = "";
-                    bool switchColor = true, ThersAChange = false;
-
-                    bool changeInUnit = false, changeInOcc = false;
-
-                    foreach (string line in lines)
-                    {
-                        string[] values = line.Split(',');
-                        if (values.Count() == 38)
-                        {
-                            if (firstEmp)
-                            {
-                                firstEmp = false;
-                                currEmp = values[1]; currUnit = values[20]; currOcc = values[21]; currStat = values[22]; currFTE = values[23];
-                            }
-                            else
-                            {
-                                if (currEmp != values[1]) // change in empno
-                                {
-                                    currEmp = values[1]; currUnit = prevUnit = values[20]; currOcc = prevOcc = values[21]; currStat = values[22]; currFTE = values[23]; // reset the base values
-                                    ThersAChange = false; //reset the flags
-                                    switchColor = !switchColor;
-                                }
-                            }
-                            if (currUnit != values[20]) // change in unit
-                            {
-                                worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(values[1].Substring(0, 8));
-                                worksheet.Cells[lineCtr, 7].Style.Font.Bold = true;
-                                prevUnit = currUnit;
-                                currUnit = values[20];
-                                ThersAChange = changeInUnit = true;
-                            }
-                            if (currOcc != values[21]) // change in occupation
-                            {
-                                if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(values[1].Substring(0, 8));
-                                worksheet.Cells[lineCtr, 8].Style.Font.Bold = true;
-                                prevOcc = currOcc;
-                                currOcc = values[21];
-                                ThersAChange = changeInOcc = true;
-                            }
-                            if (currStat != values[22])
-                            {
-                                if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = "Status";
-                                worksheet.Cells[lineCtr, 9].Style.Font.Bold = true;
-                                currStat = values[22];
-                                if (currFTE != values[23])
-                                {
-                                    if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = "Status / FTE";
-                                    worksheet.Cells[lineCtr, 10].Style.Font.Bold = true;
-                                    currFTE = values[23];
-                                }
-                                ThersAChange = true;
-                            }
-                            if (currFTE != values[23])
-                            {
-                                if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = "FTE";
-                                worksheet.Cells[lineCtr, 10].Style.Font.Bold = true;
-                                currFTE = values[23];
-                                ThersAChange = true;
-                            }
-
-                            #region AutoInsertInItemsReport                          
-                            if (_uploadParams.uploadToItems)
-                            {
-                                if (changeInUnit)
-                                {
-                                    if (InsertInItems(new ChangeInUnitAndOrOcc
-                                    {
-                                        empNo = values[1].Trim(),
-                                        prevUnit = prevUnit.Trim(),
-                                        currUnit = currUnit.Trim(),
-                                        prevPosCode = changeInOcc ? prevOcc : values[21].Trim(),
-                                        currPosCode = values[21].Trim(),
-                                        stat = values[22].Trim(),
-                                        pp = _uploadParams.pp,
-                                        ppYear = _uploadParams.ppYear,
-                                        itemsReportLetter = _uploadParams.itemsReportLetter
-                                    }))
-                                    {
-                                        values[0] = "(Unit Trns)";                                        
-                                    }
-                                }
-                                else if (!changeInUnit && changeInOcc)
-                                {
-                                    if (InsertInItems(new ChangeInOcc
-                                    {
-                                        empNo = values[1].Trim(),
-                                        unit = currUnit.Trim(),
-                                        prevPosCode = prevOcc,
-                                        currPosCode = currOcc,
-                                        pp = _uploadParams.pp,
-                                        ppYear = _uploadParams.ppYear,
-                                        itemsReportLetter = _uploadParams.itemsReportLetter
-                                    }))
-                                    {
-                                        values[0] = "(Occ Chg)";                                        
-                                    };
-                                }
-                            }
-
-                            changeInUnit = changeInOcc = false;
-                            #endregion
-
-                            worksheet.Row(lineCtr).Height = 25;
-                            worksheet.Row(lineCtr).Style.Font.Size = 12;
-                            worksheet.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
-                            worksheet.Cells[lineCtr, 1].Value = values[0]; worksheet.Cells[lineCtr, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                            worksheet.Cells[lineCtr, 2].Value = values[1]; worksheet.Cells[lineCtr, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                            worksheet.Cells[lineCtr, 3].Value = values[15]; worksheet.Cells[lineCtr, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                            worksheet.Cells[lineCtr, 4].Value = values[16]; worksheet.Cells[lineCtr, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                            worksheet.Cells[lineCtr, 5].Value = values[17].Trim() != "" ? DateTime.ParseExact(values[17].PadLeft(8, '0'), "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("ddMMMyy") : ""; worksheet.Cells[lineCtr, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                            worksheet.Cells[lineCtr, 6].Value = values[18].Trim() != "" ? DateTime.ParseExact(values[18].PadLeft(8, '0'), "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("ddMMMyy") : ""; worksheet.Cells[lineCtr, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                            worksheet.Cells[lineCtr, 7].Value = values[20]; worksheet.Cells[lineCtr, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                            worksheet.Cells[lineCtr, 8].Value = GetPosition(values[21]); worksheet.Cells[lineCtr, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                            worksheet.Cells[lineCtr, 9].Value = values[22]; worksheet.Cells[lineCtr, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                            worksheet.Cells[lineCtr, 10].Value = Convert.ToDecimal(values[23]).ToString("0.00"); worksheet.Cells[lineCtr, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                            worksheet.Cells[lineCtr, 11].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                            range = worksheet.Cells[lineCtr, 1, lineCtr, 11];
-                            range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                            range.Style.Fill.BackgroundColor.SetColor(switchColor ? Color.White : Color.FromArgb(191, 191, 191));
-
-                            //worksheet.Row(lineCtr).Style.Fill.BackgroundColor.SetColor(switchColor ? Color.White : Color.Gray);
-
-
-                            //worksheet.Cells[lineCtr, 3].Value = DateTime.ParseExact(values[18].PadLeft(8, '0'), "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("ddMMMyyyy");
-                            //worksheet.Cells[lineCtr, 4].Value = GetEmpName(values[1].Substring(0, 8));
-                            lineCtr++;
-                        }
-                    }
-
-                    worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
-
-                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                    saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-                    saveFileDialog1.FilterIndex = 1;
-                    saveFileDialog1.FileName = "Positions " + DateTime.Now.ToString("ddMMMyy");
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        package.SaveAs(new FileInfo(saveFileDialog1.FileName));
-                        System.Diagnostics.Process.Start(saveFileDialog1.FileName);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                btnFile2.Text = "Format File 2";
-                Cursor.Current = Cursors.Default;
-            }
+            btnFile2.Text = "Format File 2";
+            Cursor.Current = Cursors.Default;            
         }
 
-        private bool InsertInItems(ChangeInOcc _data)
+        private byte InsertInItems(ChangeInOcc _data)
         {
-            if (GetSiteNum_ShortDesc(_data.unit) == -1) return false; // the unit is not existing
+            if (GetSiteNum_ShortDesc(_data.unit) == -1) return 0; // the unit is not existing
 
-            bool _ret;
+            byte _ret = 0;
 
             try
             {
@@ -726,33 +512,119 @@ namespace WindowsFormsApplication1
 
                     SqlCommand myCommand = myConnection.CreateCommand();
 
-                    myCommand.CommandText = "Insert into ItemsRpt_OccupationChange (ItemsReportLetter, PayPeriod, PayPeriod_Year, Site, Emp_Num, Emp_Name, Unit, OccFrom, OccTo, Comments, EnteredBy) values " +
-                        "(@_ItemsReportLetter, @_PayPeriod, @_PayPeriod_Year, @_Site, @_Emp_Num, @_Emp_Name, @_Unit, @_OccFrom, @_OccTo, @_Comments, @_EnteredBy)";
-                   
-
-                    myCommand.Parameters.AddWithValue("_ItemsReportLetter", _data.itemsReportLetter);
+                    // Check if the record is already existing 
+                    myCommand.CommandText = "SELECT * FROM ItemsRpt_OccupationChange WHERE PayPeriod = @_PayPeriod AND PayPeriod_Year = @_PayPeriod_Year and ItemsReportLetter = @_ItemsReportLetter " +
+                            "AND Emp_Num = @_Emp_num";
                     myCommand.Parameters.AddWithValue("_PayPeriod", _data.pp);
                     myCommand.Parameters.AddWithValue("_PayPeriod_Year", _data.ppYear);
-                    myCommand.Parameters.AddWithValue("_Site", (GetSiteNum_ShortDesc(_data.unit) + 1));
+                    myCommand.Parameters.AddWithValue("_ItemsReportLetter", _data.itemsReportLetter);
                     myCommand.Parameters.AddWithValue("_Emp_Num", _data.empNo);
-                    myCommand.Parameters.AddWithValue("_Emp_Name", GetEmpName(_data.empNo.Substring(0, 8)));
-                    myCommand.Parameters.AddWithValue("_Unit", _data.unit);
-                    myCommand.Parameters.AddWithValue("_OccFrom", GetPosition(_data.prevPosCode));
-                    myCommand.Parameters.AddWithValue("_OccTo", GetPosition(_data.currPosCode));
-                    myCommand.Parameters.AddWithValue("_Comments", "");
-                    myCommand.Parameters.AddWithValue("_EnteredBy", "AutoSystem");
+                    SqlDataReader _dr = myCommand.ExecuteReader();
+                    if (_dr.HasRows)
+                    {
+                        _ret = 2;
+                        _dr.Close();
+                    }
+                    else // if not existing then proceed in inserting the record
+                    {
+                        _dr.Close();
+                        myCommand.Parameters.Clear();
 
-                    myCommand.ExecuteNonQuery();
+                        myCommand.CommandText = "Insert into ItemsRpt_OccupationChange (ItemsReportLetter, PayPeriod, PayPeriod_Year, Site, Emp_Num, Emp_Name, Unit, OccFrom, OccTo, Comments, EnteredBy) values " +
+                        "(@_ItemsReportLetter, @_PayPeriod, @_PayPeriod_Year, @_Site, @_Emp_Num, @_Emp_Name, @_Unit, @_OccFrom, @_OccTo, @_Comments, @_EnteredBy)";
+
+
+                        myCommand.Parameters.AddWithValue("_ItemsReportLetter", _data.itemsReportLetter);
+                        myCommand.Parameters.AddWithValue("_PayPeriod", _data.pp);
+                        myCommand.Parameters.AddWithValue("_PayPeriod_Year", _data.ppYear);
+                        myCommand.Parameters.AddWithValue("_Site", (GetSiteNum_ShortDesc(_data.unit) + 1));
+                        myCommand.Parameters.AddWithValue("_Emp_Num", _data.empNo);
+                        myCommand.Parameters.AddWithValue("_Emp_Name", GetEmpName(_data.empNo.Substring(0, 8)));
+                        myCommand.Parameters.AddWithValue("_Unit", _data.unit);
+                        myCommand.Parameters.AddWithValue("_OccFrom", GetPosition(_data.prevPosCode));
+                        myCommand.Parameters.AddWithValue("_OccTo", GetPosition(_data.currPosCode));
+                        myCommand.Parameters.AddWithValue("_Comments", "");
+                        myCommand.Parameters.AddWithValue("_EnteredBy", "AutoSystem");
+
+                        myCommand.ExecuteNonQuery();
+                        _ret = 1;
+                    }
+
                     myCommand.Dispose();
-
-                    _ret = true;
-
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error in Auto Inserting 'Change in Occupation' [" + _data.empNo + "]: " + ex.Message, "ERROR");
-                _ret = false;
+                _ret = 0;
+            }
+
+            return _ret;
+        }
+
+        private byte InsertInItems(ChangeInUnitAndOrOcc _data)
+        {
+            if (GetSiteNum_ShortDesc(_data.prevUnit) == -1) return 0;
+
+            byte _ret = 0;
+
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection())
+                {
+                    myConnection.ConnectionString = Common.SystemsServer; //@"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\items.mdb;Uid=Admin;Pwd=;";
+                    myConnection.Open();
+
+                    SqlCommand myCommand = myConnection.CreateCommand();
+
+                    // Check if the record is already existing 
+                    myCommand.CommandText = "SELECT * FROM ItemsRpt_UnitToUnitTransfer WHERE PayPeriod = @_PayPeriod AND PayPeriod_Year = @_PayPeriod_Year and ItemsReportLetter = @_ItemsReportLetter " +
+                            "AND Emp_Num = @_Emp_num";
+                    myCommand.Parameters.AddWithValue("_PayPeriod", _data.pp);
+                    myCommand.Parameters.AddWithValue("_PayPeriod_Year", _data.ppYear);
+                    myCommand.Parameters.AddWithValue("_ItemsReportLetter", _data.itemsReportLetter);
+                    myCommand.Parameters.AddWithValue("_Emp_Num", _data.empNo);
+                    SqlDataReader _dr = myCommand.ExecuteReader();
+                    if (_dr.HasRows)
+                    {
+                        _ret = 2;
+                        _dr.Close();
+                    }
+                    else // if not existing then proceed in inserting the record
+                    {
+                        _dr.Close();
+                        myCommand.Parameters.Clear();
+
+
+                        myCommand.CommandText = "Insert into ItemsRpt_UnitToUnitTransfer (ItemsReportLetter, PayPeriod, PayPeriod_Year, Site, Emp_Num, Emp_Name, UnitFrom, UnitTo, Occupation, Status, ChangeInOccupation, ChangeInSite, Comments, EnteredBy) values " +
+                                "(@_ItemsReportLetter, @_PayPeriod, @_PayPeriod_Year, @_Site, @_Emp_Num, @_Emp_Name, @_UnitFrom, @_UnitTo, @_Occupation, @_Status, @_ChangeInOccupation, @_ChangeInSite, @_Comments, @_EnteredBy)";
+
+                        myCommand.Parameters.AddWithValue("_ItemsReportLetter", _data.itemsReportLetter);
+                        myCommand.Parameters.AddWithValue("_PayPeriod", _data.pp);
+                        myCommand.Parameters.AddWithValue("_PayPeriod_Year", _data.ppYear);
+                        myCommand.Parameters.AddWithValue("_Site", (GetSiteNum_ShortDesc(_data.prevUnit) + 1));
+                        myCommand.Parameters.AddWithValue("_Emp_Num", _data.empNo);
+                        myCommand.Parameters.AddWithValue("_Emp_Name", GetEmpName(_data.empNo.Substring(0, 8)));
+                        myCommand.Parameters.AddWithValue("_UnitFrom", _data.prevUnit);
+                        myCommand.Parameters.AddWithValue("_UnitTo", _data.currUnit);
+                        myCommand.Parameters.AddWithValue("_Occupation", GetPosition(_data.currPosCode));
+                        myCommand.Parameters.AddWithValue("_Status", _data.stat);
+                        myCommand.Parameters.AddWithValue("_ChangeInOccupation", (_data.prevPosCode != _data.currPosCode).ToString());
+                        myCommand.Parameters.AddWithValue("_ChangeInSite", (GetSiteNum_ShortDesc(_data.prevUnit) != GetSiteNum_ShortDesc(_data.currUnit)).ToString());
+                        myCommand.Parameters.AddWithValue("_Comments", "");
+                        myCommand.Parameters.AddWithValue("_EnteredBy", "AutoSystem");
+
+                        myCommand.ExecuteNonQuery();
+                        _ret = 1;
+                    }
+
+                    myCommand.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error in Auto Inserting 'Change in Site' [" + _data.empNo + "]: " + ex.Message, "ERROR");
+                _ret = 0;
             }
 
             return _ret;
@@ -801,55 +673,7 @@ namespace WindowsFormsApplication1
 
             return _ret;
         }
-
-        private bool InsertInItems(ChangeInUnitAndOrOcc _data)
-        {
-            if (GetSiteNum_ShortDesc(_data.prevUnit) == -1) return false;
-
-            bool _ret = false;
-
-            try
-            {
-                using (SqlConnection myConnection = new SqlConnection())
-                {
-                    myConnection.ConnectionString = Common.SystemsServer; //@"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\items.mdb;Uid=Admin;Pwd=;";
-                    myConnection.Open();
-
-                    SqlCommand myCommand = myConnection.CreateCommand();
-
-                    myCommand.CommandText = "Insert into ItemsRpt_UnitToUnitTransfer (ItemsReportLetter, PayPeriod, PayPeriod_Year, Site, Emp_Num, Emp_Name, UnitFrom, UnitTo, Occupation, Status, ChangeInOccupation, ChangeInSite, Comments, EnteredBy) values " +
-                            "(@_ItemsReportLetter, @_PayPeriod, @_PayPeriod_Year, @_Site, @_Emp_Num, @_Emp_Name, @_UnitFrom, @_UnitTo, @_Occupation, @_Status, @_ChangeInOccupation, @_ChangeInSite, @_Comments, @_EnteredBy)";
-                    
-                    myCommand.Parameters.AddWithValue("_ItemsReportLetter", _data.itemsReportLetter);
-                    myCommand.Parameters.AddWithValue("_PayPeriod", _data.pp);
-                    myCommand.Parameters.AddWithValue("_PayPeriod_Year", _data.ppYear);
-                    myCommand.Parameters.AddWithValue("_Site", (GetSiteNum_ShortDesc(_data.prevUnit)+1));
-                    myCommand.Parameters.AddWithValue("_Emp_Num", _data.empNo);
-                    myCommand.Parameters.AddWithValue("_Emp_Name", GetEmpName(_data.empNo.Substring(0,8)));
-                    myCommand.Parameters.AddWithValue("_UnitFrom", _data.prevUnit);
-                    myCommand.Parameters.AddWithValue("_UnitTo", _data.currUnit);
-                    myCommand.Parameters.AddWithValue("_Occupation", GetPosition(_data.currPosCode));
-                    myCommand.Parameters.AddWithValue("_Status", _data.stat);
-                    myCommand.Parameters.AddWithValue("_ChangeInOccupation", (_data.prevPosCode != _data.currPosCode).ToString());
-                    myCommand.Parameters.AddWithValue("_ChangeInSite", (GetSiteNum_ShortDesc(_data.prevUnit) != GetSiteNum_ShortDesc(_data.currUnit)).ToString());
-                    myCommand.Parameters.AddWithValue("_Comments", "");
-                    myCommand.Parameters.AddWithValue("_EnteredBy", "AutoSystem");
-
-                    myCommand.ExecuteNonQuery();
-                    myCommand.Dispose();
-
-                    _ret = true;
-                    
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error in Auto Inserting 'Change in Site' [" + _data.empNo + "]: " + ex.Message, "ERROR");
-                _ret = false;
-            }
-
-            return _ret;
-        }
+        
 
         private void btnFile6_Click(object sender, EventArgs e)
         {
@@ -1239,15 +1063,15 @@ namespace WindowsFormsApplication1
                             _ret[0] = _dr["TCE_Date"].ToString();
                             if (_off % 7.75 == 0 && (_bnkHrs - _prevTotal) != 0)
                             {
-                                _ret[1] = ((_bnkHrs - _prevTotal) + .5) + _offCodeSuffix;
+                                _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + .5),2) + _offCodeSuffix;
                             }
                             else if (_off % 11.08 == 0 && (_bnkHrs - _prevTotal) != 0)
                             {
-                                _ret[1] = ((_bnkHrs - _prevTotal) + 1.17) + _offCodeSuffix;
+                                _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1.17),2) + _offCodeSuffix;
                             }
                             else if (_off % 11.25 == 0 && (_bnkHrs - _prevTotal) != 0)
                             {
-                                _ret[1] = ((_bnkHrs - _prevTotal) + 1) + _offCodeSuffix;
+                                _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1),2) + _offCodeSuffix;
                             }
                             _ret[2] = Math.Round((_bnkHrs - _prevTotal),2) + _offCodeSuffix;
                             _ret[3] = Math.Round((_total - _bnkHrs),2) + "  (" + _unpaidCode + ")";
@@ -1264,8 +1088,7 @@ namespace WindowsFormsApplication1
 
             return _ret;
                 
-        }
-        
+        }        
 
         private void ProcessFile2(string _sourceFile, string _destFolder)
         {
@@ -1395,7 +1218,8 @@ namespace WindowsFormsApplication1
                             {
                                 if (changeInUnit)
                                 {
-                                    if (InsertInItems(new ChangeInUnitAndOrOcc
+                                    // InsertInItems return 0 = not successful; 1 = sucessfull; 2 = not inserted / already existing
+                                    byte _ret = InsertInItems(new ChangeInUnitAndOrOcc
                                     {
                                         empNo = values[1].Trim(),
                                         prevUnit = prevUnit.Trim(),
@@ -1406,14 +1230,22 @@ namespace WindowsFormsApplication1
                                         pp = _uploadParams.pp,
                                         ppYear = _uploadParams.ppYear,
                                         itemsReportLetter = _uploadParams.itemsReportLetter
-                                    }))
+                                    });
+                                    if (_ret == 1)
                                     {
                                         values[0] = "(Unit Trns)";
-                                    };
+                                    }
+                                    else if (_ret == 2)
+                                    {
+                                        worksheet.Cells[lineCtr, 11].Value = "(Prev. Entered)";
+                                        worksheet.Cells[lineCtr, 11].Style.Font.Size = 10;
+                                        worksheet.Cells[lineCtr, 11].Style.Font.Italic = true;
+                                    }
                                 }
                                 else if (!changeInUnit && changeInOcc)
                                 {
-                                    if (InsertInItems(new ChangeInOcc
+                                    // InsertInItems return 0 = not successful; 1 = sucessfull; 2 = not inserted / already existing
+                                    byte _ret = InsertInItems(new ChangeInOcc
                                     {
                                         empNo = values[1].Trim(),
                                         unit = currUnit.Trim(),
@@ -1422,10 +1254,17 @@ namespace WindowsFormsApplication1
                                         pp = _uploadParams.pp,
                                         ppYear = _uploadParams.ppYear,
                                         itemsReportLetter = _uploadParams.itemsReportLetter
-                                    }))
+                                    });
+                                    if (_ret == 1)
                                     {
                                         values[0] = "(Occ Chg)";
-                                    };
+                                    }
+                                    else if (_ret == 2)
+                                    {
+                                        worksheet.Cells[lineCtr, 11].Value = "(Prev. Entered)";
+                                        worksheet.Cells[lineCtr, 11].Style.Font.Size = 10;
+                                        worksheet.Cells[lineCtr, 11].Style.Font.Italic = true;
+                                    }
                                 }
                             }
 
@@ -1455,8 +1294,24 @@ namespace WindowsFormsApplication1
 
                     worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
 
-                    package.SaveAs(new FileInfo(_destFolder + "Positions " + DateTime.Now.ToString("ddMMMyy") + ".xlsx"));
-                    System.Diagnostics.Process.Start(_destFolder + "Positions " + DateTime.Now.ToString("ddMMMyy") + ".xlsx");
+
+                    if (_destFolder != "")
+                    {
+                        package.SaveAs(new FileInfo(_destFolder + "Positions " + DateTime.Now.ToString("ddMMMyy") + ".xlsx"));
+                        System.Diagnostics.Process.Start(_destFolder + "Positions " + DateTime.Now.ToString("ddMMMyy") + ".xlsx");
+                    }
+                    else
+                    {
+                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                        saveFileDialog1.FilterIndex = 1;
+                        saveFileDialog1.FileName = "Positions " + DateTime.Now.ToString("ddMMMyy");
+                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                        {
+                            package.SaveAs(new FileInfo(saveFileDialog1.FileName));
+                            System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                        }
+                    }
                 }
             }
             catch
