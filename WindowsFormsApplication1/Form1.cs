@@ -2376,5 +2376,261 @@ namespace WindowsFormsApplication1
                 Cursor.Current = Cursors.Default;
             }
         }
+
+        private void btnTL_SYS_Click(object sender, EventArgs e)
+        {
+            Workbook book;
+            Worksheet sheet;
+
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Title = "Please select the Prior Pay Period Adjustment File";
+                openFileDialog1.Filter = "Excel File (.xls)|*.xls|All Files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 1;
+
+                bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+                if (!userClickedOK) return;
+                btnTL_SYS.Text = "Processing...";
+                Cursor.Current = Cursors.WaitCursor;
+                Update();
+
+                book = Workbook.Load(openFileDialog1.FileName);
+                sheet = book.Worksheets[0];
+
+                //MessageBox.Show("sheet.Cells.FirstRowIndex=" + sheet.Cells.FirstRowIndex + ", sheet.Cells.LastRowIndex=" + sheet.Cells.LastRowIndex + "\n\r");
+
+                using (var package = new ExcelPackage())
+                {
+                    // add a new worksheet to the empty workbook
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("For Payroll");
+
+                    worksheet.PrinterSettings.Orientation = eOrientation.Landscape;
+                    worksheet.PrinterSettings.ShowGridLines = true;
+                    worksheet.PrinterSettings.HorizontalCentered = true;
+                    worksheet.PrinterSettings.TopMargin = (decimal)1.5 / 2.54M;
+                    worksheet.PrinterSettings.BottomMargin = (decimal)1.5 / 2.54M;
+                    worksheet.PrinterSettings.LeftMargin = (decimal)0.25 / 2.54M;
+                    worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
+                    worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
+                    worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
+                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
+                    worksheet.HeaderFooter.OddHeader.CenteredText = "AHS_AA_EXCEPTION_TLSYS";
+                    worksheet.View.PageBreakView = true;
+                    worksheet.PrinterSettings.FitToPage = true; worksheet.PrinterSettings.FitToWidth = 1; worksheet.PrinterSettings.FitToHeight = 0;
+                    
+                    int outCurrRowIndex = 2;
+                    
+                    for (int rowIndex = sheet.Cells.FirstRowIndex + 2; rowIndex <= sheet.Cells.LastRowIndex; rowIndex++)
+                    {
+                        Row row = sheet.Cells.GetRow(rowIndex);
+
+                        if (row.GetCell(10).StringValue.Trim() == "001")
+                        {
+                            worksheet.Row(outCurrRowIndex).Style.Font.Size = 10;
+                            worksheet.Row(outCurrRowIndex).Style.Font.Name = "Arial Unicode MS";
+                            worksheet.Row(outCurrRowIndex).Height = 20;
+                            worksheet.Cells[outCurrRowIndex, 1].Value = row.GetCell(0).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 2].Value = row.GetCell(1).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 3].Value = row.GetCell(2).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 4].Value = row.GetCell(3).DateTimeValue.ToString("ddMMMyyyy");
+                            worksheet.Cells[outCurrRowIndex, 5].Value = row.GetCell(7).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 6].Value = row.GetCell(9).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 7].Value = row.GetCell(11).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 8].Value = row.GetCell(12).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 9].Value = row.GetCell(13).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 10].Value = row.GetCell(15).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 11].Value = row.GetCell(16).StringValue;
+
+                            outCurrRowIndex++;
+                        }                        
+                    }
+
+                    worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                    worksheet.Cells.AutoFitColumns();
+
+                    //Setting Header Style
+                    worksheet.Row(1).Height = 25;
+                    worksheet.Cells[1, 1].Value = "ID"; worksheet.Cells[1, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 2].Value = "Empl Rcd#"; worksheet.Column(2).Width = 12; worksheet.Cells[1, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 3].Value = "Name"; worksheet.Cells[1, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 4].Value = "Rpt Dt"; worksheet.Cells[1, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 5].Value = "Msg Data1"; worksheet.Cells[1, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 6].Value = "TCD Group"; worksheet.Column(6).Width = 12; worksheet.Cells[1, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 7].Value = "User"; worksheet.Cells[1, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 8].Value = "Descr"; worksheet.Cells[1, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 9].Value = "Severity"; worksheet.Cells[1, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 10].Value = "TRC"; worksheet.Cells[1, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 11].Value = "Quantity"; worksheet.Cells[1, 11].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    var range = worksheet.Cells[1, 1, 1, 11];
+                    range.Style.Font.Bold = true;
+                    range.Style.Font.Size = 10;
+                    range.Style.Font.Name = "Arial Unicode MS";
+                    range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    range.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+                    range.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);                    
+
+                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                    saveFileDialog1.FilterIndex = 1;
+                    saveFileDialog1.FileName = openFileDialog1.FileName.Substring(openFileDialog1.FileName.LastIndexOf("\\") + 1) + " - Payroll.xlsx";
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        package.SaveAs(new FileInfo(saveFileDialog1.FileName));
+                        System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.IndexOf("OutOfMemoryException") > -1)
+                {
+                    MessageBox.Show("Error in opening the file.\n\r\n\rPlease open the file first in Excel and \"Enable Editing\" and then save it then try to open the file again.",
+                        "Ooops, may mali.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            finally
+            {
+                book = null;
+                sheet = null;
+
+                btnTL_SYS.Text = "TL_SYS";
+                Cursor.Current = Cursors.Default;
+                Update();
+            }
+        }
+
+        private void btnAA_Exception_Click(object sender, EventArgs e)
+        {
+            Workbook book;
+            Worksheet sheet;
+
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Title = "Please select the Prior Pay Period Adjustment File";
+                openFileDialog1.Filter = "Excel File (.xls)|*.xls|All Files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 1;
+
+                bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+                if (!userClickedOK) return;
+                btnAA_Exception.Text = "Processing...";
+                Cursor.Current = Cursors.WaitCursor;
+                Update();
+
+                book = Workbook.Load(openFileDialog1.FileName);
+                sheet = book.Worksheets[0];
+
+                //MessageBox.Show("sheet.Cells.FirstRowIndex=" + sheet.Cells.FirstRowIndex + ", sheet.Cells.LastRowIndex=" + sheet.Cells.LastRowIndex + "\n\r");
+
+                using (var package = new ExcelPackage())
+                {
+                    // add a new worksheet to the empty workbook
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("For Payroll");
+
+                    worksheet.PrinterSettings.Orientation = eOrientation.Landscape;
+                    worksheet.PrinterSettings.ShowGridLines = true;
+                    worksheet.PrinterSettings.HorizontalCentered = true;
+                    worksheet.PrinterSettings.TopMargin = (decimal)1.5 / 2.54M;
+                    worksheet.PrinterSettings.BottomMargin = (decimal)1.5 / 2.54M;
+                    worksheet.PrinterSettings.LeftMargin = (decimal)0.25 / 2.54M;
+                    worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
+                    worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
+                    worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
+                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
+                    worksheet.HeaderFooter.OddHeader.CenteredText = "AHS_AA_EXCEPTION";
+                    worksheet.View.PageBreakView = true;
+                    worksheet.PrinterSettings.FitToPage = true; worksheet.PrinterSettings.FitToWidth = 1; worksheet.PrinterSettings.FitToHeight = 0;
+
+                    int outCurrRowIndex = 2;
+
+                    for (int rowIndex = sheet.Cells.FirstRowIndex + 2; rowIndex <= sheet.Cells.LastRowIndex; rowIndex++)
+                    {
+                        Row row = sheet.Cells.GetRow(rowIndex);
+
+                        if (row.GetCell(10).StringValue.Trim() == "001" && !IsSystemsMember(row.GetCell(11).StringValue.Trim().ToUpper()))
+                        {
+                            worksheet.Row(outCurrRowIndex).Style.Font.Size = 10;
+                            worksheet.Row(outCurrRowIndex).Style.Font.Name = "Arial Unicode MS";
+                            worksheet.Row(outCurrRowIndex).Height = 20;
+                            worksheet.Cells[outCurrRowIndex, 1].Value = row.GetCell(0).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 2].Value = row.GetCell(1).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 3].Value = row.GetCell(2).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 4].Value = row.GetCell(3).DateTimeValue.ToString("ddMMMyyyy");
+                            worksheet.Cells[outCurrRowIndex, 5].Value = row.GetCell(7).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 6].Value = row.GetCell(9).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 7].Value = row.GetCell(11).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 8].Value = row.GetCell(14).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 9].Value = row.GetCell(16).StringValue;
+                            worksheet.Cells[outCurrRowIndex, 10].Value = row.GetCell(17).StringValue;
+
+                            outCurrRowIndex++;
+                        }
+                    }
+
+                    worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                    worksheet.Cells.AutoFitColumns();
+
+                    //Setting Header Style
+                    worksheet.Row(1).Height = 25;
+                    worksheet.Cells[1, 1].Value = "ID"; worksheet.Cells[1, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 2].Value = "Empl Rcd#"; worksheet.Column(2).Width = 12; worksheet.Cells[1, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 3].Value = "Name"; worksheet.Cells[1, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 4].Value = "Rpt Dt"; worksheet.Cells[1, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 5].Value = "Msg Data1"; worksheet.Cells[1, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 6].Value = "TCD Group"; worksheet.Column(6).Width = 12; worksheet.Cells[1, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 7].Value = "User"; worksheet.Cells[1, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);                    
+                    worksheet.Cells[1, 8].Value = "Severity"; worksheet.Cells[1, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 9].Value = "TRC"; worksheet.Cells[1, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 10].Value = "Quantity"; worksheet.Cells[1, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    var range = worksheet.Cells[1, 1, 1, 10];
+                    range.Style.Font.Bold = true;
+                    range.Style.Font.Size = 10;
+                    range.Style.Font.Name = "Arial Unicode MS";
+                    range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    range.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+                    range.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+
+                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                    saveFileDialog1.FilterIndex = 1;
+                    saveFileDialog1.FileName = openFileDialog1.FileName.Substring(openFileDialog1.FileName.LastIndexOf("\\") + 1) + " - Payroll.xlsx";
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        package.SaveAs(new FileInfo(saveFileDialog1.FileName));
+                        System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.IndexOf("OutOfMemoryException") > -1)
+                {
+                    MessageBox.Show("Error in opening the file.\n\r\n\rPlease open the file first in Excel and \"Enable Editing\" and then save it then try to open the file again.",
+                        "Ooops, may mali.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            finally
+            {
+                book = null;
+                sheet = null;
+
+                btnAA_Exception.Text = "AA_EXCEPTION";
+                Cursor.Current = Cursors.Default;
+                Update();
+            }
+        }
     }
 }
