@@ -179,20 +179,20 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSendEmail});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 28);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 26);
             // 
             // mnuSendEmail
             // 
             this.mnuSendEmail.Name = "mnuSendEmail";
-            this.mnuSendEmail.Size = new System.Drawing.Size(191, 24);
+            this.mnuSendEmail.Size = new System.Drawing.Size(188, 22);
             this.mnuSendEmail.Text = "Send Email To SSO";
             // 
             // btnFile126
             // 
             this.btnFile126.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnFile126.BackColor = System.Drawing.Color.Transparent;
-            this.btnFile126.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.btnFile126.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnFile126.BaseColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnFile126.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(143)))), ((int)(((byte)(188)))), ((int)(((byte)(139)))));
             this.btnFile126.FlatAppearance.BorderSize = 0;
             this.btnFile126.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFile126.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
@@ -214,8 +214,8 @@
             // 
             this.btnFile2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnFile2.BackColor = System.Drawing.Color.Transparent;
-            this.btnFile2.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.btnFile2.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnFile2.BaseColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnFile2.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(143)))), ((int)(((byte)(188)))), ((int)(((byte)(139)))));
             this.btnFile2.FlatAppearance.BorderSize = 0;
             this.btnFile2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFile2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
@@ -237,8 +237,8 @@
             // 
             this.btnFile6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnFile6.BackColor = System.Drawing.Color.Transparent;
-            this.btnFile6.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.btnFile6.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnFile6.BaseColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnFile6.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(143)))), ((int)(((byte)(188)))), ((int)(((byte)(139)))));
             this.btnFile6.FlatAppearance.BorderSize = 0;
             this.btnFile6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFile6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
@@ -330,8 +330,8 @@
             // 
             this.btnRFLOA.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnRFLOA.BackColor = System.Drawing.Color.Transparent;
-            this.btnRFLOA.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.btnRFLOA.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnRFLOA.BaseColor = System.Drawing.Color.LightSalmon;
+            this.btnRFLOA.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(122)))));
             this.btnRFLOA.FlatAppearance.BorderSize = 0;
             this.btnRFLOA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRFLOA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
@@ -353,8 +353,8 @@
             // 
             this.btnRehire.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnRehire.BackColor = System.Drawing.Color.Transparent;
-            this.btnRehire.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.btnRehire.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnRehire.BaseColor = System.Drawing.Color.LightSalmon;
+            this.btnRehire.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(122)))));
             this.btnRehire.FlatAppearance.BorderSize = 0;
             this.btnRehire.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRehire.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
@@ -405,7 +405,7 @@
             this.btnPriors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPriors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnPriors.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnPriors.Location = new System.Drawing.Point(300, 179);
+            this.btnPriors.Location = new System.Drawing.Point(300, 274);
             this.btnPriors.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnPriors.Name = "btnPriors";
             this.btnPriors.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -434,13 +434,13 @@
             // 
             this.btnAHS_AA_Terms.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAHS_AA_Terms.BackColor = System.Drawing.Color.Transparent;
-            this.btnAHS_AA_Terms.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.btnAHS_AA_Terms.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnAHS_AA_Terms.BaseColor = System.Drawing.Color.MediumAquamarine;
+            this.btnAHS_AA_Terms.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(102)))), ((int)(((byte)(205)))), ((int)(((byte)(170)))));
             this.btnAHS_AA_Terms.FlatAppearance.BorderSize = 0;
             this.btnAHS_AA_Terms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAHS_AA_Terms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnAHS_AA_Terms.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnAHS_AA_Terms.Location = new System.Drawing.Point(300, 227);
+            this.btnAHS_AA_Terms.Location = new System.Drawing.Point(300, 179);
             this.btnAHS_AA_Terms.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnAHS_AA_Terms.Name = "btnAHS_AA_Terms";
             this.btnAHS_AA_Terms.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -457,14 +457,14 @@
             // 
             this.btnTrans.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnTrans.BackColor = System.Drawing.Color.Transparent;
-            this.btnTrans.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.btnTrans.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnTrans.BaseColor = System.Drawing.Color.MediumAquamarine;
+            this.btnTrans.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(102)))), ((int)(((byte)(205)))), ((int)(((byte)(170)))));
             this.btnTrans.FlatAppearance.BorderSize = 0;
             this.btnTrans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrans.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnTrans.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnTrans.Location = new System.Drawing.Point(300, 275);
+            this.btnTrans.Location = new System.Drawing.Point(300, 227);
             this.btnTrans.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnTrans.Name = "btnTrans";
             this.btnTrans.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -487,14 +487,14 @@
             this.btnUserTrainings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUserTrainings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnUserTrainings.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnUserTrainings.Location = new System.Drawing.Point(36, 75);
+            this.btnUserTrainings.Location = new System.Drawing.Point(45, 75);
             this.btnUserTrainings.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnUserTrainings.Name = "btnUserTrainings";
             this.btnUserTrainings.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnUserTrainings.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnUserTrainings.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnUserTrainings.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnUserTrainings.Size = new System.Drawing.Size(140, 33);
+            this.btnUserTrainings.Size = new System.Drawing.Size(144, 39);
             this.btnUserTrainings.TabIndex = 30;
             this.btnUserTrainings.Text = "User Trainings";
             this.btnUserTrainings.UseVisualStyleBackColor = false;
@@ -621,14 +621,14 @@
             this.mnuCopyEmpName,
             this.mnuCopyBothNameAndNum});
             this.mnuCopyFromList.Name = "mnuCopyFromList";
-            this.mnuCopyFromList.Size = new System.Drawing.Size(312, 76);
+            this.mnuCopyFromList.Size = new System.Drawing.Size(311, 76);
             this.mnuCopyFromList.Text = "CopyFromList";
             // 
             // mnuCopyEmpNum
             // 
             this.mnuCopyEmpNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpNum.Image")));
             this.mnuCopyEmpNum.Name = "mnuCopyEmpNum";
-            this.mnuCopyEmpNum.Size = new System.Drawing.Size(311, 24);
+            this.mnuCopyEmpNum.Size = new System.Drawing.Size(310, 24);
             this.mnuCopyEmpNum.Text = "Copy Emp # to clipboard";
             this.mnuCopyEmpNum.Click += new System.EventHandler(this.mnuCopyEmpNum_Click);
             // 
@@ -636,7 +636,7 @@
             // 
             this.mnuCopyEmpName.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpName.Image")));
             this.mnuCopyEmpName.Name = "mnuCopyEmpName";
-            this.mnuCopyEmpName.Size = new System.Drawing.Size(311, 24);
+            this.mnuCopyEmpName.Size = new System.Drawing.Size(310, 24);
             this.mnuCopyEmpName.Text = "Copy Emp Name to clipboard";
             this.mnuCopyEmpName.Click += new System.EventHandler(this.mnuCopyEmpName_Click);
             // 
@@ -644,7 +644,7 @@
             // 
             this.mnuCopyBothNameAndNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyBothNameAndNum.Image")));
             this.mnuCopyBothNameAndNum.Name = "mnuCopyBothNameAndNum";
-            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(311, 24);
+            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(310, 24);
             this.mnuCopyBothNameAndNum.Text = "Copy Both Emp Name and # to clipboard";
             this.mnuCopyBothNameAndNum.Click += new System.EventHandler(this.mnuCopyBothNameAndNum_Click);
             // 
@@ -676,11 +676,11 @@
             // 
             this.btnTL_SYS.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnTL_SYS.BackColor = System.Drawing.Color.Transparent;
-            this.btnTL_SYS.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.btnTL_SYS.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnTL_SYS.BaseColor = System.Drawing.Color.LightSkyBlue;
+            this.btnTL_SYS.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(135)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
             this.btnTL_SYS.FlatAppearance.BorderSize = 0;
             this.btnTL_SYS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTL_SYS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnTL_SYS.ForeColor = System.Drawing.Color.Maroon;
             this.btnTL_SYS.ImageSize = new System.Drawing.Size(24, 24);
             this.btnTL_SYS.Location = new System.Drawing.Point(600, 179);
             this.btnTL_SYS.MenuListPosition = new System.Drawing.Point(0, 0);
@@ -699,11 +699,11 @@
             // 
             this.btnAA_Exception.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAA_Exception.BackColor = System.Drawing.Color.Transparent;
-            this.btnAA_Exception.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.btnAA_Exception.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnAA_Exception.BaseColor = System.Drawing.Color.LightSkyBlue;
+            this.btnAA_Exception.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(135)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
             this.btnAA_Exception.FlatAppearance.BorderSize = 0;
             this.btnAA_Exception.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAA_Exception.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnAA_Exception.ForeColor = System.Drawing.Color.Maroon;
             this.btnAA_Exception.ImageSize = new System.Drawing.Size(24, 24);
             this.btnAA_Exception.Location = new System.Drawing.Point(600, 227);
             this.btnAA_Exception.MenuListPosition = new System.Drawing.Point(0, 0);
@@ -757,7 +757,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.09.11";
+            this.Text = "SömëKindä Tööl v2017.09.12";
             this.Activated += new System.EventHandler(this.frmSearch_Activated);
             this.Deactivate += new System.EventHandler(this.frmSearch_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSearch_FormClosing);

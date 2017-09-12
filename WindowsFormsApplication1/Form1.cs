@@ -977,6 +977,15 @@ namespace WindowsFormsApplication1
                                 }
                                 worksheetCopy.Cells[worksheet.Dimension.Address].AutoFitColumns();
                                 worksheetCopy.Cells.AutoFitColumns();
+                                worksheetCopy.Column(1).Width = 36; // adjust column width for "Name"
+                                worksheetCopy.Column(3).Width = 6; // adjust column width for "Off Code Desc"
+                                worksheetCopy.Column(4).Width = 20; // adjust column width for "Off Code Desc" 
+                                worksheetCopy.Cells["I1:L1"].Merge = true;
+                                worksheetCopy.Cells[1, 9].Value = "Just ignore these columns if they just confuse you more :)";
+                                worksheetCopy.Cells[1, 9].Style.Font.Size = 9;
+                                worksheetCopy.Cells[1, 9].Style.Font.Bold = true;
+                                worksheetCopy.Cells[1, 9].Style.Font.Italic = true;
+                                worksheetCopy.Cells[1, 9].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                                 lastCharPosition = saveFileDialog1.FileName.LastIndexOf('.');
                                 packageCopy.SaveAs(new FileInfo(saveFileDialog1.FileName.Insert(lastCharPosition," - for RSSS")));
                                 System.Diagnostics.Process.Start(saveFileDialog1.FileName.Insert(lastCharPosition, " - for RSSS"));
