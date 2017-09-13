@@ -981,7 +981,7 @@ namespace WindowsFormsApplication1
                                 worksheetCopy.Column(3).Width = 6; // adjust column width for "Off Code Desc"
                                 worksheetCopy.Column(4).Width = 20; // adjust column width for "Off Code Desc" 
                                 worksheetCopy.Cells["I1:L1"].Merge = true;
-                                worksheetCopy.Cells[1, 9].Value = "Just ignore these columns if they just confuse you more :)";
+                                worksheetCopy.Cells[1, 9].Value = "Pls. ignore these columns if they just only confuse you more :)";
                                 worksheetCopy.Cells[1, 9].Style.Font.Size = 9;
                                 worksheetCopy.Cells[1, 9].Style.Font.Bold = true;
                                 worksheetCopy.Cells[1, 9].Style.Font.Italic = true;
