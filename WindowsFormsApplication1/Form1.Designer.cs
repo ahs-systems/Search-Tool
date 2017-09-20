@@ -70,6 +70,7 @@
             this.btnSickOnStat = new MBGlassStyleButton.MBGlassButton();
             this.btnTL_SYS = new MBGlassStyleButton.MBGlassButton();
             this.btnAA_Exception = new MBGlassStyleButton.MBGlassButton();
+            this.btnV_FireCategories = new MBGlassStyleButton.MBGlassButton();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.mnuCopyFromList.SuspendLayout();
@@ -718,11 +719,35 @@
             this.btnAA_Exception.UseVisualStyleBackColor = false;
             this.btnAA_Exception.Click += new System.EventHandler(this.btnAA_Exception_Click);
             // 
+            // btnV_FireCategories
+            // 
+            this.btnV_FireCategories.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnV_FireCategories.BackColor = System.Drawing.Color.Transparent;
+            this.btnV_FireCategories.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.btnV_FireCategories.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnV_FireCategories.FlatAppearance.BorderSize = 0;
+            this.btnV_FireCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnV_FireCategories.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnV_FireCategories.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnV_FireCategories.Location = new System.Drawing.Point(600, 276);
+            this.btnV_FireCategories.MenuListPosition = new System.Drawing.Point(0, 0);
+            this.btnV_FireCategories.Name = "btnV_FireCategories";
+            this.btnV_FireCategories.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnV_FireCategories.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnV_FireCategories.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
+            this.btnV_FireCategories.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
+            this.btnV_FireCategories.Size = new System.Drawing.Size(144, 42);
+            this.btnV_FireCategories.TabIndex = 38;
+            this.btnV_FireCategories.Text = "vFire Categories";
+            this.btnV_FireCategories.UseVisualStyleBackColor = false;
+            this.btnV_FireCategories.Click += new System.EventHandler(this.btnV_FireCategories_Click);
+            // 
             // frmSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 326);
+            this.Controls.Add(this.btnV_FireCategories);
             this.Controls.Add(this.btnAA_Exception);
             this.Controls.Add(this.btnTL_SYS);
             this.Controls.Add(this.btnSickOnStat);
@@ -757,7 +782,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.09.13";
+            this.Text = "SömëKindä Tööl v2017.09.20";
             this.Activated += new System.EventHandler(this.frmSearch_Activated);
             this.Deactivate += new System.EventHandler(this.frmSearch_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSearch_FormClosing);
@@ -815,6 +840,7 @@
         private MBGlassStyleButton.MBGlassButton btnSickOnStat;
         private MBGlassStyleButton.MBGlassButton btnTL_SYS;
         private MBGlassStyleButton.MBGlassButton btnAA_Exception;
+        private MBGlassStyleButton.MBGlassButton btnV_FireCategories;
     }
 }
 

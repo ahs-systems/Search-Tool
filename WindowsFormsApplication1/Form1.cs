@@ -2641,5 +2641,18 @@ namespace WindowsFormsApplication1
                 Update();
             }
         }
+
+        private void btnV_FireCategories_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(@"\\jeeves.crha-health.ab.ca\rsss_systems\Operations - RSSS Systems Group\Automated Files\vFireCat.exe"))
+            {
+                WindowState = FormWindowState.Minimized;
+                System.Diagnostics.Process.Start(@"\\jeeves.crha-health.ab.ca\rsss_systems\Operations - RSSS Systems Group\Automated Files\vFireCat.exe");
+            }
+            else
+            {
+                MessageBox.Show("Cannot Find 'vFireCat.exe' in 'Automated Files' folder.", "Cannot Find File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }
