@@ -130,7 +130,8 @@ namespace WindowsFormsApplication1
         {
             _searchMode = 1;
 
-            btnSendEmail.Visible = txtTCG.Visible = false;
+            btnSendEmail.Enabled = txtTCG.Visible = false;
+            
 
             string _searchString = "";
 
@@ -217,7 +218,7 @@ namespace WindowsFormsApplication1
         private void txtEmpNo_TextChanged(object sender, EventArgs e)
         {
             _searchMode = 2;
-            btnSendEmail.Visible = txtTCG.Visible = false;
+            btnSendEmail.Enabled = txtTCG.Visible = false;
 
             string _searchString = "";
             bool _searchEmpNo = false;
@@ -379,7 +380,7 @@ namespace WindowsFormsApplication1
         {
             if (lstResult.SelectedIndex != -1 && _searchMode == 2)
             {
-                btnSendEmail.Visible = txtTCG.Visible = true;
+                btnSendEmail.Enabled = txtTCG.Visible = true;
                 string _tcg = GetTCG(lstResult.SelectedItem.ToString().Substring(0, 10));
                 txtTCG.Text = _tcg == "" ? "--- INACTIVE ---" : "Timecard Group: " + _tcg;
             }
@@ -2227,7 +2228,7 @@ namespace WindowsFormsApplication1
         private void ShowMe()
         {
             Show();
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 357, 1000, 0);
+            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 318, 1000, 0);
         }
 
         private void HideMe()
@@ -2246,7 +2247,7 @@ namespace WindowsFormsApplication1
 
         private void frmSearch_Shown(object sender, EventArgs e)
         {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 357, 1000, 0);
+            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 318, 1000, 0);
         }
 
         private void btnGetLDAP_Click(object sender, EventArgs e)
