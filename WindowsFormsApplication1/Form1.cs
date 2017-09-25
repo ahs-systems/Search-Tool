@@ -2655,5 +2655,152 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Cannot Find 'vFireCat.exe' in 'Automated Files' folder.", "Cannot Find File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+        private void btnLOAwithNoRptTime_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show("Please select the 3 files you got from ePeople for the last 3 pay periods you want to process.\n\nThe filenames will be use as the data for the \"Pay Period\" column on the report.\n\nClick OK to continue.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Title = "Please select the 3 Excel file";
+                openFileDialog1.Filter = "Excel File (.xls)|*.xls|All Files (*.*)|*.*";
+                openFileDialog1.Multiselect = true;
+                openFileDialog1.FilterIndex = 1;
+
+                bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+                if (!userClickedOK) return;
+
+                //check if 3 files were selected
+                if (openFileDialog1.FileNames.Count() != 3)
+                {
+                    MessageBox.Show("Please select 3 files.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                btnLOAwithNoRptTime.Text = "Processing...";
+                Cursor.Current = Cursors.WaitCursor;
+                Update();
+
+                using (var package = new ExcelPackage())
+                {
+                    // add a new worksheet to the empty workbook
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("For SSC");
+
+                    worksheet.PrinterSettings.Orientation = eOrientation.Landscape;
+                    worksheet.PrinterSettings.ShowGridLines = true;
+                    worksheet.PrinterSettings.HorizontalCentered = true;
+                    worksheet.PrinterSettings.TopMargin = (decimal)1.5 / 2.54M;
+                    worksheet.PrinterSettings.BottomMargin = (decimal)1.5 / 2.54M;
+                    worksheet.PrinterSettings.LeftMargin = (decimal)0.25 / 2.54M;
+                    worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
+                    worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
+                    worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
+                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
+                    worksheet.HeaderFooter.OddHeader.CenteredText = "AHS_AA_EXCEPTION_TLSYS";
+                    worksheet.View.PageBreakView = true;
+                    worksheet.PrinterSettings.FitToPage = true; worksheet.PrinterSettings.FitToWidth = 1; worksheet.PrinterSettings.FitToHeight = 0;
+
+                    Workbook book;
+                    Worksheet sheet;
+
+                    List<string[]> _data = new List<string[]>();
+
+                    for (int i = 0; i < openFileDialog1.FileNames.Count(); i++)
+                    {
+                        book = Workbook.Load(openFileDialog1.FileNames[i]);
+                        sheet = book.Worksheets[0];
+
+                        for (int rowIndex = sheet.Cells.FirstRowIndex + 2; rowIndex <= sheet.Cells.LastRowIndex; rowIndex++)
+                        {
+                            Row row = sheet.Cells.GetRow(rowIndex);
+
+                            if (row.GetCell(6).StringValue.Trim() == "001")
+                            {
+
+                                _data.Add(new string[] {
+                                    row.GetCell(1).StringValue,
+                                    row.GetCell(2).StringValue,
+                                    row.GetCell(3).StringValue,
+                                    row.GetCell(5).StringValue,
+                                    row.GetCell(8).StringValue,
+                                    Path.GetFileNameWithoutExtension(openFileDialog1.FileNames[i])
+                                });
+                            }
+                        }
+                    }
+
+                    book = null;
+                    sheet = null;
+
+                    var _items = _data.OrderBy(r => r[4]).ToList();
+
+                    int outCurrRowIndex = 2;
+                    for (int i = 0; i < _data.Count; i++)
+                    {
+                        worksheet.Row(outCurrRowIndex).Style.Font.Size = 10;
+                        worksheet.Row(outCurrRowIndex).Style.Font.Name = "Arial Unicode MS";
+                        worksheet.Row(outCurrRowIndex).Height = 20;
+                        worksheet.Cells[outCurrRowIndex, 1].Value = _items[i][0];
+                        worksheet.Cells[outCurrRowIndex, 2].Value = _items[i][1];
+                        worksheet.Cells[outCurrRowIndex, 3].Value = _items[i][2];
+                        worksheet.Cells[outCurrRowIndex, 4].Value = _items[i][3];
+                        worksheet.Cells[outCurrRowIndex, 5].Value = _items[i][4];
+                        worksheet.Cells[outCurrRowIndex, 6].Value = _items[i][5]; ;
+
+                        outCurrRowIndex++;
+                    }
+
+                    worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                    worksheet.Cells.AutoFitColumns();
+
+                    //Setting Header Style
+                    worksheet.Row(1).Height = 25;
+                    worksheet.Cells[1, 1].Value = "ID"; worksheet.Cells[1, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 2].Value = "Empl Rcd#"; worksheet.Column(2).Width = 12; worksheet.Cells[1, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 3].Value = "Name"; worksheet.Cells[1, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 4].Value = "LOA Type"; worksheet.Cells[1, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 5].Value = "TCD Group Name"; worksheet.Cells[1, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    worksheet.Cells[1, 6].Value = "Pay Period"; worksheet.Column(6).Width = 12; worksheet.Cells[1, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+                    var range = worksheet.Cells[1, 1, 1, 6];
+                    range.Style.Font.Bold = true;
+                    range.Style.Font.Size = 10;
+                    range.Style.Font.Name = "Arial Unicode MS";
+                    range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    range.Style.Fill.BackgroundColor.SetColor(Color.Yellow);
+                    range.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);                    
+
+                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                    saveFileDialog1.FilterIndex = 1;
+                    saveFileDialog1.FileName = openFileDialog1.FileName.Substring(openFileDialog1.FileName.LastIndexOf("\\") + 1) + " - Payroll.xlsx";
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        package.SaveAs(new FileInfo(saveFileDialog1.FileName));
+                        System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.IndexOf("OutOfMemoryException") > -1)
+                {
+                    MessageBox.Show("Error in opening the file.\n\r\n\rPlease open the file first in Excel and \"Enable Editing\" and then save it then try to open the file again.",
+                        "Ooops, may mali.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            finally
+            {
+                btnLOAwithNoRptTime.Text = @"AHS_AA_RPTD_" + Environment.NewLine + "NO_TIME";
+                Cursor.Current = Cursors.Default;
+                Update();
+            }
+        }
     }
 }

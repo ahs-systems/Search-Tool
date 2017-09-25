@@ -71,18 +71,19 @@
             this.btnAA_Exception = new MBGlassStyleButton.MBGlassButton();
             this.btnV_FireCategories = new MBGlassStyleButton.MBGlassButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabSearch = new System.Windows.Forms.TabPage();
-            this.tabFormattingTools = new System.Windows.Forms.TabPage();
             this.tabMisc = new System.Windows.Forms.TabPage();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.tabFormattingTools = new System.Windows.Forms.TabPage();
+            this.tabSearch = new System.Windows.Forms.TabPage();
             this.btnSendEmail = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btnLOAwithNoRptTime = new MBGlassStyleButton.MBGlassButton();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.mnuCopyFromList.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabSearch.SuspendLayout();
-            this.tabFormattingTools.SuspendLayout();
             this.tabMisc.SuspendLayout();
+            this.tabFormattingTools.SuspendLayout();
+            this.tabSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstResult
@@ -186,12 +187,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSendEmail});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 28);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 26);
             // 
             // mnuSendEmail
             // 
             this.mnuSendEmail.Name = "mnuSendEmail";
-            this.mnuSendEmail.Size = new System.Drawing.Size(191, 24);
+            this.mnuSendEmail.Size = new System.Drawing.Size(188, 22);
             this.mnuSendEmail.Text = "Send Email To SSO";
             // 
             // btnFile126
@@ -203,7 +204,7 @@
             this.btnFile126.FlatAppearance.BorderSize = 0;
             this.btnFile126.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFile126.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFile126.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnFile126.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnFile126.Image = ((System.Drawing.Image)(resources.GetObject("btnFile126.Image")));
             this.btnFile126.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFile126.ImageSize = new System.Drawing.Size(24, 24);
@@ -230,7 +231,7 @@
             this.btnFile2.BaseStrokeColor = System.Drawing.Color.Silver;
             this.btnFile2.FlatAppearance.BorderSize = 0;
             this.btnFile2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFile2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnFile2.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnFile2.Image = ((System.Drawing.Image)(resources.GetObject("btnFile2.Image")));
             this.btnFile2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFile2.ImageSize = new System.Drawing.Size(24, 24);
@@ -257,7 +258,7 @@
             this.btnFile6.BaseStrokeColor = System.Drawing.Color.Silver;
             this.btnFile6.FlatAppearance.BorderSize = 0;
             this.btnFile6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFile6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnFile6.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnFile6.Image = ((System.Drawing.Image)(resources.GetObject("btnFile6.Image")));
             this.btnFile6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFile6.ImageSize = new System.Drawing.Size(24, 24);
@@ -284,7 +285,7 @@
             this.btnBanks.BaseStrokeColor = System.Drawing.Color.Silver;
             this.btnBanks.FlatAppearance.BorderSize = 0;
             this.btnBanks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBanks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnBanks.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnBanks.Image = ((System.Drawing.Image)(resources.GetObject("btnBanks.Image")));
             this.btnBanks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBanks.ImageSize = new System.Drawing.Size(24, 24);
@@ -336,7 +337,7 @@
             this.btnRFLOA.FlatAppearance.BorderSize = 0;
             this.btnRFLOA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRFLOA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRFLOA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnRFLOA.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnRFLOA.Image = ((System.Drawing.Image)(resources.GetObject("btnRFLOA.Image")));
             this.btnRFLOA.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRFLOA.ImageSize = new System.Drawing.Size(24, 24);
@@ -364,7 +365,7 @@
             this.btnRehire.BaseStrokeColor = System.Drawing.Color.Silver;
             this.btnRehire.FlatAppearance.BorderSize = 0;
             this.btnRehire.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRehire.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnRehire.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnRehire.Image = ((System.Drawing.Image)(resources.GetObject("btnRehire.Image")));
             this.btnRehire.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRehire.ImageSize = new System.Drawing.Size(24, 24);
@@ -390,7 +391,7 @@
             this.mbUserLatestLogin.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.mbUserLatestLogin.FlatAppearance.BorderSize = 0;
             this.mbUserLatestLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mbUserLatestLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.mbUserLatestLogin.ForeColor = System.Drawing.Color.DarkBlue;
             this.mbUserLatestLogin.Image = ((System.Drawing.Image)(resources.GetObject("mbUserLatestLogin.Image")));
             this.mbUserLatestLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mbUserLatestLogin.ImageSize = new System.Drawing.Size(24, 24);
@@ -418,7 +419,7 @@
             this.btnPriors.FlatAppearance.BorderSize = 0;
             this.btnPriors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPriors.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPriors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnPriors.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnPriors.Image = ((System.Drawing.Image)(resources.GetObject("btnPriors.Image")));
             this.btnPriors.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPriors.ImageSize = new System.Drawing.Size(24, 24);
@@ -467,7 +468,7 @@
             this.btnAHS_AA_Terms.FlatAppearance.BorderSize = 0;
             this.btnAHS_AA_Terms.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAHS_AA_Terms.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAHS_AA_Terms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnAHS_AA_Terms.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnAHS_AA_Terms.Image = ((System.Drawing.Image)(resources.GetObject("btnAHS_AA_Terms.Image")));
             this.btnAHS_AA_Terms.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAHS_AA_Terms.ImageSize = new System.Drawing.Size(24, 24);
@@ -496,7 +497,7 @@
             this.btnTrans.FlatAppearance.BorderSize = 0;
             this.btnTrans.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrans.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnTrans.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnTrans.Image = ((System.Drawing.Image)(resources.GetObject("btnTrans.Image")));
             this.btnTrans.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTrans.ImageSize = new System.Drawing.Size(24, 24);
@@ -525,7 +526,7 @@
             this.btnUserTrainings.FlatAppearance.BorderSize = 0;
             this.btnUserTrainings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUserTrainings.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserTrainings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnUserTrainings.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnUserTrainings.Image = ((System.Drawing.Image)(resources.GetObject("btnUserTrainings.Image")));
             this.btnUserTrainings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUserTrainings.ImageSize = new System.Drawing.Size(24, 24);
@@ -551,7 +552,7 @@
             this.btnClearLocks.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnClearLocks.FlatAppearance.BorderSize = 0;
             this.btnClearLocks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearLocks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnClearLocks.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
             this.btnClearLocks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClearLocks.ImageSize = new System.Drawing.Size(24, 24);
@@ -579,7 +580,7 @@
             this.btnGetLDAP.FlatAppearance.BorderSize = 0;
             this.btnGetLDAP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGetLDAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetLDAP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnGetLDAP.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnGetLDAP.Image = ((System.Drawing.Image)(resources.GetObject("btnGetLDAP.Image")));
             this.btnGetLDAP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGetLDAP.ImageSize = new System.Drawing.Size(24, 24);
@@ -626,7 +627,7 @@
             this.btnExceptionLookup.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnExceptionLookup.FlatAppearance.BorderSize = 0;
             this.btnExceptionLookup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExceptionLookup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnExceptionLookup.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnExceptionLookup.Image = ((System.Drawing.Image)(resources.GetObject("btnExceptionLookup.Image")));
             this.btnExceptionLookup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExceptionLookup.ImageSize = new System.Drawing.Size(24, 24);
@@ -653,7 +654,7 @@
             this.btnItemsReport.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnItemsReport.FlatAppearance.BorderSize = 0;
             this.btnItemsReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnItemsReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnItemsReport.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnItemsReport.Image = ((System.Drawing.Image)(resources.GetObject("btnItemsReport.Image")));
             this.btnItemsReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnItemsReport.ImageSize = new System.Drawing.Size(24, 24);
@@ -680,14 +681,14 @@
             this.mnuCopyEmpName,
             this.mnuCopyBothNameAndNum});
             this.mnuCopyFromList.Name = "mnuCopyFromList";
-            this.mnuCopyFromList.Size = new System.Drawing.Size(312, 76);
+            this.mnuCopyFromList.Size = new System.Drawing.Size(311, 76);
             this.mnuCopyFromList.Text = "CopyFromList";
             // 
             // mnuCopyEmpNum
             // 
             this.mnuCopyEmpNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpNum.Image")));
             this.mnuCopyEmpNum.Name = "mnuCopyEmpNum";
-            this.mnuCopyEmpNum.Size = new System.Drawing.Size(311, 24);
+            this.mnuCopyEmpNum.Size = new System.Drawing.Size(310, 24);
             this.mnuCopyEmpNum.Text = "Copy Emp # to clipboard";
             this.mnuCopyEmpNum.Click += new System.EventHandler(this.mnuCopyEmpNum_Click);
             // 
@@ -695,7 +696,7 @@
             // 
             this.mnuCopyEmpName.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpName.Image")));
             this.mnuCopyEmpName.Name = "mnuCopyEmpName";
-            this.mnuCopyEmpName.Size = new System.Drawing.Size(311, 24);
+            this.mnuCopyEmpName.Size = new System.Drawing.Size(310, 24);
             this.mnuCopyEmpName.Text = "Copy Emp Name to clipboard";
             this.mnuCopyEmpName.Click += new System.EventHandler(this.mnuCopyEmpName_Click);
             // 
@@ -703,7 +704,7 @@
             // 
             this.mnuCopyBothNameAndNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyBothNameAndNum.Image")));
             this.mnuCopyBothNameAndNum.Name = "mnuCopyBothNameAndNum";
-            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(311, 24);
+            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(310, 24);
             this.mnuCopyBothNameAndNum.Text = "Copy Both Emp Name and # to clipboard";
             this.mnuCopyBothNameAndNum.Click += new System.EventHandler(this.mnuCopyBothNameAndNum_Click);
             // 
@@ -716,7 +717,7 @@
             this.btnSickOnStat.FlatAppearance.BorderSize = 0;
             this.btnSickOnStat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSickOnStat.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSickOnStat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnSickOnStat.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnSickOnStat.Image = ((System.Drawing.Image)(resources.GetObject("btnSickOnStat.Image")));
             this.btnSickOnStat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSickOnStat.ImageSize = new System.Drawing.Size(24, 24);
@@ -743,7 +744,7 @@
             this.btnTL_SYS.BaseStrokeColor = System.Drawing.Color.Silver;
             this.btnTL_SYS.FlatAppearance.BorderSize = 0;
             this.btnTL_SYS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTL_SYS.ForeColor = System.Drawing.Color.Maroon;
+            this.btnTL_SYS.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnTL_SYS.Image = ((System.Drawing.Image)(resources.GetObject("btnTL_SYS.Image")));
             this.btnTL_SYS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTL_SYS.ImageSize = new System.Drawing.Size(24, 24);
@@ -771,7 +772,7 @@
             this.btnAA_Exception.FlatAppearance.BorderSize = 0;
             this.btnAA_Exception.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAA_Exception.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAA_Exception.ForeColor = System.Drawing.Color.Maroon;
+            this.btnAA_Exception.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnAA_Exception.Image = ((System.Drawing.Image)(resources.GetObject("btnAA_Exception.Image")));
             this.btnAA_Exception.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAA_Exception.ImageSize = new System.Drawing.Size(24, 24);
@@ -800,7 +801,7 @@
             this.btnV_FireCategories.FlatAppearance.BorderSize = 0;
             this.btnV_FireCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnV_FireCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnV_FireCategories.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnV_FireCategories.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnV_FireCategories.Image = ((System.Drawing.Image)(resources.GetObject("btnV_FireCategories.Image")));
             this.btnV_FireCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnV_FireCategories.ImageSize = new System.Drawing.Size(24, 24);
@@ -831,6 +832,48 @@
             this.tabControl1.Size = new System.Drawing.Size(593, 267);
             this.tabControl1.TabIndex = 39;
             // 
+            // tabMisc
+            // 
+            this.tabMisc.Controls.Add(this.btnGetLDAP);
+            this.tabMisc.Controls.Add(this.btnExceptionLookup);
+            this.tabMisc.Controls.Add(this.btnClearLocks);
+            this.tabMisc.Controls.Add(this.btnUserTrainings);
+            this.tabMisc.Controls.Add(this.btnV_FireCategories);
+            this.tabMisc.Controls.Add(this.mbUserLatestLogin);
+            this.tabMisc.Controls.Add(this.btnSickOnStat);
+            this.tabMisc.Controls.Add(this.btnItemsReport);
+            this.tabMisc.Controls.Add(this.btnFile126);
+            this.tabMisc.ImageIndex = 2;
+            this.tabMisc.Location = new System.Drawing.Point(4, 25);
+            this.tabMisc.Name = "tabMisc";
+            this.tabMisc.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMisc.Size = new System.Drawing.Size(585, 238);
+            this.tabMisc.TabIndex = 1;
+            this.tabMisc.Text = "Misc.";
+            this.tabMisc.UseVisualStyleBackColor = true;
+            // 
+            // tabFormattingTools
+            // 
+            this.tabFormattingTools.Controls.Add(this.btnLOAwithNoRptTime);
+            this.tabFormattingTools.Controls.Add(this.btnAA_Exception);
+            this.tabFormattingTools.Controls.Add(this.btnBanks);
+            this.tabFormattingTools.Controls.Add(this.btnRFLOA);
+            this.tabFormattingTools.Controls.Add(this.btnRehire);
+            this.tabFormattingTools.Controls.Add(this.btnTL_SYS);
+            this.tabFormattingTools.Controls.Add(this.btnPriors);
+            this.tabFormattingTools.Controls.Add(this.btnAHS_AA_Terms);
+            this.tabFormattingTools.Controls.Add(this.btnTrans);
+            this.tabFormattingTools.Controls.Add(this.btnFile2);
+            this.tabFormattingTools.Controls.Add(this.btnFile6);
+            this.tabFormattingTools.ImageIndex = 1;
+            this.tabFormattingTools.Location = new System.Drawing.Point(4, 25);
+            this.tabFormattingTools.Name = "tabFormattingTools";
+            this.tabFormattingTools.Padding = new System.Windows.Forms.Padding(3);
+            this.tabFormattingTools.Size = new System.Drawing.Size(585, 238);
+            this.tabFormattingTools.TabIndex = 0;
+            this.tabFormattingTools.Text = "Formatting Tools";
+            this.tabFormattingTools.UseVisualStyleBackColor = true;
+            // 
             // tabSearch
             // 
             this.tabSearch.Controls.Add(this.btnSendEmail);
@@ -852,55 +895,6 @@
             this.tabSearch.Text = "Search";
             this.tabSearch.UseVisualStyleBackColor = true;
             // 
-            // tabFormattingTools
-            // 
-            this.tabFormattingTools.Controls.Add(this.btnAA_Exception);
-            this.tabFormattingTools.Controls.Add(this.btnBanks);
-            this.tabFormattingTools.Controls.Add(this.btnRFLOA);
-            this.tabFormattingTools.Controls.Add(this.btnRehire);
-            this.tabFormattingTools.Controls.Add(this.btnTL_SYS);
-            this.tabFormattingTools.Controls.Add(this.btnPriors);
-            this.tabFormattingTools.Controls.Add(this.btnAHS_AA_Terms);
-            this.tabFormattingTools.Controls.Add(this.btnTrans);
-            this.tabFormattingTools.Controls.Add(this.btnFile2);
-            this.tabFormattingTools.Controls.Add(this.btnFile6);
-            this.tabFormattingTools.ImageIndex = 1;
-            this.tabFormattingTools.Location = new System.Drawing.Point(4, 25);
-            this.tabFormattingTools.Name = "tabFormattingTools";
-            this.tabFormattingTools.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFormattingTools.Size = new System.Drawing.Size(585, 238);
-            this.tabFormattingTools.TabIndex = 0;
-            this.tabFormattingTools.Text = "Formatting Tools";
-            this.tabFormattingTools.UseVisualStyleBackColor = true;
-            // 
-            // tabMisc
-            // 
-            this.tabMisc.Controls.Add(this.btnGetLDAP);
-            this.tabMisc.Controls.Add(this.btnExceptionLookup);
-            this.tabMisc.Controls.Add(this.btnClearLocks);
-            this.tabMisc.Controls.Add(this.btnUserTrainings);
-            this.tabMisc.Controls.Add(this.btnV_FireCategories);
-            this.tabMisc.Controls.Add(this.mbUserLatestLogin);
-            this.tabMisc.Controls.Add(this.btnSickOnStat);
-            this.tabMisc.Controls.Add(this.btnItemsReport);
-            this.tabMisc.Controls.Add(this.btnFile126);
-            this.tabMisc.ImageIndex = 2;
-            this.tabMisc.Location = new System.Drawing.Point(4, 25);
-            this.tabMisc.Name = "tabMisc";
-            this.tabMisc.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMisc.Size = new System.Drawing.Size(585, 238);
-            this.tabMisc.TabIndex = 1;
-            this.tabMisc.Text = "Misc.";
-            this.tabMisc.UseVisualStyleBackColor = true;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "search.png");
-            this.imageList1.Images.SetKeyName(1, "format.png");
-            this.imageList1.Images.SetKeyName(2, "others.png");
-            // 
             // btnSendEmail
             // 
             this.btnSendEmail.Enabled = false;
@@ -916,6 +910,43 @@
             this.btnSendEmail.UseVisualStyleBackColor = true;
             this.btnSendEmail.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "search.png");
+            this.imageList1.Images.SetKeyName(1, "format.png");
+            this.imageList1.Images.SetKeyName(2, "others.png");
+            // 
+            // btnLOAwithNoRptTime
+            // 
+            this.btnLOAwithNoRptTime.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnLOAwithNoRptTime.BackColor = System.Drawing.Color.Transparent;
+            this.btnLOAwithNoRptTime.BaseColor = System.Drawing.Color.LightGray;
+            this.btnLOAwithNoRptTime.BaseStrokeColor = System.Drawing.Color.Silver;
+            this.btnLOAwithNoRptTime.FlatAppearance.BorderSize = 0;
+            this.btnLOAwithNoRptTime.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLOAwithNoRptTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLOAwithNoRptTime.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnLOAwithNoRptTime.Image = ((System.Drawing.Image)(resources.GetObject("btnLOAwithNoRptTime.Image")));
+            this.btnLOAwithNoRptTime.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLOAwithNoRptTime.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnLOAwithNoRptTime.Location = new System.Drawing.Point(149, 102);
+            this.btnLOAwithNoRptTime.MenuListPosition = new System.Drawing.Point(0, 0);
+            this.btnLOAwithNoRptTime.Name = "btnLOAwithNoRptTime";
+            this.btnLOAwithNoRptTime.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnLOAwithNoRptTime.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnLOAwithNoRptTime.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
+            this.btnLOAwithNoRptTime.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
+            this.btnLOAwithNoRptTime.Radius = 5;
+            this.btnLOAwithNoRptTime.Size = new System.Drawing.Size(141, 42);
+            this.btnLOAwithNoRptTime.TabIndex = 38;
+            this.btnLOAwithNoRptTime.Text = "AHS_AA_RPTD_\r\nNO_TIME";
+            this.btnLOAwithNoRptTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLOAwithNoRptTime.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnLOAwithNoRptTime.UseVisualStyleBackColor = false;
+            this.btnLOAwithNoRptTime.Click += new System.EventHandler(this.btnLOAwithNoRptTime_Click);
+            // 
             // frmSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -927,7 +958,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.09.20";
+            this.Text = "SömëKindä Tööl v2017.09.25";
             this.Activated += new System.EventHandler(this.frmSearch_Activated);
             this.Deactivate += new System.EventHandler(this.frmSearch_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSearch_FormClosing);
@@ -939,10 +970,10 @@
             this.groupBox1.ResumeLayout(false);
             this.mnuCopyFromList.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tabMisc.ResumeLayout(false);
+            this.tabFormattingTools.ResumeLayout(false);
             this.tabSearch.ResumeLayout(false);
             this.tabSearch.PerformLayout();
-            this.tabFormattingTools.ResumeLayout(false);
-            this.tabMisc.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -995,6 +1026,7 @@
         private System.Windows.Forms.TabPage tabSearch;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button btnSendEmail;
+        private MBGlassStyleButton.MBGlassButton btnLOAwithNoRptTime;
     }
 }
 
