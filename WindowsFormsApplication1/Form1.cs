@@ -2784,16 +2784,9 @@ namespace WindowsFormsApplication1
                 }
             }
             catch (Exception ex)
-            {
-                if (ex.Message.IndexOf("OutOfMemoryException") > -1)
-                {
-                    MessageBox.Show("Error in opening the file.\n\r\n\rPlease open the file first in Excel and \"Enable Editing\" and then save it then try to open the file again.",
-                        "Ooops, may mali.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            {                
+                    MessageBox.Show("ERROR: " + ex.Message +
+                        "\n\r\n\rPlease try open the files first in Excel and \"Enable Editing\" and then save it then try to open the files again.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
