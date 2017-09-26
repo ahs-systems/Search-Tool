@@ -1,18 +1,17 @@
-﻿using System;
+﻿using ExcelLibrary.SpreadSheet;
+using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using OfficeOpenXml;
-using System.IO;
-using System.Net;
-using ExcelLibrary.SpreadSheet;
-using VisualEffects.Animations.Effects;
 using VisualEffects;
+using VisualEffects.Animations.Effects;
 using VisualEffects.Easing;
 
 
@@ -131,7 +130,7 @@ namespace WindowsFormsApplication1
             _searchMode = 1;
 
             btnSendEmail.Enabled = txtTCG.Visible = false;
-            
+
 
             string _searchString = "";
 
@@ -300,7 +299,7 @@ namespace WindowsFormsApplication1
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             string _ret = GetPP(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
-            if (_ret != "") 
+            if (_ret != "")
                 lblPayPeriod.Text = "Pay Period: " + _ret;
             else
             {
@@ -495,7 +494,7 @@ namespace WindowsFormsApplication1
             ProcessFile2(openFileDialog1.FileName, "");
 
             btnFile2.Text = "Format File 2";
-            Cursor.Current = Cursors.Default;            
+            Cursor.Current = Cursors.Default;
         }
 
         private byte InsertInItems(ChangeInOcc _data)
@@ -670,11 +669,11 @@ namespace WindowsFormsApplication1
             catch (Exception ex)
             {
                 MessageBox.Show("Ooops, there's an error (GetSiteNum_ShortDesc): " + ex.Message, "ERROR");
-            }            
+            }
 
             return _ret;
         }
-        
+
 
         private void btnFile6_Click(object sender, EventArgs e)
         {
@@ -784,7 +783,7 @@ namespace WindowsFormsApplication1
                 btnFile6.Text = "Format File 6";
                 Cursor.Current = Cursors.Default;
             }
-        }       
+        }
 
         private void btnBanks_Click(object sender, EventArgs e)
         {
@@ -853,7 +852,7 @@ namespace WindowsFormsApplication1
                         worksheet.Cells[1, 7].Value = "Off"; worksheet.Cells[1, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(7).Width = 8.40;
                         worksheet.Cells[1, 8].Value = "Bank Hrs"; worksheet.Cells[1, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(8).Width = 9.3;
                         worksheet.Cells[1, 9].Value = "Difference"; worksheet.Cells[1, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(9).Width = 10.7;
-                        worksheet.Cells[1, 10].Value = "Change To"; worksheet.Cells[1, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(10).Width = 12; 
+                        worksheet.Cells[1, 10].Value = "Change To"; worksheet.Cells[1, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(10).Width = 12;
 
                         var range = worksheet.Cells[1, 1, 1, 10];
                         range.Style.Font.Bold = true;
@@ -927,11 +926,11 @@ namespace WindowsFormsApplication1
                             if (worksheet.Cells[i - 10, 3].Value.ToString().ToUpper().IndexOf("MULTI") > -1)
                             {
                                 range = worksheet.Cells[i - 10, 1, i - 10, 9];
-                                range.Style.Font.Size = 11;                                
-                                range.Style.Font.Bold = range.Style.Font.Italic = true;                                
+                                range.Style.Font.Size = 11;
+                                range.Style.Font.Bold = range.Style.Font.Italic = true;
                             }
 
-                            
+
                         }
 
                         //worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
@@ -988,7 +987,7 @@ namespace WindowsFormsApplication1
                                 worksheetCopy.Cells[1, 9].Style.Font.Italic = true;
                                 worksheetCopy.Cells[1, 9].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                                 lastCharPosition = saveFileDialog1.FileName.LastIndexOf('.');
-                                packageCopy.SaveAs(new FileInfo(saveFileDialog1.FileName.Insert(lastCharPosition," - for RSSS")));
+                                packageCopy.SaveAs(new FileInfo(saveFileDialog1.FileName.Insert(lastCharPosition, " - for RSSS")));
                                 System.Diagnostics.Process.Start(saveFileDialog1.FileName.Insert(lastCharPosition, " - for RSSS"));
                             }
 
@@ -1062,7 +1061,7 @@ namespace WindowsFormsApplication1
                     while (_dr.Read())
                     {
                         _curr = Convert.ToDouble(_dr["TCE_Quantity"]);
-                        _total = Math.Round(_total + _curr,2);                        
+                        _total = Math.Round(_total + _curr, 2);
                         if (_bnkHrs < _total)
                         {
 
@@ -1073,32 +1072,32 @@ namespace WindowsFormsApplication1
                             _ret[0] = _dr["TCE_Date"].ToString();
                             if (_off % 7.75 == 0 && (_bnkHrs - _prevTotal) != 0)
                             {
-                                _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + .5),2) + _offCodeSuffix;
+                                _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + .5), 2) + _offCodeSuffix;
                             }
                             else if (_off % 11.08 == 0 && (_bnkHrs - _prevTotal) != 0)
                             {
-                                _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1.17),2) + _offCodeSuffix;
+                                _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1.17), 2) + _offCodeSuffix;
                             }
                             else if (_off % 11.25 == 0 && (_bnkHrs - _prevTotal) != 0)
                             {
-                                _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1),2) + _offCodeSuffix;
+                                _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1), 2) + _offCodeSuffix;
                             }
-                            _ret[2] = Math.Round((_bnkHrs - _prevTotal),2) + _offCodeSuffix;
-                            _ret[3] = Math.Round((_total - _bnkHrs),2) + "  (" + _unpaidCode + ")";
+                            _ret[2] = Math.Round((_bnkHrs - _prevTotal), 2) + _offCodeSuffix;
+                            _ret[3] = Math.Round((_total - _bnkHrs), 2) + "  (" + _unpaidCode + ")";
                             break;
                         }
                         _prevTotal = _total;
                     }
                 }
             }
-            catch 
-            {                
+            catch
+            {
                 _ret = new string[] { "Err", "Err", "Err" };
             }
 
             return _ret;
-                
-        }        
+
+        }
 
         private void ProcessFile2(string _sourceFile, string _destFolder)
         {
@@ -1493,14 +1492,14 @@ namespace WindowsFormsApplication1
                 using (WebClient request = new WebClient())
                 {
                     request.Credentials = new NetworkCredential("esp-cal", "loon123**");
-                    request.DownloadFile("ftp://209.89.98.1/Outbound/" + _fileName, _destFolder + _fileName);                    
+                    request.DownloadFile("ftp://209.89.98.1/Outbound/" + _fileName, _destFolder + _fileName);
                 }
 
                 // make a copy of File 1
                 if (_fileName.IndexOf("TSS_ESP_DEM_STG_1_O_") > -1 && File.Exists(_destFolder + _fileName))
                 {
                     File.Copy(_destFolder + _fileName, _destFolder + "File 1 - " + DateTime.Today.ToString("ddMMMyyyy") + ".csv", true);
-                }                
+                }
 
                 // Process File 2
                 if (_fileName.IndexOf("TSS_ESP_DEM_STG_2_O_") > -1 && File.Exists(_destFolder + _fileName))
@@ -1608,10 +1607,10 @@ namespace WindowsFormsApplication1
         {
             MessageBox.Show("On the next window, please select the 'Return From LOA' file that came from ePeople.\n\nPlease click OK to continue.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            RFLOA_Rehire("Return from LOA " + GetPrevious_PPRange(DateTime.Now.ToString("ddMMMyyyy")), "PayPeriod: " + GetPrevious_PP(DateTime.Now.ToString("ddMMMyyyy")), 
-                         "Please select the 'Return From Leave' file", btnRFLOA, 
+            RFLOA_Rehire("Return from LOA " + GetPrevious_PPRange(DateTime.Now.ToString("ddMMMyyyy")), "PayPeriod: " + GetPrevious_PP(DateTime.Now.ToString("ddMMMyyyy")),
+                         "Please select the 'Return From Leave' file", btnRFLOA,
                          @"\\jeeves.crha-health.ab.ca\rsss_systems\Payroll\Return from LOA\RFL " + GetPrevious_PPRange(DateTime.Now.ToString("ddMMMyyyy")) + ".xlsx");
-        }        
+        }
 
         private void btnRehire_Click(object sender, EventArgs e)
         {
@@ -1795,7 +1794,7 @@ namespace WindowsFormsApplication1
                 Cursor.Current = Cursors.WaitCursor;
                 Update();
 
-                book = Workbook.Load(openFileDialog1.FileName); 
+                book = Workbook.Load(openFileDialog1.FileName);
                 sheet = book.Worksheets[0];
 
                 //MessageBox.Show("sheet.Cells.FirstRowIndex=" + sheet.Cells.FirstRowIndex + ", sheet.Cells.LastRowIndex=" + sheet.Cells.LastRowIndex + "\n\r");
@@ -1901,8 +1900,8 @@ namespace WindowsFormsApplication1
                     else
                     {
                         MessageBox.Show("It's your lucky day. No prior pay period adjustments!");
-                    }                   
-                }                
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -1917,7 +1916,7 @@ namespace WindowsFormsApplication1
                 }
             }
             finally
-            {                
+            {
                 book = null;
                 sheet = null;
 
@@ -1970,14 +1969,14 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
                     worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
-                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));                    
+                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Terms " + CheckTermsAndTransStartDate(DateTime.Today.ToString("yyyy-MM-dd")) + " - " + DateTime.Today.AddDays(-1).ToString("ddMMMyyyy");
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
                     worksheet.View.PageBreakView = true;
                     worksheet.PrinterSettings.FitToPage = true; worksheet.PrinterSettings.FitToWidth = 1; worksheet.PrinterSettings.FitToHeight = 0;
                     worksheet.PrinterSettings.RepeatRows = new ExcelAddress("$1:$1");
 
-                    int outCurrRowIndex = 1;                                        
+                    int outCurrRowIndex = 1;
                     for (int rowIndex = sheet.Cells.FirstRowIndex + 1; rowIndex <= sheet.Cells.LastRowIndex; rowIndex++)
                     {
                         Row row = sheet.Cells.GetRow(rowIndex);
@@ -2007,8 +2006,8 @@ namespace WindowsFormsApplication1
 
                     worksheet.DeleteColumn(4); worksheet.DeleteColumn(5); worksheet.DeleteColumn(6); worksheet.DeleteColumn(6); worksheet.DeleteColumn(6);
                     worksheet.DeleteColumn(6); worksheet.DeleteColumn(6); worksheet.DeleteColumn(6); worksheet.DeleteColumn(6); worksheet.DeleteColumn(6); worksheet.DeleteColumn(7);
-                    worksheet.DeleteColumn(7);                    
-                    
+                    worksheet.DeleteColumn(7);
+
                     var range = worksheet.Cells[1, 1, 1, 8];
                     range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                     range.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
@@ -2020,7 +2019,7 @@ namespace WindowsFormsApplication1
                     worksheet.Cells[worksheet.Dimension.Address].Style.Font.Size = 11;
                     worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
                     worksheet.Column(2).Width = 22;
-                    
+
 
                     if (worksheet.Cells[1, 1].Value != null)
                     {
@@ -2135,8 +2134,8 @@ namespace WindowsFormsApplication1
                     }
 
                     worksheet.DeleteColumn(4); worksheet.DeleteColumn(5); worksheet.DeleteColumn(5); worksheet.DeleteColumn(6);
-                    worksheet.DeleteColumn(8); worksheet.DeleteColumn(8); worksheet.DeleteColumn(8); worksheet.DeleteColumn(7); 
-                    
+                    worksheet.DeleteColumn(8); worksheet.DeleteColumn(8); worksheet.DeleteColumn(8); worksheet.DeleteColumn(7);
+
                     var range = worksheet.Cells[1, 1, 1, 6];
                     range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                     range.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
@@ -2198,7 +2197,7 @@ namespace WindowsFormsApplication1
         /// <returns></returns>
         private string CheckTermsAndTransStartDate(string _date)
         {
-            string _ret = "";            
+            string _ret = "";
             if (_date == GetStartPP(_date)) // Check if Mon of week 1, then Fri-Sun of Week 2
             {
                 _ret = Convert.ToDateTime(_date).AddDays(-3).ToString("ddMMMyy");
@@ -2228,7 +2227,7 @@ namespace WindowsFormsApplication1
         private void ShowMe()
         {
             Show();
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 318, 1000, 0);
+            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 304, 1000, 0);
         }
 
         private void HideMe()
@@ -2239,15 +2238,15 @@ namespace WindowsFormsApplication1
 
         private void btnClearLocks_Click(object sender, EventArgs e)
         {
-            HideMe();         
-            frmClearLocks _frm = new frmClearLocks();            
+            HideMe();
+            frmClearLocks _frm = new frmClearLocks();
             _frm.ShowDialog();
             ShowMe();
         }
 
         private void frmSearch_Shown(object sender, EventArgs e)
         {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 318, 1000, 0);
+            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 304, 1000, 0);
         }
 
         private void btnGetLDAP_Click(object sender, EventArgs e)
@@ -2275,9 +2274,9 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                MessageBox.Show("Cannot Find 'ItemsReport.exe' in 'Automated Files' folder.","Cannot Find File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Cannot Find 'ItemsReport.exe' in 'Automated Files' folder.", "Cannot Find File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-        }        
+        }
 
         private void mnuCopyEmpNum_Click(object sender, EventArgs e)
         {
@@ -2291,14 +2290,14 @@ namespace WindowsFormsApplication1
             string _clipText = lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(15);
             Clipboard.SetText(_clipText);
             MessageBox.Show("'" + _clipText + "' copied to clipboard!");
-        }      
+        }
 
         private void mnuCopyBothNameAndNum_Click(object sender, EventArgs e)
         {
             string _clipText = lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(0);
             Clipboard.SetText(_clipText);
             MessageBox.Show("'" + _clipText + "' copied to clipboard!");
-        }        
+        }
 
         private void lstResult_MouseUp(object sender, MouseEventArgs e)
         {
@@ -2350,7 +2349,7 @@ namespace WindowsFormsApplication1
                     // clear the table 
                     myCommand.CommandText = "TRUNCATE TABLE CAL_EXCEL_SOURCE";
                     myCommand.ExecuteNonQuery();
-                    
+
                     foreach (string line in lines)
                     {
                         string[] values = line.Replace("\"", "").Split(',');
@@ -2361,7 +2360,7 @@ namespace WindowsFormsApplication1
                                 myCommand.CommandText = "INSERT INTO CAL_EXCEL_SOURCE (ID, Name, [Rpt Dt], Quantity, Workgroup) VALUES (" +
                                     "@_id, @_name, @_rptDt, @_qty, @_workGroup)";
                                 myCommand.Parameters.Clear();
-                                myCommand.Parameters.AddWithValue("_id",values[0]);
+                                myCommand.Parameters.AddWithValue("_id", values[0]);
                                 myCommand.Parameters.AddWithValue("_name", values[2].Trim() + ", " + values[3].Trim());
                                 myCommand.Parameters.AddWithValue("_rptDt", values[5]);
                                 myCommand.Parameters.AddWithValue("_qty", values[8]);
@@ -2370,9 +2369,9 @@ namespace WindowsFormsApplication1
                                 _ctr++;
                             }
                         }
-                    }                    
+                    }
                     myCommand.Dispose();
-                    MessageBox.Show(_ctr + " record(s) uploaded to Boo Database\n\n[CAL_EXCEL_SOURCE table]","Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(_ctr + " record(s) uploaded to Boo Database\n\n[CAL_EXCEL_SOURCE table]", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
@@ -2430,9 +2429,9 @@ namespace WindowsFormsApplication1
                     worksheet.HeaderFooter.OddHeader.CenteredText = "AHS_AA_EXCEPTION_TLSYS";
                     worksheet.View.PageBreakView = true;
                     worksheet.PrinterSettings.FitToPage = true; worksheet.PrinterSettings.FitToWidth = 1; worksheet.PrinterSettings.FitToHeight = 0;
-                    
+
                     int outCurrRowIndex = 2;
-                    
+
                     for (int rowIndex = sheet.Cells.FirstRowIndex + 2; rowIndex <= sheet.Cells.LastRowIndex; rowIndex++)
                     {
                         Row row = sheet.Cells.GetRow(rowIndex);
@@ -2455,7 +2454,7 @@ namespace WindowsFormsApplication1
                             worksheet.Cells[outCurrRowIndex, 11].Value = row.GetCell(16).StringValue;
 
                             outCurrRowIndex++;
-                        }                        
+                        }
                     }
 
                     worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
@@ -2480,7 +2479,7 @@ namespace WindowsFormsApplication1
                     range.Style.Font.Name = "Arial Unicode MS";
                     range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                     range.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
-                    range.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);                    
+                    range.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
 
                     SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                     saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
@@ -2597,7 +2596,7 @@ namespace WindowsFormsApplication1
                     worksheet.Cells[1, 4].Value = "Rpt Dt"; worksheet.Cells[1, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
                     worksheet.Cells[1, 5].Value = "Msg Data1"; worksheet.Cells[1, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
                     worksheet.Cells[1, 6].Value = "TCD Group"; worksheet.Column(6).Width = 12; worksheet.Cells[1, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
-                    worksheet.Cells[1, 7].Value = "User"; worksheet.Cells[1, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);                    
+                    worksheet.Cells[1, 7].Value = "User"; worksheet.Cells[1, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
                     worksheet.Cells[1, 8].Value = "Severity"; worksheet.Cells[1, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
                     worksheet.Cells[1, 9].Value = "TRC"; worksheet.Cells[1, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
                     worksheet.Cells[1, 10].Value = "Quantity"; worksheet.Cells[1, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
@@ -2770,7 +2769,7 @@ namespace WindowsFormsApplication1
                     range.Style.Font.Name = "Arial Unicode MS";
                     range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                     range.Style.Fill.BackgroundColor.SetColor(Color.Yellow);
-                    range.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);                    
+                    range.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
 
                     SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                     saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
@@ -2784,9 +2783,9 @@ namespace WindowsFormsApplication1
                 }
             }
             catch (Exception ex)
-            {                
-                    MessageBox.Show("ERROR: " + ex.Message +
-                        "\n\r\n\rPlease try open the files first in Excel and \"Enable Editing\" and then save it then try to open the files again.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                MessageBox.Show("ERROR: " + ex.Message +
+                    "\n\r\n\rPlease try open the files first in Excel and \"Enable Editing\" and then save it then try to open the files again.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -2799,7 +2798,7 @@ namespace WindowsFormsApplication1
         private void txtUnit_TextChanged(object sender, EventArgs e)
         {
             _searchMode = 3;
-            btnSendEmail.Enabled = txtTCG.Visible = false;            
+            btnSendEmail.Enabled = txtTCG.Visible = false;
 
             if (txtUnit.Text.Trim().Length == 0)
             {
@@ -2814,10 +2813,10 @@ namespace WindowsFormsApplication1
 
             OpenConnection();
 
-            _comm.CommandText = "select Rtrim(LTrim(U_desc)) + '   ::   ' + Rtrim(LTrim(U_ShortDesc)) AS Units from unit where " + 
+            _comm.CommandText = "select U_desc + ' | ' + Rtrim(LTrim(U_ShortDesc)) AS Units from unit where " +
                 "(UPPER(U_Desc) LIKE @_SearchStr OR UPPER(U_ShortDesc) LIKE @_SearchStr) AND U_Active = 1 order by U_Desc";
 
-            _comm.Parameters.Add(new SqlParameter("_SearchStr", "%" + txtUnit.Text.Trim().ToUpper() + "%")); 
+            _comm.Parameters.Add(new SqlParameter("_SearchStr", "%" + txtUnit.Text.Trim().ToUpper() + "%"));
             SqlDataReader _reader = _comm.ExecuteReader();
             if (_reader.HasRows)
             {

@@ -75,11 +75,14 @@
             this.tabFormattingTools = new System.Windows.Forms.TabPage();
             this.btnLOAwithNoRptTime = new MBGlassStyleButton.MBGlassButton();
             this.tabSearch = new System.Windows.Forms.TabPage();
-            this.btnSendEmail = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.txtUnit = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnSendEmail = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.mnuCopyFromList.SuspendLayout();
@@ -87,6 +90,9 @@
             this.tabMisc.SuspendLayout();
             this.tabFormattingTools.SuspendLayout();
             this.tabSearch.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstResult
@@ -94,12 +100,13 @@
             this.lstResult.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lstResult.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lstResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lstResult.Font = new System.Drawing.Font("Courier New", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lstResult.FormattingEnabled = true;
             this.lstResult.ItemHeight = 16;
-            this.lstResult.Location = new System.Drawing.Point(16, 41);
+            this.lstResult.Location = new System.Drawing.Point(7, 45);
             this.lstResult.Name = "lstResult";
-            this.lstResult.Size = new System.Drawing.Size(410, 82);
+            this.lstResult.Size = new System.Drawing.Size(432, 82);
             this.lstResult.TabIndex = 1;
             this.lstResult.Click += new System.EventHandler(this.lstResult_Click);
             this.lstResult.SelectedIndexChanged += new System.EventHandler(this.lstResult_Click);
@@ -112,7 +119,7 @@
             // 
             this.txtOCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtOCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtOCode.Location = new System.Drawing.Point(96, 9);
+            this.txtOCode.Location = new System.Drawing.Point(96, 13);
             this.txtOCode.Name = "txtOCode";
             this.txtOCode.Size = new System.Drawing.Size(65, 22);
             this.txtOCode.TabIndex = 2;
@@ -124,7 +131,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(35, 13);
+            this.label1.Location = new System.Drawing.Point(35, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 3;
@@ -136,7 +143,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(198, 12);
+            this.label2.Location = new System.Drawing.Point(198, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 13);
             this.label2.TabIndex = 5;
@@ -146,7 +153,7 @@
             // 
             this.txtEmpNo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtEmpNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmpNo.Location = new System.Drawing.Point(305, 8);
+            this.txtEmpNo.Location = new System.Drawing.Point(305, 12);
             this.txtEmpNo.Name = "txtEmpNo";
             this.txtEmpNo.Size = new System.Drawing.Size(100, 22);
             this.txtEmpNo.TabIndex = 4;
@@ -157,7 +164,7 @@
             this.lblMsg.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblMsg.AutoSize = true;
             this.lblMsg.ForeColor = System.Drawing.Color.Red;
-            this.lblMsg.Location = new System.Drawing.Point(16, 158);
+            this.lblMsg.Location = new System.Drawing.Point(2, 154);
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.Size = new System.Drawing.Size(0, 17);
             this.lblMsg.TabIndex = 6;
@@ -180,7 +187,7 @@
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Location = new System.Drawing.Point(6, 15);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(183, 19);
+            this.dateTimePicker1.Size = new System.Drawing.Size(203, 19);
             this.dateTimePicker1.TabIndex = 7;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -190,12 +197,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSendEmail});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 28);
             // 
             // mnuSendEmail
             // 
             this.mnuSendEmail.Name = "mnuSendEmail";
-            this.mnuSendEmail.Size = new System.Drawing.Size(188, 22);
+            this.mnuSendEmail.Size = new System.Drawing.Size(191, 24);
             this.mnuSendEmail.Text = "Send Email To SSO";
             // 
             // btnFile126
@@ -211,7 +218,7 @@
             this.btnFile126.Image = ((System.Drawing.Image)(resources.GetObject("btnFile126.Image")));
             this.btnFile126.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFile126.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnFile126.Location = new System.Drawing.Point(15, 14);
+            this.btnFile126.Location = new System.Drawing.Point(11, 17);
             this.btnFile126.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnFile126.Name = "btnFile126";
             this.btnFile126.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -221,7 +228,6 @@
             this.btnFile126.Size = new System.Drawing.Size(173, 42);
             this.btnFile126.TabIndex = 15;
             this.btnFile126.Text = "FTP File 1,2 and 6 then\r\nFormat File 2 and 6 ";
-            this.btnFile126.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFile126.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFile126.UseVisualStyleBackColor = false;
             this.btnFile126.Click += new System.EventHandler(this.btnFile126_Click);
@@ -238,7 +244,7 @@
             this.btnFile2.Image = ((System.Drawing.Image)(resources.GetObject("btnFile2.Image")));
             this.btnFile2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFile2.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnFile2.Location = new System.Drawing.Point(440, 9);
+            this.btnFile2.Location = new System.Drawing.Point(434, 13);
             this.btnFile2.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnFile2.Name = "btnFile2";
             this.btnFile2.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -249,7 +255,8 @@
             this.btnFile2.Size = new System.Drawing.Size(141, 42);
             this.btnFile2.TabIndex = 16;
             this.btnFile2.Text = "Format File 2";
-            this.btnFile2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnFile2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFile2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFile2.UseVisualStyleBackColor = false;
             this.btnFile2.Click += new System.EventHandler(this.btnFile2_Click);
             // 
@@ -265,7 +272,7 @@
             this.btnFile6.Image = ((System.Drawing.Image)(resources.GetObject("btnFile6.Image")));
             this.btnFile6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFile6.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnFile6.Location = new System.Drawing.Point(440, 57);
+            this.btnFile6.Location = new System.Drawing.Point(434, 61);
             this.btnFile6.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnFile6.Name = "btnFile6";
             this.btnFile6.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -276,7 +283,8 @@
             this.btnFile6.Size = new System.Drawing.Size(141, 42);
             this.btnFile6.TabIndex = 17;
             this.btnFile6.Text = "Format File 6";
-            this.btnFile6.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnFile6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFile6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFile6.UseVisualStyleBackColor = false;
             this.btnFile6.Click += new System.EventHandler(this.btnFile6_Click);
             // 
@@ -292,7 +300,7 @@
             this.btnBanks.Image = ((System.Drawing.Image)(resources.GetObject("btnBanks.Image")));
             this.btnBanks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBanks.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnBanks.Location = new System.Drawing.Point(4, 105);
+            this.btnBanks.Location = new System.Drawing.Point(5, 109);
             this.btnBanks.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnBanks.Name = "btnBanks";
             this.btnBanks.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -315,9 +323,9 @@
             this.txtTCG.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.txtTCG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTCG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.txtTCG.Location = new System.Drawing.Point(16, 132);
+            this.txtTCG.Location = new System.Drawing.Point(7, 132);
             this.txtTCG.Name = "txtTCG";
-            this.txtTCG.Size = new System.Drawing.Size(410, 23);
+            this.txtTCG.Size = new System.Drawing.Size(432, 23);
             this.txtTCG.TabIndex = 20;
             this.txtTCG.Text = "label3";
             this.txtTCG.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -344,7 +352,7 @@
             this.btnRFLOA.Image = ((System.Drawing.Image)(resources.GetObject("btnRFLOA.Image")));
             this.btnRFLOA.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRFLOA.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnRFLOA.Location = new System.Drawing.Point(149, 57);
+            this.btnRFLOA.Location = new System.Drawing.Point(148, 61);
             this.btnRFLOA.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnRFLOA.Name = "btnRFLOA";
             this.btnRFLOA.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -372,7 +380,7 @@
             this.btnRehire.Image = ((System.Drawing.Image)(resources.GetObject("btnRehire.Image")));
             this.btnRehire.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRehire.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnRehire.Location = new System.Drawing.Point(149, 9);
+            this.btnRehire.Location = new System.Drawing.Point(148, 13);
             this.btnRehire.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnRehire.Name = "btnRehire";
             this.btnRehire.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -383,6 +391,8 @@
             this.btnRehire.Size = new System.Drawing.Size(141, 42);
             this.btnRehire.TabIndex = 22;
             this.btnRehire.Text = "Rehires";
+            this.btnRehire.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRehire.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRehire.UseVisualStyleBackColor = false;
             this.btnRehire.Click += new System.EventHandler(this.btnRehire_Click);
             // 
@@ -398,7 +408,7 @@
             this.mbUserLatestLogin.Image = ((System.Drawing.Image)(resources.GetObject("mbUserLatestLogin.Image")));
             this.mbUserLatestLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mbUserLatestLogin.ImageSize = new System.Drawing.Size(24, 24);
-            this.mbUserLatestLogin.Location = new System.Drawing.Point(206, 61);
+            this.mbUserLatestLogin.Location = new System.Drawing.Point(202, 64);
             this.mbUserLatestLogin.MenuListPosition = new System.Drawing.Point(0, 0);
             this.mbUserLatestLogin.Name = "mbUserLatestLogin";
             this.mbUserLatestLogin.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -408,7 +418,6 @@
             this.mbUserLatestLogin.Size = new System.Drawing.Size(173, 42);
             this.mbUserLatestLogin.TabIndex = 25;
             this.mbUserLatestLogin.Text = "User Latest Login";
-            this.mbUserLatestLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.mbUserLatestLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.mbUserLatestLogin.UseVisualStyleBackColor = false;
             this.mbUserLatestLogin.Click += new System.EventHandler(this.mbUserLatestLogin_Click);
@@ -426,7 +435,7 @@
             this.btnPriors.Image = ((System.Drawing.Image)(resources.GetObject("btnPriors.Image")));
             this.btnPriors.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPriors.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnPriors.Location = new System.Drawing.Point(4, 153);
+            this.btnPriors.Location = new System.Drawing.Point(5, 157);
             this.btnPriors.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnPriors.Name = "btnPriors";
             this.btnPriors.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -447,19 +456,21 @@
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.lblPayPeriod);
-            this.groupBox1.Location = new System.Drawing.Point(16, 173);
+            this.groupBox1.Location = new System.Drawing.Point(9, 176);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(312, 42);
+            this.groupBox1.Size = new System.Drawing.Size(430, 42);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             // 
             // lblPayPeriod
             // 
             this.lblPayPeriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayPeriod.Location = new System.Drawing.Point(195, 12);
+            this.lblPayPeriod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
+            this.lblPayPeriod.Location = new System.Drawing.Point(215, 13);
             this.lblPayPeriod.Name = "lblPayPeriod";
             this.lblPayPeriod.Size = new System.Drawing.Size(111, 23);
             this.lblPayPeriod.TabIndex = 8;
+            this.lblPayPeriod.Text = "test";
             this.lblPayPeriod.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnAHS_AA_Terms
@@ -475,7 +486,7 @@
             this.btnAHS_AA_Terms.Image = ((System.Drawing.Image)(resources.GetObject("btnAHS_AA_Terms.Image")));
             this.btnAHS_AA_Terms.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAHS_AA_Terms.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnAHS_AA_Terms.Location = new System.Drawing.Point(4, 9);
+            this.btnAHS_AA_Terms.Location = new System.Drawing.Point(5, 13);
             this.btnAHS_AA_Terms.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnAHS_AA_Terms.Name = "btnAHS_AA_Terms";
             this.btnAHS_AA_Terms.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -504,7 +515,7 @@
             this.btnTrans.Image = ((System.Drawing.Image)(resources.GetObject("btnTrans.Image")));
             this.btnTrans.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTrans.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnTrans.Location = new System.Drawing.Point(4, 57);
+            this.btnTrans.Location = new System.Drawing.Point(5, 61);
             this.btnTrans.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnTrans.Name = "btnTrans";
             this.btnTrans.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -516,7 +527,7 @@
             this.btnTrans.TabIndex = 29;
             this.btnTrans.Text = "AHS_AA_\r\nTRANSFER_RPT";
             this.btnTrans.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTrans.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnTrans.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTrans.UseVisualStyleBackColor = false;
             this.btnTrans.Click += new System.EventHandler(this.btnTrans_Click);
             // 
@@ -533,7 +544,7 @@
             this.btnUserTrainings.Image = ((System.Drawing.Image)(resources.GetObject("btnUserTrainings.Image")));
             this.btnUserTrainings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUserTrainings.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnUserTrainings.Location = new System.Drawing.Point(397, 109);
+            this.btnUserTrainings.Location = new System.Drawing.Point(393, 112);
             this.btnUserTrainings.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnUserTrainings.Name = "btnUserTrainings";
             this.btnUserTrainings.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -559,7 +570,7 @@
             this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
             this.btnClearLocks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClearLocks.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnClearLocks.Location = new System.Drawing.Point(206, 14);
+            this.btnClearLocks.Location = new System.Drawing.Point(202, 17);
             this.btnClearLocks.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnClearLocks.Name = "btnClearLocks";
             this.btnClearLocks.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -569,7 +580,6 @@
             this.btnClearLocks.Size = new System.Drawing.Size(173, 42);
             this.btnClearLocks.TabIndex = 31;
             this.btnClearLocks.Text = "Clear Locks (Lists)";
-            this.btnClearLocks.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClearLocks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClearLocks.UseVisualStyleBackColor = false;
             this.btnClearLocks.Click += new System.EventHandler(this.btnClearLocks_Click);
@@ -587,7 +597,7 @@
             this.btnGetLDAP.Image = ((System.Drawing.Image)(resources.GetObject("btnGetLDAP.Image")));
             this.btnGetLDAP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGetLDAP.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnGetLDAP.Location = new System.Drawing.Point(16, 61);
+            this.btnGetLDAP.Location = new System.Drawing.Point(12, 64);
             this.btnGetLDAP.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnGetLDAP.Name = "btnGetLDAP";
             this.btnGetLDAP.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -597,7 +607,6 @@
             this.btnGetLDAP.Size = new System.Drawing.Size(173, 42);
             this.btnGetLDAP.TabIndex = 32;
             this.btnGetLDAP.Text = "Get LDAP Username";
-            this.btnGetLDAP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGetLDAP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGetLDAP.UseVisualStyleBackColor = false;
             this.btnGetLDAP.Click += new System.EventHandler(this.btnGetLDAP_Click);
@@ -607,7 +616,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Image = ((System.Drawing.Image)(resources.GetObject("label3.Image")));
-            this.label3.Location = new System.Drawing.Point(5, 5);
+            this.label3.Location = new System.Drawing.Point(5, 3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 25);
             this.label3.TabIndex = 23;
@@ -617,7 +626,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Image = ((System.Drawing.Image)(resources.GetObject("label4.Image")));
-            this.label4.Location = new System.Drawing.Point(170, 7);
+            this.label4.Location = new System.Drawing.Point(170, 11);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 25);
             this.label4.TabIndex = 24;
@@ -634,7 +643,7 @@
             this.btnExceptionLookup.Image = ((System.Drawing.Image)(resources.GetObject("btnExceptionLookup.Image")));
             this.btnExceptionLookup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExceptionLookup.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnExceptionLookup.Location = new System.Drawing.Point(206, 109);
+            this.btnExceptionLookup.Location = new System.Drawing.Point(202, 112);
             this.btnExceptionLookup.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnExceptionLookup.Name = "btnExceptionLookup";
             this.btnExceptionLookup.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -644,7 +653,6 @@
             this.btnExceptionLookup.Size = new System.Drawing.Size(173, 42);
             this.btnExceptionLookup.TabIndex = 33;
             this.btnExceptionLookup.Text = "Exception Lookup";
-            this.btnExceptionLookup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExceptionLookup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExceptionLookup.UseVisualStyleBackColor = false;
             this.btnExceptionLookup.Click += new System.EventHandler(this.btnExceptionLookup_Click);
@@ -661,7 +669,7 @@
             this.btnItemsReport.Image = ((System.Drawing.Image)(resources.GetObject("btnItemsReport.Image")));
             this.btnItemsReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnItemsReport.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnItemsReport.Location = new System.Drawing.Point(397, 14);
+            this.btnItemsReport.Location = new System.Drawing.Point(393, 17);
             this.btnItemsReport.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnItemsReport.Name = "btnItemsReport";
             this.btnItemsReport.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -671,7 +679,6 @@
             this.btnItemsReport.Size = new System.Drawing.Size(173, 42);
             this.btnItemsReport.TabIndex = 34;
             this.btnItemsReport.Text = "Open Items Report";
-            this.btnItemsReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnItemsReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnItemsReport.UseVisualStyleBackColor = false;
             this.btnItemsReport.Click += new System.EventHandler(this.btnItemsReport_Click);
@@ -684,14 +691,14 @@
             this.mnuCopyEmpName,
             this.mnuCopyBothNameAndNum});
             this.mnuCopyFromList.Name = "mnuCopyFromList";
-            this.mnuCopyFromList.Size = new System.Drawing.Size(311, 76);
+            this.mnuCopyFromList.Size = new System.Drawing.Size(312, 76);
             this.mnuCopyFromList.Text = "CopyFromList";
             // 
             // mnuCopyEmpNum
             // 
             this.mnuCopyEmpNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpNum.Image")));
             this.mnuCopyEmpNum.Name = "mnuCopyEmpNum";
-            this.mnuCopyEmpNum.Size = new System.Drawing.Size(310, 24);
+            this.mnuCopyEmpNum.Size = new System.Drawing.Size(311, 24);
             this.mnuCopyEmpNum.Text = "Copy Emp # to clipboard";
             this.mnuCopyEmpNum.Click += new System.EventHandler(this.mnuCopyEmpNum_Click);
             // 
@@ -699,7 +706,7 @@
             // 
             this.mnuCopyEmpName.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpName.Image")));
             this.mnuCopyEmpName.Name = "mnuCopyEmpName";
-            this.mnuCopyEmpName.Size = new System.Drawing.Size(310, 24);
+            this.mnuCopyEmpName.Size = new System.Drawing.Size(311, 24);
             this.mnuCopyEmpName.Text = "Copy Emp Name to clipboard";
             this.mnuCopyEmpName.Click += new System.EventHandler(this.mnuCopyEmpName_Click);
             // 
@@ -707,7 +714,7 @@
             // 
             this.mnuCopyBothNameAndNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyBothNameAndNum.Image")));
             this.mnuCopyBothNameAndNum.Name = "mnuCopyBothNameAndNum";
-            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(310, 24);
+            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(311, 24);
             this.mnuCopyBothNameAndNum.Text = "Copy Both Emp Name and # to clipboard";
             this.mnuCopyBothNameAndNum.Click += new System.EventHandler(this.mnuCopyBothNameAndNum_Click);
             // 
@@ -724,7 +731,7 @@
             this.btnSickOnStat.Image = ((System.Drawing.Image)(resources.GetObject("btnSickOnStat.Image")));
             this.btnSickOnStat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSickOnStat.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnSickOnStat.Location = new System.Drawing.Point(16, 109);
+            this.btnSickOnStat.Location = new System.Drawing.Point(12, 112);
             this.btnSickOnStat.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnSickOnStat.Name = "btnSickOnStat";
             this.btnSickOnStat.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -734,7 +741,6 @@
             this.btnSickOnStat.Size = new System.Drawing.Size(173, 42);
             this.btnSickOnStat.TabIndex = 35;
             this.btnSickOnStat.Text = "Upload Sick On A Stat file \r\nfrom ePeople to Boo DB";
-            this.btnSickOnStat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSickOnStat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSickOnStat.UseVisualStyleBackColor = false;
             this.btnSickOnStat.Click += new System.EventHandler(this.btnSickOnStat_Click);
@@ -751,7 +757,7 @@
             this.btnTL_SYS.Image = ((System.Drawing.Image)(resources.GetObject("btnTL_SYS.Image")));
             this.btnTL_SYS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTL_SYS.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnTL_SYS.Location = new System.Drawing.Point(295, 9);
+            this.btnTL_SYS.Location = new System.Drawing.Point(291, 13);
             this.btnTL_SYS.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnTL_SYS.Name = "btnTL_SYS";
             this.btnTL_SYS.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -762,7 +768,8 @@
             this.btnTL_SYS.Size = new System.Drawing.Size(141, 42);
             this.btnTL_SYS.TabIndex = 36;
             this.btnTL_SYS.Text = "TL_SYS";
-            this.btnTL_SYS.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnTL_SYS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTL_SYS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTL_SYS.UseVisualStyleBackColor = false;
             this.btnTL_SYS.Click += new System.EventHandler(this.btnTL_SYS_Click);
             // 
@@ -779,7 +786,7 @@
             this.btnAA_Exception.Image = ((System.Drawing.Image)(resources.GetObject("btnAA_Exception.Image")));
             this.btnAA_Exception.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAA_Exception.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnAA_Exception.Location = new System.Drawing.Point(295, 57);
+            this.btnAA_Exception.Location = new System.Drawing.Point(291, 61);
             this.btnAA_Exception.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnAA_Exception.Name = "btnAA_Exception";
             this.btnAA_Exception.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -791,7 +798,7 @@
             this.btnAA_Exception.TabIndex = 37;
             this.btnAA_Exception.Text = "AA_EXCEPTION";
             this.btnAA_Exception.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAA_Exception.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAA_Exception.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAA_Exception.UseVisualStyleBackColor = false;
             this.btnAA_Exception.Click += new System.EventHandler(this.btnAA_Exception_Click);
             // 
@@ -808,7 +815,7 @@
             this.btnV_FireCategories.Image = ((System.Drawing.Image)(resources.GetObject("btnV_FireCategories.Image")));
             this.btnV_FireCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnV_FireCategories.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnV_FireCategories.Location = new System.Drawing.Point(397, 60);
+            this.btnV_FireCategories.Location = new System.Drawing.Point(393, 63);
             this.btnV_FireCategories.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnV_FireCategories.Name = "btnV_FireCategories";
             this.btnV_FireCategories.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -824,56 +831,39 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.tabMisc);
             this.tabControl1.Controls.Add(this.tabFormattingTools);
             this.tabControl1.Controls.Add(this.tabSearch);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ImageList = this.imageList1;
-            this.tabControl1.Location = new System.Drawing.Point(9, 11);
+            this.tabControl1.Location = new System.Drawing.Point(5, 5);
             this.tabControl1.Name = "tabControl1";
-            this.tabControl1.Padding = new System.Drawing.Point(6, 10);
+            this.tabControl1.Padding = new System.Drawing.Point(6, 7);
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(593, 267);
             this.tabControl1.TabIndex = 39;
             // 
             // tabMisc
             // 
-            this.tabMisc.Controls.Add(this.btnGetLDAP);
-            this.tabMisc.Controls.Add(this.btnExceptionLookup);
-            this.tabMisc.Controls.Add(this.btnClearLocks);
-            this.tabMisc.Controls.Add(this.btnUserTrainings);
-            this.tabMisc.Controls.Add(this.btnV_FireCategories);
-            this.tabMisc.Controls.Add(this.mbUserLatestLogin);
-            this.tabMisc.Controls.Add(this.btnSickOnStat);
-            this.tabMisc.Controls.Add(this.btnItemsReport);
-            this.tabMisc.Controls.Add(this.btnFile126);
+            this.tabMisc.Controls.Add(this.groupBox2);
             this.tabMisc.ImageIndex = 2;
-            this.tabMisc.Location = new System.Drawing.Point(4, 39);
+            this.tabMisc.Location = new System.Drawing.Point(4, 36);
             this.tabMisc.Name = "tabMisc";
             this.tabMisc.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMisc.Size = new System.Drawing.Size(585, 224);
+            this.tabMisc.Size = new System.Drawing.Size(585, 227);
             this.tabMisc.TabIndex = 1;
             this.tabMisc.Text = "Misc.";
             this.tabMisc.UseVisualStyleBackColor = true;
             // 
             // tabFormattingTools
             // 
-            this.tabFormattingTools.Controls.Add(this.btnLOAwithNoRptTime);
-            this.tabFormattingTools.Controls.Add(this.btnAA_Exception);
-            this.tabFormattingTools.Controls.Add(this.btnBanks);
-            this.tabFormattingTools.Controls.Add(this.btnRFLOA);
-            this.tabFormattingTools.Controls.Add(this.btnRehire);
-            this.tabFormattingTools.Controls.Add(this.btnTL_SYS);
-            this.tabFormattingTools.Controls.Add(this.btnPriors);
-            this.tabFormattingTools.Controls.Add(this.btnAHS_AA_Terms);
-            this.tabFormattingTools.Controls.Add(this.btnTrans);
-            this.tabFormattingTools.Controls.Add(this.btnFile2);
-            this.tabFormattingTools.Controls.Add(this.btnFile6);
+            this.tabFormattingTools.Controls.Add(this.groupBox3);
             this.tabFormattingTools.ImageIndex = 1;
-            this.tabFormattingTools.Location = new System.Drawing.Point(4, 39);
+            this.tabFormattingTools.Location = new System.Drawing.Point(4, 36);
             this.tabFormattingTools.Name = "tabFormattingTools";
             this.tabFormattingTools.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFormattingTools.Size = new System.Drawing.Size(585, 224);
+            this.tabFormattingTools.Size = new System.Drawing.Size(585, 227);
             this.tabFormattingTools.TabIndex = 0;
             this.tabFormattingTools.Text = "Formatting Tools";
             this.tabFormattingTools.UseVisualStyleBackColor = true;
@@ -891,7 +881,7 @@
             this.btnLOAwithNoRptTime.Image = ((System.Drawing.Image)(resources.GetObject("btnLOAwithNoRptTime.Image")));
             this.btnLOAwithNoRptTime.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLOAwithNoRptTime.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnLOAwithNoRptTime.Location = new System.Drawing.Point(149, 105);
+            this.btnLOAwithNoRptTime.Location = new System.Drawing.Point(148, 109);
             this.btnLOAwithNoRptTime.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnLOAwithNoRptTime.Name = "btnLOAwithNoRptTime";
             this.btnLOAwithNoRptTime.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -903,33 +893,43 @@
             this.btnLOAwithNoRptTime.TabIndex = 38;
             this.btnLOAwithNoRptTime.Text = "AHS_AA_RPTD_\r\nNO_TIME";
             this.btnLOAwithNoRptTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLOAwithNoRptTime.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnLOAwithNoRptTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLOAwithNoRptTime.UseVisualStyleBackColor = false;
             this.btnLOAwithNoRptTime.Click += new System.EventHandler(this.btnLOAwithNoRptTime_Click);
             // 
             // tabSearch
             // 
-            this.tabSearch.Controls.Add(this.txtUnit);
-            this.tabSearch.Controls.Add(this.label6);
-            this.tabSearch.Controls.Add(this.btnSendEmail);
-            this.tabSearch.Controls.Add(this.lstResult);
-            this.tabSearch.Controls.Add(this.lblMsg);
-            this.tabSearch.Controls.Add(this.txtOCode);
+            this.tabSearch.Controls.Add(this.groupBox4);
             this.tabSearch.Controls.Add(this.label3);
-            this.tabSearch.Controls.Add(this.label1);
-            this.tabSearch.Controls.Add(this.txtEmpNo);
-            this.tabSearch.Controls.Add(this.groupBox1);
-            this.tabSearch.Controls.Add(this.txtTCG);
-            this.tabSearch.Controls.Add(this.label2);
-            this.tabSearch.Controls.Add(this.label4);
-            this.tabSearch.Controls.Add(this.label5);
             this.tabSearch.ImageIndex = 0;
-            this.tabSearch.Location = new System.Drawing.Point(4, 39);
+            this.tabSearch.Location = new System.Drawing.Point(4, 36);
             this.tabSearch.Name = "tabSearch";
-            this.tabSearch.Size = new System.Drawing.Size(585, 224);
+            this.tabSearch.Size = new System.Drawing.Size(585, 227);
             this.tabSearch.TabIndex = 2;
             this.tabSearch.Text = "Search";
             this.tabSearch.UseVisualStyleBackColor = true;
+            // 
+            // txtUnit
+            // 
+            this.txtUnit.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUnit.Location = new System.Drawing.Point(469, 13);
+            this.txtUnit.Name = "txtUnit";
+            this.txtUnit.Size = new System.Drawing.Size(110, 22);
+            this.txtUnit.TabIndex = 29;
+            this.txtUnit.TextChanged += new System.EventHandler(this.txtUnit_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Blue;
+            this.label6.Location = new System.Drawing.Point(444, 17);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(28, 13);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "Unit:";
             // 
             // btnSendEmail
             // 
@@ -937,7 +937,7 @@
             this.btnSendEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSendEmail.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSendEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnSendEmail.Image")));
-            this.btnSendEmail.Location = new System.Drawing.Point(432, 64);
+            this.btnSendEmail.Location = new System.Drawing.Point(444, 61);
             this.btnSendEmail.Name = "btnSendEmail";
             this.btnSendEmail.Size = new System.Drawing.Size(136, 48);
             this.btnSendEmail.TabIndex = 28;
@@ -945,6 +945,16 @@
             this.btnSendEmail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSendEmail.UseVisualStyleBackColor = true;
             this.btnSendEmail.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Image = ((System.Drawing.Image)(resources.GetObject("label5.Image")));
+            this.label5.Location = new System.Drawing.Point(416, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 25);
+            this.label5.TabIndex = 31;
             // 
             // imageList1
             // 
@@ -954,43 +964,71 @@
             this.imageList1.Images.SetKeyName(1, "format.png");
             this.imageList1.Images.SetKeyName(2, "others.png");
             // 
-            // txtUnit
+            // groupBox2
             // 
-            this.txtUnit.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUnit.Location = new System.Drawing.Point(469, 9);
-            this.txtUnit.Name = "txtUnit";
-            this.txtUnit.Size = new System.Drawing.Size(110, 22);
-            this.txtUnit.TabIndex = 29;
-            this.txtUnit.TextChanged += new System.EventHandler(this.txtUnit_TextChanged);
+            this.groupBox2.Controls.Add(this.btnGetLDAP);
+            this.groupBox2.Controls.Add(this.btnExceptionLookup);
+            this.groupBox2.Controls.Add(this.btnClearLocks);
+            this.groupBox2.Controls.Add(this.btnUserTrainings);
+            this.groupBox2.Controls.Add(this.btnV_FireCategories);
+            this.groupBox2.Controls.Add(this.mbUserLatestLogin);
+            this.groupBox2.Controls.Add(this.btnSickOnStat);
+            this.groupBox2.Controls.Add(this.btnItemsReport);
+            this.groupBox2.Controls.Add(this.btnFile126);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(579, 221);
+            this.groupBox2.TabIndex = 39;
+            this.groupBox2.TabStop = false;
             // 
-            // label5
+            // groupBox3
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Image = ((System.Drawing.Image)(resources.GetObject("label5.Image")));
-            this.label5.Location = new System.Drawing.Point(416, 5);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 25);
-            this.label5.TabIndex = 31;
+            this.groupBox3.Controls.Add(this.btnLOAwithNoRptTime);
+            this.groupBox3.Controls.Add(this.btnAA_Exception);
+            this.groupBox3.Controls.Add(this.btnBanks);
+            this.groupBox3.Controls.Add(this.btnRFLOA);
+            this.groupBox3.Controls.Add(this.btnRehire);
+            this.groupBox3.Controls.Add(this.btnTL_SYS);
+            this.groupBox3.Controls.Add(this.btnPriors);
+            this.groupBox3.Controls.Add(this.btnAHS_AA_Terms);
+            this.groupBox3.Controls.Add(this.btnTrans);
+            this.groupBox3.Controls.Add(this.btnFile2);
+            this.groupBox3.Controls.Add(this.btnFile6);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(579, 221);
+            this.groupBox3.TabIndex = 39;
+            this.groupBox3.TabStop = false;
             // 
-            // label6
+            // groupBox4
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Blue;
-            this.label6.Location = new System.Drawing.Point(444, 13);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 13);
-            this.label6.TabIndex = 30;
-            this.label6.Text = "Unit:";
+            this.groupBox4.Controls.Add(this.txtUnit);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.btnSendEmail);
+            this.groupBox4.Controls.Add(this.lstResult);
+            this.groupBox4.Controls.Add(this.lblMsg);
+            this.groupBox4.Controls.Add(this.txtOCode);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.txtEmpNo);
+            this.groupBox4.Controls.Add(this.groupBox1);
+            this.groupBox4.Controls.Add(this.txtTCG);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(0, 0);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(585, 227);
+            this.groupBox4.TabIndex = 32;
+            this.groupBox4.TabStop = false;
             // 
             // frmSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(611, 287);
+            this.ClientSize = new System.Drawing.Size(600, 273);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1012,7 +1050,10 @@
             this.tabMisc.ResumeLayout(false);
             this.tabFormattingTools.ResumeLayout(false);
             this.tabSearch.ResumeLayout(false);
-            this.tabSearch.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1069,6 +1110,9 @@
         private System.Windows.Forms.TextBox txtUnit;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }
 
