@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>admin_tools_icon_144376 - Copy.ico</ApplicationIcon>
+    <ApplicationIcon>tools.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EPPlus">
@@ -233,6 +233,7 @@
     <Content Include="images\Report.png" />
     <Content Include="images\save.png" />
     <Content Include="images\Zoom-icon.png" />
+    <Content Include="tools.ico" />
     <None Include="images\20170316_144735.jpg" />
   </ItemGroup>
   <ItemGroup>

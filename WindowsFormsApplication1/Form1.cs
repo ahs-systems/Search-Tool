@@ -172,7 +172,7 @@ namespace WindowsFormsApplication1
             _reader.Close();
             CloseConnection();
 
-            lblMsg.Text = "";
+            lblMsg.Text = lstResult.Items.Count + " record(s) found.";
             Update();
         }
 
@@ -270,7 +270,7 @@ namespace WindowsFormsApplication1
 
             CloseConnection();
 
-            lblMsg.Text = "";
+            lblMsg.Text = lstResult.Items.Count + " record(s) found.";
             Update();
         }
 
@@ -2794,6 +2794,49 @@ namespace WindowsFormsApplication1
                 Cursor.Current = Cursors.Default;
                 Update();
             }
+        }
+
+        private void txtUnit_TextChanged(object sender, EventArgs e)
+        {
+            _searchMode = 3;
+            btnSendEmail.Enabled = txtTCG.Visible = false;            
+
+            if (txtUnit.Text.Trim().Length == 0)
+            {
+                lstResult.Items.Clear();
+                return;
+            }
+
+            if (txtUnit.Text.Trim().Length < 2) return;
+
+            lblMsg.Text = "Please wait...";
+            Update();
+
+            OpenConnection();
+
+            _comm.CommandText = "select Rtrim(LTrim(U_desc)) + '   ::   ' + Rtrim(LTrim(U_ShortDesc)) AS Units from unit where " + 
+                "(UPPER(U_Desc) LIKE @_SearchStr OR UPPER(U_ShortDesc) LIKE @_SearchStr) AND U_Active = 1 order by U_Desc";
+
+            _comm.Parameters.Add(new SqlParameter("_SearchStr", "%" + txtUnit.Text.Trim().ToUpper() + "%")); 
+            SqlDataReader _reader = _comm.ExecuteReader();
+            if (_reader.HasRows)
+            {
+                lstResult.Items.Clear();
+                while (_reader.Read())
+                {
+                    lstResult.Items.Add(_reader["Units"].ToString());
+                }
+            }
+            else
+            {
+                lstResult.Items.Clear();
+            }
+            _reader.Close();
+
+            CloseConnection();
+
+            lblMsg.Text = lstResult.Items.Count + " record(s) found.";
+            Update();
         }
     }
 }
