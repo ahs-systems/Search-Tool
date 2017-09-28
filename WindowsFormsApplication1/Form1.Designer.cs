@@ -72,26 +72,27 @@
             this.btnV_FireCategories = new MBGlassStyleButton.MBGlassButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabMisc = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabFormattingTools = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnLOAwithNoRptTime = new MBGlassStyleButton.MBGlassButton();
             this.tabSearch = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtUnit = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSendEmail = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.mnuCopyFromList.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabMisc.SuspendLayout();
-            this.tabFormattingTools.SuspendLayout();
-            this.tabSearch.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabFormattingTools.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tabSearch.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,7 +120,7 @@
             // 
             this.txtOCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtOCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtOCode.Location = new System.Drawing.Point(96, 13);
+            this.txtOCode.Location = new System.Drawing.Point(96, 15);
             this.txtOCode.Name = "txtOCode";
             this.txtOCode.Size = new System.Drawing.Size(65, 22);
             this.txtOCode.TabIndex = 2;
@@ -131,11 +132,12 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(35, 17);
+            this.label1.Location = new System.Drawing.Point(37, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(60, 26);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Occupation:";
+            this.label1.Text = "Occupation\r\nCode:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
@@ -143,17 +145,18 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(198, 16);
+            this.label2.Location = new System.Drawing.Point(201, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 13);
+            this.label2.Size = new System.Drawing.Size(106, 26);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Emp No or LastName:";
+            this.label2.Text = "Emp No or LastName\r\nor FirstName:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtEmpNo
             // 
             this.txtEmpNo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtEmpNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmpNo.Location = new System.Drawing.Point(305, 12);
+            this.txtEmpNo.Location = new System.Drawing.Point(305, 14);
             this.txtEmpNo.Name = "txtEmpNo";
             this.txtEmpNo.Size = new System.Drawing.Size(100, 22);
             this.txtEmpNo.TabIndex = 4;
@@ -197,12 +200,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSendEmail});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 28);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 26);
             // 
             // mnuSendEmail
             // 
             this.mnuSendEmail.Name = "mnuSendEmail";
-            this.mnuSendEmail.Size = new System.Drawing.Size(191, 24);
+            this.mnuSendEmail.Size = new System.Drawing.Size(188, 22);
             this.mnuSendEmail.Text = "Send Email To SSO";
             // 
             // btnFile126
@@ -218,7 +221,7 @@
             this.btnFile126.Image = ((System.Drawing.Image)(resources.GetObject("btnFile126.Image")));
             this.btnFile126.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFile126.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnFile126.Location = new System.Drawing.Point(11, 17);
+            this.btnFile126.Location = new System.Drawing.Point(11, 19);
             this.btnFile126.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnFile126.Name = "btnFile126";
             this.btnFile126.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -272,7 +275,7 @@
             this.btnFile6.Image = ((System.Drawing.Image)(resources.GetObject("btnFile6.Image")));
             this.btnFile6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFile6.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnFile6.Location = new System.Drawing.Point(434, 61);
+            this.btnFile6.Location = new System.Drawing.Point(434, 67);
             this.btnFile6.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnFile6.Name = "btnFile6";
             this.btnFile6.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -300,7 +303,7 @@
             this.btnBanks.Image = ((System.Drawing.Image)(resources.GetObject("btnBanks.Image")));
             this.btnBanks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBanks.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnBanks.Location = new System.Drawing.Point(5, 109);
+            this.btnBanks.Location = new System.Drawing.Point(5, 121);
             this.btnBanks.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnBanks.Name = "btnBanks";
             this.btnBanks.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -352,7 +355,7 @@
             this.btnRFLOA.Image = ((System.Drawing.Image)(resources.GetObject("btnRFLOA.Image")));
             this.btnRFLOA.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRFLOA.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnRFLOA.Location = new System.Drawing.Point(148, 61);
+            this.btnRFLOA.Location = new System.Drawing.Point(148, 67);
             this.btnRFLOA.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnRFLOA.Name = "btnRFLOA";
             this.btnRFLOA.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -408,7 +411,7 @@
             this.mbUserLatestLogin.Image = ((System.Drawing.Image)(resources.GetObject("mbUserLatestLogin.Image")));
             this.mbUserLatestLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mbUserLatestLogin.ImageSize = new System.Drawing.Size(24, 24);
-            this.mbUserLatestLogin.Location = new System.Drawing.Point(202, 64);
+            this.mbUserLatestLogin.Location = new System.Drawing.Point(202, 90);
             this.mbUserLatestLogin.MenuListPosition = new System.Drawing.Point(0, 0);
             this.mbUserLatestLogin.Name = "mbUserLatestLogin";
             this.mbUserLatestLogin.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -435,7 +438,7 @@
             this.btnPriors.Image = ((System.Drawing.Image)(resources.GetObject("btnPriors.Image")));
             this.btnPriors.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPriors.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnPriors.Location = new System.Drawing.Point(5, 157);
+            this.btnPriors.Location = new System.Drawing.Point(5, 173);
             this.btnPriors.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnPriors.Name = "btnPriors";
             this.btnPriors.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -515,7 +518,7 @@
             this.btnTrans.Image = ((System.Drawing.Image)(resources.GetObject("btnTrans.Image")));
             this.btnTrans.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTrans.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnTrans.Location = new System.Drawing.Point(5, 61);
+            this.btnTrans.Location = new System.Drawing.Point(5, 67);
             this.btnTrans.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnTrans.Name = "btnTrans";
             this.btnTrans.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -544,7 +547,7 @@
             this.btnUserTrainings.Image = ((System.Drawing.Image)(resources.GetObject("btnUserTrainings.Image")));
             this.btnUserTrainings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUserTrainings.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnUserTrainings.Location = new System.Drawing.Point(393, 112);
+            this.btnUserTrainings.Location = new System.Drawing.Point(393, 164);
             this.btnUserTrainings.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnUserTrainings.Name = "btnUserTrainings";
             this.btnUserTrainings.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -570,7 +573,7 @@
             this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
             this.btnClearLocks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClearLocks.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnClearLocks.Location = new System.Drawing.Point(202, 17);
+            this.btnClearLocks.Location = new System.Drawing.Point(202, 19);
             this.btnClearLocks.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnClearLocks.Name = "btnClearLocks";
             this.btnClearLocks.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -597,7 +600,7 @@
             this.btnGetLDAP.Image = ((System.Drawing.Image)(resources.GetObject("btnGetLDAP.Image")));
             this.btnGetLDAP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGetLDAP.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnGetLDAP.Location = new System.Drawing.Point(12, 64);
+            this.btnGetLDAP.Location = new System.Drawing.Point(12, 90);
             this.btnGetLDAP.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnGetLDAP.Name = "btnGetLDAP";
             this.btnGetLDAP.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -626,7 +629,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Image = ((System.Drawing.Image)(resources.GetObject("label4.Image")));
-            this.label4.Location = new System.Drawing.Point(170, 11);
+            this.label4.Location = new System.Drawing.Point(169, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 25);
             this.label4.TabIndex = 24;
@@ -643,7 +646,7 @@
             this.btnExceptionLookup.Image = ((System.Drawing.Image)(resources.GetObject("btnExceptionLookup.Image")));
             this.btnExceptionLookup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExceptionLookup.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnExceptionLookup.Location = new System.Drawing.Point(202, 112);
+            this.btnExceptionLookup.Location = new System.Drawing.Point(202, 164);
             this.btnExceptionLookup.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnExceptionLookup.Name = "btnExceptionLookup";
             this.btnExceptionLookup.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -669,7 +672,7 @@
             this.btnItemsReport.Image = ((System.Drawing.Image)(resources.GetObject("btnItemsReport.Image")));
             this.btnItemsReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnItemsReport.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnItemsReport.Location = new System.Drawing.Point(393, 17);
+            this.btnItemsReport.Location = new System.Drawing.Point(393, 19);
             this.btnItemsReport.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnItemsReport.Name = "btnItemsReport";
             this.btnItemsReport.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -691,14 +694,14 @@
             this.mnuCopyEmpName,
             this.mnuCopyBothNameAndNum});
             this.mnuCopyFromList.Name = "mnuCopyFromList";
-            this.mnuCopyFromList.Size = new System.Drawing.Size(312, 76);
+            this.mnuCopyFromList.Size = new System.Drawing.Size(311, 76);
             this.mnuCopyFromList.Text = "CopyFromList";
             // 
             // mnuCopyEmpNum
             // 
             this.mnuCopyEmpNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpNum.Image")));
             this.mnuCopyEmpNum.Name = "mnuCopyEmpNum";
-            this.mnuCopyEmpNum.Size = new System.Drawing.Size(311, 24);
+            this.mnuCopyEmpNum.Size = new System.Drawing.Size(310, 24);
             this.mnuCopyEmpNum.Text = "Copy Emp # to clipboard";
             this.mnuCopyEmpNum.Click += new System.EventHandler(this.mnuCopyEmpNum_Click);
             // 
@@ -706,7 +709,7 @@
             // 
             this.mnuCopyEmpName.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpName.Image")));
             this.mnuCopyEmpName.Name = "mnuCopyEmpName";
-            this.mnuCopyEmpName.Size = new System.Drawing.Size(311, 24);
+            this.mnuCopyEmpName.Size = new System.Drawing.Size(310, 24);
             this.mnuCopyEmpName.Text = "Copy Emp Name to clipboard";
             this.mnuCopyEmpName.Click += new System.EventHandler(this.mnuCopyEmpName_Click);
             // 
@@ -714,7 +717,7 @@
             // 
             this.mnuCopyBothNameAndNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyBothNameAndNum.Image")));
             this.mnuCopyBothNameAndNum.Name = "mnuCopyBothNameAndNum";
-            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(311, 24);
+            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(310, 24);
             this.mnuCopyBothNameAndNum.Text = "Copy Both Emp Name and # to clipboard";
             this.mnuCopyBothNameAndNum.Click += new System.EventHandler(this.mnuCopyBothNameAndNum_Click);
             // 
@@ -731,7 +734,7 @@
             this.btnSickOnStat.Image = ((System.Drawing.Image)(resources.GetObject("btnSickOnStat.Image")));
             this.btnSickOnStat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSickOnStat.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnSickOnStat.Location = new System.Drawing.Point(12, 112);
+            this.btnSickOnStat.Location = new System.Drawing.Point(12, 164);
             this.btnSickOnStat.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnSickOnStat.Name = "btnSickOnStat";
             this.btnSickOnStat.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -786,7 +789,7 @@
             this.btnAA_Exception.Image = ((System.Drawing.Image)(resources.GetObject("btnAA_Exception.Image")));
             this.btnAA_Exception.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAA_Exception.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnAA_Exception.Location = new System.Drawing.Point(291, 61);
+            this.btnAA_Exception.Location = new System.Drawing.Point(291, 67);
             this.btnAA_Exception.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnAA_Exception.Name = "btnAA_Exception";
             this.btnAA_Exception.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -815,7 +818,7 @@
             this.btnV_FireCategories.Image = ((System.Drawing.Image)(resources.GetObject("btnV_FireCategories.Image")));
             this.btnV_FireCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnV_FireCategories.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnV_FireCategories.Location = new System.Drawing.Point(393, 63);
+            this.btnV_FireCategories.Location = new System.Drawing.Point(393, 89);
             this.btnV_FireCategories.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnV_FireCategories.Name = "btnV_FireCategories";
             this.btnV_FireCategories.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -831,6 +834,7 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.tabMisc);
             this.tabControl1.Controls.Add(this.tabFormattingTools);
@@ -856,6 +860,24 @@
             this.tabMisc.Text = "Misc.";
             this.tabMisc.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnGetLDAP);
+            this.groupBox2.Controls.Add(this.btnExceptionLookup);
+            this.groupBox2.Controls.Add(this.btnClearLocks);
+            this.groupBox2.Controls.Add(this.btnUserTrainings);
+            this.groupBox2.Controls.Add(this.btnV_FireCategories);
+            this.groupBox2.Controls.Add(this.mbUserLatestLogin);
+            this.groupBox2.Controls.Add(this.btnSickOnStat);
+            this.groupBox2.Controls.Add(this.btnItemsReport);
+            this.groupBox2.Controls.Add(this.btnFile126);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(579, 221);
+            this.groupBox2.TabIndex = 39;
+            this.groupBox2.TabStop = false;
+            // 
             // tabFormattingTools
             // 
             this.tabFormattingTools.Controls.Add(this.groupBox3);
@@ -867,6 +889,26 @@
             this.tabFormattingTools.TabIndex = 0;
             this.tabFormattingTools.Text = "Formatting Tools";
             this.tabFormattingTools.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnLOAwithNoRptTime);
+            this.groupBox3.Controls.Add(this.btnAA_Exception);
+            this.groupBox3.Controls.Add(this.btnBanks);
+            this.groupBox3.Controls.Add(this.btnRFLOA);
+            this.groupBox3.Controls.Add(this.btnRehire);
+            this.groupBox3.Controls.Add(this.btnTL_SYS);
+            this.groupBox3.Controls.Add(this.btnPriors);
+            this.groupBox3.Controls.Add(this.btnAHS_AA_Terms);
+            this.groupBox3.Controls.Add(this.btnTrans);
+            this.groupBox3.Controls.Add(this.btnFile2);
+            this.groupBox3.Controls.Add(this.btnFile6);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(579, 221);
+            this.groupBox3.TabIndex = 39;
+            this.groupBox3.TabStop = false;
             // 
             // btnLOAwithNoRptTime
             // 
@@ -881,7 +923,7 @@
             this.btnLOAwithNoRptTime.Image = ((System.Drawing.Image)(resources.GetObject("btnLOAwithNoRptTime.Image")));
             this.btnLOAwithNoRptTime.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLOAwithNoRptTime.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnLOAwithNoRptTime.Location = new System.Drawing.Point(148, 109);
+            this.btnLOAwithNoRptTime.Location = new System.Drawing.Point(148, 121);
             this.btnLOAwithNoRptTime.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnLOAwithNoRptTime.Name = "btnLOAwithNoRptTime";
             this.btnLOAwithNoRptTime.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -909,11 +951,34 @@
             this.tabSearch.Text = "Search";
             this.tabSearch.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.txtUnit);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.btnSendEmail);
+            this.groupBox4.Controls.Add(this.lstResult);
+            this.groupBox4.Controls.Add(this.lblMsg);
+            this.groupBox4.Controls.Add(this.txtOCode);
+            this.groupBox4.Controls.Add(this.txtEmpNo);
+            this.groupBox4.Controls.Add(this.groupBox1);
+            this.groupBox4.Controls.Add(this.txtTCG);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(0, 0);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(585, 227);
+            this.groupBox4.TabIndex = 32;
+            this.groupBox4.TabStop = false;
+            // 
             // txtUnit
             // 
             this.txtUnit.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUnit.Location = new System.Drawing.Point(469, 13);
+            this.txtUnit.Location = new System.Drawing.Point(469, 15);
             this.txtUnit.Name = "txtUnit";
             this.txtUnit.Size = new System.Drawing.Size(110, 22);
             this.txtUnit.TabIndex = 29;
@@ -951,10 +1016,20 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Image = ((System.Drawing.Image)(resources.GetObject("label5.Image")));
-            this.label5.Location = new System.Drawing.Point(416, 9);
+            this.label5.Location = new System.Drawing.Point(416, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(33, 25);
             this.label5.TabIndex = 31;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Image = ((System.Drawing.Image)(resources.GetObject("label7.Image")));
+            this.label7.Location = new System.Drawing.Point(5, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 25);
+            this.label7.TabIndex = 32;
             // 
             // imageList1
             // 
@@ -963,66 +1038,6 @@
             this.imageList1.Images.SetKeyName(0, "search.png");
             this.imageList1.Images.SetKeyName(1, "format.png");
             this.imageList1.Images.SetKeyName(2, "others.png");
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnGetLDAP);
-            this.groupBox2.Controls.Add(this.btnExceptionLookup);
-            this.groupBox2.Controls.Add(this.btnClearLocks);
-            this.groupBox2.Controls.Add(this.btnUserTrainings);
-            this.groupBox2.Controls.Add(this.btnV_FireCategories);
-            this.groupBox2.Controls.Add(this.mbUserLatestLogin);
-            this.groupBox2.Controls.Add(this.btnSickOnStat);
-            this.groupBox2.Controls.Add(this.btnItemsReport);
-            this.groupBox2.Controls.Add(this.btnFile126);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(3, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(579, 221);
-            this.groupBox2.TabIndex = 39;
-            this.groupBox2.TabStop = false;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnLOAwithNoRptTime);
-            this.groupBox3.Controls.Add(this.btnAA_Exception);
-            this.groupBox3.Controls.Add(this.btnBanks);
-            this.groupBox3.Controls.Add(this.btnRFLOA);
-            this.groupBox3.Controls.Add(this.btnRehire);
-            this.groupBox3.Controls.Add(this.btnTL_SYS);
-            this.groupBox3.Controls.Add(this.btnPriors);
-            this.groupBox3.Controls.Add(this.btnAHS_AA_Terms);
-            this.groupBox3.Controls.Add(this.btnTrans);
-            this.groupBox3.Controls.Add(this.btnFile2);
-            this.groupBox3.Controls.Add(this.btnFile6);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(579, 221);
-            this.groupBox3.TabIndex = 39;
-            this.groupBox3.TabStop = false;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.txtUnit);
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Controls.Add(this.btnSendEmail);
-            this.groupBox4.Controls.Add(this.lstResult);
-            this.groupBox4.Controls.Add(this.lblMsg);
-            this.groupBox4.Controls.Add(this.txtOCode);
-            this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.txtEmpNo);
-            this.groupBox4.Controls.Add(this.groupBox1);
-            this.groupBox4.Controls.Add(this.txtTCG);
-            this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(0, 0);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(585, 227);
-            this.groupBox4.TabIndex = 32;
-            this.groupBox4.TabStop = false;
             // 
             // frmSearch
             // 
@@ -1035,7 +1050,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.09.26";
+            this.Text = "SömëKindä Tööl v2017.09.28";
             this.Activated += new System.EventHandler(this.frmSearch_Activated);
             this.Deactivate += new System.EventHandler(this.frmSearch_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSearch_FormClosing);
@@ -1048,10 +1063,10 @@
             this.mnuCopyFromList.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabMisc.ResumeLayout(false);
-            this.tabFormattingTools.ResumeLayout(false);
-            this.tabSearch.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.tabFormattingTools.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.tabSearch.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
@@ -1113,6 +1128,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label7;
     }
 }
 

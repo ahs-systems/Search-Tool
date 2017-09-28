@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1
         SqlConnection _conn = new SqlConnection();
         SqlCommand _comm;
 
-        byte _searchMode; //1=occupation, 2=employee
+        byte _searchMode; //1=occupation, 2=employee, 3=unit
 
         public frmSearch()
         {
@@ -248,7 +248,7 @@ namespace WindowsFormsApplication1
             }
             else // SEARCH BY LAST NAME
             {
-                _comm.CommandText = "SELECT LTRIM(RTRIM(E_EMPNBR)) + '  -  ' + LTRIM(RTRIM(E_LASTNAME)) + ', ' + LTRIM(RTRIM(E_FIRSTNAME)) 'DESC' FROM EMP WHERE UPPER(E_LASTNAME) LIKE @V_SEARCH AND LEN(E_EMPNBR) > 7 ORDER BY E_LASTNAME, E_FIRSTNAME";
+                _comm.CommandText = "SELECT LTRIM(RTRIM(E_EMPNBR)) + '  -  ' + LTRIM(RTRIM(E_LASTNAME)) + ', ' + LTRIM(RTRIM(E_FIRSTNAME)) 'DESC' FROM EMP WHERE (UPPER(E_LASTNAME) LIKE @V_SEARCH OR UPPER(E_FIRSTNAME) LIKE @V_SEARCH) AND LEN(E_EMPNBR) > 7 ORDER BY E_LASTNAME, E_FIRSTNAME";
             }
 
             _comm.Parameters.Add(new SqlParameter("V_SEARCH", _searchString + "%")); //) + "
@@ -673,7 +673,6 @@ namespace WindowsFormsApplication1
 
             return _ret;
         }
-
 
         private void btnFile6_Click(object sender, EventArgs e)
         {
