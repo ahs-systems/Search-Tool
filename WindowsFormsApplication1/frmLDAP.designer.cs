@@ -53,6 +53,8 @@
             this.btnSearchByLDAP = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtSearchByLDAP = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnBatchByID = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -209,7 +211,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(431, 5);
+            this.button1.Location = new System.Drawing.Point(14, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 23);
             this.button1.TabIndex = 44;
@@ -283,11 +285,36 @@
             this.txtSearchByLDAP.TabIndex = 49;
             this.txtSearchByLDAP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchByLDAP_KeyPress);
             // 
+            // label11
+            // 
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Maroon;
+            this.label11.Location = new System.Drawing.Point(430, 41);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(140, 26);
+            this.label11.TabIndex = 56;
+            this.label11.Text = "( Comma or Line Feed Delimited Text File )";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnBatchByID
+            // 
+            this.btnBatchByID.Image = ((System.Drawing.Image)(resources.GetObject("btnBatchByID.Image")));
+            this.btnBatchByID.Location = new System.Drawing.Point(433, 2);
+            this.btnBatchByID.Name = "btnBatchByID";
+            this.btnBatchByID.Size = new System.Drawing.Size(137, 38);
+            this.btnBatchByID.TabIndex = 55;
+            this.btnBatchByID.Text = "Batch By ID";
+            this.btnBatchByID.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBatchByID.UseVisualStyleBackColor = true;
+            this.btnBatchByID.Click += new System.EventHandler(this.btnBatchByID_Click);
+            // 
             // frmLDAP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 357);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.btnBatchByID);
             this.Controls.Add(this.btnSearchByLDAP);
             this.Controls.Add(this.txtSearchByLDAP);
             this.Controls.Add(this.txtEmpNo);
@@ -351,6 +378,8 @@
         private System.Windows.Forms.Button btnSearchByLDAP;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtSearchByLDAP;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnBatchByID;
     }
 }
 
