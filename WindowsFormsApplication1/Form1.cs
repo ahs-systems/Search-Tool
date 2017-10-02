@@ -692,86 +692,7 @@ namespace WindowsFormsApplication1
                 Cursor.Current = Cursors.WaitCursor;
                 Update();
 
-                // Set the file name and get the output directory
-                var fileName = "Example.xlsx";
-                var outputDir = Application.StartupPath;
-
-                // Create the file using the FileInfo object
-                var file = new FileInfo(outputDir + @"\" + fileName);
-
-                using (var package = new ExcelPackage())
-                {
-                    // add a new worksheet to the empty workbook
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(openFileDialog1.SafeFileName);
-
-                    // Set Page Settings
-                    worksheet.PrinterSettings.Orientation = eOrientation.Landscape;
-                    worksheet.PrinterSettings.ShowGridLines = true;
-                    worksheet.PrinterSettings.HorizontalCentered = true;
-                    worksheet.PrinterSettings.TopMargin = (decimal)1.5 / 2.54M;
-                    worksheet.PrinterSettings.BottomMargin = (decimal)1.5 / 2.54M;
-                    worksheet.PrinterSettings.LeftMargin = (decimal)1 / 2.54M;
-                    worksheet.PrinterSettings.RightMargin = (decimal)1 / 2.54M;
-                    worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
-                    worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
-                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
-                    worksheet.HeaderFooter.OddHeader.CenteredText = "Terms and Trans From File 6";
-                    worksheet.View.PageBreakView = true;
-                    worksheet.PrinterSettings.FitToPage = true; worksheet.PrinterSettings.FitToWidth = 1; worksheet.PrinterSettings.FitToHeight = 0;
-                    worksheet.PrinterSettings.RepeatRows = new ExcelAddress("$1:$1");
-                    worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
-
-                    //Setting Header Style
-                    worksheet.Row(1).Height = 42;
-                    worksheet.Column(1).Width = 3.29;
-                    worksheet.Cells[1, 2].Value = "EE ID #"; worksheet.Column(2).Width = 12.30;
-                    worksheet.Cells[1, 3].Value = "Eff Date"; worksheet.Column(3).Width = 10.43; //worksheet.Column(3).AutoFit(); //
-                    worksheet.Cells[1, 4].Value = "EE Name"; worksheet.Column(4).Width = 22;
-                    worksheet.Cells[1, 5].Value = "Transfer From"; worksheet.Column(5).Width = 35;
-                    worksheet.Cells[1, 6].Value = "Transfer To"; worksheet.Column(6).Width = 35;
-                    worksheet.Cells[1, 7].Value = "WFC License"; worksheet.Column(7).Width = 9.86; worksheet.Cells[1, 7].Style.WrapText = true;
-                    worksheet.Cells[1, 8].Value = "Comments"; worksheet.Column(8).Width = 15;
-                    var range = worksheet.Cells[1, 1, 1, 8];
-                    range.Style.Font.Bold = true;
-                    range.Style.Font.Size = 12;
-                    range.Style.Font.Name = "Arial";
-
-                    string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
-
-                    int lineCtr = 2;
-
-                    foreach (string line in lines)
-                    {
-                        string[] values = line.Split(',');
-                        if (values.Count() == 38)
-                        {
-                            if (values[16].Trim() == "0") // only with values "0"
-                            {
-                                worksheet.Row(lineCtr).Height = 25;
-                                worksheet.Row(lineCtr).Style.Font.Size = 12;
-                                worksheet.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
-                                worksheet.Cells[lineCtr, 1].Value = values[0];
-                                worksheet.Cells[lineCtr, 2].Value = values[1];
-                                worksheet.Cells[lineCtr, 3].Value = values[18] == "" ? "" : DateTime.ParseExact(values[18].PadLeft(8, '0'), "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("ddMMMyyyy");
-                                worksheet.Cells[lineCtr, 4].Value = GetEmpName(values[1].Substring(0, 8));
-                                lineCtr++;
-                            }
-                        }
-
-                        //_temp = values;
-                    }
-
-                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                    saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-                    saveFileDialog1.FilterIndex = 1;
-                    saveFileDialog1.FileName = "File 6 - " + DateTime.Now.ToString("ddMMMyy");
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        package.SaveAs(new FileInfo(saveFileDialog1.FileName));
-                        System.Diagnostics.Process.Start(saveFileDialog1.FileName);
-                    }
-                }
+                ProcessFile6(openFileDialog1.FileName, "");
             }
             catch (Exception ex)
             {
@@ -1350,6 +1271,7 @@ namespace WindowsFormsApplication1
                     worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
                     worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Terms and Trans From File 6";
+                    worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
                     worksheet.View.PageBreakView = true;
                     worksheet.PrinterSettings.FitToPage = true; worksheet.PrinterSettings.FitToWidth = 1; worksheet.PrinterSettings.FitToHeight = 0;
                     //worksheet.PrinterSettings.RepeatRows = new ExcelAddress("$2:$2");
@@ -1392,13 +1314,27 @@ namespace WindowsFormsApplication1
                         }
                     }
 
-                    if (!Directory.Exists(_destFolder + @"\Terms & Trans\"))
+                    if (_destFolder != "")
                     {
-                        Directory.CreateDirectory(_destFolder + @"\Terms & Trans\");
+                        if (!Directory.Exists(_destFolder + @"\Terms & Trans\"))
+                        {
+                            Directory.CreateDirectory(_destFolder + @"\Terms & Trans\");
+                        }
+                        package.SaveAs(new FileInfo(_destFolder + @"\Terms & Trans\File 6 - " + DateTime.Now.ToString("ddMMMyy") + ".xlsx"));
+                        System.Diagnostics.Process.Start(_destFolder + @"\Terms & Trans\File 6 - " + DateTime.Now.ToString("ddMMMyy") + ".xlsx");
                     }
-
-                    package.SaveAs(new FileInfo(_destFolder + @"\Terms & Trans\File 6 - " + DateTime.Now.ToString("ddMMMyy") + ".xlsx"));
-                    System.Diagnostics.Process.Start(_destFolder + @"\Terms & Trans\File 6 - " + DateTime.Now.ToString("ddMMMyy") + ".xlsx");
+                    else
+                    {
+                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                        saveFileDialog1.FilterIndex = 1;
+                        saveFileDialog1.FileName = "File 6 - " + DateTime.Now.ToString("ddMMMyy");
+                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                        {
+                            package.SaveAs(new FileInfo(saveFileDialog1.FileName));
+                            System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
