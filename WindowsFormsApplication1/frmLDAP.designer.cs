@@ -59,6 +59,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.textBox1.Location = new System.Drawing.Point(266, 7);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(106, 20);
@@ -67,6 +68,7 @@
             // 
             // listBox1
             // 
+            this.listBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.HorizontalScrollbar = true;
@@ -80,6 +82,7 @@
             // 
             // firstNameTextBox
             // 
+            this.firstNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.firstNameTextBox.Location = new System.Drawing.Point(266, 80);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(130, 20);
@@ -88,6 +91,7 @@
             // 
             // lastNameTextBox
             // 
+            this.lastNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lastNameTextBox.Location = new System.Drawing.Point(402, 80);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(124, 20);
@@ -96,6 +100,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(151, 9);
             this.label2.Name = "label2";
@@ -105,6 +110,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 81);
             this.label3.Name = "label3";
@@ -114,6 +120,7 @@
             // 
             // btnSearchName
             // 
+            this.btnSearchName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSearchName.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchName.Image")));
             this.btnSearchName.Location = new System.Drawing.Point(378, 2);
             this.btnSearchName.Name = "btnSearchName";
@@ -124,6 +131,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(270, 103);
@@ -134,6 +142,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(400, 103);
@@ -144,6 +153,7 @@
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.Location = new System.Drawing.Point(532, 72);
             this.button2.Name = "button2";
@@ -154,6 +164,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Maroon;
             this.label1.Location = new System.Drawing.Point(11, 176);
@@ -164,6 +175,7 @@
             // 
             // txtLDAP
             // 
+            this.txtLDAP.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtLDAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLDAP.Location = new System.Drawing.Point(87, 176);
             this.txtLDAP.Name = "txtLDAP";
@@ -173,6 +185,7 @@
             // 
             // txtEmail
             // 
+            this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(322, 177);
             this.txtEmail.Name = "txtEmail";
@@ -182,6 +195,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Maroon;
             this.label6.Location = new System.Drawing.Point(282, 178);
@@ -192,6 +206,7 @@
             // 
             // txtEmpName
             // 
+            this.txtEmpName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtEmpName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmpName.Location = new System.Drawing.Point(87, 150);
             this.txtEmpName.Name = "txtEmpName";
@@ -201,6 +216,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Maroon;
             this.label7.Location = new System.Drawing.Point(16, 150);
@@ -211,6 +227,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button1.Location = new System.Drawing.Point(14, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 23);
@@ -222,6 +239,7 @@
             // 
             // txtManager
             // 
+            this.txtManager.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtManager.Location = new System.Drawing.Point(322, 151);
             this.txtManager.Name = "txtManager";
@@ -231,6 +249,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Maroon;
             this.label8.Location = new System.Drawing.Point(292, 152);
@@ -241,6 +260,7 @@
             // 
             // txtEmpNo
             // 
+            this.txtEmpNo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtEmpNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmpNo.Location = new System.Drawing.Point(87, 123);
             this.txtEmpNo.Name = "txtEmpNo";
@@ -250,6 +270,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.Maroon;
             this.label9.Location = new System.Drawing.Point(43, 123);
@@ -260,6 +281,7 @@
             // 
             // btnSearchByLDAP
             // 
+            this.btnSearchByLDAP.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSearchByLDAP.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchByLDAP.Image")));
             this.btnSearchByLDAP.Location = new System.Drawing.Point(378, 41);
             this.btnSearchByLDAP.Name = "btnSearchByLDAP";
@@ -270,6 +292,7 @@
             // 
             // label10
             // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(124, 49);
             this.label10.Name = "label10";
@@ -279,6 +302,7 @@
             // 
             // txtSearchByLDAP
             // 
+            this.txtSearchByLDAP.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtSearchByLDAP.Location = new System.Drawing.Point(266, 46);
             this.txtSearchByLDAP.Name = "txtSearchByLDAP";
             this.txtSearchByLDAP.Size = new System.Drawing.Size(106, 20);
@@ -287,6 +311,7 @@
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Maroon;
             this.label11.Location = new System.Drawing.Point(430, 41);
@@ -298,6 +323,7 @@
             // 
             // btnBatchByID
             // 
+            this.btnBatchByID.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnBatchByID.Image = ((System.Drawing.Image)(resources.GetObject("btnBatchByID.Image")));
             this.btnBatchByID.Location = new System.Drawing.Point(433, 2);
             this.btnBatchByID.Name = "btnBatchByID";

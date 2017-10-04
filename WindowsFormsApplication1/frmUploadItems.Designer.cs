@@ -119,10 +119,11 @@
             // 
             // chkUploadToItems
             // 
+            this.chkUploadToItems.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.chkUploadToItems.AutoSize = true;
             this.chkUploadToItems.Location = new System.Drawing.Point(19, 8);
             this.chkUploadToItems.Name = "chkUploadToItems";
-            this.chkUploadToItems.Size = new System.Drawing.Size(186, 19);
+            this.chkUploadToItems.Size = new System.Drawing.Size(185, 19);
             this.chkUploadToItems.TabIndex = 63;
             this.chkUploadToItems.Text = "Upload File 2 to Items Report";
             this.chkUploadToItems.UseVisualStyleBackColor = true;
@@ -130,6 +131,7 @@
             // 
             // grpItems
             // 
+            this.grpItems.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.grpItems.Controls.Add(this.cboItemsReport);
             this.grpItems.Controls.Add(this.label35);
             this.grpItems.Controls.Add(this.label34);

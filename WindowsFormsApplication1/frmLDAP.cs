@@ -228,7 +228,7 @@ namespace WindowsFormsApplication1
 
         private void frmLDAP_Shown(object sender, EventArgs e)
         {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 384, 1000, 0);
+            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 397, 1000, 0);
         }
 
         private void frmLDAP_Load(object sender, EventArgs e)

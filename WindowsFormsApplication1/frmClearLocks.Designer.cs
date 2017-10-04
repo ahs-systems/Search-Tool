@@ -43,9 +43,9 @@
             // 
             // btnSearchName
             // 
-            this.btnSearchName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSearchName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSearchName.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchName.Image")));
-            this.btnSearchName.Location = new System.Drawing.Point(434, 6);
+            this.btnSearchName.Location = new System.Drawing.Point(340, 10);
             this.btnSearchName.Name = "btnSearchName";
             this.btnSearchName.Size = new System.Drawing.Size(38, 34);
             this.btnSearchName.TabIndex = 42;
@@ -54,8 +54,8 @@
             // 
             // txtSearchStr
             // 
-            this.txtSearchStr.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtSearchStr.Location = new System.Drawing.Point(268, 14);
+            this.txtSearchStr.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtSearchStr.Location = new System.Drawing.Point(174, 16);
             this.txtSearchStr.Name = "txtSearchStr";
             this.txtSearchStr.Size = new System.Drawing.Size(160, 20);
             this.txtSearchStr.TabIndex = 40;
@@ -64,11 +64,11 @@
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(69, -1);
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
+            this.label2.Location = new System.Drawing.Point(2, 1);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 48);
+            this.label2.Size = new System.Drawing.Size(166, 48);
             this.label2.TabIndex = 41;
             this.label2.Text = "Search By Record (Enter part of the name or unit): ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -77,22 +77,22 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 94);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 61);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(469, 125);
+            this.dataGridView1.Size = new System.Drawing.Size(820, 125);
             this.dataGridView1.TabIndex = 43;
             // 
             // btnFindByUser
             // 
-            this.btnFindByUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnFindByUser.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnFindByUser.Image = ((System.Drawing.Image)(resources.GetObject("btnFindByUser.Image")));
-            this.btnFindByUser.Location = new System.Drawing.Point(434, 48);
+            this.btnFindByUser.Location = new System.Drawing.Point(802, 10);
             this.btnFindByUser.Name = "btnFindByUser";
             this.btnFindByUser.Size = new System.Drawing.Size(38, 34);
             this.btnFindByUser.TabIndex = 46;
@@ -101,8 +101,8 @@
             // 
             // txtUser
             // 
-            this.txtUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtUser.Location = new System.Drawing.Point(268, 56);
+            this.txtUser.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtUser.Location = new System.Drawing.Point(636, 18);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(160, 20);
             this.txtUser.TabIndex = 44;
@@ -111,21 +111,21 @@
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(-5, 45);
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
+            this.label1.Location = new System.Drawing.Point(407, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(267, 37);
+            this.label1.Size = new System.Drawing.Size(223, 37);
             this.label1.TabIndex = 45;
             this.label1.Text = "Search By User (Enter part of the name of the user locking a record):";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblItemsFound
             // 
-            this.lblItemsFound.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblItemsFound.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblItemsFound.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblItemsFound.ForeColor = System.Drawing.Color.Crimson;
-            this.lblItemsFound.Location = new System.Drawing.Point(9, 209);
+            this.lblItemsFound.Location = new System.Drawing.Point(12, 181);
             this.lblItemsFound.Name = "lblItemsFound";
             this.lblItemsFound.Size = new System.Drawing.Size(113, 37);
             this.lblItemsFound.TabIndex = 47;
@@ -135,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 241);
+            this.ClientSize = new System.Drawing.Size(844, 215);
             this.Controls.Add(this.btnFindByUser);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.label1);

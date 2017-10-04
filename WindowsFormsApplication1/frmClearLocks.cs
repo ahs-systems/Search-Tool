@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Windows.Forms;
 using VisualEffects;
 using VisualEffects.Animations.Effects;
 using VisualEffects.Easing;
@@ -14,7 +10,7 @@ using VisualEffects.Easing;
 namespace WindowsFormsApplication1
 {
     public partial class frmClearLocks : Form
-    {      
+    {
 
         public frmClearLocks()
         {
@@ -85,7 +81,7 @@ namespace WindowsFormsApplication1
 
         private void frmClearLocks_Shown(object sender, EventArgs e)
         {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 273, 1000, 0);
+            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 259, 1000, 0);
         }
 
         private void frmClearLocks_Load(object sender, EventArgs e)

@@ -99,10 +99,10 @@
             // lstResult
             // 
             this.lstResult.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lstResult.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lstResult.BackColor = System.Drawing.Color.White;
             this.lstResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lstResult.Font = new System.Drawing.Font("Courier New", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lstResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.lstResult.FormattingEnabled = true;
             this.lstResult.ItemHeight = 16;
             this.lstResult.Location = new System.Drawing.Point(7, 45);
@@ -167,7 +167,7 @@
             this.lblMsg.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblMsg.AutoSize = true;
             this.lblMsg.ForeColor = System.Drawing.Color.Red;
-            this.lblMsg.Location = new System.Drawing.Point(2, 154);
+            this.lblMsg.Location = new System.Drawing.Point(9, 161);
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.Size = new System.Drawing.Size(0, 17);
             this.lblMsg.TabIndex = 6;
@@ -200,12 +200,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSendEmail});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(193, 28);
             // 
             // mnuSendEmail
             // 
             this.mnuSendEmail.Name = "mnuSendEmail";
-            this.mnuSendEmail.Size = new System.Drawing.Size(188, 22);
+            this.mnuSendEmail.Size = new System.Drawing.Size(192, 24);
             this.mnuSendEmail.Text = "Send Email To SSO";
             // 
             // btnFile126
@@ -322,7 +322,7 @@
             // txtTCG
             // 
             this.txtTCG.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtTCG.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtTCG.BackColor = System.Drawing.Color.White;
             this.txtTCG.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.txtTCG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTCG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
@@ -468,7 +468,7 @@
             // lblPayPeriod
             // 
             this.lblPayPeriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayPeriod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
+            this.lblPayPeriod.ForeColor = System.Drawing.Color.Blue;
             this.lblPayPeriod.Location = new System.Drawing.Point(215, 13);
             this.lblPayPeriod.Name = "lblPayPeriod";
             this.lblPayPeriod.Size = new System.Drawing.Size(111, 23);
@@ -694,14 +694,14 @@
             this.mnuCopyEmpName,
             this.mnuCopyBothNameAndNum});
             this.mnuCopyFromList.Name = "mnuCopyFromList";
-            this.mnuCopyFromList.Size = new System.Drawing.Size(311, 76);
+            this.mnuCopyFromList.Size = new System.Drawing.Size(333, 76);
             this.mnuCopyFromList.Text = "CopyFromList";
             // 
             // mnuCopyEmpNum
             // 
             this.mnuCopyEmpNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpNum.Image")));
             this.mnuCopyEmpNum.Name = "mnuCopyEmpNum";
-            this.mnuCopyEmpNum.Size = new System.Drawing.Size(310, 24);
+            this.mnuCopyEmpNum.Size = new System.Drawing.Size(332, 24);
             this.mnuCopyEmpNum.Text = "Copy Emp # to clipboard";
             this.mnuCopyEmpNum.Click += new System.EventHandler(this.mnuCopyEmpNum_Click);
             // 
@@ -709,7 +709,7 @@
             // 
             this.mnuCopyEmpName.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpName.Image")));
             this.mnuCopyEmpName.Name = "mnuCopyEmpName";
-            this.mnuCopyEmpName.Size = new System.Drawing.Size(310, 24);
+            this.mnuCopyEmpName.Size = new System.Drawing.Size(332, 24);
             this.mnuCopyEmpName.Text = "Copy Emp Name to clipboard";
             this.mnuCopyEmpName.Click += new System.EventHandler(this.mnuCopyEmpName_Click);
             // 
@@ -717,7 +717,7 @@
             // 
             this.mnuCopyBothNameAndNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyBothNameAndNum.Image")));
             this.mnuCopyBothNameAndNum.Name = "mnuCopyBothNameAndNum";
-            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(310, 24);
+            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(332, 24);
             this.mnuCopyBothNameAndNum.Text = "Copy Both Emp Name and # to clipboard";
             this.mnuCopyBothNameAndNum.Click += new System.EventHandler(this.mnuCopyBothNameAndNum_Click);
             // 
@@ -1000,7 +1000,7 @@
             // 
             this.btnSendEmail.Enabled = false;
             this.btnSendEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendEmail.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnSendEmail.ForeColor = System.Drawing.Color.MediumBlue;
             this.btnSendEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnSendEmail.Image")));
             this.btnSendEmail.Location = new System.Drawing.Point(444, 61);
             this.btnSendEmail.Name = "btnSendEmail";
@@ -1050,7 +1050,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.10.02";
+            this.Text = "SömëKindä Tööl v2017.10.04";
             this.Activated += new System.EventHandler(this.frmSearch_Activated);
             this.Deactivate += new System.EventHandler(this.frmSearch_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSearch_FormClosing);

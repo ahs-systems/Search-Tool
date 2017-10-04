@@ -89,7 +89,7 @@ namespace WindowsFormsApplication1
 
         private void frmLatestLogin_Shown(object sender, EventArgs e)
         {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 256, 1000, 0);
+            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 268, 1000, 0);
         }
     }
 }

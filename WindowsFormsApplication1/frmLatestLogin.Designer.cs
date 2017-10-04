@@ -41,6 +41,7 @@
             // 
             // txtEmpName
             // 
+            this.txtEmpName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtEmpName.Location = new System.Drawing.Point(184, 10);
             this.txtEmpName.Name = "txtEmpName";
             this.txtEmpName.Size = new System.Drawing.Size(160, 20);
@@ -49,6 +50,7 @@
             // 
             // lstResult
             // 
+            this.lstResult.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lstResult.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lstResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lstResult.FormattingEnabled = true;
@@ -61,6 +63,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Blue;
             this.label2.Location = new System.Drawing.Point(12, 11);
@@ -71,7 +74,9 @@
             // 
             // lblLastLoginDate
             // 
+            this.lblLastLoginDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblLastLoginDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLastLoginDate.ForeColor = System.Drawing.Color.Maroon;
             this.lblLastLoginDate.Location = new System.Drawing.Point(10, 198);
             this.lblLastLoginDate.Name = "lblLastLoginDate";
             this.lblLastLoginDate.Size = new System.Drawing.Size(378, 23);
@@ -80,6 +85,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Blue;
             this.label1.Location = new System.Drawing.Point(69, 52);
@@ -90,6 +96,7 @@
             // 
             // txtEmpNo
             // 
+            this.txtEmpNo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtEmpNo.Location = new System.Drawing.Point(184, 52);
             this.txtEmpNo.Name = "txtEmpNo";
             this.txtEmpNo.Size = new System.Drawing.Size(160, 20);
@@ -98,6 +105,7 @@
             // 
             // btnSearchName
             // 
+            this.btnSearchName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSearchName.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchName.Image")));
             this.btnSearchName.Location = new System.Drawing.Point(351, 3);
             this.btnSearchName.Name = "btnSearchName";
@@ -108,6 +116,7 @@
             // 
             // btnSearchByEmpNo
             // 
+            this.btnSearchByEmpNo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSearchByEmpNo.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchByEmpNo.Image")));
             this.btnSearchByEmpNo.Location = new System.Drawing.Point(351, 45);
             this.btnSearchByEmpNo.Name = "btnSearchByEmpNo";
