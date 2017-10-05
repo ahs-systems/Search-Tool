@@ -2778,8 +2778,8 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
                     worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
-                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
-                    worksheet.HeaderFooter.OddHeader.CenteredText = "AHS_AA_EXCEPTION_TLSYS";
+                    //worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
+                    worksheet.HeaderFooter.OddHeader.CenteredText = "AHS_AA_RPTD_NO_TIME";
                     worksheet.View.PageBreakView = true;
                     worksheet.PrinterSettings.FitToPage = true; worksheet.PrinterSettings.FitToWidth = 1; worksheet.PrinterSettings.FitToHeight = 0;
 
@@ -2855,7 +2855,7 @@ namespace WindowsFormsApplication1
                     SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                     saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
                     saveFileDialog1.FilterIndex = 1;
-                    saveFileDialog1.FileName = openFileDialog1.FileName.Substring(openFileDialog1.FileName.LastIndexOf("\\") + 1) + " - Payroll.xlsx";
+                    saveFileDialog1.FileName = "LOA With No Time Reported " + DateTime.Today.ToString("ddMMMyyyy") + " PP  - for SSC.xlsx";
                     if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     {
                         package.SaveAs(new FileInfo(saveFileDialog1.FileName));
