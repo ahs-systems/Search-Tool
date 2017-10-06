@@ -22,16 +22,17 @@ namespace WindowsFormsApplication1
                 case "ASC":
                 case "A0L":
                     _ret = CheckIfGSS(_EmpNum) ? "(Check if A0U)" : "A23";
-                    //_ret = CheckIfGSS(_EmpNum) ? "(Not UNA-HSAA-GSS)" : "A23";
                     break;
                 case "A10":
                     _ret = "A24";
                     break;
                 case "A5A":                
-                case "A0E":                
-                case "A48":
+                case "A0E":                                
                 case "A1H":
                     _ret = "A09";
+                    break;
+                case "A48":
+                    _ret = "";
                     break;
                 case "A1P":
                     _ret = CheckIfAUPE_AUX(_EmpNum) ? "(AUPE Aux)" : "A09";
