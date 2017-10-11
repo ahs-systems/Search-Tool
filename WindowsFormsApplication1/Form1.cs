@@ -154,7 +154,7 @@ namespace WindowsFormsApplication1
             Update();
 
             OpenConnection();
-            _comm.CommandText = "SELECT LTRIM(RTRIM(O_CODE)) + ' - ' + O_DESC 'DESC' FROM OCCUPATION WHERE O_CODE LIKE @V_O_CODE order by o_code";
+            _comm.CommandText = "SELECT LTRIM(RTRIM(O_CODE)) + ' - ' + O_DESC 'DESC' FROM OCCUPATION WHERE O_CODE LIKE @V_O_CODE AND O_OccClassID <> 612 order by o_code";
             _comm.Parameters.Add(new SqlParameter("V_O_CODE", _searchString + "%")); //) + "
             SqlDataReader _reader = _comm.ExecuteReader();
             if (_reader.HasRows)
@@ -432,7 +432,7 @@ namespace WindowsFormsApplication1
             string _ret = "";
 
             OpenConnection();
-            _comm.CommandText = "SELECT LTRIM(RTRIM(O_CODE)) + ' - ' + O_DESC 'DESC' FROM OCCUPATION WHERE O_CODE LIKE @V_O_CODE order by o_code, O_DESC DESC";
+            _comm.CommandText = "SELECT LTRIM(RTRIM(O_CODE)) + ' - ' + O_DESC 'DESC' FROM OCCUPATION WHERE O_CODE LIKE @V_O_CODE AND O_OccClassID <> 612 order by o_code, O_DESC DESC";
             _comm.Parameters.Add(new SqlParameter("V_O_CODE", _code.Trim().ToUpper() + "%"));
             SqlDataReader _reader = _comm.ExecuteReader();
             if (_reader.HasRows)
@@ -784,131 +784,57 @@ namespace WindowsFormsApplication1
 
 
                         #region Old Formatting
-                        //for (int i = 12; i <= totalRows; i++)
-                        //{
-                        //    try
-                        //    {
-                        //        worksheet.Row(i - 10).Height = 25;
-                        //        worksheet.Row(i - 10).Style.Font.Size = 12;
-                        //        worksheet.Row(i - 10).Style.Font.Name = "Arial";
-                        //        worksheet.Row(i - 10).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
-
-                        //        worksheet.Cells[i - 10, 1].Value = currentWorksheet.Cells[i, 1].Value.ToString().Trim(); worksheet.Cells[i - 10, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                        //        worksheet.Cells[i - 10, 2].Value = currentWorksheet.Cells[i, 2].Value; worksheet.Cells[i - 10, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                        //        worksheet.Cells[i - 10, 3].Value = currentWorksheet.Cells[i, 5].Value.ToString().Trim(); worksheet.Cells[i - 10, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                        //        worksheet.Cells[i - 10, 4].Value = currentWorksheet.Cells[i, 7].Value; worksheet.Cells[i - 10, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                        //        worksheet.Cells[i - 10, 5].Value = currentWorksheet.Cells[i, 8].Value; worksheet.Cells[i - 10, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                        //        worksheet.Cells[i - 10, 6].Value = currentWorksheet.Cells[i, 9].Value; worksheet.Cells[i - 10, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                        //        worksheet.Cells[i - 10, 7].Value = currentWorksheet.Cells[i, 11].Value; worksheet.Cells[i - 10, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                        //        worksheet.Cells[i - 10, 8].Value = Math.Floor(Convert.ToDouble(currentWorksheet.Cells[i, 13].Value) * 100) / 100; worksheet.Cells[i - 10, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                        //        worksheet.Cells[i - 10, 9].Value = Math.Round(Convert.ToDouble(currentWorksheet.Cells[i, 11].Value) - (Math.Floor(Convert.ToDouble(currentWorksheet.Cells[i, 13].Value) * 100) / 100), 3); worksheet.Cells[i - 10, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                        //        worksheet.Cells[i - 10, 10].Value = SearchMethods.ChangeTo(currentWorksheet.Cells[i, 8].Value.ToString(), currentWorksheet.Cells[i, 7].Value.ToString().Trim());
-
-                        //        // Check for multiple primaries
-                        //        worksheet.Cells[i - 10, 10].Value = worksheet.Cells[i - 10, 10].Value + Common.CheckIfMultiJob(worksheet.Cells[i - 10, 4].Value.ToString().Trim());
-
-                        //        worksheet.Cells[i - 10, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                        //        worksheet.Cells[i - 10, 10].Style.Font.Italic = true;
-                        //        worksheet.Cells[i - 10, 10].Style.Font.Color.SetColor(Color.Gray);
-                        //        if (worksheet.Cells[i - 10, 10].Value.ToString().IndexOf('(') > -1) // check for opening parenthesis in column 10 for notes
-                        //        {
-                        //            worksheet.Cells[i - 10, 10].Style.Font.Size = 8;
-                        //        }
-
-                        //        #region compute the split in timecard
-                        //        // check if the unpaid code start with "(" ex (Aupe aux), else get the first 3 letters (ex. A24(M) => A24)
-                        //        string _unpaidCode = "";
-                        //        if (!worksheet.Cells[i - 10, 10].Value.ToString().StartsWith("(") && worksheet.Cells[i - 10, 10].Value.ToString().Length > 2)
-                        //        {
-                        //            _unpaidCode = worksheet.Cells[i - 10, 10].Value.ToString().Substring(0, 3);
-                        //        }
-
-                        //        string[] _split = GetTheSplit(worksheet.Cells[i - 10, 4].Value.ToString().Trim(), worksheet.Cells[i - 10, 5].Value.ToString().Trim(), _unpaidCode,
-                        //            Convert.ToDouble(worksheet.Cells[i - 10, 7].Value), Convert.ToDouble(worksheet.Cells[i - 10, 8].Value), Convert.ToDouble(worksheet.Cells[i - 10, 9].Value));
-                        //        for (int i2 = 11; i2 < _split.Length + 11; i2++)
-                        //        {
-                        //            worksheet.Cells[i - 10, i2].Value = _split[i2 - 11];
-                        //            worksheet.Cells[i - 10, i2].Style.Font.Color.SetColor(Color.FromArgb(169, 169, 169));
-                        //            worksheet.Cells[i - 10, i2].Style.Font.Italic = true;
-                        //            worksheet.Cells[i - 10, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Dotted);
-                        //            worksheet.Cells[i - 10, i2].Style.Border.Top.Color.SetColor(Color.Gray);
-                        //            worksheet.Cells[i - 10, i2].Style.Border.Right.Color.SetColor(Color.Gray);
-                        //            worksheet.Cells[i - 10, i2].Style.Border.Bottom.Color.SetColor(Color.Gray);
-                        //            worksheet.Cells[i - 10, i2].Style.Border.Left.Color.SetColor(Color.Gray);
-                        //        }
-                        //        #endregion
-
-
-                        //    }
-                        //    catch (Exception ex)
-                        //    {
-                        //        MessageBox.Show(ex.Message);
-                        //        return;
-                        //    }
-
-                        //    if (worksheet.Cells[i - 10, 3].Value.ToString().ToUpper().IndexOf("MULTI") > -1)
-                        //    {
-                        //        range = worksheet.Cells[i - 10, 1, i - 10, 9];
-                        //        range.Style.Font.Size = 11;
-                        //        range.Style.Font.Bold = range.Style.Font.Italic = true;
-                        //    }
-
-
-                        //}
-                        #endregion
-
-                        #region New Formatting
-                        for (int i = 10; i <= totalRows; i++)
+                        for (int i = 12; i <= totalRows; i++)
                         {
                             try
                             {
-                                worksheet.Row(i - 8).Height = 25;
-                                worksheet.Row(i - 8).Style.Font.Size = 12;
-                                worksheet.Row(i - 8).Style.Font.Name = "Arial";
-                                worksheet.Row(i - 8).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+                                worksheet.Row(i - 10).Height = 25;
+                                worksheet.Row(i - 10).Style.Font.Size = 12;
+                                worksheet.Row(i - 10).Style.Font.Name = "Arial";
+                                worksheet.Row(i - 10).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
 
-                                //worksheet.Cells[i - 8, 1].Value = currentWorksheet.Cells[i, 1].Value.ToString().Trim(); worksheet.Cells[i - 8, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                worksheet.Cells[i - 8, 1].Value = currentWorksheet.Cells[i, 1].Value; worksheet.Cells[i - 8, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                worksheet.Cells[i - 8, 2].Value = currentWorksheet.Cells[i, 2].Value.ToString().Trim(); worksheet.Cells[i - 8, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                worksheet.Cells[i - 8, 3].Value = currentWorksheet.Cells[i, 3].Value; worksheet.Cells[i - 8, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                worksheet.Cells[i - 8, 4].Value = currentWorksheet.Cells[i, 4].Value; worksheet.Cells[i - 8, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                worksheet.Cells[i - 8, 5].Value = currentWorksheet.Cells[i, 5].Value; worksheet.Cells[i - 8, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                worksheet.Cells[i - 8, 6].Value = currentWorksheet.Cells[i, 6].Value; worksheet.Cells[i - 8, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                worksheet.Cells[i - 8, 7].Value = currentWorksheet.Cells[i, 7].Value; worksheet.Cells[i - 8, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                worksheet.Cells[i - 8, 8].Value = currentWorksheet.Cells[i, 8].Value; worksheet.Cells[i - 8, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                worksheet.Cells[i - 8, 9].Value = SearchMethods.ChangeTo(currentWorksheet.Cells[i, 4].Value.ToString(), currentWorksheet.Cells[i, 3].Value.ToString().Trim());
+                                worksheet.Cells[i - 10, 1].Value = currentWorksheet.Cells[i, 1].Value.ToString().Trim(); worksheet.Cells[i - 10, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 2].Value = currentWorksheet.Cells[i, 2].Value; worksheet.Cells[i - 10, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 3].Value = currentWorksheet.Cells[i, 5].Value.ToString().Trim(); worksheet.Cells[i - 10, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 4].Value = currentWorksheet.Cells[i, 7].Value; worksheet.Cells[i - 10, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 5].Value = currentWorksheet.Cells[i, 8].Value; worksheet.Cells[i - 10, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 6].Value = currentWorksheet.Cells[i, 9].Value; worksheet.Cells[i - 10, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 7].Value = currentWorksheet.Cells[i, 11].Value; worksheet.Cells[i - 10, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 8].Value = Math.Floor(Convert.ToDouble(currentWorksheet.Cells[i, 13].Value) * 100) / 100; worksheet.Cells[i - 10, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 9].Value = Math.Round(Convert.ToDouble(currentWorksheet.Cells[i, 11].Value) - (Math.Floor(Convert.ToDouble(currentWorksheet.Cells[i, 13].Value) * 100) / 100), 3); worksheet.Cells[i - 10, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 10].Value = SearchMethods.ChangeTo(currentWorksheet.Cells[i, 8].Value.ToString(), currentWorksheet.Cells[i, 7].Value.ToString().Trim());
 
                                 // Check for multiple primaries
-                                worksheet.Cells[i - 8, 9].Value = worksheet.Cells[i - 8, 9].Value + Common.CheckIfMultiJob(worksheet.Cells[i - 8, 3].Value.ToString().Trim());
+                                worksheet.Cells[i - 10, 10].Value = worksheet.Cells[i - 10, 10].Value + Common.CheckIfMultiJob(worksheet.Cells[i - 10, 4].Value.ToString().Trim());
 
-                                worksheet.Cells[i - 8, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                worksheet.Cells[i - 8, 9].Style.Font.Italic = true;
-                                worksheet.Cells[i - 8, 9].Style.Font.Color.SetColor(Color.Gray);
-                                if (worksheet.Cells[i - 8, 9].Value.ToString().IndexOf('(') > -1) // check for opening parenthesis in column 10 for notes
+                                worksheet.Cells[i - 10, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 10].Style.Font.Italic = true;
+                                worksheet.Cells[i - 10, 10].Style.Font.Color.SetColor(Color.Gray);
+                                if (worksheet.Cells[i - 10, 10].Value.ToString().IndexOf('(') > -1) // check for opening parenthesis in column 10 for notes
                                 {
-                                    worksheet.Cells[i - 8, 9].Style.Font.Size = 8;
+                                    worksheet.Cells[i - 10, 10].Style.Font.Size = 8;
                                 }
 
                                 #region compute the split in timecard
                                 // check if the unpaid code start with "(" ex (Aupe aux), else get the first 3 letters (ex. A24(M) => A24)
                                 string _unpaidCode = "";
-                                if (!worksheet.Cells[i - 8, 9].Value.ToString().StartsWith("(") && worksheet.Cells[i - 8, 9].Value.ToString().Length > 2)
+                                if (!worksheet.Cells[i - 10, 10].Value.ToString().StartsWith("(") && worksheet.Cells[i - 10, 10].Value.ToString().Length > 2)
                                 {
-                                    _unpaidCode = worksheet.Cells[i - 8, 9].Value.ToString().Substring(0, 3);
+                                    _unpaidCode = worksheet.Cells[i - 10, 10].Value.ToString().Substring(0, 3);
                                 }
 
-                                string[] _split = GetTheSplit(worksheet.Cells[i - 8, 3].Value.ToString().Trim(), worksheet.Cells[i - 8, 4].Value.ToString().Trim(), _unpaidCode,
-                                    Convert.ToDouble(worksheet.Cells[i - 8, 6].Value), Convert.ToDouble(worksheet.Cells[i - 8, 7].Value), Convert.ToDouble(worksheet.Cells[i - 8, 8].Value));
-                                for (int i2 = 10; i2 < _split.Length + 10; i2++)
+                                string[] _split = GetTheSplit(worksheet.Cells[i - 10, 4].Value.ToString().Trim(), worksheet.Cells[i - 10, 5].Value.ToString().Trim(), _unpaidCode,
+                                    Convert.ToDouble(worksheet.Cells[i - 10, 7].Value), Convert.ToDouble(worksheet.Cells[i - 10, 8].Value), Convert.ToDouble(worksheet.Cells[i - 10, 9].Value));
+                                for (int i2 = 11; i2 < _split.Length + 11; i2++)
                                 {
-                                    worksheet.Cells[i - 8, i2].Value = _split[i2 - 10];
-                                    worksheet.Cells[i - 8, i2].Style.Font.Color.SetColor(Color.FromArgb(169, 169, 169));
-                                    worksheet.Cells[i - 8, i2].Style.Font.Italic = true;
-                                    worksheet.Cells[i - 8, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Dotted);
-                                    worksheet.Cells[i - 8, i2].Style.Border.Top.Color.SetColor(Color.Gray);
-                                    worksheet.Cells[i - 8, i2].Style.Border.Right.Color.SetColor(Color.Gray);
-                                    worksheet.Cells[i - 8, i2].Style.Border.Bottom.Color.SetColor(Color.Gray);
-                                    worksheet.Cells[i - 8, i2].Style.Border.Left.Color.SetColor(Color.Gray);
+                                    worksheet.Cells[i - 10, i2].Value = _split[i2 - 11];
+                                    worksheet.Cells[i - 10, i2].Style.Font.Color.SetColor(Color.FromArgb(169, 169, 169));
+                                    worksheet.Cells[i - 10, i2].Style.Font.Italic = true;
+                                    worksheet.Cells[i - 10, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Dotted);
+                                    worksheet.Cells[i - 10, i2].Style.Border.Top.Color.SetColor(Color.Gray);
+                                    worksheet.Cells[i - 10, i2].Style.Border.Right.Color.SetColor(Color.Gray);
+                                    worksheet.Cells[i - 10, i2].Style.Border.Bottom.Color.SetColor(Color.Gray);
+                                    worksheet.Cells[i - 10, i2].Style.Border.Left.Color.SetColor(Color.Gray);
                                 }
                                 #endregion
 
@@ -920,16 +846,90 @@ namespace WindowsFormsApplication1
                                 return;
                             }
 
-                            // Italicized the font if there is the word "MULTI" in the first name
-                            if (worksheet.Cells[i - 8, 2].Value.ToString().ToUpper().IndexOf("MULTI") > -1)
+                            if (worksheet.Cells[i - 10, 3].Value.ToString().ToUpper().IndexOf("MULTI") > -1)
                             {
-                                range = worksheet.Cells[i - 8, 1, i - 8, 8];
+                                range = worksheet.Cells[i - 10, 1, i - 10, 9];
                                 range.Style.Font.Size = 11;
                                 range.Style.Font.Bold = range.Style.Font.Italic = true;
                             }
 
 
                         }
+                        #endregion
+
+                        #region New Formatting
+                        //for (int i = 10; i <= totalRows; i++)
+                        //{
+                        //    try
+                        //    {
+                        //        worksheet.Row(i - 8).Height = 25;
+                        //        worksheet.Row(i - 8).Style.Font.Size = 12;
+                        //        worksheet.Row(i - 8).Style.Font.Name = "Arial";
+                        //        worksheet.Row(i - 8).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+
+                        //        //worksheet.Cells[i - 8, 1].Value = currentWorksheet.Cells[i, 1].Value.ToString().Trim(); worksheet.Cells[i - 8, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        //        worksheet.Cells[i - 8, 1].Value = currentWorksheet.Cells[i, 1].Value; worksheet.Cells[i - 8, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        //        worksheet.Cells[i - 8, 2].Value = currentWorksheet.Cells[i, 2].Value.ToString().Trim(); worksheet.Cells[i - 8, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        //        worksheet.Cells[i - 8, 3].Value = currentWorksheet.Cells[i, 3].Value; worksheet.Cells[i - 8, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        //        worksheet.Cells[i - 8, 4].Value = currentWorksheet.Cells[i, 4].Value; worksheet.Cells[i - 8, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        //        worksheet.Cells[i - 8, 5].Value = currentWorksheet.Cells[i, 5].Value; worksheet.Cells[i - 8, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        //        worksheet.Cells[i - 8, 6].Value = currentWorksheet.Cells[i, 6].Value; worksheet.Cells[i - 8, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        //        worksheet.Cells[i - 8, 7].Value = currentWorksheet.Cells[i, 7].Value; worksheet.Cells[i - 8, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        //        worksheet.Cells[i - 8, 8].Value = currentWorksheet.Cells[i, 8].Value; worksheet.Cells[i - 8, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        //        worksheet.Cells[i - 8, 9].Value = SearchMethods.ChangeTo(currentWorksheet.Cells[i, 4].Value.ToString(), currentWorksheet.Cells[i, 3].Value.ToString().Trim());
+
+                        //        // Check for multiple primaries
+                        //        worksheet.Cells[i - 8, 9].Value = worksheet.Cells[i - 8, 9].Value + Common.CheckIfMultiJob(worksheet.Cells[i - 8, 3].Value.ToString().Trim());
+
+                        //        worksheet.Cells[i - 8, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        //        worksheet.Cells[i - 8, 9].Style.Font.Italic = true;
+                        //        worksheet.Cells[i - 8, 9].Style.Font.Color.SetColor(Color.Gray);
+                        //        if (worksheet.Cells[i - 8, 9].Value.ToString().IndexOf('(') > -1) // check for opening parenthesis in column 10 for notes
+                        //        {
+                        //            worksheet.Cells[i - 8, 9].Style.Font.Size = 8;
+                        //        }
+
+                        //        #region compute the split in timecard
+                        //        // check if the unpaid code start with "(" ex (Aupe aux), else get the first 3 letters (ex. A24(M) => A24)
+                        //        string _unpaidCode = "";
+                        //        if (!worksheet.Cells[i - 8, 9].Value.ToString().StartsWith("(") && worksheet.Cells[i - 8, 9].Value.ToString().Length > 2)
+                        //        {
+                        //            _unpaidCode = worksheet.Cells[i - 8, 9].Value.ToString().Substring(0, 3);
+                        //        }
+
+                        //        string[] _split = GetTheSplit(worksheet.Cells[i - 8, 3].Value.ToString().Trim(), worksheet.Cells[i - 8, 4].Value.ToString().Trim(), _unpaidCode,
+                        //            Convert.ToDouble(worksheet.Cells[i - 8, 6].Value), Convert.ToDouble(worksheet.Cells[i - 8, 7].Value), Convert.ToDouble(worksheet.Cells[i - 8, 8].Value));
+                        //        for (int i2 = 10; i2 < _split.Length + 10; i2++)
+                        //        {
+                        //            worksheet.Cells[i - 8, i2].Value = _split[i2 - 10];
+                        //            worksheet.Cells[i - 8, i2].Style.Font.Color.SetColor(Color.FromArgb(169, 169, 169));
+                        //            worksheet.Cells[i - 8, i2].Style.Font.Italic = true;
+                        //            worksheet.Cells[i - 8, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Dotted);
+                        //            worksheet.Cells[i - 8, i2].Style.Border.Top.Color.SetColor(Color.Gray);
+                        //            worksheet.Cells[i - 8, i2].Style.Border.Right.Color.SetColor(Color.Gray);
+                        //            worksheet.Cells[i - 8, i2].Style.Border.Bottom.Color.SetColor(Color.Gray);
+                        //            worksheet.Cells[i - 8, i2].Style.Border.Left.Color.SetColor(Color.Gray);
+                        //        }
+                        //        #endregion
+
+
+                        //    }
+                        //    catch (Exception ex)
+                        //    {
+                        //        MessageBox.Show(ex.Message);
+                        //        return;
+                        //    }
+
+                        //    // Italicized the font if there is the word "MULTI" in the first name
+                        //    if (worksheet.Cells[i - 8, 2].Value.ToString().ToUpper().IndexOf("MULTI") > -1)
+                        //    {
+                        //        range = worksheet.Cells[i - 8, 1, i - 8, 8];
+                        //        range.Style.Font.Size = 11;
+                        //        range.Style.Font.Bold = range.Style.Font.Italic = true;
+                        //    }
+
+
+                        //}
                         #endregion
 
                         //worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
@@ -1161,7 +1161,7 @@ namespace WindowsFormsApplication1
 
         private string[] GetTheSplit(string _empNo, string _offCode, string _unpaidCode, double _off, double _bnkHrs, double _diff)
         {
-            string[] _ret = new string[] { "-----", "", "-----", "-----" }; //_ret[0] = date, _ret[1] = estimated raw value,  _ret[2] = actual value, _ret[3] = unpaid bal
+            string[] _ret = new string[] { "-----", "-----", "-----", "-----" }; //_ret[0] = date, _ret[1] = estimated raw value,  _ret[2] = actual value, _ret[3] = unpaid bal
 
             if (_offCode == "A06") return _ret;
 
@@ -1207,6 +1207,12 @@ namespace WindowsFormsApplication1
                     double _curr = 0;
                     double _prevTotal = 0;
                     string _offCodeSuffix = "  (" + _offCode + ")";
+
+                    //if (_offCode == "A27")
+                    //{
+                    //    ;
+                    //}
+
                     while (_dr.Read())
                     {
                         _curr = Convert.ToDouble(_dr["TCE_Quantity"]);
@@ -1214,15 +1220,15 @@ namespace WindowsFormsApplication1
                         if (_bnkHrs < _total)
                         {
                             _ret[0] = _dr["TCE_Date"].ToString();
-                            if (_off % 7.75 == 0 && (_bnkHrs - _prevTotal) != 0)
+                            if (_off % 7.75 == 0 && (_bnkHrs - _prevTotal) > 0)
                             {
                                 _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + .5), 2) + _offCodeSuffix;
                             }
-                            else if (_off % 11.08 == 0 && (_bnkHrs - _prevTotal) != 0)
+                            else if (_off % 11.08 == 0 && (_bnkHrs - _prevTotal) > 0)
                             {
                                 _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1.17), 2) + _offCodeSuffix;
                             }
-                            else if (_off % 11.25 == 0 && (_bnkHrs - _prevTotal) != 0)
+                            else if (_off % 11.25 == 0 && (_bnkHrs - _prevTotal) > 0)
                             {
                                 _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1), 2) + _offCodeSuffix;
                             }
