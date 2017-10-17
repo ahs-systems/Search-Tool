@@ -10,9 +10,14 @@ namespace WindowsFormsApplication1
     {
         public static string dbServer = @"wssqlc015v02\esp8";
 
-        public static string ChangeTo(string _code, string _EmpNum)
+        public static string ChangeTo(string _code, string _EmpNum, double _diff)
         {
             string _ret = "";
+
+            if (_diff == 0)
+            {
+                return "(Pls. Check)";
+            }
 
             switch (_code.Trim())
             {
@@ -32,6 +37,7 @@ namespace WindowsFormsApplication1
                     _ret = "A09";
                     break;
                 case "A48":
+                case "A1F":
                     _ret = "";
                     break;
                 case "A1P":

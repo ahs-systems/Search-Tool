@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchTool", "WindowsFormsApplication1\SearchTool.csproj", "{61E03AFC-C1C8-4FD1-AFB0-FF32155E03A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchLDAP", "SearchLDAP\SearchLDAP.csproj", "{827EEC8E-F9DF-4E80-9B80-D160C301F075}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormatFile2And6", "FormatFile2And6\FormatFile2And6.csproj", "{AC542E30-ECB4-4E48-8D17-D5D372A9E321}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,8 +31,19 @@ Global
 		{827EEC8E-F9DF-4E80-9B80-D160C301F075}.Release|Any CPU.Build.0 = Release|Any CPU
 		{827EEC8E-F9DF-4E80-9B80-D160C301F075}.Release|x86.ActiveCfg = Release|Any CPU
 		{827EEC8E-F9DF-4E80-9B80-D160C301F075}.Release|x86.Build.0 = Release|Any CPU
+		{AC542E30-ECB4-4E48-8D17-D5D372A9E321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC542E30-ECB4-4E48-8D17-D5D372A9E321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC542E30-ECB4-4E48-8D17-D5D372A9E321}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AC542E30-ECB4-4E48-8D17-D5D372A9E321}.Debug|x86.Build.0 = Debug|Any CPU
+		{AC542E30-ECB4-4E48-8D17-D5D372A9E321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC542E30-ECB4-4E48-8D17-D5D372A9E321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC542E30-ECB4-4E48-8D17-D5D372A9E321}.Release|x86.ActiveCfg = Release|Any CPU
+		{AC542E30-ECB4-4E48-8D17-D5D372A9E321}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB937E6F-B885-47C1-87CA-B976E2E93021}
 	EndGlobalSection
 EndGlobal
