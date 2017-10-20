@@ -9,7 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VisualEffects;
 using VisualEffects.Animations.Effects;
@@ -1609,7 +1608,7 @@ namespace WindowsFormsApplication1
                 using (var package = new ExcelPackage())
                 {
                     // add a new worksheet to the empty workbook
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(_sourceFile);
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Terms and Trans");
 
                     // Set Page Settings
                     worksheet.PrinterSettings.Orientation = eOrientation.Landscape;
@@ -1662,6 +1661,7 @@ namespace WindowsFormsApplication1
                                 worksheet.Cells[lineCtr, 2].Value = values[1];
                                 worksheet.Cells[lineCtr, 3].Value = values[18] == "" ? "" : DateTime.ParseExact(values[18].PadLeft(8, '0'), "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("ddMMMyyyy");
                                 worksheet.Cells[lineCtr, 4].Value = GetEmpName(values[1].Substring(0, 8));
+                                worksheet.Cells[lineCtr, 5].Value = GetTCG(values[1]);
                                 lineCtr++;
                             }
                         }
@@ -1982,7 +1982,8 @@ namespace WindowsFormsApplication1
                         {
                             if (values[22].Trim() == "001") // only with TCD values "1"
                             {
-                                worksheet.Row(lineCtr).Height = 25;
+                                worksheet.Row(lineCtr).Height = 35;
+                                worksheet.Row(lineCtr).Style.Font.Name = "Arial";
                                 worksheet.Row(lineCtr).Style.Font.Size = 12;
                                 worksheet.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
                                 worksheet.Cells[lineCtr, 1].Value = values[1].Substring(1, 8);
@@ -2653,8 +2654,7 @@ namespace WindowsFormsApplication1
                                 myCommand.Parameters.AddWithValue("_rptDt", values[5]);
                                 myCommand.Parameters.AddWithValue("_qty", values[8]);
                                 myCommand.Parameters.AddWithValue("_workGroup", values[11]);
-                                myCommand.ExecuteNonQuery();
-                                _ctr++;
+                                _ctr = _ctr + myCommand.ExecuteNonQuery();
                             }
                         }
                     }
