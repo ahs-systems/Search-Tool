@@ -10,9 +10,8 @@ using System.Windows.Forms;
 namespace FormatFile2And6
 {
     public partial class frmMain : Form
-    {
-        SqlConnection _conn = new SqlConnection();
-        SqlCommand _comm;
+    {        
+        string ConnStr;
 
         public frmMain()
         {
@@ -40,40 +39,27 @@ namespace FormatFile2And6
             Cursor.Current = Cursors.Default;
         }
 
-        private void OpenConnection()
-        {
-            if (_conn.State == ConnectionState.Open) _conn.Close();
-            _conn.Open();
-            _comm = _conn.CreateCommand();
-        }
-
-        private void CloseConnection()
-        {
-            if (_conn.State == ConnectionState.Open)
-            {
-                if (_comm != null)
-                {
-                    _comm.Dispose();
-                    _comm = null;
-                }
-                _conn.Close();
-            }
-        }
-
         private string GetPP(string _date)
         {
             try
             {
                 string _ret = "";
 
-                OpenConnection();
-                _comm.CommandText = "select PP_NBR from payperiod where @V_DATE between pp_startdate and pp_enddate";
-                _comm.Parameters.Add(new SqlParameter("V_DATE", _date));
-                SqlDataReader _reader = _comm.ExecuteReader();
-                _reader.Read();
-                _ret = _reader["PP_NBR"].ToString();
-                if (_reader.IsClosed != true) _reader.Close();
-                CloseConnection();
+                using (SqlConnection _conn = new SqlConnection())
+                {
+                    _conn.ConnectionString = ConnStr;
+                    _conn.Open();
+                    using (SqlCommand _comm = _conn.CreateCommand())
+                    {
+                        _comm.CommandText = "select PP_NBR from payperiod where @V_DATE between pp_startdate and pp_enddate";
+                        _comm.Parameters.Add(new SqlParameter("V_DATE", _date));
+                        SqlDataReader _reader = _comm.ExecuteReader();
+                        _reader.Read();
+                        _ret = _reader["PP_NBR"].ToString();
+                        if (_reader.IsClosed != true) _reader.Close();
+                        _reader.Dispose();                       
+                    }
+                }
 
                 return _ret != "" ? _ret.PadLeft(2, '0') : _ret;
             }
@@ -84,6 +70,52 @@ namespace FormatFile2And6
             }
         }
 
+        private string GetTCG(string _empID)
+        {
+            string _ret = "";
+
+            using (SqlConnection _conn = new SqlConnection())
+            {
+                _conn.ConnectionString = ConnStr;
+                _conn.Open();
+                using (SqlCommand _comm = _conn.CreateCommand())
+                {
+                    _comm.CommandText = "select emp.e_empid EMPID from emp " +
+                 "inner join empPosition on emp.e_empid = empPosition.ep_empid " +
+                 "inner join employmentStatus on emp.e_empid = employmentStatus.EMS_EmpID " +
+                 "where emp.e_empnbr = @V_SEARCH and empPosition.ep_todate >= GetDAte() " +
+                 "AND EmploymentStatus.EMS_EmploymentType = 1 AND EmploymentStatus.EMS_EndDate >= GetDAte() ";
+
+                    _comm.Parameters.Add(new SqlParameter("V_SEARCH", _empID));
+                    SqlDataReader _reader = _comm.ExecuteReader();
+                    if (_reader.HasRows)
+                    {
+                        _reader.Read();
+
+                        string _retEmpID = _reader["EMPID"].ToString();
+
+                        _comm.CommandText = "select tcg_desc from timecardgroup where tcg_tcardgroupid = " +
+                            "(select tc_tcardgroupid from timecard where tc_empid = " + _retEmpID + " and " +
+                            "tc_payperiodid = (select max(tc_payperiodid) from timecard where tc_empid = " + _retEmpID + "))";
+
+                        _comm.Parameters.Clear();
+                        _reader.Close();
+                        _reader = _comm.ExecuteReader();
+
+                        if (_reader.HasRows)
+                        {
+                            _reader.Read();
+                            _ret = _reader["tcg_desc"].ToString().Trim();
+                        }
+
+                    }
+                    _reader.Close();
+                }
+            }
+
+            return _ret;
+        }
+
         private void ProcessFile2(string _sourceFile, string _destFolder = "")
         {
 
@@ -92,7 +124,7 @@ namespace FormatFile2And6
                 using (var package = new ExcelPackage())
                 {
                     // add a new worksheet to the empty workbook
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(_sourceFile);
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Positions");
 
                     // Set Page Settings
                     worksheet.PrinterSettings.Orientation = eOrientation.Landscape;
@@ -135,6 +167,7 @@ namespace FormatFile2And6
                     string[] lines = System.IO.File.ReadAllLines(_sourceFile);
 
                     int lineCtr = 2;
+                    int empLineCtr = 0;
 
                     bool firstEmp = true;
                     string currEmp = "", currUnit = "", currOcc = "", currStat = "", currFTE = "", prevUnit = "", prevOcc = "";
@@ -145,20 +178,31 @@ namespace FormatFile2And6
                     foreach (string line in lines)
                     {
                         string[] values = line.Split(',');
-                        if (values.Count() == 38)
+                        if (values.Count() == 40)
                         {
                             if (firstEmp)
                             {
                                 firstEmp = false;
-                                currEmp = values[1]; currUnit = values[20]; currOcc = values[21]; currStat = values[22]; currFTE = values[23];
+                                currEmp = values[1]; currUnit = values[20]; currOcc = values[21]; currStat = values[22]; currFTE = values[23];                                
                             }
                             else
                             {
                                 if (currEmp != values[1]) // change in empno
                                 {
+                                    if (empLineCtr == 1)
+                                    {
+                                        worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp);
+                                    }
+                                    else if (!ThersAChange)
+                                    {
+                                        worksheet.Cells[lineCtr - 2, 11].Value = "(No change??)";
+                                    }
+
+                                    empLineCtr = 0;
+
                                     currEmp = values[1]; currUnit = prevUnit = values[20]; currOcc = prevOcc = values[21]; currStat = values[22]; currFTE = values[23]; // reset the base values
                                     ThersAChange = false; //reset the flags
-                                    switchColor = !switchColor;
+                                    switchColor = !switchColor;                                    
                                 }
                             }
                             if (currUnit != values[20]) // change in unit
@@ -196,7 +240,7 @@ namespace FormatFile2And6
                                 worksheet.Cells[lineCtr, 10].Style.Font.Bold = true;
                                 currFTE = values[23];
                                 ThersAChange = true;
-                            }                           
+                            }
 
                             worksheet.Row(lineCtr).Height = 25;
                             worksheet.Row(lineCtr).Style.Font.Size = 12;
@@ -215,8 +259,10 @@ namespace FormatFile2And6
                             range = worksheet.Cells[lineCtr, 1, lineCtr, 11];
                             range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                             range.Style.Fill.BackgroundColor.SetColor(switchColor ? Color.White : Color.FromArgb(191, 191, 191));
+
                             lineCtr++;
-                        }
+                            empLineCtr++;
+                        }                        
                     }
 
                     worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
@@ -251,23 +297,28 @@ namespace FormatFile2And6
         {
             string _ret = "";
 
-            OpenConnection();
-            _comm.CommandText = "SELECT LTRIM(RTRIM(O_CODE)) + ' - ' + O_DESC 'DESC' FROM OCCUPATION WHERE O_CODE LIKE @V_O_CODE AND O_OccClassID <> 612 order by o_code, O_DESC DESC";
-            _comm.Parameters.Add(new SqlParameter("V_O_CODE", _code.Trim().ToUpper() + "%"));
-            SqlDataReader _reader = _comm.ExecuteReader();
-            if (_reader.HasRows)
+            using (SqlConnection _conn = new SqlConnection())
             {
-                _reader.Read();
-                _ret = _reader["DESC"].ToString();
+                _conn.ConnectionString = ConnStr;
+                _conn.Open();
+                using (SqlCommand _comm = _conn.CreateCommand())
+                {
+                    _comm.CommandText = "SELECT LTRIM(RTRIM(O_CODE)) + ' - ' + O_DESC 'DESC' FROM OCCUPATION WHERE O_CODE LIKE @V_O_CODE AND O_OccClassID <> 612 order by o_code, O_DESC DESC";
+                    _comm.Parameters.Add(new SqlParameter("V_O_CODE", _code.Trim().ToUpper() + "%"));
+                    SqlDataReader _reader = _comm.ExecuteReader();
+                    if (_reader.HasRows)
+                    {
+                        _reader.Read();
+                        _ret = _reader["DESC"].ToString();
+                    }
+                    else
+                    {
+                        _ret = _code;
+                    }
+                    if (_reader.IsClosed != true) _reader.Close();
+                    _reader.Dispose();
+                }
             }
-            else
-            {
-                _ret = _code;
-            }
-            if (_reader.IsClosed != true) _reader.Close();
-            _reader.Dispose();
-
-            CloseConnection();
 
             return _ret;
         }
@@ -276,22 +327,27 @@ namespace FormatFile2And6
         {
             string _ret = "";
 
-            OpenConnection();
-            _comm.CommandText = "SELECT LTRIM(RTRIM(E_LASTNAME)) + ', ' + LTRIM(RTRIM(E_FIRSTNAME)) 'EMPNAME' FROM EMP WHERE E_EMPNBR LIKE @V_SEARCH AND LEN(E_EMPNBR) > 7 ORDER BY E_ChangeDate DESC";
-
-            _comm.Parameters.Clear();
-            _comm.Parameters.Add(new SqlParameter("V_SEARCH", _empID + "%"));
-            SqlDataReader _reader = _comm.ExecuteReader();
-            if (_reader.HasRows)
+            using (SqlConnection _conn = new SqlConnection())
             {
-                _reader.Read();
-                _ret = _reader["EMPNAME"].ToString();
+                _conn.ConnectionString = ConnStr;
+                _conn.Open();
+                using (SqlCommand _comm = _conn.CreateCommand())
+                {
+                    _comm.CommandText = "SELECT LTRIM(RTRIM(E_LASTNAME)) + ', ' + LTRIM(RTRIM(E_FIRSTNAME)) 'EMPNAME' FROM EMP WHERE E_EMPNBR LIKE @V_SEARCH AND LEN(E_EMPNBR) > 7 ORDER BY E_ChangeDate DESC";
+
+                    _comm.Parameters.Clear();
+                    _comm.Parameters.Add(new SqlParameter("V_SEARCH", _empID + "%"));
+                    SqlDataReader _reader = _comm.ExecuteReader();
+                    if (_reader.HasRows)
+                    {
+                        _reader.Read();
+                        _ret = _reader["EMPNAME"].ToString();
+                    }
+
+                    _reader.Close();
+                    _reader.Dispose();
+                }
             }
-
-            _reader.Close();
-            _reader.Dispose();
-
-            CloseConnection();
 
             return _ret;
         }
@@ -384,7 +440,8 @@ namespace FormatFile2And6
                                 worksheet.Cells[lineCtr, 1].Value = values[0];
                                 worksheet.Cells[lineCtr, 2].Value = values[1];
                                 worksheet.Cells[lineCtr, 3].Value = values[18] == "" ? "" : DateTime.ParseExact(values[18].PadLeft(8, '0'), "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("ddMMMyyyy");
-                                worksheet.Cells[lineCtr, 4].Value = GetEmpName(values[1].Substring(0, 8)).Replace("(NFP)","");
+                                worksheet.Cells[lineCtr, 4].Value = GetEmpName(values[1].Substring(0, 8)).Replace("(NFP)", "");
+                                worksheet.Cells[lineCtr, 5].Value = GetTCG(values[1]);
                                 lineCtr++;
                             }
                         }
@@ -421,14 +478,7 @@ namespace FormatFile2And6
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            try
-            {
-                _conn.ConnectionString = @"Server=wssqlc015v02\esp8; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            ConnStr = @"Server=wssqlc015v02\esp8; Initial Catalog=esp_edm_prod; User Id=BOO_USER;Password=BOO_USER;";            
         }
     }
 }
