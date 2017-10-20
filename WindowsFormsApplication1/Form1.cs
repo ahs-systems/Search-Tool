@@ -1431,6 +1431,7 @@ namespace WindowsFormsApplication1
                     string[] lines = System.IO.File.ReadAllLines(_sourceFile);
 
                     int lineCtr = 2;
+                    int empLineCtr = 0;
 
                     bool firstEmp = true;
                     string currEmp = "", currUnit = "", currOcc = "", currStat = "", currFTE = "", prevUnit = "", prevOcc = "";
@@ -1452,6 +1453,17 @@ namespace WindowsFormsApplication1
                             {
                                 if (currEmp != values[1]) // change in empno
                                 {
+                                    if (empLineCtr == 1)
+                                    {
+                                        worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp);
+                                    }
+                                    else if (!ThersAChange)
+                                    {
+                                        worksheet.Cells[lineCtr - 2, 11].Value = "(No change??)";
+                                    }
+
+                                    empLineCtr = 0;
+
                                     currEmp = values[1]; currUnit = prevUnit = values[20]; currOcc = prevOcc = values[21]; currStat = values[22]; currFTE = values[23]; // reset the base values
                                     ThersAChange = false; //reset the flags
                                     switchColor = !switchColor;
@@ -1569,7 +1581,9 @@ namespace WindowsFormsApplication1
                             range = worksheet.Cells[lineCtr, 1, lineCtr, 11];
                             range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                             range.Style.Fill.BackgroundColor.SetColor(switchColor ? Color.White : Color.FromArgb(191, 191, 191));
+
                             lineCtr++;
+                            empLineCtr++;
                         }
                     }
 
