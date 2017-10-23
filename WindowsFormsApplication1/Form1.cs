@@ -318,7 +318,7 @@ namespace WindowsFormsApplication1
             }
 
             _tcg = GetTCG(lstResult.SelectedItem.ToString().Substring(0, 10));
-            if (_tcg == "")
+            if (_tcg.ToUpper().IndexOf("INACTIVE") > -1)
             {
                 MessageBox.Show("Sorry, the EE may no longer be active.");
                 return;
@@ -381,7 +381,7 @@ namespace WindowsFormsApplication1
             {
                 btnSendEmail.Enabled = txtTCG.Visible = true;
                 string _tcg = GetTCG(lstResult.SelectedItem.ToString().Substring(0, 10));
-                txtTCG.Text = _tcg == "" ? "--- INACTIVE ---" : "Timecard Group: " + _tcg;
+                txtTCG.Text = "Timecard Group: " + _tcg;
             }
         }
 
@@ -418,6 +418,10 @@ namespace WindowsFormsApplication1
                     _ret = _reader["tcg_desc"].ToString().Trim();
                 }
 
+            }
+            else
+            {
+                _ret = "--- INACTIVE ---";
             }
 
             _reader.Close();

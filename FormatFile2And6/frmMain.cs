@@ -20,6 +20,8 @@ namespace FormatFile2And6
 
         private void btnFile2_Click(object sender, EventArgs e)
         {
+            if (!ZoneSelected()) return;
+
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Title = "Please select the File 2 CSV File";
             openFileDialog1.Filter = "CSV Files (.csv)|*.csv|All Files (*.*)|*.*";
@@ -37,6 +39,15 @@ namespace FormatFile2And6
 
             btnFile2.Text = "Format File 2";
             Cursor.Current = Cursors.Default;
+        }
+
+        private bool ZoneSelected()
+        {
+            if (cboZone.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select the zone first.", "Select a zone");
+            }
+            return cboZone.SelectedIndex != -1;
         }
 
         private string GetPP(string _date)
@@ -107,7 +118,10 @@ namespace FormatFile2And6
                             _reader.Read();
                             _ret = _reader["tcg_desc"].ToString().Trim();
                         }
-
+                    }
+                    else
+                    {
+                        _ret = "--- INACTIVE ---";
                     }
                     _reader.Close();
                 }
@@ -354,6 +368,8 @@ namespace FormatFile2And6
 
         private void btnFile6_Click(object sender, EventArgs e)
         {
+            if (!ZoneSelected()) return;
+
             try
             {
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -430,7 +446,7 @@ namespace FormatFile2And6
                     foreach (string line in lines)
                     {
                         string[] values = line.Split(',');
-                        if (values.Count() == 38)
+                        if (values.Count() == 40)
                         {
                             if (values[16].Trim() == "0") // only with values "0"
                             {
@@ -478,7 +494,21 @@ namespace FormatFile2And6
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ConnStr = @"Server=wssqlc015v02\esp8; Initial Catalog=esp_edm_prod; User Id=BOO_USER;Password=BOO_USER;";            
+            ConnStr = @"Server=wssqlc015v02\esp8; Initial Catalog=esp_ncs_prod; User Id=BOO_USER;Password=BOO_USER;";            
+        }
+
+        private void cboZone_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cboZone.SelectedIndex)
+            {
+                case 0: // Edmonton
+                    ConnStr = @"Server=wssqlc015v02\esp8; Initial Catalog=esp_edm_prod; User Id=BOO_USER;Password=BOO_USER;";
+                    break;
+                case 1: // NCS
+                    ConnStr = @"Server=wssqlc015v02\esp8; Initial Catalog=esp_ncs_prod; User Id=BOO_USER;Password=BOO_USER;";
+                    break;
+            }
+            
         }
     }
 }
