@@ -457,7 +457,7 @@ namespace WindowsFormsApplication1
 
         private string GetEmpName(string _empID)
         {
-            string _ret = "";
+            string _ret = "--- Name Not Found ---";
 
             OpenConnection();
             _comm.CommandText = "SELECT LTRIM(RTRIM(E_LASTNAME)) + ', ' + LTRIM(RTRIM(E_FIRSTNAME)) 'EMPNAME' FROM EMP WHERE E_EMPNBR LIKE @V_SEARCH AND LEN(E_EMPNBR) > 7 ORDER BY E_ChangeDate DESC";
@@ -733,7 +733,7 @@ namespace WindowsFormsApplication1
                     int totalRows = currentWorksheet.Dimension.End.Row;
                     int totalCols = currentWorksheet.Dimension.End.Column;
 
-                    #region New Formatxting
+                    #region New Formatting
                     //using (ExcelPackage package2 = new ExcelPackage())
                     //{
                     //    ExcelWorksheet worksheet = package2.Workbook.Worksheets.Add("System - Off Code vs Bank Hours");
@@ -1104,6 +1104,9 @@ namespace WindowsFormsApplication1
                                 worksheetCopy.Cells[1, 9].Style.Font.Bold = true;
                                 worksheetCopy.Cells[1, 9].Style.Font.Italic = true;
                                 worksheetCopy.Cells[1, 9].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                                worksheetCopy.Column(10).Style.Font.Name = "Verdana";
+                                worksheetCopy.Column(10).Style.Font.Size = 11;
+                                worksheetCopy.Column(10).Style.Font.Italic = false;
                                 lastCharPosition = saveFileDialog1.FileName.LastIndexOf('.');
                                 packageCopy.SaveAs(new FileInfo(saveFileDialog1.FileName.Insert(lastCharPosition, " - for RSSS")));
                                 System.Diagnostics.Process.Start(saveFileDialog1.FileName.Insert(lastCharPosition, " - for RSSS"));
@@ -1330,7 +1333,7 @@ namespace WindowsFormsApplication1
                     double _prevTotal = 0;
                     string _offCodeSuffix = "  (" + _offCode + ")";
 
-                    //if (_offCode == "A27")
+                    //if (_empNo == "00583633-0")
                     //{
                     //    ;
                     //}
@@ -1342,17 +1345,21 @@ namespace WindowsFormsApplication1
                         if (_bnkHrs < _total)
                         {
                             _ret[0] = _dr["TCE_Date"].ToString();
-                            if (_off % 7.75 == 0 && (_bnkHrs - _prevTotal) > 0)
+                            if (Math.Round(_off % 7.75) == 0 && (_bnkHrs - _prevTotal) > 0)
                             {
                                 _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + .5), 2) + _offCodeSuffix;
                             }
-                            else if (_off % 11.08 == 0 && (_bnkHrs - _prevTotal) > 0)
+                            else if (Math.Round(_off % 11.08) == 0 && (_bnkHrs - _prevTotal) > 0)
                             {
                                 _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1.17), 2) + _offCodeSuffix;
                             }
-                            else if (_off % 11.25 == 0 && (_bnkHrs - _prevTotal) > 0)
+                            else if (Math.Round(_off % 11.25) == 0 && (_bnkHrs - _prevTotal) > 0)
                             {
                                 _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1), 2) + _offCodeSuffix;
+                            }
+                            else if (_bnkHrs == 0)
+                            {
+                                _ret[1] = "0 " + _offCodeSuffix;
                             }
                             else
                             {
@@ -1441,7 +1448,9 @@ namespace WindowsFormsApplication1
                     string currEmp = "", currUnit = "", currOcc = "", currStat = "", currFTE = "", prevUnit = "", prevOcc = "";
                     bool switchColor = true, ThersAChange = false;
 
-                    bool changeInUnit = false, changeInOcc = false;
+                    bool changeInUnit = false;
+                    bool changeInOcc = false;
+                    bool falseChangeUnit = false;
 
                     foreach (string line in lines)
                     {
@@ -1459,7 +1468,7 @@ namespace WindowsFormsApplication1
                                 {
                                     if (empLineCtr == 1)
                                     {
-                                        worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp);
+                                        worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
                                     }
                                     else if (!ThersAChange)
                                     {
@@ -1479,7 +1488,27 @@ namespace WindowsFormsApplication1
                                 worksheet.Cells[lineCtr, 7].Style.Font.Bold = true;
                                 prevUnit = currUnit;
                                 currUnit = values[20];
-                                ThersAChange = changeInUnit = true;
+                                ThersAChange = true;
+
+                                string _tcg = GetTCG(values[1]).ToUpper();
+
+                                if (_tcg.IndexOf("NOT FOR PAYROLL") > -1 || _tcg.IndexOf("INACTIVE") > -1)
+                                {
+                                    if (_tcg.IndexOf("NOT FOR PAYROLL") > -1)
+                                    {
+                                        worksheet.Cells[lineCtr, 11].Value = "(From NFP, Pls Check)";
+                                    }
+                                    else
+                                    {
+                                        worksheet.Cells[lineCtr, 11].Value = "(New Hire, Pls Check)";
+                                    }
+                                    falseChangeUnit = true;
+                                    changeInUnit = false;
+                                }
+                                else
+                                {
+                                    changeInUnit = true;
+                                }
                             }
                             if (currOcc != values[21]) // change in occupation
                             {
@@ -1487,9 +1516,14 @@ namespace WindowsFormsApplication1
                                 worksheet.Cells[lineCtr, 8].Style.Font.Bold = true;
                                 prevOcc = currOcc;
                                 currOcc = values[21];
-                                ThersAChange = changeInOcc = true;
+                                ThersAChange = true;
+
+                                if (!falseChangeUnit)
+                                {
+                                    changeInOcc = true;
+                                }
                             }
-                            if (currStat != values[22])
+                            if (currStat != values[22]) // change in status
                             {
                                 if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = "Status";
                                 worksheet.Cells[lineCtr, 9].Style.Font.Bold = true;
@@ -1565,10 +1599,11 @@ namespace WindowsFormsApplication1
                                 }
                             }
 
-                            changeInUnit = changeInOcc = false;
+                            falseChangeUnit = changeInUnit = changeInOcc = false;
                             #endregion
 
                             worksheet.Row(lineCtr).Height = 25;
+                            worksheet.Row(lineCtr).Style.Font.Name = "Verdana";
                             worksheet.Row(lineCtr).Style.Font.Size = 12;
                             worksheet.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
                             worksheet.Cells[lineCtr, 1].Value = values[0]; worksheet.Cells[lineCtr, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
@@ -1613,9 +1648,9 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                //MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1673,7 +1708,8 @@ namespace WindowsFormsApplication1
                             if (values[16].Trim() == "0") // only with values "0"
                             {
                                 worksheet.Row(lineCtr).Height = 25;
-                                worksheet.Row(lineCtr).Style.Font.Size = 12;
+                                worksheet.Row(lineCtr).Style.Font.Name = "Verdana";
+                                worksheet.Row(lineCtr).Style.Font.Size = 10;
                                 worksheet.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
                                 worksheet.Cells[lineCtr, 1].Value = values[0];
                                 worksheet.Cells[lineCtr, 2].Value = values[1];
@@ -1684,6 +1720,13 @@ namespace WindowsFormsApplication1
                             }
                         }
                     }
+
+                    worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                    worksheet.Column(1).Width = 3.29;
+                    worksheet.Column(2).Width = 13;
+                    worksheet.Column(3).Width = 12;
+                    worksheet.Column(6).Width = 35;
+                    worksheet.Column(7).Width = 9.86; worksheet.Cells[1, 7].Style.WrapText = true;
 
                     if (_destFolder != "")
                     {
@@ -1710,7 +1753,7 @@ namespace WindowsFormsApplication1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error: " + ex.Message, "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

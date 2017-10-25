@@ -205,7 +205,7 @@ namespace FormatFile2And6
                                 {
                                     if (empLineCtr == 1)
                                     {
-                                        worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp);
+                                        worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
                                     }
                                     else if (!ThersAChange)
                                     {
@@ -339,7 +339,7 @@ namespace FormatFile2And6
 
         private string GetEmpName(string _empID)
         {
-            string _ret = "";
+            string _ret = "--- Name Not Found ---";
 
             using (SqlConnection _conn = new SqlConnection())
             {
