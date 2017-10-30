@@ -803,9 +803,13 @@ namespace WindowsFormsApplication1
                     //            worksheet.Cells[i - 8, 4].Value = currentWorksheet.Cells[i, 4].Value; worksheet.Cells[i - 8, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     //            worksheet.Cells[i - 8, 5].Value = currentWorksheet.Cells[i, 5].Value; worksheet.Cells[i - 8, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     //            worksheet.Cells[i - 8, 6].Value = currentWorksheet.Cells[i, 6].Value; worksheet.Cells[i - 8, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    //            worksheet.Cells[i - 8, 7].Value = currentWorksheet.Cells[i, 7].Value; worksheet.Cells[i - 8, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    //            worksheet.Cells[i - 8, 8].Value = currentWorksheet.Cells[i, 8].Value; worksheet.Cells[i - 8, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    //            worksheet.Cells[i - 8, 9].Value = SearchMethods.ChangeTo(currentWorksheet.Cells[i, 4].Value.ToString(), currentWorksheet.Cells[i, 3].Value.ToString().Trim());
+                    //            //worksheet.Cells[i - 8, 7].Value = currentWorksheet.Cells[i, 7].Value; worksheet.Cells[i - 8, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    //            //worksheet.Cells[i - 8, 8].Value = currentWorksheet.Cells[i, 8].Value; worksheet.Cells[i - 8, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    //            //worksheet.Cells[i - 8, 9].Value = SearchMethods.ChangeTo(currentWorksheet.Cells[i, 4].Value.ToString(), currentWorksheet.Cells[i, 3].Value.ToString().Trim());
+
+                    //            worksheet.Cells[i - 8, 7].Value = Math.Floor(Convert.ToDouble(currentWorksheet.Cells[i, 7].Value) * 100) / 100; worksheet.Cells[i - 8, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    //            worksheet.Cells[i - 8, 8].Value = Math.Round(Convert.ToDouble(currentWorksheet.Cells[i, 6].Value) - (Math.Floor(Convert.ToDouble(currentWorksheet.Cells[i, 7].Value) * 100) / 100), 3); worksheet.Cells[i - 8, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    //            worksheet.Cells[i - 8, 9].Value = SearchMethods.ChangeTo(currentWorksheet.Cells[i, 4].Value.ToString(), currentWorksheet.Cells[i, 3].Value.ToString().Trim(), Convert.ToDouble(worksheet.Cells[i - 8, 8].Value));
 
                     //            // Check for multiple primaries
                     //            worksheet.Cells[i - 8, 9].Value = worksheet.Cells[i - 8, 9].Value + Common.CheckIfMultiJob(worksheet.Cells[i - 8, 3].Value.ToString().Trim());
@@ -1296,7 +1300,7 @@ namespace WindowsFormsApplication1
 
             // Check if its a Sick Time, then check for all sick time off codes in the timecard for the current pay period
             string _listOfOffCodes = "";
-            if ("A15, A0K, A0L, A0M".IndexOf(_offCode) > -1)
+            if ("A15, A0K, A0L, A0M".Contains(_offCode))
             {
                 _listOfOffCodes = "'A15','A0K','A0L','A0M'";
             }
@@ -1314,7 +1318,8 @@ namespace WindowsFormsApplication1
 
                     SqlCommand myCommand = myConnection.CreateCommand();
 
-                    myCommand.CommandText = "SELECT Format(TCE.TCE_Date,'MMM-dd') as TCE_Date, TCE.TCE_Quantity FROM TimeCardEntry as tce " +
+                    myCommand.CommandText = "SELECT Round((datediff(MINUTE, tce.TCE_ShiftStartTime, tce.TCE_ShiftEndTime) / 60.0) - TCE_Quantity,2) as TimeDiff, " +
+                                "Format(TCE.TCE_Date,'MMM-dd') as TCE_Date, TCE.TCE_Quantity FROM TimeCardEntry as tce " +
                                 "JOIN paycode as pc on tce.TCE_PayCodeID = pc.pc_paycodeid  " +
                                 "WHERE tce.TCE_TimeCardID =  " +
                                 "(SELECT TC_TimeCardID FROM timecard WHERE " +
@@ -1333,41 +1338,52 @@ namespace WindowsFormsApplication1
                     double _prevTotal = 0;
                     string _offCodeSuffix = "  (" + _offCode + ")";
 
-                    //if (_empNo == "00583633-0")
+                    //if (_empNo == "01069999-0")
                     //{
                     //    ;
                     //}
 
+                    bool _exitWhile = false;
                     while (_dr.Read())
                     {
+                        if (_exitWhile)
+                        {
+                            _ret[3] += " ^";
+                            break;
+                        }
+                        _off = Math.Round(Convert.ToDouble(_dr["TCE_Quantity"]), 2);
                         _curr = Convert.ToDouble(_dr["TCE_Quantity"]);
                         _total = Math.Round(_total + _curr, 2);
                         if (_bnkHrs < _total)
                         {
                             _ret[0] = _dr["TCE_Date"].ToString();
-                            if (Math.Round(_off % 7.75) == 0 && (_bnkHrs - _prevTotal) > 0)
+                            //if (_off % 7.75 == 0 && (_bnkHrs - _prevTotal) > 0)
+                            //{
+                            //    _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + .5), 2) + _offCodeSuffix;
+                            //}
+                            //else if (_off % 11.08 == 0 && (_bnkHrs - _prevTotal) > 0)
+                            //{
+                            //    _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1.17), 2) + _offCodeSuffix;
+                            //}
+                            //else if (_off % 11.25 == 0 && (_bnkHrs - _prevTotal) > 0)
+                            //{
+                            //    _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1), 2) + _offCodeSuffix;
+                            //}
+                            if ((_bnkHrs - _prevTotal) > 0)
                             {
-                                _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + .5), 2) + _offCodeSuffix;
+                                _ret[1] = Math.Round((_bnkHrs - _prevTotal) + Convert.ToDouble(_dr["TimeDiff"]), 2) + _offCodeSuffix;
                             }
-                            else if (Math.Round(_off % 11.08) == 0 && (_bnkHrs - _prevTotal) > 0)
-                            {
-                                _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1.17), 2) + _offCodeSuffix;
-                            }
-                            else if (Math.Round(_off % 11.25) == 0 && (_bnkHrs - _prevTotal) > 0)
-                            {
-                                _ret[1] = Math.Round(((_bnkHrs - _prevTotal) + 1), 2) + _offCodeSuffix;
-                            }
-                            else if (_bnkHrs == 0)
-                            {
-                                _ret[1] = "0 " + _offCodeSuffix;
-                            }
+                            //else if (_bnkHrs == 0)
+                            //{
+                            //    _ret[1] = "0 " + _offCodeSuffix;
+                            //}
                             else
                             {
                                 _ret[1] = "-----";
                             }
-                            _ret[2] = Math.Round((_bnkHrs - _prevTotal), 2) + _offCodeSuffix;
-                            _ret[3] = Math.Round((_total - _bnkHrs), 2) + (_unpaidCode != "" ? "  (" + _unpaidCode + ")" : "");
-                            break;
+                            _ret[2] = Math.Round((_bnkHrs - _prevTotal), 2).ToString();
+                            _ret[3] = Math.Round((_total - _bnkHrs), 2) + (_unpaidCode != "" ? "  (" + _unpaidCode + ")" : "");                            
+                            _exitWhile = true;
                         }
                         _prevTotal = _total;
                     }
@@ -1411,7 +1427,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
                     worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Positions Report";
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
@@ -1472,7 +1488,44 @@ namespace WindowsFormsApplication1
                                     }
                                     else if (!ThersAChange)
                                     {
-                                        worksheet.Cells[lineCtr - 2, 11].Value = "(No change??)";
+                                        string _tcg = GetTCG(values[1]).ToUpper();
+
+                                        if (_tcg.Contains("NOT FOR PAYROLL") || _tcg.Contains("INACTIVE"))
+                                        {
+                                            if (_tcg.IndexOf("NOT FOR PAYROLL") > -1)
+                                            {
+                                                worksheet.Cells[lineCtr, 11].Value = "(From NFP? Pls Check)";
+                                            }
+                                            else
+                                            {
+                                                worksheet.Cells[lineCtr, 11].Value = "(Re-hire? Pls Check)";
+                                            }
+                                            worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                            // insert the EE in the list to check for previous NPF or previous INACTIVE
+                                            using (SqlConnection _conn = new SqlConnection(Common.SystemsServer))
+                                            {
+                                                _conn.Open();
+                                                using (SqlCommand _comm = _conn.CreateCommand())
+                                                {
+                                                    _comm.CommandText = "SELECT EmpID FROM NFPChecking WHERE EmpID = @_empID AND CurrentStat = 0";
+                                                    _comm.Parameters.AddWithValue("_empID", values[1]);
+                                                    SqlDataReader _dr = _comm.ExecuteReader();
+                                                    if (!_dr.HasRows)
+                                                    {
+                                                        _dr.Close();
+                                                        _comm.Parameters.Clear();
+                                                        _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_Unit, CurrentStat) VALUES (2, @_empID, @_name, @_prevUnit, 0)";
+                                                        _comm.Parameters.AddWithValue("_empID", currEmp);
+                                                        _comm.Parameters.AddWithValue("_name", GetEmpName(currEmp.Substring(0, 8)));
+                                                        _comm.Parameters.AddWithValue("_prevUnit", _tcg);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            worksheet.Cells[lineCtr - 2, 11].Value = "(No change??)";
+                                        }
                                     }
 
                                     empLineCtr = 0;
@@ -1496,11 +1549,11 @@ namespace WindowsFormsApplication1
                                 {
                                     if (_tcg.IndexOf("NOT FOR PAYROLL") > -1)
                                     {
-                                        worksheet.Cells[lineCtr, 11].Value = "(From NFP, Pls Check)";
+                                        worksheet.Cells[lineCtr, 11].Value = "(From NFP? Pls Check)";
                                     }
                                     else
                                     {
-                                        worksheet.Cells[lineCtr, 11].Value = "(New Hire, Pls Check)";
+                                        worksheet.Cells[lineCtr, 11].Value = "(Re-hire? Pls Check)";
                                     }
                                     falseChangeUnit = true;
                                     changeInUnit = false;
@@ -1528,7 +1581,7 @@ namespace WindowsFormsApplication1
                                 if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = "Status";
                                 worksheet.Cells[lineCtr, 9].Style.Font.Bold = true;
                                 currStat = values[22];
-                                if (currFTE != values[23])
+                                if (currFTE != values[23]) // Change in FTE
                                 {
                                     if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = "Status / FTE";
                                     worksheet.Cells[lineCtr, 10].Style.Font.Bold = true;
@@ -1673,7 +1726,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.RightMargin = (decimal)1 / 2.54M;
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
                     worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Terms and Trans From File 6";
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
@@ -1753,7 +1806,7 @@ namespace WindowsFormsApplication1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1848,6 +1901,7 @@ namespace WindowsFormsApplication1
                 if (_fileName.IndexOf("TSS_ESP_DEM_STG_1_O_") > -1 && File.Exists(_destFolder + _fileName))
                 {
                     File.Copy(_destFolder + _fileName, _destFolder + "File 1 - " + DateTime.Today.ToString("ddMMMyyyy") + ".csv", true);
+                    ProcessFile1(_destFolder + _fileName);
                 }
 
                 // Process File 2
@@ -1864,6 +1918,57 @@ namespace WindowsFormsApplication1
             }
             catch
             {
+            }
+        }
+
+        private void ProcessFile1(string _sourceFile)
+        {
+            try
+            {
+                string[] lines = File.ReadAllLines(_sourceFile);
+                int _ctrProcessed = 0;
+                int _ctrNFP = 0;
+                foreach (string line in lines)
+                {
+                    string[] values = line.Split(',');
+                    if (values.Count() == 38)
+                    {
+                        if (values[0] == "1" || (values[0] == "5" && values[32].Trim() != ""))
+                        {
+                            string _tcg = GetTCG(values[1]);
+                            if (_tcg.ToUpper().Contains("NOT FOR PAYROLL") || _tcg.Contains("INACTIVE")) // check all those that their current Timecard Group is "Not for Payroll" or "INACTIVE"
+                            {
+                                _ctrNFP++;
+                                using (SqlConnection _conn = new SqlConnection(Common.SystemsServer))
+                                {
+                                    _conn.Open();
+                                    using (SqlCommand _comm = _conn.CreateCommand())
+                                    {
+                                        _comm.CommandText = "SELECT EmpID FROM NFPChecking WHERE EmpID = @_empID AND CurrentStat = 0";
+                                        _comm.Parameters.AddWithValue("_empID", values[1]);
+                                        SqlDataReader _dr = _comm.ExecuteReader();
+                                        if (!_dr.HasRows)
+                                        {
+                                            _dr.Close();
+                                            _comm.Parameters.Clear();
+                                            _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_Unit, CurrentStat) VALUES (@_type, @_empID, @_name, @_prevUnit, 0)";
+                                            _comm.Parameters.AddWithValue("_type", values[0]);
+                                            _comm.Parameters.AddWithValue("_empID", values[1]);
+                                            _comm.Parameters.AddWithValue("_name", GetEmpName(values[1].Substring(0, 8)));
+                                            _comm.Parameters.AddWithValue("_prevUnit", _tcg);
+                                            _ctrProcessed = _ctrProcessed + _comm.ExecuteNonQuery();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                MessageBox.Show(_ctrNFP + " record(s) from File 1 are currently set as NFP in ESP.\n\n" + _ctrProcessed + " record(s) were uploaded to the list.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -3185,6 +3290,32 @@ namespace WindowsFormsApplication1
 
             lblMsg.Text = lstResult.Items.Count + " record(s) found.";
             Update();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "CSV Files (.csv)|*.csv|All Files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+
+            bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+            if (!userClickedOK) return;
+
+            ProcessFile1(openFileDialog1.FileName);
+        }
+
+        private void btnUploadFile6_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "CSV Files (.csv)|*.csv|All Files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+
+            bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+            if (!userClickedOK) return;
+
+            ProcessFile1(openFileDialog1.FileName);
         }
     }
 }

@@ -40,6 +40,9 @@
     <ApplicationIcon>tools.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\..\..\Downloads\Bunifu\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
     <Reference Include="EPPlus">
       <HintPath>..\..\File6\File6\bin\Debug\EPPlus.dll</HintPath>
     </Reference>
@@ -68,6 +71,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -131,6 +135,12 @@
     <Compile Include="frmLDAP.designer.cs">
       <DependentUpon>frmLDAP.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMainNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainNew.Designer.cs">
+      <DependentUpon>frmMainNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTrainings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLDAP.resx">
       <DependentUpon>frmLDAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainNew.resx">
+      <DependentUpon>frmMainNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTrainings.resx">
       <DependentUpon>frmTrainings.cs</DependentUpon>

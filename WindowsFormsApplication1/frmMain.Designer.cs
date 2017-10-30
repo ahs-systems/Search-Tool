@@ -73,6 +73,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabMisc = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabFormattingTools = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnLOAwithNoRptTime = new MBGlassStyleButton.MBGlassButton();
@@ -84,6 +85,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btnUploadFile1 = new MBGlassStyleButton.MBGlassButton();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.mnuCopyFromList.SuspendLayout();
@@ -221,14 +223,14 @@
             this.btnFile126.Image = ((System.Drawing.Image)(resources.GetObject("btnFile126.Image")));
             this.btnFile126.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFile126.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnFile126.Location = new System.Drawing.Point(11, 21);
+            this.btnFile126.Location = new System.Drawing.Point(11, 18);
             this.btnFile126.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnFile126.Name = "btnFile126";
             this.btnFile126.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnFile126.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnFile126.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnFile126.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnFile126.Size = new System.Drawing.Size(173, 42);
+            this.btnFile126.Size = new System.Drawing.Size(173, 50);
             this.btnFile126.TabIndex = 15;
             this.btnFile126.Text = "FTP File 1,2 and 6 then\r\nFormat File 2 and 6 ";
             this.btnFile126.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -247,7 +249,7 @@
             this.btnFile2.Image = ((System.Drawing.Image)(resources.GetObject("btnFile2.Image")));
             this.btnFile2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFile2.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnFile2.Location = new System.Drawing.Point(434, 15);
+            this.btnFile2.Location = new System.Drawing.Point(434, 10);
             this.btnFile2.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnFile2.Name = "btnFile2";
             this.btnFile2.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -255,7 +257,7 @@
             this.btnFile2.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnFile2.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
             this.btnFile2.Radius = 5;
-            this.btnFile2.Size = new System.Drawing.Size(141, 42);
+            this.btnFile2.Size = new System.Drawing.Size(141, 50);
             this.btnFile2.TabIndex = 16;
             this.btnFile2.Text = "Format File 2";
             this.btnFile2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -275,7 +277,7 @@
             this.btnFile6.Image = ((System.Drawing.Image)(resources.GetObject("btnFile6.Image")));
             this.btnFile6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFile6.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnFile6.Location = new System.Drawing.Point(434, 69);
+            this.btnFile6.Location = new System.Drawing.Point(434, 64);
             this.btnFile6.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnFile6.Name = "btnFile6";
             this.btnFile6.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -283,7 +285,7 @@
             this.btnFile6.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnFile6.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
             this.btnFile6.Radius = 5;
-            this.btnFile6.Size = new System.Drawing.Size(141, 42);
+            this.btnFile6.Size = new System.Drawing.Size(141, 50);
             this.btnFile6.TabIndex = 17;
             this.btnFile6.Text = "Format File 6";
             this.btnFile6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -303,7 +305,7 @@
             this.btnBanks.Image = ((System.Drawing.Image)(resources.GetObject("btnBanks.Image")));
             this.btnBanks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBanks.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnBanks.Location = new System.Drawing.Point(5, 123);
+            this.btnBanks.Location = new System.Drawing.Point(5, 118);
             this.btnBanks.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnBanks.Name = "btnBanks";
             this.btnBanks.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -311,7 +313,7 @@
             this.btnBanks.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnBanks.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
             this.btnBanks.Radius = 5;
-            this.btnBanks.Size = new System.Drawing.Size(141, 42);
+            this.btnBanks.Size = new System.Drawing.Size(141, 50);
             this.btnBanks.TabIndex = 18;
             this.btnBanks.Text = "Off Codes vs \r\nBanks";
             this.btnBanks.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -355,7 +357,7 @@
             this.btnRFLOA.Image = ((System.Drawing.Image)(resources.GetObject("btnRFLOA.Image")));
             this.btnRFLOA.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRFLOA.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnRFLOA.Location = new System.Drawing.Point(148, 69);
+            this.btnRFLOA.Location = new System.Drawing.Point(148, 64);
             this.btnRFLOA.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnRFLOA.Name = "btnRFLOA";
             this.btnRFLOA.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -363,7 +365,7 @@
             this.btnRFLOA.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnRFLOA.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
             this.btnRFLOA.Radius = 5;
-            this.btnRFLOA.Size = new System.Drawing.Size(141, 42);
+            this.btnRFLOA.Size = new System.Drawing.Size(141, 50);
             this.btnRFLOA.TabIndex = 21;
             this.btnRFLOA.Text = "Return From LOA";
             this.btnRFLOA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -383,7 +385,7 @@
             this.btnRehire.Image = ((System.Drawing.Image)(resources.GetObject("btnRehire.Image")));
             this.btnRehire.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRehire.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnRehire.Location = new System.Drawing.Point(148, 15);
+            this.btnRehire.Location = new System.Drawing.Point(148, 10);
             this.btnRehire.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnRehire.Name = "btnRehire";
             this.btnRehire.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -391,7 +393,7 @@
             this.btnRehire.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnRehire.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
             this.btnRehire.Radius = 5;
-            this.btnRehire.Size = new System.Drawing.Size(141, 42);
+            this.btnRehire.Size = new System.Drawing.Size(141, 50);
             this.btnRehire.TabIndex = 22;
             this.btnRehire.Text = "Rehires";
             this.btnRehire.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -411,14 +413,14 @@
             this.mbUserLatestLogin.Image = ((System.Drawing.Image)(resources.GetObject("mbUserLatestLogin.Image")));
             this.mbUserLatestLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mbUserLatestLogin.ImageSize = new System.Drawing.Size(24, 24);
-            this.mbUserLatestLogin.Location = new System.Drawing.Point(202, 92);
+            this.mbUserLatestLogin.Location = new System.Drawing.Point(202, 89);
             this.mbUserLatestLogin.MenuListPosition = new System.Drawing.Point(0, 0);
             this.mbUserLatestLogin.Name = "mbUserLatestLogin";
             this.mbUserLatestLogin.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.mbUserLatestLogin.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.mbUserLatestLogin.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.mbUserLatestLogin.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.mbUserLatestLogin.Size = new System.Drawing.Size(173, 42);
+            this.mbUserLatestLogin.Size = new System.Drawing.Size(173, 50);
             this.mbUserLatestLogin.TabIndex = 25;
             this.mbUserLatestLogin.Text = "User Latest Login";
             this.mbUserLatestLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -438,7 +440,7 @@
             this.btnPriors.Image = ((System.Drawing.Image)(resources.GetObject("btnPriors.Image")));
             this.btnPriors.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPriors.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnPriors.Location = new System.Drawing.Point(5, 175);
+            this.btnPriors.Location = new System.Drawing.Point(5, 170);
             this.btnPriors.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnPriors.Name = "btnPriors";
             this.btnPriors.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -446,7 +448,7 @@
             this.btnPriors.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnPriors.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
             this.btnPriors.Radius = 5;
-            this.btnPriors.Size = new System.Drawing.Size(141, 42);
+            this.btnPriors.Size = new System.Drawing.Size(141, 50);
             this.btnPriors.TabIndex = 26;
             this.btnPriors.Text = "Prior Pay \r\nPeriod Adjust";
             this.btnPriors.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -489,7 +491,7 @@
             this.btnAHS_AA_Terms.Image = ((System.Drawing.Image)(resources.GetObject("btnAHS_AA_Terms.Image")));
             this.btnAHS_AA_Terms.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAHS_AA_Terms.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnAHS_AA_Terms.Location = new System.Drawing.Point(5, 15);
+            this.btnAHS_AA_Terms.Location = new System.Drawing.Point(5, 10);
             this.btnAHS_AA_Terms.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnAHS_AA_Terms.Name = "btnAHS_AA_Terms";
             this.btnAHS_AA_Terms.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -497,7 +499,7 @@
             this.btnAHS_AA_Terms.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnAHS_AA_Terms.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
             this.btnAHS_AA_Terms.Radius = 5;
-            this.btnAHS_AA_Terms.Size = new System.Drawing.Size(141, 42);
+            this.btnAHS_AA_Terms.Size = new System.Drawing.Size(141, 50);
             this.btnAHS_AA_Terms.TabIndex = 28;
             this.btnAHS_AA_Terms.Text = "AHS_AA_TERMS";
             this.btnAHS_AA_Terms.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -518,7 +520,7 @@
             this.btnTrans.Image = ((System.Drawing.Image)(resources.GetObject("btnTrans.Image")));
             this.btnTrans.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTrans.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnTrans.Location = new System.Drawing.Point(5, 69);
+            this.btnTrans.Location = new System.Drawing.Point(5, 64);
             this.btnTrans.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnTrans.Name = "btnTrans";
             this.btnTrans.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -526,7 +528,7 @@
             this.btnTrans.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnTrans.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
             this.btnTrans.Radius = 5;
-            this.btnTrans.Size = new System.Drawing.Size(141, 42);
+            this.btnTrans.Size = new System.Drawing.Size(141, 50);
             this.btnTrans.TabIndex = 29;
             this.btnTrans.Text = "AHS_AA_\r\nTRANSFER_RPT";
             this.btnTrans.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -547,14 +549,14 @@
             this.btnUserTrainings.Image = ((System.Drawing.Image)(resources.GetObject("btnUserTrainings.Image")));
             this.btnUserTrainings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUserTrainings.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnUserTrainings.Location = new System.Drawing.Point(393, 166);
+            this.btnUserTrainings.Location = new System.Drawing.Point(393, 163);
             this.btnUserTrainings.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnUserTrainings.Name = "btnUserTrainings";
             this.btnUserTrainings.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnUserTrainings.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnUserTrainings.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnUserTrainings.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnUserTrainings.Size = new System.Drawing.Size(173, 42);
+            this.btnUserTrainings.Size = new System.Drawing.Size(173, 50);
             this.btnUserTrainings.TabIndex = 30;
             this.btnUserTrainings.Text = "Open SSRS \r\nUser Trainings";
             this.btnUserTrainings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -573,14 +575,14 @@
             this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
             this.btnClearLocks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClearLocks.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnClearLocks.Location = new System.Drawing.Point(202, 21);
+            this.btnClearLocks.Location = new System.Drawing.Point(202, 18);
             this.btnClearLocks.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnClearLocks.Name = "btnClearLocks";
             this.btnClearLocks.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnClearLocks.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnClearLocks.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnClearLocks.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnClearLocks.Size = new System.Drawing.Size(173, 42);
+            this.btnClearLocks.Size = new System.Drawing.Size(173, 50);
             this.btnClearLocks.TabIndex = 31;
             this.btnClearLocks.Text = "Clear Locks (Lists)";
             this.btnClearLocks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -600,14 +602,14 @@
             this.btnGetLDAP.Image = ((System.Drawing.Image)(resources.GetObject("btnGetLDAP.Image")));
             this.btnGetLDAP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGetLDAP.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnGetLDAP.Location = new System.Drawing.Point(12, 92);
+            this.btnGetLDAP.Location = new System.Drawing.Point(12, 89);
             this.btnGetLDAP.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnGetLDAP.Name = "btnGetLDAP";
             this.btnGetLDAP.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnGetLDAP.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnGetLDAP.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnGetLDAP.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnGetLDAP.Size = new System.Drawing.Size(173, 42);
+            this.btnGetLDAP.Size = new System.Drawing.Size(173, 50);
             this.btnGetLDAP.TabIndex = 32;
             this.btnGetLDAP.Text = "Get LDAP Username";
             this.btnGetLDAP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -646,14 +648,14 @@
             this.btnExceptionLookup.Image = ((System.Drawing.Image)(resources.GetObject("btnExceptionLookup.Image")));
             this.btnExceptionLookup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExceptionLookup.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnExceptionLookup.Location = new System.Drawing.Point(202, 166);
+            this.btnExceptionLookup.Location = new System.Drawing.Point(202, 163);
             this.btnExceptionLookup.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnExceptionLookup.Name = "btnExceptionLookup";
             this.btnExceptionLookup.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnExceptionLookup.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnExceptionLookup.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnExceptionLookup.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnExceptionLookup.Size = new System.Drawing.Size(173, 42);
+            this.btnExceptionLookup.Size = new System.Drawing.Size(173, 50);
             this.btnExceptionLookup.TabIndex = 33;
             this.btnExceptionLookup.Text = "Exception Lookup";
             this.btnExceptionLookup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -672,14 +674,14 @@
             this.btnItemsReport.Image = ((System.Drawing.Image)(resources.GetObject("btnItemsReport.Image")));
             this.btnItemsReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnItemsReport.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnItemsReport.Location = new System.Drawing.Point(393, 21);
+            this.btnItemsReport.Location = new System.Drawing.Point(393, 18);
             this.btnItemsReport.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnItemsReport.Name = "btnItemsReport";
             this.btnItemsReport.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnItemsReport.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnItemsReport.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnItemsReport.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnItemsReport.Size = new System.Drawing.Size(173, 42);
+            this.btnItemsReport.Size = new System.Drawing.Size(173, 50);
             this.btnItemsReport.TabIndex = 34;
             this.btnItemsReport.Text = "Open Items Report";
             this.btnItemsReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -734,14 +736,14 @@
             this.btnSickOnStat.Image = ((System.Drawing.Image)(resources.GetObject("btnSickOnStat.Image")));
             this.btnSickOnStat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSickOnStat.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnSickOnStat.Location = new System.Drawing.Point(12, 166);
+            this.btnSickOnStat.Location = new System.Drawing.Point(12, 163);
             this.btnSickOnStat.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnSickOnStat.Name = "btnSickOnStat";
             this.btnSickOnStat.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnSickOnStat.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnSickOnStat.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnSickOnStat.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnSickOnStat.Size = new System.Drawing.Size(173, 42);
+            this.btnSickOnStat.Size = new System.Drawing.Size(173, 50);
             this.btnSickOnStat.TabIndex = 35;
             this.btnSickOnStat.Text = "Upload Sick On A Stat file \r\nfrom ePeople to Boo DB";
             this.btnSickOnStat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -760,7 +762,7 @@
             this.btnTL_SYS.Image = ((System.Drawing.Image)(resources.GetObject("btnTL_SYS.Image")));
             this.btnTL_SYS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTL_SYS.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnTL_SYS.Location = new System.Drawing.Point(291, 15);
+            this.btnTL_SYS.Location = new System.Drawing.Point(291, 10);
             this.btnTL_SYS.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnTL_SYS.Name = "btnTL_SYS";
             this.btnTL_SYS.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -768,7 +770,7 @@
             this.btnTL_SYS.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnTL_SYS.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
             this.btnTL_SYS.Radius = 5;
-            this.btnTL_SYS.Size = new System.Drawing.Size(141, 42);
+            this.btnTL_SYS.Size = new System.Drawing.Size(141, 50);
             this.btnTL_SYS.TabIndex = 36;
             this.btnTL_SYS.Text = "TL_SYS";
             this.btnTL_SYS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -789,7 +791,7 @@
             this.btnAA_Exception.Image = ((System.Drawing.Image)(resources.GetObject("btnAA_Exception.Image")));
             this.btnAA_Exception.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAA_Exception.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnAA_Exception.Location = new System.Drawing.Point(291, 69);
+            this.btnAA_Exception.Location = new System.Drawing.Point(291, 64);
             this.btnAA_Exception.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnAA_Exception.Name = "btnAA_Exception";
             this.btnAA_Exception.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -797,7 +799,7 @@
             this.btnAA_Exception.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnAA_Exception.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
             this.btnAA_Exception.Radius = 5;
-            this.btnAA_Exception.Size = new System.Drawing.Size(141, 42);
+            this.btnAA_Exception.Size = new System.Drawing.Size(141, 50);
             this.btnAA_Exception.TabIndex = 37;
             this.btnAA_Exception.Text = "AA_EXCEPTION";
             this.btnAA_Exception.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -818,14 +820,14 @@
             this.btnV_FireCategories.Image = ((System.Drawing.Image)(resources.GetObject("btnV_FireCategories.Image")));
             this.btnV_FireCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnV_FireCategories.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnV_FireCategories.Location = new System.Drawing.Point(393, 91);
+            this.btnV_FireCategories.Location = new System.Drawing.Point(393, 88);
             this.btnV_FireCategories.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnV_FireCategories.Name = "btnV_FireCategories";
             this.btnV_FireCategories.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnV_FireCategories.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnV_FireCategories.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnV_FireCategories.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnV_FireCategories.Size = new System.Drawing.Size(173, 42);
+            this.btnV_FireCategories.Size = new System.Drawing.Size(173, 50);
             this.btnV_FireCategories.TabIndex = 38;
             this.btnV_FireCategories.Text = "Open vFire \r\nCateGories";
             this.btnV_FireCategories.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -862,6 +864,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.btnGetLDAP);
             this.groupBox2.Controls.Add(this.btnExceptionLookup);
             this.groupBox2.Controls.Add(this.btnClearLocks);
@@ -878,6 +881,16 @@
             this.groupBox2.TabIndex = 39;
             this.groupBox2.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(138, 124);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(173, 50);
+            this.button1.TabIndex = 40;
+            this.button1.Text = "Test Button";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            // 
             // tabFormattingTools
             // 
             this.tabFormattingTools.Controls.Add(this.groupBox3);
@@ -892,6 +905,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnUploadFile1);
             this.groupBox3.Controls.Add(this.btnLOAwithNoRptTime);
             this.groupBox3.Controls.Add(this.btnAA_Exception);
             this.groupBox3.Controls.Add(this.btnBanks);
@@ -923,7 +937,7 @@
             this.btnLOAwithNoRptTime.Image = ((System.Drawing.Image)(resources.GetObject("btnLOAwithNoRptTime.Image")));
             this.btnLOAwithNoRptTime.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLOAwithNoRptTime.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnLOAwithNoRptTime.Location = new System.Drawing.Point(148, 123);
+            this.btnLOAwithNoRptTime.Location = new System.Drawing.Point(148, 118);
             this.btnLOAwithNoRptTime.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnLOAwithNoRptTime.Name = "btnLOAwithNoRptTime";
             this.btnLOAwithNoRptTime.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -931,7 +945,7 @@
             this.btnLOAwithNoRptTime.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnLOAwithNoRptTime.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
             this.btnLOAwithNoRptTime.Radius = 5;
-            this.btnLOAwithNoRptTime.Size = new System.Drawing.Size(141, 42);
+            this.btnLOAwithNoRptTime.Size = new System.Drawing.Size(141, 50);
             this.btnLOAwithNoRptTime.TabIndex = 38;
             this.btnLOAwithNoRptTime.Text = "AHS_AA_RPTD_\r\nNO_TIME";
             this.btnLOAwithNoRptTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1039,6 +1053,35 @@
             this.imageList1.Images.SetKeyName(1, "format.png");
             this.imageList1.Images.SetKeyName(2, "others.png");
             // 
+            // btnUploadFile1
+            // 
+            this.btnUploadFile1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnUploadFile1.BackColor = System.Drawing.Color.Transparent;
+            this.btnUploadFile1.BaseColor = System.Drawing.Color.LightGray;
+            this.btnUploadFile1.BaseStrokeColor = System.Drawing.Color.Silver;
+            this.btnUploadFile1.FlatAppearance.BorderSize = 0;
+            this.btnUploadFile1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUploadFile1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadFile1.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnUploadFile1.Image = ((System.Drawing.Image)(resources.GetObject("btnUploadFile1.Image")));
+            this.btnUploadFile1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUploadFile1.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnUploadFile1.Location = new System.Drawing.Point(434, 118);
+            this.btnUploadFile1.MenuListPosition = new System.Drawing.Point(0, 0);
+            this.btnUploadFile1.Name = "btnUploadFile1";
+            this.btnUploadFile1.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnUploadFile1.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnUploadFile1.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
+            this.btnUploadFile1.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
+            this.btnUploadFile1.Radius = 5;
+            this.btnUploadFile1.Size = new System.Drawing.Size(141, 50);
+            this.btnUploadFile1.TabIndex = 39;
+            this.btnUploadFile1.Text = "Upload File 1 for NFP Checking";
+            this.btnUploadFile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUploadFile1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnUploadFile1.UseVisualStyleBackColor = false;
+            this.btnUploadFile1.Click += new System.EventHandler(this.btnUploadFile6_Click);
+            // 
             // frmSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1050,7 +1093,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.10.25";
+            this.Text = "SömëKindä Tööl v2017.10.30";
             this.Activated += new System.EventHandler(this.frmSearch_Activated);
             this.Deactivate += new System.EventHandler(this.frmSearch_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSearch_FormClosing);
@@ -1129,6 +1172,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
+        private MBGlassStyleButton.MBGlassButton btnUploadFile1;
     }
 }
 
