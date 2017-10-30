@@ -1466,7 +1466,7 @@ namespace WindowsFormsApplication1
 
                     bool changeInUnit = false;
                     bool changeInOcc = false;
-                    bool falseChangeUnit = false;
+                    //bool falseChangeUnit = false;
 
                     foreach (string line in lines)
                     {
@@ -1488,39 +1488,12 @@ namespace WindowsFormsApplication1
                                     }
                                     else if (!ThersAChange)
                                     {
-                                        string _tcg = GetTCG(values[1]).ToUpper();
+                                        string _ret = CheckIfComingFromNFPOrInactive(values[1]);
 
-                                        if (_tcg.Contains("NOT FOR PAYROLL") || _tcg.Contains("INACTIVE"))
+                                        if (_ret != "")
                                         {
-                                            if (_tcg.IndexOf("NOT FOR PAYROLL") > -1)
-                                            {
-                                                worksheet.Cells[lineCtr, 11].Value = "(From NFP? Pls Check)";
-                                            }
-                                            else
-                                            {
-                                                worksheet.Cells[lineCtr, 11].Value = "(Re-hire? Pls Check)";
-                                            }
                                             worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
-                                            // insert the EE in the list to check for previous NPF or previous INACTIVE
-                                            using (SqlConnection _conn = new SqlConnection(Common.SystemsServer))
-                                            {
-                                                _conn.Open();
-                                                using (SqlCommand _comm = _conn.CreateCommand())
-                                                {
-                                                    _comm.CommandText = "SELECT EmpID FROM NFPChecking WHERE EmpID = @_empID AND CurrentStat = 0";
-                                                    _comm.Parameters.AddWithValue("_empID", values[1]);
-                                                    SqlDataReader _dr = _comm.ExecuteReader();
-                                                    if (!_dr.HasRows)
-                                                    {
-                                                        _dr.Close();
-                                                        _comm.Parameters.Clear();
-                                                        _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_Unit, CurrentStat) VALUES (2, @_empID, @_name, @_prevUnit, 0)";
-                                                        _comm.Parameters.AddWithValue("_empID", currEmp);
-                                                        _comm.Parameters.AddWithValue("_name", GetEmpName(currEmp.Substring(0, 8)));
-                                                        _comm.Parameters.AddWithValue("_prevUnit", _tcg);
-                                                    }
-                                                }
-                                            }
+                                            worksheet.Cells[lineCtr, 11].Value = _ret;                                            
                                         }
                                         else
                                         {
@@ -1543,20 +1516,12 @@ namespace WindowsFormsApplication1
                                 currUnit = values[20];
                                 ThersAChange = true;
 
-                                string _tcg = GetTCG(values[1]).ToUpper();
+                                string _ret = CheckIfComingFromNFPOrInactive(values[1]);
 
-                                if (_tcg.IndexOf("NOT FOR PAYROLL") > -1 || _tcg.IndexOf("INACTIVE") > -1)
+                                if (_ret != "")
                                 {
-                                    if (_tcg.IndexOf("NOT FOR PAYROLL") > -1)
-                                    {
-                                        worksheet.Cells[lineCtr, 11].Value = "(From NFP? Pls Check)";
-                                    }
-                                    else
-                                    {
-                                        worksheet.Cells[lineCtr, 11].Value = "(Re-hire? Pls Check)";
-                                    }
-                                    falseChangeUnit = true;
-                                    changeInUnit = false;
+                                    worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                    worksheet.Cells[lineCtr, 11].Value = _ret;                                                                        
                                 }
                                 else
                                 {
@@ -1571,7 +1536,14 @@ namespace WindowsFormsApplication1
                                 currOcc = values[21];
                                 ThersAChange = true;
 
-                                if (!falseChangeUnit)
+                                string _ret = CheckIfComingFromNFPOrInactive(values[1]);
+
+                                if (_ret != "")
+                                {
+                                    worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                    worksheet.Cells[lineCtr, 11].Value = _ret;
+                                }
+                                else 
                                 {
                                     changeInOcc = true;
                                 }
@@ -1588,13 +1560,29 @@ namespace WindowsFormsApplication1
                                     currFTE = values[23];
                                 }
                                 ThersAChange = true;
+
+                                string _ret = CheckIfComingFromNFPOrInactive(values[1]);
+
+                                if (_ret != "")
+                                {
+                                    worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                    worksheet.Cells[lineCtr, 11].Value = _ret;
+                                }
                             }
-                            if (currFTE != values[23])
+                            if (currFTE != values[23]) // change in FTE
                             {
                                 if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = "FTE";
                                 worksheet.Cells[lineCtr, 10].Style.Font.Bold = true;
                                 currFTE = values[23];
                                 ThersAChange = true;
+
+                                string _ret = CheckIfComingFromNFPOrInactive(values[1]);
+
+                                if (_ret != "")
+                                {
+                                    worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                    worksheet.Cells[lineCtr, 11].Value = _ret;
+                                }
                             }
 
                             #region AutoInsertInItemsReport                          
@@ -1652,7 +1640,7 @@ namespace WindowsFormsApplication1
                                 }
                             }
 
-                            falseChangeUnit = changeInUnit = changeInOcc = false;
+                            changeInUnit = changeInOcc = false;
                             #endregion
 
                             worksheet.Row(lineCtr).Height = 25;
@@ -1677,6 +1665,12 @@ namespace WindowsFormsApplication1
                             lineCtr++;
                             empLineCtr++;
                         }
+                    }
+
+                    // Check if the last line is a one Liner, if it is then put a name on the line
+                    if (empLineCtr == 1)
+                    {
+                        worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
                     }
 
                     worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
@@ -1705,6 +1699,48 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // return blank string if not from NFP or not Inactive
+        private string CheckIfComingFromNFPOrInactive(string _empNo)
+        {
+            string _tcg = GetTCG(_empNo).ToUpper();
+            string _ret = "";
+
+            if (_tcg.Contains("NOT FOR PAYROLL") || _tcg.Contains("INACTIVE"))
+            {
+                if (_tcg.IndexOf("NOT FOR PAYROLL") > -1) // NFP
+                {
+                    _ret = "(From NFP? Pls Check)";
+                }
+                else // Inactive
+                {
+                    _ret = "(Re-hire? Pls Check)";
+                }
+               
+                // insert the EE in the list to check for previous NPF or previous INACTIVE
+                using (SqlConnection _conn = new SqlConnection(Common.SystemsServer))
+                {
+                    _conn.Open();
+                    using (SqlCommand _comm = _conn.CreateCommand())
+                    {
+                        _comm.CommandText = "SELECT EmpID FROM NFPChecking WHERE EmpID = @_empID AND CurrentStat = 0";
+                        _comm.Parameters.AddWithValue("_empID", _empNo);
+                        SqlDataReader _dr = _comm.ExecuteReader();
+                        if (!_dr.HasRows)
+                        {
+                            _dr.Close();
+                            _comm.Parameters.Clear();
+                            _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_Unit, CurrentStat) VALUES (2, @_empID, @_name, @_prevUnit, 0)";
+                            _comm.Parameters.AddWithValue("_empID", _empNo);
+                            _comm.Parameters.AddWithValue("_name", GetEmpName(_empNo.Substring(0, 8)));
+                            _comm.Parameters.AddWithValue("_prevUnit", _tcg);
+                        }
+                    }
+                }
+            }
+
+            return _ret;
         }
 
         private void ProcessFile6(string _sourceFile, string _destFolder = "")
