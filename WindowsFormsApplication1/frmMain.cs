@@ -417,11 +417,14 @@ namespace WindowsFormsApplication1
                     _reader.Read();
                     _ret = _reader["tcg_desc"].ToString().Trim();
                 }
-
             }
             else
             {
-                _ret = "--- INACTIVE ---";
+                _ret = GetEmpName(_empID.Substring(0, 8)); // Check if the name is already existing in ESP ,if it is then it means it is just INACTIVE
+                if (!_ret.ToUpper().Contains("NAME NOT FOUND"))
+                {
+                    _ret = "--- INACTIVE ---";
+                }
             }
 
             _reader.Close();
@@ -1382,7 +1385,7 @@ namespace WindowsFormsApplication1
                                 _ret[1] = "-----";
                             }
                             _ret[2] = Math.Round((_bnkHrs - _prevTotal), 2).ToString();
-                            _ret[3] = Math.Round((_total - _bnkHrs), 2) + (_unpaidCode != "" ? "  (" + _unpaidCode + ")" : "");                            
+                            _ret[3] = Math.Round((_total - _bnkHrs), 2) + (_unpaidCode != "" ? "  (" + _unpaidCode + ")" : "");
                             _exitWhile = true;
                         }
                         _prevTotal = _total;
@@ -1396,6 +1399,99 @@ namespace WindowsFormsApplication1
 
             return _ret;
 
+        }
+
+        // return blank string if not from NFP or not Inactive
+        private string CheckIfComingFromNFPOrInactive(string _empNo)
+        {
+            string _tcg = GetTCG(_empNo).ToUpper();
+            string _ret = "";
+
+            if (_tcg.Contains("NOT FOR PAYROLL") || _tcg.Contains("INACTIVE"))
+            {
+                if (_tcg.IndexOf("NOT FOR PAYROLL") > -1) // NFP
+                {
+                    _ret = "(From NFP? Pls Check)";
+                }
+                else // Inactive
+                {
+                    _ret = "(Re-hire? Pls Check)";
+                }
+
+                // insert the EE in the list to check for previous NPF or previous INACTIVE
+                using (SqlConnection _conn = new SqlConnection(Common.SystemsServer))
+                {
+                    _conn.Open();
+                    using (SqlCommand _comm = _conn.CreateCommand())
+                    {
+                        _comm.CommandText = "SELECT EmpID FROM NFPChecking WHERE EmpID = @_empID AND CurrentStat = 0";
+                        _comm.Parameters.AddWithValue("_empID", _empNo);
+                        SqlDataReader _dr = _comm.ExecuteReader();
+                        if (!_dr.HasRows)
+                        {
+                            _dr.Close();
+                            _comm.Parameters.Clear();
+                            _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_Unit, CurrentStat) VALUES (2, @_empID, @_name, @_prevUnit, 0)";
+                            _comm.Parameters.AddWithValue("_empID", _empNo);
+                            _comm.Parameters.AddWithValue("_name", GetEmpName(_empNo.Substring(0, 8)));
+                            _comm.Parameters.AddWithValue("_prevUnit", _tcg);
+                        }
+                    }
+                }
+            }
+
+            return _ret;
+        }
+
+        private void ProcessFile1(string _sourceFile)
+        {
+            try
+            {
+                string[] lines = File.ReadAllLines(_sourceFile);
+                int _ctrProcessed = 0;
+                int _ctrNFP = 0;
+                foreach (string line in lines)
+                {
+                    string[] values = line.Split(',');
+                    if (values.Count() == 38)
+                    {
+                        if (values[0] == "1" || (values[0] == "5" && values[32].Trim() != ""))
+                        {
+                            string _tcg = GetTCG(values[1]);
+                            if (_tcg.ToUpper().Contains("NOT FOR PAYROLL") || _tcg.ToUpper().Contains("INACTIVE")) // check all those that their current Timecard Group is "Not for Payroll" or "INACTIVE"
+                            {
+                                _ctrNFP++;
+                                using (SqlConnection _conn = new SqlConnection(Common.SystemsServer))
+                                {
+                                    _conn.Open();
+                                    using (SqlCommand _comm = _conn.CreateCommand())
+                                    {
+                                        _comm.CommandText = "SELECT EmpID FROM NFPChecking WHERE EmpID = @_empID AND CurrentStat = 0";
+                                        _comm.Parameters.AddWithValue("_empID", values[1]);
+                                        SqlDataReader _dr = _comm.ExecuteReader();
+                                        if (!_dr.HasRows)
+                                        {
+                                            _dr.Close();
+                                            _comm.Parameters.Clear();
+                                            _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_Unit, CurrentStat) VALUES (@_type, @_empID, @_name, @_prevUnit, 0)";
+                                            _comm.Parameters.AddWithValue("_type", values[0]);
+                                            _comm.Parameters.AddWithValue("_empID", values[1]);
+                                            _comm.Parameters.AddWithValue("_name", GetEmpName(values[1].Substring(0, 8)));
+                                            _comm.Parameters.AddWithValue("_prevUnit", _tcg);
+                                            _ctrProcessed = _ctrProcessed + _comm.ExecuteNonQuery();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                MessageBox.Show(_ctrNFP + " record(s) from File 1 are currently set as NFP in ESP.\n\n" + _ctrProcessed + " record(s) were uploaded to the list.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ProcessFile2(string _sourceFile, string _destFolder = "")
@@ -1415,7 +1511,7 @@ namespace WindowsFormsApplication1
                 using (var package = new ExcelPackage())
                 {
                     // add a new worksheet to the empty workbook
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(_sourceFile);
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Positions");
 
                     // Set Page Settings
                     worksheet.PrinterSettings.Orientation = eOrientation.Landscape;
@@ -1493,11 +1589,11 @@ namespace WindowsFormsApplication1
                                         if (_ret != "")
                                         {
                                             worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
-                                            worksheet.Cells[lineCtr, 11].Value = _ret;                                            
+                                            worksheet.Cells[lineCtr, 11].Value = _ret;
                                         }
                                         else
                                         {
-                                            worksheet.Cells[lineCtr - 2, 11].Value = "(No change??)";
+                                            worksheet.Cells[lineCtr - empLineCtr, 11].Value = "(No change? Pls. Check)";
                                         }
                                     }
 
@@ -1521,7 +1617,7 @@ namespace WindowsFormsApplication1
                                 if (_ret != "")
                                 {
                                     worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
-                                    worksheet.Cells[lineCtr, 11].Value = _ret;                                                                        
+                                    worksheet.Cells[lineCtr, 11].Value = _ret;
                                 }
                                 else
                                 {
@@ -1543,7 +1639,7 @@ namespace WindowsFormsApplication1
                                     worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
                                     worksheet.Cells[lineCtr, 11].Value = _ret;
                                 }
-                                else 
+                                else
                                 {
                                     changeInOcc = true;
                                 }
@@ -1673,6 +1769,23 @@ namespace WindowsFormsApplication1
                         worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
                     }
 
+                    // Check if the last line is "No Change?"
+                    if (!ThersAChange && empLineCtr > 1)
+                    {
+                        string _ret = CheckIfComingFromNFPOrInactive(currEmp);
+
+                        if (_ret != "")
+                        {
+                            worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                            worksheet.Cells[lineCtr, 11].Value = _ret;
+                        }
+                        else
+                        {
+                            worksheet.Cells[lineCtr - empLineCtr, 11].Value = "(No change? Pls. Check)";
+                        }
+                    }
+
+
                     worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
 
 
@@ -1699,48 +1812,6 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        // return blank string if not from NFP or not Inactive
-        private string CheckIfComingFromNFPOrInactive(string _empNo)
-        {
-            string _tcg = GetTCG(_empNo).ToUpper();
-            string _ret = "";
-
-            if (_tcg.Contains("NOT FOR PAYROLL") || _tcg.Contains("INACTIVE"))
-            {
-                if (_tcg.IndexOf("NOT FOR PAYROLL") > -1) // NFP
-                {
-                    _ret = "(From NFP? Pls Check)";
-                }
-                else // Inactive
-                {
-                    _ret = "(Re-hire? Pls Check)";
-                }
-               
-                // insert the EE in the list to check for previous NPF or previous INACTIVE
-                using (SqlConnection _conn = new SqlConnection(Common.SystemsServer))
-                {
-                    _conn.Open();
-                    using (SqlCommand _comm = _conn.CreateCommand())
-                    {
-                        _comm.CommandText = "SELECT EmpID FROM NFPChecking WHERE EmpID = @_empID AND CurrentStat = 0";
-                        _comm.Parameters.AddWithValue("_empID", _empNo);
-                        SqlDataReader _dr = _comm.ExecuteReader();
-                        if (!_dr.HasRows)
-                        {
-                            _dr.Close();
-                            _comm.Parameters.Clear();
-                            _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_Unit, CurrentStat) VALUES (2, @_empID, @_name, @_prevUnit, 0)";
-                            _comm.Parameters.AddWithValue("_empID", _empNo);
-                            _comm.Parameters.AddWithValue("_name", GetEmpName(_empNo.Substring(0, 8)));
-                            _comm.Parameters.AddWithValue("_prevUnit", _tcg);
-                        }
-                    }
-                }
-            }
-
-            return _ret;
         }
 
         private void ProcessFile6(string _sourceFile, string _destFolder = "")
@@ -1954,57 +2025,6 @@ namespace WindowsFormsApplication1
             }
             catch
             {
-            }
-        }
-
-        private void ProcessFile1(string _sourceFile)
-        {
-            try
-            {
-                string[] lines = File.ReadAllLines(_sourceFile);
-                int _ctrProcessed = 0;
-                int _ctrNFP = 0;
-                foreach (string line in lines)
-                {
-                    string[] values = line.Split(',');
-                    if (values.Count() == 38)
-                    {
-                        if (values[0] == "1" || (values[0] == "5" && values[32].Trim() != ""))
-                        {
-                            string _tcg = GetTCG(values[1]);
-                            if (_tcg.ToUpper().Contains("NOT FOR PAYROLL") || _tcg.Contains("INACTIVE")) // check all those that their current Timecard Group is "Not for Payroll" or "INACTIVE"
-                            {
-                                _ctrNFP++;
-                                using (SqlConnection _conn = new SqlConnection(Common.SystemsServer))
-                                {
-                                    _conn.Open();
-                                    using (SqlCommand _comm = _conn.CreateCommand())
-                                    {
-                                        _comm.CommandText = "SELECT EmpID FROM NFPChecking WHERE EmpID = @_empID AND CurrentStat = 0";
-                                        _comm.Parameters.AddWithValue("_empID", values[1]);
-                                        SqlDataReader _dr = _comm.ExecuteReader();
-                                        if (!_dr.HasRows)
-                                        {
-                                            _dr.Close();
-                                            _comm.Parameters.Clear();
-                                            _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_Unit, CurrentStat) VALUES (@_type, @_empID, @_name, @_prevUnit, 0)";
-                                            _comm.Parameters.AddWithValue("_type", values[0]);
-                                            _comm.Parameters.AddWithValue("_empID", values[1]);
-                                            _comm.Parameters.AddWithValue("_name", GetEmpName(values[1].Substring(0, 8)));
-                                            _comm.Parameters.AddWithValue("_prevUnit", _tcg);
-                                            _ctrProcessed = _ctrProcessed + _comm.ExecuteNonQuery();
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                MessageBox.Show(_ctrNFP + " record(s) from File 1 are currently set as NFP in ESP.\n\n" + _ctrProcessed + " record(s) were uploaded to the list.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

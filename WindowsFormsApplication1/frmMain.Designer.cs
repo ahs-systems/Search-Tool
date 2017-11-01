@@ -76,6 +76,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabFormattingTools = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnUploadFile1 = new MBGlassStyleButton.MBGlassButton();
             this.btnLOAwithNoRptTime = new MBGlassStyleButton.MBGlassButton();
             this.tabSearch = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -85,7 +86,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.btnUploadFile1 = new MBGlassStyleButton.MBGlassButton();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.mnuCopyFromList.SuspendLayout();
@@ -924,6 +924,35 @@
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             // 
+            // btnUploadFile1
+            // 
+            this.btnUploadFile1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnUploadFile1.BackColor = System.Drawing.Color.Transparent;
+            this.btnUploadFile1.BaseColor = System.Drawing.Color.LightGray;
+            this.btnUploadFile1.BaseStrokeColor = System.Drawing.Color.Silver;
+            this.btnUploadFile1.FlatAppearance.BorderSize = 0;
+            this.btnUploadFile1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUploadFile1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadFile1.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnUploadFile1.Image = ((System.Drawing.Image)(resources.GetObject("btnUploadFile1.Image")));
+            this.btnUploadFile1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUploadFile1.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnUploadFile1.Location = new System.Drawing.Point(434, 118);
+            this.btnUploadFile1.MenuListPosition = new System.Drawing.Point(0, 0);
+            this.btnUploadFile1.Name = "btnUploadFile1";
+            this.btnUploadFile1.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnUploadFile1.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnUploadFile1.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
+            this.btnUploadFile1.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
+            this.btnUploadFile1.Radius = 5;
+            this.btnUploadFile1.Size = new System.Drawing.Size(141, 50);
+            this.btnUploadFile1.TabIndex = 39;
+            this.btnUploadFile1.Text = "Upload File 1 for NFP Checking";
+            this.btnUploadFile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUploadFile1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnUploadFile1.UseVisualStyleBackColor = false;
+            this.btnUploadFile1.Click += new System.EventHandler(this.btnUploadFile6_Click);
+            // 
             // btnLOAwithNoRptTime
             // 
             this.btnLOAwithNoRptTime.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -1053,35 +1082,6 @@
             this.imageList1.Images.SetKeyName(1, "format.png");
             this.imageList1.Images.SetKeyName(2, "others.png");
             // 
-            // btnUploadFile1
-            // 
-            this.btnUploadFile1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnUploadFile1.BackColor = System.Drawing.Color.Transparent;
-            this.btnUploadFile1.BaseColor = System.Drawing.Color.LightGray;
-            this.btnUploadFile1.BaseStrokeColor = System.Drawing.Color.Silver;
-            this.btnUploadFile1.FlatAppearance.BorderSize = 0;
-            this.btnUploadFile1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUploadFile1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUploadFile1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnUploadFile1.Image = ((System.Drawing.Image)(resources.GetObject("btnUploadFile1.Image")));
-            this.btnUploadFile1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUploadFile1.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnUploadFile1.Location = new System.Drawing.Point(434, 118);
-            this.btnUploadFile1.MenuListPosition = new System.Drawing.Point(0, 0);
-            this.btnUploadFile1.Name = "btnUploadFile1";
-            this.btnUploadFile1.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnUploadFile1.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnUploadFile1.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
-            this.btnUploadFile1.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnUploadFile1.Radius = 5;
-            this.btnUploadFile1.Size = new System.Drawing.Size(141, 50);
-            this.btnUploadFile1.TabIndex = 39;
-            this.btnUploadFile1.Text = "Upload File 1 for NFP Checking";
-            this.btnUploadFile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUploadFile1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnUploadFile1.UseVisualStyleBackColor = false;
-            this.btnUploadFile1.Click += new System.EventHandler(this.btnUploadFile6_Click);
-            // 
             // frmSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1093,7 +1093,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.10.30";
+            this.Text = "SömëKindä Tööl v2017.11.01";
             this.Activated += new System.EventHandler(this.frmSearch_Activated);
             this.Deactivate += new System.EventHandler(this.frmSearch_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSearch_FormClosing);

@@ -1,6 +1,5 @@
 ﻿using OfficeOpenXml;
 using System;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
@@ -10,7 +9,7 @@ using System.Windows.Forms;
 namespace FormatFile2And6
 {
     public partial class frmMain : Form
-    {        
+    {
         string ConnStr;
 
         public frmMain()
@@ -68,7 +67,7 @@ namespace FormatFile2And6
                         _reader.Read();
                         _ret = _reader["PP_NBR"].ToString();
                         if (_reader.IsClosed != true) _reader.Close();
-                        _reader.Dispose();                       
+                        _reader.Dispose();
                     }
                 }
 
@@ -121,7 +120,11 @@ namespace FormatFile2And6
                     }
                     else
                     {
-                        _ret = "--- INACTIVE ---";
+                        _ret = GetEmpName(_empID.Substring(0, 8)); // Check if the name is already existing in ESP ,if it is then it means it is just INACTIVE
+                        if (!_ret.ToUpper().Contains("NAME NOT FOUND"))
+                        {
+                            _ret = "--- INACTIVE ---";
+                        }
                     }
                     _reader.Close();
                 }
@@ -150,7 +153,7 @@ namespace FormatFile2And6
                     worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
                     worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Positions Report";
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
@@ -187,7 +190,9 @@ namespace FormatFile2And6
                     string currEmp = "", currUnit = "", currOcc = "", currStat = "", currFTE = "", prevUnit = "", prevOcc = "";
                     bool switchColor = true, ThersAChange = false;
 
-                    //bool changeInUnit = false, changeInOcc = false;
+                    bool changeInUnit = false;
+                    bool changeInOcc = false;
+                    //bool falseChangeUnit = false;
 
                     foreach (string line in lines)
                     {
@@ -197,7 +202,7 @@ namespace FormatFile2And6
                             if (firstEmp)
                             {
                                 firstEmp = false;
-                                currEmp = values[1]; currUnit = values[20]; currOcc = values[21]; currStat = values[22]; currFTE = values[23];                                
+                                currEmp = values[1]; currUnit = values[20]; currOcc = values[21]; currStat = values[22]; currFTE = values[23];
                             }
                             else
                             {
@@ -209,14 +214,24 @@ namespace FormatFile2And6
                                     }
                                     else if (!ThersAChange)
                                     {
-                                        worksheet.Cells[lineCtr - 2, 11].Value = "(No change??)";
+                                        string _ret = CheckIfComingFromNFPOrInactive(values[1]);
+
+                                        if (_ret != "")
+                                        {
+                                            worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                            worksheet.Cells[lineCtr, 11].Value = _ret;
+                                        }
+                                        else
+                                        {
+                                            worksheet.Cells[lineCtr - empLineCtr, 11].Value = "(No change? Pls. Check)";
+                                        }
                                     }
 
                                     empLineCtr = 0;
 
                                     currEmp = values[1]; currUnit = prevUnit = values[20]; currOcc = prevOcc = values[21]; currStat = values[22]; currFTE = values[23]; // reset the base values
                                     ThersAChange = false; //reset the flags
-                                    switchColor = !switchColor;                                    
+                                    switchColor = !switchColor;
                                 }
                             }
                             if (currUnit != values[20]) // change in unit
@@ -225,7 +240,19 @@ namespace FormatFile2And6
                                 worksheet.Cells[lineCtr, 7].Style.Font.Bold = true;
                                 prevUnit = currUnit;
                                 currUnit = values[20];
-                                ThersAChange = true; // changeInUnit = true;
+                                ThersAChange = true;
+
+                                string _ret = CheckIfComingFromNFPOrInactive(values[1]);
+
+                                if (_ret != "")
+                                {
+                                    worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                    worksheet.Cells[lineCtr, 11].Value = _ret;
+                                }
+                                else
+                                {
+                                    changeInUnit = true;
+                                }
                             }
                             if (currOcc != values[21]) // change in occupation
                             {
@@ -233,30 +260,117 @@ namespace FormatFile2And6
                                 worksheet.Cells[lineCtr, 8].Style.Font.Bold = true;
                                 prevOcc = currOcc;
                                 currOcc = values[21];
-                                ThersAChange = true; // changeInOcc = true;
+                                ThersAChange = true;
+
+                                string _ret = CheckIfComingFromNFPOrInactive(values[1]);
+
+                                if (_ret != "")
+                                {
+                                    worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                    worksheet.Cells[lineCtr, 11].Value = _ret;
+                                }
+                                else
+                                {
+                                    changeInOcc = true;
+                                }
                             }
-                            if (currStat != values[22])
+                            if (currStat != values[22]) // change in status
                             {
                                 if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = "Status";
                                 worksheet.Cells[lineCtr, 9].Style.Font.Bold = true;
                                 currStat = values[22];
-                                if (currFTE != values[23])
+                                if (currFTE != values[23]) // Change in FTE
                                 {
                                     if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = "Status / FTE";
                                     worksheet.Cells[lineCtr, 10].Style.Font.Bold = true;
                                     currFTE = values[23];
                                 }
                                 ThersAChange = true;
+
+                                string _ret = CheckIfComingFromNFPOrInactive(values[1]);
+
+                                if (_ret != "")
+                                {
+                                    worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                    worksheet.Cells[lineCtr, 11].Value = _ret;
+                                }
                             }
-                            if (currFTE != values[23])
+                            if (currFTE != values[23]) // change in FTE
                             {
                                 if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = "FTE";
                                 worksheet.Cells[lineCtr, 10].Style.Font.Bold = true;
                                 currFTE = values[23];
                                 ThersAChange = true;
+
+                                string _ret = CheckIfComingFromNFPOrInactive(values[1]);
+
+                                if (_ret != "")
+                                {
+                                    worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                    worksheet.Cells[lineCtr, 11].Value = _ret;
+                                }
                             }
 
+                            #region AutoInsertInItemsReport                          
+                            //if (_uploadParams.uploadToItems)
+                            //{
+                            //    if (changeInUnit)
+                            //    {
+                            //        // InsertInItems return 0 = not successful; 1 = sucessfull; 2 = not inserted / already existing
+                            //        byte _ret = InsertInItems(new ChangeInUnitAndOrOcc
+                            //        {
+                            //            empNo = values[1].Trim(),
+                            //            prevUnit = prevUnit.Trim(),
+                            //            currUnit = currUnit.Trim(),
+                            //            prevPosCode = changeInOcc ? prevOcc : values[21].Trim(),
+                            //            currPosCode = values[21].Trim(),
+                            //            stat = values[22].Trim(),
+                            //            pp = _uploadParams.pp,
+                            //            ppYear = _uploadParams.ppYear,
+                            //            itemsReportLetter = _uploadParams.itemsReportLetter
+                            //        });
+                            //        if (_ret == 1)
+                            //        {
+                            //            values[0] = "(Unit Trns)";
+                            //        }
+                            //        else if (_ret == 2)
+                            //        {
+                            //            worksheet.Cells[lineCtr, 11].Value = "(Prev. Entered)";
+                            //            worksheet.Cells[lineCtr, 11].Style.Font.Size = 10;
+                            //            worksheet.Cells[lineCtr, 11].Style.Font.Italic = true;
+                            //        }
+                            //    }
+                            //    else if (!changeInUnit && changeInOcc)
+                            //    {
+                            //        // InsertInItems return 0 = not successful; 1 = sucessfull; 2 = not inserted / already existing
+                            //        byte _ret = InsertInItems(new ChangeInOcc
+                            //        {
+                            //            empNo = values[1].Trim(),
+                            //            unit = currUnit.Trim(),
+                            //            prevPosCode = prevOcc,
+                            //            currPosCode = currOcc,
+                            //            pp = _uploadParams.pp,
+                            //            ppYear = _uploadParams.ppYear,
+                            //            itemsReportLetter = _uploadParams.itemsReportLetter
+                            //        });
+                            //        if (_ret == 1)
+                            //        {
+                            //            values[0] = "(Occ Chg)";
+                            //        }
+                            //        else if (_ret == 2)
+                            //        {
+                            //            worksheet.Cells[lineCtr, 11].Value = "(Prev. Entered)";
+                            //            worksheet.Cells[lineCtr, 11].Style.Font.Size = 10;
+                            //            worksheet.Cells[lineCtr, 11].Style.Font.Italic = true;
+                            //        }
+                            //    }
+                            //}
+
+                            //changeInUnit = changeInOcc = false;
+                            #endregion
+
                             worksheet.Row(lineCtr).Height = 25;
+                            worksheet.Row(lineCtr).Style.Font.Name = "Verdana";
                             worksheet.Row(lineCtr).Style.Font.Size = 12;
                             worksheet.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
                             worksheet.Cells[lineCtr, 1].Value = values[0]; worksheet.Cells[lineCtr, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
@@ -276,8 +390,31 @@ namespace FormatFile2And6
 
                             lineCtr++;
                             empLineCtr++;
-                        }                        
+                        }
                     }
+
+                    // Check if the last line is a one Liner, if it is then put a name on the line
+                    if (empLineCtr == 1)
+                    {
+                        worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                    }
+
+                    // Check if the last line is "No Change?"
+                    if (!ThersAChange && empLineCtr > 1)
+                    {
+                        string _ret = CheckIfComingFromNFPOrInactive(currEmp);
+
+                        if (_ret != "")
+                        {
+                            worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                            worksheet.Cells[lineCtr, 11].Value = _ret;
+                        }
+                        else
+                        {
+                            worksheet.Cells[lineCtr - empLineCtr, 11].Value = "(No change? Pls. Check)";
+                        }
+                    }
+
 
                     worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
 
@@ -301,10 +438,51 @@ namespace FormatFile2And6
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                //MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private string CheckIfComingFromNFPOrInactive(string _empNo)
+        {
+            string _tcg = GetTCG(_empNo).ToUpper();
+            string _ret = "";
+
+            if (_tcg.Contains("NOT FOR PAYROLL") || _tcg.Contains("INACTIVE"))
+            {
+                if (_tcg.IndexOf("NOT FOR PAYROLL") > -1) // NFP
+                {
+                    _ret = "(From NFP? Pls Check)";
+                }
+                else // Inactive
+                {
+                    _ret = "(Re-hire? Pls Check)";
+                }
+
+                // insert the EE in the list to check for previous NPF or previous INACTIVE
+                //using (SqlConnection _conn = new SqlConnection(Common.SystemsServer))
+                //{
+                //    _conn.Open();
+                //    using (SqlCommand _comm = _conn.CreateCommand())
+                //    {
+                //        _comm.CommandText = "SELECT EmpID FROM NFPChecking WHERE EmpID = @_empID AND CurrentStat = 0";
+                //        _comm.Parameters.AddWithValue("_empID", _empNo);
+                //        SqlDataReader _dr = _comm.ExecuteReader();
+                //        if (!_dr.HasRows)
+                //        {
+                //            _dr.Close();
+                //            _comm.Parameters.Clear();
+                //            _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_Unit, CurrentStat) VALUES (2, @_empID, @_name, @_prevUnit, 0)";
+                //            _comm.Parameters.AddWithValue("_empID", _empNo);
+                //            _comm.Parameters.AddWithValue("_name", GetEmpName(_empNo.Substring(0, 8)));
+                //            _comm.Parameters.AddWithValue("_prevUnit", _tcg);
+                //        }
+                //    }
+                //}
+            }
+
+            return _ret;
         }
 
         private string GetPosition(string _code)
@@ -392,7 +570,7 @@ namespace FormatFile2And6
             }
             finally
             {
-                btnFile6.Text = "Format File 6";
+                btnFile6.Text = "Format File 6 From File 1";
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -404,7 +582,7 @@ namespace FormatFile2And6
                 using (var package = new ExcelPackage())
                 {
                     // add a new worksheet to the empty workbook
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(_sourceFile);
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Terms and Trans");
 
                     // Set Page Settings
                     worksheet.PrinterSettings.Orientation = eOrientation.Landscape;
@@ -416,7 +594,7 @@ namespace FormatFile2And6
                     worksheet.PrinterSettings.RightMargin = (decimal)1 / 2.54M;
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
                     worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Terms and Trans From File 6";
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
@@ -451,17 +629,25 @@ namespace FormatFile2And6
                             if (values[16].Trim() == "0") // only with values "0"
                             {
                                 worksheet.Row(lineCtr).Height = 25;
-                                worksheet.Row(lineCtr).Style.Font.Size = 12;
+                                worksheet.Row(lineCtr).Style.Font.Name = "Verdana";
+                                worksheet.Row(lineCtr).Style.Font.Size = 10;
                                 worksheet.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
                                 worksheet.Cells[lineCtr, 1].Value = values[0];
                                 worksheet.Cells[lineCtr, 2].Value = values[1];
                                 worksheet.Cells[lineCtr, 3].Value = values[18] == "" ? "" : DateTime.ParseExact(values[18].PadLeft(8, '0'), "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("ddMMMyyyy");
-                                worksheet.Cells[lineCtr, 4].Value = GetEmpName(values[1].Substring(0, 8)).Replace("(NFP)", "");
+                                worksheet.Cells[lineCtr, 4].Value = GetEmpName(values[1].Substring(0, 8));
                                 worksheet.Cells[lineCtr, 5].Value = GetTCG(values[1]);
                                 lineCtr++;
                             }
                         }
                     }
+
+                    worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                    worksheet.Column(1).Width = 3.29;
+                    worksheet.Column(2).Width = 13;
+                    worksheet.Column(3).Width = 12;
+                    worksheet.Column(6).Width = 35;
+                    worksheet.Column(7).Width = 9.86; worksheet.Cells[1, 7].Style.WrapText = true;
 
                     if (_destFolder != "")
                     {
@@ -488,13 +674,13 @@ namespace FormatFile2And6
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ConnStr = @"Server=wssqlc015v02\esp8; Initial Catalog=esp_ncs_prod; User Id=BOO_USER;Password=BOO_USER;";            
+            ConnStr = @"Server=wssqlc015v02\esp8; Initial Catalog=esp_ncs_prod; User Id=BOO_USER;Password=BOO_USER;";
         }
 
         private void cboZone_SelectedIndexChanged(object sender, EventArgs e)
@@ -508,7 +694,7 @@ namespace FormatFile2And6
                     ConnStr = @"Server=wssqlc015v02\esp8; Initial Catalog=esp_ncs_prod; User Id=BOO_USER;Password=BOO_USER;";
                     break;
             }
-            
+
         }
     }
 }
