@@ -210,11 +210,20 @@ namespace FormatFile2And6
                                 {
                                     if (empLineCtr == 1)
                                     {
-                                        worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                        string _ret = CheckIfComingFromNFPOrInactive(currEmp);
+
+                                        if (_ret != "")
+                                        {
+                                            worksheet.Cells[lineCtr - 1, 11].Value = _ret;
+                                        }
+                                        else
+                                        {
+                                            worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                        }
                                     }
                                     else if (!ThersAChange)
                                     {
-                                        string _ret = CheckIfComingFromNFPOrInactive(values[1]);
+                                        string _ret = CheckIfComingFromNFPOrInactive(currEmp);
 
                                         if (_ret != "")
                                         {
@@ -393,10 +402,20 @@ namespace FormatFile2And6
                         }
                     }
 
-                    // Check if the last line is a one Liner, if it is then put a name on the line
+                    // Check if the last line is a one Liner, if it is then process it as you would a one liner
                     if (empLineCtr == 1)
                     {
-                        worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                        string _ret = CheckIfComingFromNFPOrInactive(currEmp);
+
+                        if (_ret != "")
+                        {
+                            worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                            worksheet.Cells[lineCtr, 11].Value = _ret;
+                        }
+                        else
+                        {
+                            worksheet.Cells[lineCtr - empLineCtr, 11].Value = "(No change? Pls. Check)";
+                        }
                     }
 
                     // Check if the last line is "No Change?"

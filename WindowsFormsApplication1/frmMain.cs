@@ -1580,11 +1580,20 @@ namespace WindowsFormsApplication1
                                 {
                                     if (empLineCtr == 1)
                                     {
-                                        worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                        string _ret = CheckIfComingFromNFPOrInactive(currEmp);
+
+                                        if (_ret != "")
+                                        {
+                                            worksheet.Cells[lineCtr - 1, 11].Value = _ret;
+                                        }
+                                        else
+                                        {
+                                            worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                        }
                                     }
                                     else if (!ThersAChange)
                                     {
-                                        string _ret = CheckIfComingFromNFPOrInactive(values[1]);
+                                        string _ret = CheckIfComingFromNFPOrInactive(currEmp);
 
                                         if (_ret != "")
                                         {
@@ -1763,10 +1772,19 @@ namespace WindowsFormsApplication1
                         }
                     }
 
-                    // Check if the last line is a one Liner, if it is then put a name on the line
+                    // Check if the last line is a one Liner, if it is then process it the same way as you normally process it
                     if (empLineCtr == 1)
                     {
-                        worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                        string _ret = CheckIfComingFromNFPOrInactive(currEmp);
+
+                        if (_ret != "")
+                        {
+                            worksheet.Cells[lineCtr - 1, 11].Value = _ret;
+                        }
+                        else
+                        {
+                            worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                        }
                     }
 
                     // Check if the last line is "No Change?"

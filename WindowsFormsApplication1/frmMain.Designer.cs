@@ -883,7 +883,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(138, 124);
+            this.button1.Location = new System.Drawing.Point(11, 120);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(173, 50);
             this.button1.TabIndex = 40;
@@ -1093,7 +1093,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.11.01";
+            this.Text = "SömëKindä Tööl v2017.11.02";
             this.Activated += new System.EventHandler(this.frmSearch_Activated);
             this.Deactivate += new System.EventHandler(this.frmSearch_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSearch_FormClosing);
