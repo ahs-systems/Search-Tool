@@ -1407,6 +1407,11 @@ namespace WindowsFormsApplication1
             string _tcg = GetTCG(_empNo).ToUpper();
             string _ret = "";
 
+            //if (_empNo == "01067720-0")
+            //{
+            //    ;
+            //}
+
             if (_tcg.Contains("NOT FOR PAYROLL") || _tcg.Contains("INACTIVE"))
             {
                 if (_tcg.IndexOf("NOT FOR PAYROLL") > -1) // NFP
@@ -1435,6 +1440,7 @@ namespace WindowsFormsApplication1
                             _comm.Parameters.AddWithValue("_empID", _empNo);
                             _comm.Parameters.AddWithValue("_name", GetEmpName(_empNo.Substring(0, 8)));
                             _comm.Parameters.AddWithValue("_prevUnit", _tcg);
+                            _comm.ExecuteNonQuery();
                         }
                     }
                 }
@@ -1486,7 +1492,7 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
-                MessageBox.Show(_ctrNFP + " record(s) from File 1 are currently set as NFP in ESP.\n\n" + _ctrProcessed + " record(s) were uploaded to the list.");
+                MessageBox.Show(_ctrNFP + " record(s) from File 1 are currently set as NFP or Inactive in ESP.\n\n" + _ctrProcessed + " record(s) were uploaded to the list.");
             }
             catch (Exception ex)
             {

@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchTool", "WindowsFormsApplication1\SearchTool.csproj", "{61E03AFC-C1C8-4FD1-AFB0-FF32155E03A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchLDAP", "SearchLDAP\SearchLDAP.csproj", "{827EEC8E-F9DF-4E80-9B80-D160C301F075}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormatFile2And6", "FormatFile2And6\FormatFile2And6.csproj", "{AC542E30-ECB4-4E48-8D17-D5D372A9E321}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormatType2And6", "FormatFile2And6\FormatType2And6.csproj", "{AC542E30-ECB4-4E48-8D17-D5D372A9E321}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

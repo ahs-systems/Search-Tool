@@ -42,11 +42,11 @@ namespace FormatFile2And6
 
         private bool ZoneSelected()
         {
-            if (cboZone.SelectedIndex == -1)
+            if (cboZone.selectedIndex == -1)
             {
                 MessageBox.Show("Please select the zone first.", "Select a zone");
             }
-            return cboZone.SelectedIndex != -1;
+            return cboZone.selectedIndex != -1;
         }
 
         private string GetPP(string _date)
@@ -704,7 +704,7 @@ namespace FormatFile2And6
 
         private void cboZone_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cboZone.SelectedIndex)
+            switch (cboZone.selectedIndex)
             {
                 case 0: // Edmonton
                     ConnStr = @"Server=wssqlc015v02\esp8; Initial Catalog=esp_edm_prod; User Id=BOO_USER;Password=BOO_USER;";
@@ -714,6 +714,11 @@ namespace FormatFile2And6
                     break;
             }
 
+        }
+
+        private void lblExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

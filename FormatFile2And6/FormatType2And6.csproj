@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{AC542E30-ECB4-4E48-8D17-D5D372A9E321}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>FormatFile2And6</RootNamespace>
-    <AssemblyName>FormatFile2And6</AssemblyName>
+    <RootNamespace>FormatType2And6</RootNamespace>
+    <AssemblyName>FormatType2And6</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,12 +34,18 @@
     <ApplicationIcon>ahs.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\..\..\Downloads\Bunifu\Bunifu_UI_v1.5.3.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="EPPlus">
       <HintPath>..\WindowsFormsApplication1\bin\Debug\EPPlus.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +76,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -86,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ahs.ico" />
+    <EmbeddedResource Include="Bunifu_UI_v1.5.3.dll" />
     <EmbeddedResource Include="EPPlus.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
