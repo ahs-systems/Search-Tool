@@ -700,7 +700,7 @@ namespace FormatFile2And6
         private void Form1_Load(object sender, EventArgs e)
         {
             ConnStr = @"Server=wssqlc015v02\esp8; Initial Catalog=esp_ncs_prod; User Id=BOO_USER;Password=BOO_USER;";
-            lblCurrentUser.Text = "Current User: " + System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            //lblCurrentUser.Text = "Current User: " + System.Security.Principal.WindowsIdentity.GetCurrent().Name;
         }
 
         private void cboZone_SelectedIndexChanged(object sender, EventArgs e)
