@@ -33,12 +33,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cboZone = new Bunifu.Framework.UI.BunifuDropdown();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btnFile2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnFile6 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.lblExit = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.timerClose = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -78,6 +79,14 @@
             this.bunifuDragControl1.Horizontal = true;
             this.bunifuDragControl1.TargetControl = this.panel1;
             this.bunifuDragControl1.Vertical = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(481, 28);
+            this.panel1.TabIndex = 10;
             // 
             // btnFile2
             // 
@@ -159,7 +168,7 @@
             this.lblCurrentUser.Name = "lblCurrentUser";
             this.lblCurrentUser.Size = new System.Drawing.Size(265, 21);
             this.lblCurrentUser.TabIndex = 9;
-            this.lblCurrentUser.Text = "ver 2017.11.06";
+            this.lblCurrentUser.Text = "ver 2017.11.07";
             this.lblCurrentUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblExit
@@ -188,13 +197,10 @@
             this.label2.Text = "_";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // panel1
+            // timerClose
             // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(481, 28);
-            this.panel1.TabIndex = 10;
+            this.timerClose.Interval = 3600000;
+            this.timerClose.Tick += new System.EventHandler(this.timerClose_Tick);
             // 
             // frmMain
             // 
@@ -232,6 +238,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblExit;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer timerClose;
     }
 }
 

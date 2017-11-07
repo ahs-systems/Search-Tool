@@ -165,6 +165,7 @@ namespace FormatFile2And6
                     //Setting Header Style
                     //worksheet.Row(1).Height = 42;
                     //worksheet.Column(1).Width = 3.29;
+                    worksheet.Cells[1, 1].Value = "Action"; worksheet.Cells[1, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     worksheet.Cells[1, 2].Value = "EE ID #"; worksheet.Cells[1, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     worksheet.Cells[1, 3].Value = "POS"; worksheet.Cells[1, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     worksheet.Cells[1, 4].Value = "Prim"; worksheet.Cells[1, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
@@ -382,7 +383,22 @@ namespace FormatFile2And6
                             worksheet.Row(lineCtr).Style.Font.Name = "Verdana";
                             worksheet.Row(lineCtr).Style.Font.Size = 12;
                             worksheet.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
-                            worksheet.Cells[lineCtr, 1].Value = values[0]; worksheet.Cells[lineCtr, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+
+                            //worksheet.Cells[lineCtr, 1].Value = values[0]; worksheet.Cells[lineCtr, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                            string _action = "";
+                            switch (values[39].Trim().ToUpper()) {
+                                case "E":
+                                    _action = "End ";
+                                    break;
+                                case "C":
+                                    _action = "Create";
+                                    break;
+                                case "U":
+                                    _action = "Update";
+                                    break;
+                            }
+                            worksheet.Cells[lineCtr, 1].Value = _action; worksheet.Cells[lineCtr, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+
                             worksheet.Cells[lineCtr, 2].Value = values[1]; worksheet.Cells[lineCtr, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                             worksheet.Cells[lineCtr, 3].Value = values[15]; worksheet.Cells[lineCtr, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                             worksheet.Cells[lineCtr, 4].Value = values[16]; worksheet.Cells[lineCtr, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
@@ -701,6 +717,8 @@ namespace FormatFile2And6
         {
             ConnStr = @"Server=wssqlc015v02\esp8; Initial Catalog=esp_ncs_prod; User Id=BOO_USER;Password=BOO_USER;";
             //lblCurrentUser.Text = "Current User: " + System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+
+            timerClose.Enabled = true;
         }
 
         private void cboZone_SelectedIndexChanged(object sender, EventArgs e)
@@ -725,6 +743,11 @@ namespace FormatFile2And6
         private void label2_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void timerClose_Tick(object sender, EventArgs e)
+        {
+            if (DateTime.Now.Hour > 1 && DateTime.Now.Hour < 5 && Cursor != Cursors.WaitCursor) Application.Exit();
         }
     }
 }
