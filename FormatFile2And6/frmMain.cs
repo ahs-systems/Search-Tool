@@ -131,7 +131,7 @@ namespace FormatFile2And6
             }
 
             return _ret;
-        }
+        }        
 
         private void ProcessFile2(string _sourceFile, string _destFolder = "")
         {
@@ -386,7 +386,8 @@ namespace FormatFile2And6
 
                             //worksheet.Cells[lineCtr, 1].Value = values[0]; worksheet.Cells[lineCtr, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                             string _action = "";
-                            switch (values[39].Trim().ToUpper()) {
+                            switch (values[39].Trim().ToUpper())
+                            {
                                 case "E":
                                     _action = "End ";
                                     break;
