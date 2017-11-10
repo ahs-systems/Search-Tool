@@ -1388,7 +1388,7 @@ namespace WindowsFormsApplication1
                                 "AND TC_PayPeriodID = (SELECT PP_PayPeriodID FROM PayPeriod WHERE GETDATE()-3 between PP_StartDate AND PP_EndDate)) " +
                                 "AND tce.TCE_EntryTypeInd IN(1, 2, 38, 70, 94, 166, 198, 262, 294) AND tce.TCE_PayCodeType = 2 " +
                                 "AND pc.PC_Type = 2 AND pc.PC_Nbr IN (" + _listOfOffCodes + ") " +
-                                "ORDER BY tce.tce_date, tce.TCE_DateEntered";
+                                "ORDER BY tce.tce_date, tce.TCE_DateEntered, TCE_ShiftStartTime";
 
                     myCommand.Parameters.AddWithValue("_empNum", _empNo);
 
