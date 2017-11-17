@@ -1478,7 +1478,7 @@ namespace WindowsFormsApplication1
                 }
                 else // Inactive
                 {
-                    _ret = "(Re-hire? Pls Check)";
+                    _ret = "(New hire? Pls Check)";
                 }
 
                 // insert the EE in the list to check for previous NPF or previous INACTIVE
@@ -1640,7 +1640,7 @@ namespace WindowsFormsApplication1
                             }
                             else
                             {
-                                if (currEmp != values[1]) // change in empno
+                                if (currEmp.Substring(0, 8) != values[1].Substring(0, 8)) // change in empno first 8 digits w/o the record dash number
                                 {
                                     if (empLineCtr == 1)
                                     {
@@ -1648,11 +1648,11 @@ namespace WindowsFormsApplication1
 
                                         if (_ret != "")
                                         {
-                                            worksheet.Cells[lineCtr - 1, 11].Value = _ret;
+                                            worksheet.Cells[lineCtr - empLineCtr, 11].Value = _ret;
                                         }
                                         else
                                         {
-                                            worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                            worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(currEmp.Substring(0, 8));
                                         }
                                     }
                                     else if (!ThersAChange)
@@ -1661,7 +1661,7 @@ namespace WindowsFormsApplication1
 
                                         if (_ret != "")
                                         {
-                                            worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                            worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(currEmp.Substring(0, 8));
                                             worksheet.Cells[lineCtr, 11].Value = _ret;
                                         }
                                         else
@@ -1679,7 +1679,7 @@ namespace WindowsFormsApplication1
                             }
                             if (currUnit != values[20]) // change in unit
                             {
-                                worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(values[1].Substring(0, 8));
+                                worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(values[1].Substring(0, 8));
                                 worksheet.Cells[lineCtr, 7].Style.Font.Bold = true;
                                 prevUnit = currUnit;
                                 currUnit = values[20];
@@ -1689,7 +1689,7 @@ namespace WindowsFormsApplication1
 
                                 if (_ret != "")
                                 {
-                                    worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                    worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(currEmp.Substring(0, 8));
                                     worksheet.Cells[lineCtr, 11].Value = _ret;
                                 }
                                 else
@@ -1699,7 +1699,7 @@ namespace WindowsFormsApplication1
                             }
                             if (currOcc != values[21]) // change in occupation
                             {
-                                if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(values[1].Substring(0, 8));
+                                if (!ThersAChange) worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(values[1].Substring(0, 8));
                                 worksheet.Cells[lineCtr, 8].Style.Font.Bold = true;
                                 prevOcc = currOcc;
                                 currOcc = values[21];
@@ -1709,7 +1709,7 @@ namespace WindowsFormsApplication1
 
                                 if (_ret != "")
                                 {
-                                    worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                    worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(currEmp.Substring(0, 8));
                                     worksheet.Cells[lineCtr, 11].Value = _ret;
                                 }
                                 else
@@ -1719,12 +1719,12 @@ namespace WindowsFormsApplication1
                             }
                             if (currStat != values[22]) // change in status
                             {
-                                if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = "Status";
+                                if (!ThersAChange) worksheet.Cells[lineCtr - empLineCtr, 11].Value = "Status";
                                 worksheet.Cells[lineCtr, 9].Style.Font.Bold = true;
                                 currStat = values[22];
                                 if (currFTE != values[23]) // Change in FTE
                                 {
-                                    if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = "Status / FTE";
+                                    if (!ThersAChange) worksheet.Cells[lineCtr - empLineCtr, 11].Value = "Status / FTE";
                                     worksheet.Cells[lineCtr, 10].Style.Font.Bold = true;
                                     currFTE = values[23];
                                 }
@@ -1734,13 +1734,13 @@ namespace WindowsFormsApplication1
 
                                 if (_ret != "")
                                 {
-                                    worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                    worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(currEmp.Substring(0, 8));
                                     worksheet.Cells[lineCtr, 11].Value = _ret;
                                 }
                             }
                             if (currFTE != values[23]) // change in FTE
                             {
-                                if (!ThersAChange) worksheet.Cells[lineCtr - 1, 11].Value = "FTE";
+                                if (!ThersAChange) worksheet.Cells[lineCtr - empLineCtr, 11].Value = "FTE";
                                 worksheet.Cells[lineCtr, 10].Style.Font.Bold = true;
                                 currFTE = values[23];
                                 ThersAChange = true;
@@ -1749,7 +1749,7 @@ namespace WindowsFormsApplication1
 
                                 if (_ret != "")
                                 {
-                                    worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                                    worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(currEmp.Substring(0, 8));
                                     worksheet.Cells[lineCtr, 11].Value = _ret;
                                 }
                             }
@@ -1774,13 +1774,14 @@ namespace WindowsFormsApplication1
                                     });
                                     if (_ret == 1)
                                     {
-                                        values[0] = "(Unit Trns)";
+                                        // values[0] = "(Unit Trns)";
+                                        worksheet.Cells[lineCtr - empLineCtr, 11].Value = "(Unit Trns)";
                                     }
                                     else if (_ret == 2)
                                     {
-                                        worksheet.Cells[lineCtr, 11].Value = "(Prev. Entered)";
-                                        worksheet.Cells[lineCtr, 11].Style.Font.Size = 10;
-                                        worksheet.Cells[lineCtr, 11].Style.Font.Italic = true;
+                                        worksheet.Cells[lineCtr - empLineCtr, 11].Value = "(Prev. Entered)";
+                                        worksheet.Cells[lineCtr - empLineCtr, 11].Style.Font.Size = 10;
+                                        worksheet.Cells[lineCtr - empLineCtr, 11].Style.Font.Italic = true;
                                     }
                                 }
                                 else if (!changeInUnit && changeInOcc)
@@ -1798,13 +1799,14 @@ namespace WindowsFormsApplication1
                                     });
                                     if (_ret == 1)
                                     {
-                                        values[0] = "(Occ Chg)";
+                                        //values[0] = "(Occ Chg)";
+                                        worksheet.Cells[lineCtr - empLineCtr, 11].Value = "(Occ Chg)";
                                     }
                                     else if (_ret == 2)
                                     {
-                                        worksheet.Cells[lineCtr, 11].Value = "(Prev. Entered)";
-                                        worksheet.Cells[lineCtr, 11].Style.Font.Size = 10;
-                                        worksheet.Cells[lineCtr, 11].Style.Font.Italic = true;
+                                        worksheet.Cells[lineCtr - empLineCtr, 11].Value = "(Prev. Entered)";
+                                        worksheet.Cells[lineCtr - empLineCtr, 11].Style.Font.Size = 10;
+                                        worksheet.Cells[lineCtr - empLineCtr, 11].Style.Font.Italic = true;
                                     }
                                 }
                             }
@@ -1812,7 +1814,7 @@ namespace WindowsFormsApplication1
                             changeInUnit = changeInOcc = false;
                             #endregion
 
-                            worksheet.Row(lineCtr).Height = 19;
+                            worksheet.Row(lineCtr).Height = 23;
                             worksheet.Row(lineCtr).Style.Font.Name = "Verdana";
                             worksheet.Row(lineCtr).Style.Font.Size = 11;
                             worksheet.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
@@ -1858,7 +1860,7 @@ namespace WindowsFormsApplication1
 
                         if (_ret != "")
                         {
-                            worksheet.Cells[lineCtr - 1, 11].Value = GetEmpName(currEmp.Substring(0, 8));
+                            worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(currEmp.Substring(0, 8));
                             worksheet.Cells[lineCtr, 11].Value = _ret;
                         }
                         else
