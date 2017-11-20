@@ -111,6 +111,12 @@
     <Compile Include="ExceptionLookupForm.designer.cs">
       <DependentUpon>ExceptionLookupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmESPbatchAccess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmESPbatchAccess.Designer.cs">
+      <DependentUpon>frmESPbatchAccess.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExceptionLookupForm.resx">
       <DependentUpon>ExceptionLookupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmESPbatchAccess.resx">
+      <DependentUpon>frmESPbatchAccess.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

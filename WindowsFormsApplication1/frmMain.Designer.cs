@@ -73,7 +73,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabMisc = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabFormattingTools = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnUploadFile1 = new MBGlassStyleButton.MBGlassButton();
@@ -86,6 +85,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btnESPbatchAccess = new MBGlassStyleButton.MBGlassButton();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.mnuCopyFromList.SuspendLayout();
@@ -223,14 +223,14 @@
             this.btnFile126.Image = ((System.Drawing.Image)(resources.GetObject("btnFile126.Image")));
             this.btnFile126.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFile126.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnFile126.Location = new System.Drawing.Point(11, 18);
+            this.btnFile126.Location = new System.Drawing.Point(11, 14);
             this.btnFile126.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnFile126.Name = "btnFile126";
             this.btnFile126.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnFile126.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnFile126.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnFile126.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnFile126.Size = new System.Drawing.Size(173, 50);
+            this.btnFile126.Size = new System.Drawing.Size(173, 41);
             this.btnFile126.TabIndex = 15;
             this.btnFile126.Text = "FTP File 1,2 and 6 then\r\nFormat File 2 and 6 ";
             this.btnFile126.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -413,14 +413,14 @@
             this.mbUserLatestLogin.Image = ((System.Drawing.Image)(resources.GetObject("mbUserLatestLogin.Image")));
             this.mbUserLatestLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mbUserLatestLogin.ImageSize = new System.Drawing.Size(24, 24);
-            this.mbUserLatestLogin.Location = new System.Drawing.Point(202, 89);
+            this.mbUserLatestLogin.Location = new System.Drawing.Point(202, 67);
             this.mbUserLatestLogin.MenuListPosition = new System.Drawing.Point(0, 0);
             this.mbUserLatestLogin.Name = "mbUserLatestLogin";
             this.mbUserLatestLogin.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.mbUserLatestLogin.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.mbUserLatestLogin.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.mbUserLatestLogin.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.mbUserLatestLogin.Size = new System.Drawing.Size(173, 50);
+            this.mbUserLatestLogin.Size = new System.Drawing.Size(173, 41);
             this.mbUserLatestLogin.TabIndex = 25;
             this.mbUserLatestLogin.Text = "User Latest Login";
             this.mbUserLatestLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -549,14 +549,14 @@
             this.btnUserTrainings.Image = ((System.Drawing.Image)(resources.GetObject("btnUserTrainings.Image")));
             this.btnUserTrainings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUserTrainings.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnUserTrainings.Location = new System.Drawing.Point(393, 163);
+            this.btnUserTrainings.Location = new System.Drawing.Point(393, 120);
             this.btnUserTrainings.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnUserTrainings.Name = "btnUserTrainings";
             this.btnUserTrainings.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnUserTrainings.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnUserTrainings.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnUserTrainings.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnUserTrainings.Size = new System.Drawing.Size(173, 50);
+            this.btnUserTrainings.Size = new System.Drawing.Size(173, 41);
             this.btnUserTrainings.TabIndex = 30;
             this.btnUserTrainings.Text = "Open SSRS \r\nUser Trainings";
             this.btnUserTrainings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -575,14 +575,14 @@
             this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
             this.btnClearLocks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClearLocks.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnClearLocks.Location = new System.Drawing.Point(202, 18);
+            this.btnClearLocks.Location = new System.Drawing.Point(202, 14);
             this.btnClearLocks.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnClearLocks.Name = "btnClearLocks";
             this.btnClearLocks.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnClearLocks.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnClearLocks.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnClearLocks.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnClearLocks.Size = new System.Drawing.Size(173, 50);
+            this.btnClearLocks.Size = new System.Drawing.Size(173, 41);
             this.btnClearLocks.TabIndex = 31;
             this.btnClearLocks.Text = "Clear Locks (Lists)";
             this.btnClearLocks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -602,14 +602,14 @@
             this.btnGetLDAP.Image = ((System.Drawing.Image)(resources.GetObject("btnGetLDAP.Image")));
             this.btnGetLDAP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGetLDAP.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnGetLDAP.Location = new System.Drawing.Point(12, 89);
+            this.btnGetLDAP.Location = new System.Drawing.Point(12, 67);
             this.btnGetLDAP.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnGetLDAP.Name = "btnGetLDAP";
             this.btnGetLDAP.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnGetLDAP.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnGetLDAP.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnGetLDAP.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnGetLDAP.Size = new System.Drawing.Size(173, 50);
+            this.btnGetLDAP.Size = new System.Drawing.Size(173, 41);
             this.btnGetLDAP.TabIndex = 32;
             this.btnGetLDAP.Text = "Get LDAP Username";
             this.btnGetLDAP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -648,14 +648,14 @@
             this.btnExceptionLookup.Image = ((System.Drawing.Image)(resources.GetObject("btnExceptionLookup.Image")));
             this.btnExceptionLookup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExceptionLookup.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnExceptionLookup.Location = new System.Drawing.Point(202, 163);
+            this.btnExceptionLookup.Location = new System.Drawing.Point(202, 120);
             this.btnExceptionLookup.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnExceptionLookup.Name = "btnExceptionLookup";
             this.btnExceptionLookup.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnExceptionLookup.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnExceptionLookup.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnExceptionLookup.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnExceptionLookup.Size = new System.Drawing.Size(173, 50);
+            this.btnExceptionLookup.Size = new System.Drawing.Size(173, 41);
             this.btnExceptionLookup.TabIndex = 33;
             this.btnExceptionLookup.Text = "Exception Lookup";
             this.btnExceptionLookup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -674,14 +674,14 @@
             this.btnItemsReport.Image = ((System.Drawing.Image)(resources.GetObject("btnItemsReport.Image")));
             this.btnItemsReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnItemsReport.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnItemsReport.Location = new System.Drawing.Point(393, 18);
+            this.btnItemsReport.Location = new System.Drawing.Point(393, 14);
             this.btnItemsReport.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnItemsReport.Name = "btnItemsReport";
             this.btnItemsReport.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnItemsReport.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnItemsReport.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnItemsReport.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnItemsReport.Size = new System.Drawing.Size(173, 50);
+            this.btnItemsReport.Size = new System.Drawing.Size(173, 41);
             this.btnItemsReport.TabIndex = 34;
             this.btnItemsReport.Text = "Open Items Report";
             this.btnItemsReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -736,14 +736,14 @@
             this.btnSickOnStat.Image = ((System.Drawing.Image)(resources.GetObject("btnSickOnStat.Image")));
             this.btnSickOnStat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSickOnStat.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnSickOnStat.Location = new System.Drawing.Point(12, 163);
+            this.btnSickOnStat.Location = new System.Drawing.Point(12, 120);
             this.btnSickOnStat.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnSickOnStat.Name = "btnSickOnStat";
             this.btnSickOnStat.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnSickOnStat.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnSickOnStat.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnSickOnStat.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnSickOnStat.Size = new System.Drawing.Size(173, 50);
+            this.btnSickOnStat.Size = new System.Drawing.Size(173, 41);
             this.btnSickOnStat.TabIndex = 35;
             this.btnSickOnStat.Text = "Upload Sick On A Stat file \r\nfrom ePeople to Boo DB";
             this.btnSickOnStat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -820,14 +820,14 @@
             this.btnV_FireCategories.Image = ((System.Drawing.Image)(resources.GetObject("btnV_FireCategories.Image")));
             this.btnV_FireCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnV_FireCategories.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnV_FireCategories.Location = new System.Drawing.Point(393, 88);
+            this.btnV_FireCategories.Location = new System.Drawing.Point(393, 67);
             this.btnV_FireCategories.MenuListPosition = new System.Drawing.Point(0, 0);
             this.btnV_FireCategories.Name = "btnV_FireCategories";
             this.btnV_FireCategories.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnV_FireCategories.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnV_FireCategories.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
             this.btnV_FireCategories.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnV_FireCategories.Size = new System.Drawing.Size(173, 50);
+            this.btnV_FireCategories.Size = new System.Drawing.Size(173, 41);
             this.btnV_FireCategories.TabIndex = 38;
             this.btnV_FireCategories.Text = "Open vFire \r\nCateGories";
             this.btnV_FireCategories.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -864,7 +864,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btnESPbatchAccess);
             this.groupBox2.Controls.Add(this.btnGetLDAP);
             this.groupBox2.Controls.Add(this.btnExceptionLookup);
             this.groupBox2.Controls.Add(this.btnClearLocks);
@@ -880,16 +880,6 @@
             this.groupBox2.Size = new System.Drawing.Size(579, 223);
             this.groupBox2.TabIndex = 39;
             this.groupBox2.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(11, 120);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(173, 50);
-            this.button1.TabIndex = 40;
-            this.button1.Text = "Test Button";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             // 
             // tabFormattingTools
             // 
@@ -1082,6 +1072,33 @@
             this.imageList1.Images.SetKeyName(1, "format.png");
             this.imageList1.Images.SetKeyName(2, "others.png");
             // 
+            // btnESPbatchAccess
+            // 
+            this.btnESPbatchAccess.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnESPbatchAccess.BackColor = System.Drawing.Color.Transparent;
+            this.btnESPbatchAccess.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.btnESPbatchAccess.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnESPbatchAccess.FlatAppearance.BorderSize = 0;
+            this.btnESPbatchAccess.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnESPbatchAccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnESPbatchAccess.ForeColor = System.Drawing.Color.DarkBlue;
+            this.btnESPbatchAccess.Image = ((System.Drawing.Image)(resources.GetObject("btnESPbatchAccess.Image")));
+            this.btnESPbatchAccess.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnESPbatchAccess.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnESPbatchAccess.Location = new System.Drawing.Point(393, 173);
+            this.btnESPbatchAccess.MenuListPosition = new System.Drawing.Point(0, 0);
+            this.btnESPbatchAccess.Name = "btnESPbatchAccess";
+            this.btnESPbatchAccess.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnESPbatchAccess.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnESPbatchAccess.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
+            this.btnESPbatchAccess.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
+            this.btnESPbatchAccess.Size = new System.Drawing.Size(173, 41);
+            this.btnESPbatchAccess.TabIndex = 39;
+            this.btnESPbatchAccess.Text = "ESP Batch Access";
+            this.btnESPbatchAccess.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnESPbatchAccess.UseVisualStyleBackColor = false;
+            this.btnESPbatchAccess.Click += new System.EventHandler(this.btnESPbatchAccess_Click);
+            // 
             // frmSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1093,7 +1110,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.11.17";
+            this.Text = "SömëKindä Tööl v2017.11.20";
             this.Activated += new System.EventHandler(this.frmSearch_Activated);
             this.Deactivate += new System.EventHandler(this.frmSearch_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSearch_FormClosing);
@@ -1172,8 +1189,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
         private MBGlassStyleButton.MBGlassButton btnUploadFile1;
+        private MBGlassStyleButton.MBGlassButton btnESPbatchAccess;
     }
 }
 

@@ -3484,5 +3484,13 @@ namespace WindowsFormsApplication1
 
             ProcessFile1(openFileDialog1.FileName);
         }
+
+        private void btnESPbatchAccess_Click(object sender, EventArgs e)
+        {
+            HideMe();
+            frmESPbatchAccess _frm = new frmESPbatchAccess();
+            _frm.ShowDialog();
+            ShowMe();
+        }
     }
 }
