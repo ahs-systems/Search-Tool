@@ -73,6 +73,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabMisc = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnESPbatchAccess = new MBGlassStyleButton.MBGlassButton();
             this.tabFormattingTools = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnUploadFile1 = new MBGlassStyleButton.MBGlassButton();
@@ -85,7 +86,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.btnESPbatchAccess = new MBGlassStyleButton.MBGlassButton();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.mnuCopyFromList.SuspendLayout();
@@ -881,6 +881,33 @@
             this.groupBox2.TabIndex = 39;
             this.groupBox2.TabStop = false;
             // 
+            // btnESPbatchAccess
+            // 
+            this.btnESPbatchAccess.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnESPbatchAccess.BackColor = System.Drawing.Color.Transparent;
+            this.btnESPbatchAccess.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.btnESPbatchAccess.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnESPbatchAccess.FlatAppearance.BorderSize = 0;
+            this.btnESPbatchAccess.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnESPbatchAccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnESPbatchAccess.ForeColor = System.Drawing.Color.DarkBlue;
+            this.btnESPbatchAccess.Image = ((System.Drawing.Image)(resources.GetObject("btnESPbatchAccess.Image")));
+            this.btnESPbatchAccess.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnESPbatchAccess.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnESPbatchAccess.Location = new System.Drawing.Point(393, 173);
+            this.btnESPbatchAccess.MenuListPosition = new System.Drawing.Point(0, 0);
+            this.btnESPbatchAccess.Name = "btnESPbatchAccess";
+            this.btnESPbatchAccess.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnESPbatchAccess.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnESPbatchAccess.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
+            this.btnESPbatchAccess.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
+            this.btnESPbatchAccess.Size = new System.Drawing.Size(173, 41);
+            this.btnESPbatchAccess.TabIndex = 39;
+            this.btnESPbatchAccess.Text = "ESP Batch Access";
+            this.btnESPbatchAccess.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnESPbatchAccess.UseVisualStyleBackColor = false;
+            this.btnESPbatchAccess.Click += new System.EventHandler(this.btnESPbatchAccess_Click);
+            // 
             // tabFormattingTools
             // 
             this.tabFormattingTools.Controls.Add(this.groupBox3);
@@ -1072,33 +1099,6 @@
             this.imageList1.Images.SetKeyName(1, "format.png");
             this.imageList1.Images.SetKeyName(2, "others.png");
             // 
-            // btnESPbatchAccess
-            // 
-            this.btnESPbatchAccess.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnESPbatchAccess.BackColor = System.Drawing.Color.Transparent;
-            this.btnESPbatchAccess.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.btnESPbatchAccess.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnESPbatchAccess.FlatAppearance.BorderSize = 0;
-            this.btnESPbatchAccess.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnESPbatchAccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnESPbatchAccess.ForeColor = System.Drawing.Color.DarkBlue;
-            this.btnESPbatchAccess.Image = ((System.Drawing.Image)(resources.GetObject("btnESPbatchAccess.Image")));
-            this.btnESPbatchAccess.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnESPbatchAccess.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnESPbatchAccess.Location = new System.Drawing.Point(393, 173);
-            this.btnESPbatchAccess.MenuListPosition = new System.Drawing.Point(0, 0);
-            this.btnESPbatchAccess.Name = "btnESPbatchAccess";
-            this.btnESPbatchAccess.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnESPbatchAccess.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnESPbatchAccess.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
-            this.btnESPbatchAccess.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnESPbatchAccess.Size = new System.Drawing.Size(173, 41);
-            this.btnESPbatchAccess.TabIndex = 39;
-            this.btnESPbatchAccess.Text = "ESP Batch Access";
-            this.btnESPbatchAccess.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnESPbatchAccess.UseVisualStyleBackColor = false;
-            this.btnESPbatchAccess.Click += new System.EventHandler(this.btnESPbatchAccess_Click);
-            // 
             // frmSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1110,7 +1110,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.11.20";
+            this.Text = "SömëKindä Tööl v2017.11.21";
             this.Activated += new System.EventHandler(this.frmSearch_Activated);
             this.Deactivate += new System.EventHandler(this.frmSearch_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSearch_FormClosing);

@@ -1465,11 +1465,6 @@ namespace WindowsFormsApplication1
             string _tcg = GetTCG(_empNo).ToUpper();
             string _ret = "";
 
-            //if (_empNo == "01067720-0")
-            //{
-            //    ;
-            //}
-
             if (_tcg.Contains("NOT FOR PAYROLL") || _tcg.Contains("INACTIVE"))
             {
                 if (_tcg.IndexOf("NOT FOR PAYROLL") > -1) // NFP
@@ -1662,7 +1657,7 @@ namespace WindowsFormsApplication1
                                         if (_ret != "")
                                         {
                                             worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(currEmp.Substring(0, 8));
-                                            worksheet.Cells[lineCtr, 11].Value = _ret;
+                                            worksheet.Cells[(lineCtr - empLineCtr) + 1, 11].Value = _ret; // put the _ret value on the next line
                                         }
                                         else
                                         {
@@ -1690,7 +1685,7 @@ namespace WindowsFormsApplication1
                                 if (_ret != "")
                                 {
                                     worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(currEmp.Substring(0, 8));
-                                    worksheet.Cells[lineCtr, 11].Value = _ret;
+                                    worksheet.Cells[(lineCtr - empLineCtr) + 1, 11].Value = _ret;
                                 }
                                 else
                                 {
@@ -1710,7 +1705,7 @@ namespace WindowsFormsApplication1
                                 if (_ret != "")
                                 {
                                     worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(currEmp.Substring(0, 8));
-                                    worksheet.Cells[lineCtr, 11].Value = _ret;
+                                    worksheet.Cells[(lineCtr - empLineCtr) + 1, 11].Value = _ret;
                                 }
                                 else
                                 {
@@ -1735,7 +1730,7 @@ namespace WindowsFormsApplication1
                                 if (_ret != "")
                                 {
                                     worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(currEmp.Substring(0, 8));
-                                    worksheet.Cells[lineCtr, 11].Value = _ret;
+                                    worksheet.Cells[(lineCtr - empLineCtr) + 1, 11].Value = _ret;
                                 }
                             }
                             if (currFTE != values[23]) // change in FTE
@@ -1750,7 +1745,7 @@ namespace WindowsFormsApplication1
                                 if (_ret != "")
                                 {
                                     worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(currEmp.Substring(0, 8));
-                                    worksheet.Cells[lineCtr, 11].Value = _ret;
+                                    worksheet.Cells[(lineCtr - empLineCtr) + 1, 11].Value = _ret;
                                 }
                             }
 
@@ -1775,7 +1770,7 @@ namespace WindowsFormsApplication1
                                     if (_ret == 1)
                                     {
                                         // values[0] = "(Unit Trns)";
-                                        worksheet.Cells[lineCtr - empLineCtr, 11].Value = "(Unit Trns)";
+                                        worksheet.Cells[lineCtr - empLineCtr, 1].Value = "(Unit Trns)";
                                     }
                                     else if (_ret == 2)
                                     {
@@ -1800,7 +1795,7 @@ namespace WindowsFormsApplication1
                                     if (_ret == 1)
                                     {
                                         //values[0] = "(Occ Chg)";
-                                        worksheet.Cells[lineCtr - empLineCtr, 11].Value = "(Occ Chg)";
+                                        worksheet.Cells[lineCtr - empLineCtr, 1].Value = "(Occ Chg)";
                                     }
                                     else if (_ret == 2)
                                     {
