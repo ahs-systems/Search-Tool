@@ -49,7 +49,7 @@
             // 
             this.txtShortDesc.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtShortDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.txtShortDesc.Location = new System.Drawing.Point(97, 8);
+            this.txtShortDesc.Location = new System.Drawing.Point(109, 8);
             this.txtShortDesc.Name = "txtShortDesc";
             this.txtShortDesc.Size = new System.Drawing.Size(155, 23);
             this.txtShortDesc.TabIndex = 3;
@@ -59,7 +59,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label1.Location = new System.Drawing.Point(13, 8);
+            this.label1.Location = new System.Drawing.Point(25, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 19);
             this.label1.TabIndex = 4;
@@ -71,7 +71,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label2.Location = new System.Drawing.Point(13, 37);
+            this.label2.Location = new System.Drawing.Point(25, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 19);
             this.label2.TabIndex = 6;
@@ -82,7 +82,7 @@
             // 
             this.txtLongDesc.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLongDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.txtLongDesc.Location = new System.Drawing.Point(97, 37);
+            this.txtLongDesc.Location = new System.Drawing.Point(109, 37);
             this.txtLongDesc.Name = "txtLongDesc";
             this.txtLongDesc.Size = new System.Drawing.Size(259, 23);
             this.txtLongDesc.TabIndex = 5;
@@ -93,7 +93,7 @@
             this.btnExecute.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExecute.ForeColor = System.Drawing.Color.White;
             this.btnExecute.Image = ((System.Drawing.Image)(resources.GetObject("btnExecute.Image")));
-            this.btnExecute.Location = new System.Drawing.Point(362, 12);
+            this.btnExecute.Location = new System.Drawing.Point(374, 12);
             this.btnExecute.Name = "btnExecute";
             this.btnExecute.Size = new System.Drawing.Size(136, 48);
             this.btnExecute.TabIndex = 29;
@@ -104,7 +104,9 @@
             // 
             // lstUserGroups
             // 
+            this.lstUserGroups.BackColor = System.Drawing.Color.White;
             this.lstUserGroups.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstUserGroups.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.lstUserGroups.FormattingEnabled = true;
             this.lstUserGroups.ItemHeight = 17;
             this.lstUserGroups.Location = new System.Drawing.Point(12, 101);
@@ -141,6 +143,7 @@
             // 
             // txtUserGroup
             // 
+            this.txtUserGroup.BackColor = System.Drawing.Color.White;
             this.txtUserGroup.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.txtUserGroup.Location = new System.Drawing.Point(333, 104);
@@ -168,7 +171,7 @@
             this.btnRemove.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemove.ForeColor = System.Drawing.Color.White;
             this.btnRemove.Image = ((System.Drawing.Image)(resources.GetObject("btnRemove.Image")));
-            this.btnRemove.Location = new System.Drawing.Point(246, 165);
+            this.btnRemove.Location = new System.Drawing.Point(246, 158);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(114, 48);
             this.btnRemove.TabIndex = 35;
@@ -225,19 +228,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(535, 369);
             this.Controls.Add(this.lblUserName);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.txtUserGroup);
-            this.Controls.Add(this.lblUserGroup);
             this.Controls.Add(this.lblLstUserGroups);
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lstUserGroups);
             this.Controls.Add(this.btnExecute);
             this.Controls.Add(this.txtLongDesc);
             this.Controls.Add(this.txtShortDesc);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.txtUserGroup);
+            this.Controls.Add(this.lblUserGroup);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnAdd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
