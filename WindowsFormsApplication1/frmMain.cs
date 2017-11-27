@@ -896,7 +896,7 @@ namespace WindowsFormsApplication1
                     //            for (int i2 = 10; i2 < _split.Length + 10; i2++)
                     //            {
                     //                worksheet.Cells[i - 8, i2].Value = _split[i2 - 10];
-                    //                worksheet.Cells[i - 8, i2].Style.Font.Color.SetColor(Color.FromArgb(169, 169, 169));
+                    //                worksheet.Cells[i - 8, i2].Style.Font.Color.SetColor(Color.FromArgb(135, 135, 135));
                     //                worksheet.Cells[i - 8, i2].Style.Font.Italic = true;
                     //                worksheet.Cells[i - 8, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Dotted);
                     //                worksheet.Cells[i - 8, i2].Style.Border.Top.Color.SetColor(Color.Gray);
@@ -1088,7 +1088,7 @@ namespace WindowsFormsApplication1
                                 for (int i2 = 11; i2 < _split.Length + 11; i2++)
                                 {
                                     worksheet.Cells[i - 10, i2].Value = _split[i2 - 11];
-                                    worksheet.Cells[i - 10, i2].Style.Font.Color.SetColor(Color.FromArgb(169, 169, 169));
+                                    worksheet.Cells[i - 10, i2].Style.Font.Color.SetColor(Color.FromArgb(135, 135, 135));
                                     worksheet.Cells[i - 10, i2].Style.Font.Italic = true;
                                     worksheet.Cells[i - 10, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Dotted);
                                     worksheet.Cells[i - 10, i2].Style.Border.Top.Color.SetColor(Color.Gray);

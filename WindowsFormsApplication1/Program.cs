@@ -34,8 +34,8 @@ namespace WindowsFormsApplication1
             //    System.Environment.Exit(0);
             //}
 
-            Application.Run(new frmSearch());            
-            //Application.Run(new frmMainNew());
+            //Application.Run(new frmSearch());            
+            Application.Run(new frmMainNew());
         }
 
         public static class ApplicationRunningHelper
