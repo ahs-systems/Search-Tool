@@ -29,6 +29,60 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
+        private void frmSearch_Deactivate(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal) Opacity = .7;
+        }
+
+        private void frmSearch_Activated(object sender, EventArgs e)
+        {
+            if (Opacity < 1) Opacity = 1;
+        }
+
+        private void frmSearch_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                this.TopMost = false;
+                frmCredits01 _frm = new frmCredits01();
+                _frm.ShowDialog();
+                this.TopMost = true;
+            }
+        }
+
+        private void frmSearch_Resize(object sender, EventArgs e)
+        {
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                myNotifyIcon.Visible = true;
+                myNotifyIcon.ShowBalloonTip(500);
+                this.ShowInTaskbar = false;
+            }
+        }
+
+        private void frmSearch_Shown(object sender, EventArgs e)
+        {
+            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 317, 1000, 0);
+        }
+
+        private void frmSearch_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_conn.State == ConnectionState.Open)
+            {
+                if (_comm != null)
+                {
+                    _comm.Dispose();
+                    _comm = null;
+                }
+                _conn.Close();
+            }
+            _conn.Dispose();
+        }
+
         private void OpenConnection()
         {
             if (_conn.State == ConnectionState.Open) _conn.Close();
@@ -47,31 +101,7 @@ namespace WindowsFormsApplication1
                 }
                 _conn.Close();
             }
-        }
-
-        private string GetPP(string _date)
-        {
-            try
-            {
-                string _ret = "";
-
-                OpenConnection();
-                _comm.CommandText = "select PP_NBR from payperiod where @V_DATE between pp_startdate and pp_enddate";
-                _comm.Parameters.Add(new SqlParameter("V_DATE", _date));
-                SqlDataReader _reader = _comm.ExecuteReader();
-                _reader.Read();
-                _ret = _reader["PP_NBR"].ToString();
-                if (_reader.IsClosed != true) _reader.Close();
-                CloseConnection();
-
-                return _ret != "" ? _ret.PadLeft(2, '0') : _ret;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ERROR:" + ex.Message);
-                return "";
-            }
-        }
+        }        
 
         private string GetPrevious_PP(string _date)
         {
@@ -184,7 +214,7 @@ namespace WindowsFormsApplication1
                 TopMost = true;
 
                 // Show pay period
-                lblPayPeriod.Text = "Pay Period: " + GetPP(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+                lblPayPeriod.Text = "Pay Period: " + Common.GetPP(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
 
                 // hide notify icon
                 myNotifyIcon.Visible = false;
@@ -278,17 +308,7 @@ namespace WindowsFormsApplication1
             lblMsg.Text = "";
             timer1.Enabled = false;
         }
-
-        private void frmSearch_Resize(object sender, EventArgs e)
-        {
-            if (FormWindowState.Minimized == this.WindowState)
-            {
-                myNotifyIcon.Visible = true;
-                myNotifyIcon.ShowBalloonTip(500);
-                this.ShowInTaskbar = false;
-            }
-        }
-
+        
         private void myNotifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
@@ -298,7 +318,7 @@ namespace WindowsFormsApplication1
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            string _ret = GetPP(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+            string _ret = Common.GetPP(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
             if (_ret != "")
                 lblPayPeriod.Text = "Pay Period: " + _ret;
             else
@@ -1012,11 +1032,11 @@ namespace WindowsFormsApplication1
                         string _payPeriod = "";
                         if (GetStartPP(_currDate) == _currDate)
                         {
-                            _payPeriod = GetPP(DateTime.ParseExact(_currDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture).AddDays(-1).ToString("yyyy-MM-dd"));
+                            _payPeriod = Common.GetPP(DateTime.ParseExact(_currDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture).AddDays(-1).ToString("yyyy-MM-dd"));
                         }
                         else
                         {
-                            _payPeriod = GetPP(_currDate);
+                            _payPeriod = Common.GetPP(_currDate);
                         }
 
                         worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + _payPeriod;
@@ -1583,7 +1603,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
                     worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
-                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
+                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + Common.GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Positions Report";
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
                     worksheet.View.PageBreakView = true;
@@ -1916,7 +1936,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
                     worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
-                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
+                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + Common.GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Terms and Trans From File 6";
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
                     worksheet.View.PageBreakView = true;
@@ -2040,11 +2060,11 @@ namespace WindowsFormsApplication1
             string _currDate = DateTime.Today.ToString("yyyy-MM-dd");
             if (GetStartPP(_currDate) == _currDate)
             {
-                _payPeriod = GetPP(DateTime.ParseExact(_currDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture).AddDays(-1).ToString("yyyy-MM-dd"));
+                _payPeriod = Common.GetPP(DateTime.ParseExact(_currDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture).AddDays(-1).ToString("yyyy-MM-dd"));
             }
             else
             {
-                _payPeriod = GetPP(_currDate);
+                _payPeriod = Common.GetPP(_currDate);
             }
 
             if (Convert.ToInt16(_payPeriod) < 6 && DateTime.ParseExact(_currDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture).Month > 10)
@@ -2179,21 +2199,7 @@ namespace WindowsFormsApplication1
         private void timerClose_Tick(object sender, EventArgs e)
         {
             if (DateTime.Now.Hour > 1 && DateTime.Now.Hour < 5 && Cursor != Cursors.WaitCursor) Application.Exit();
-        }
-
-        private void frmSearch_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (_conn.State == ConnectionState.Open)
-            {
-                if (_comm != null)
-                {
-                    _comm.Dispose();
-                    _comm = null;
-                }
-                _conn.Close();
-            }
-            _conn.Dispose();
-        }
+        }        
 
         private void btnRFLOA_Click(object sender, EventArgs e)
         {
@@ -2341,32 +2347,7 @@ namespace WindowsFormsApplication1
             frmLatestLogin _frm = new frmLatestLogin();
             _frm.ShowDialog();
             ShowMe();
-        }
-
-        private void frmSearch_Deactivate(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal) Opacity = .7;
-        }
-
-        private void frmSearch_Activated(object sender, EventArgs e)
-        {
-            if (Opacity < 1) Opacity = 1;
-        }
-
-        private void frmSearch_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-
-            }
-            else if (e.Button == MouseButtons.Right)
-            {
-                this.TopMost = false;
-                frmCredits01 _frm = new frmCredits01();
-                _frm.ShowDialog();
-                this.TopMost = true;
-            }
-        }
+        }        
 
         private void btnPriors_Click(object sender, EventArgs e)
         {
@@ -2562,7 +2543,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
                     worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
-                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
+                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + Common.GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Terms " + CheckTermsAndTransStartDate(DateTime.Today.ToString("yyyy-MM-dd")) + " - " + DateTime.Today.AddDays(-1).ToString("ddMMMyyyy");
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
                     worksheet.View.PageBreakView = true;
@@ -2703,7 +2684,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
                     worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
-                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
+                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + Common.GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Trans " + CheckTermsAndTransStartDate(DateTime.Today.ToString("yyyy-MM-dd")) + " - " + DateTime.Today.AddDays(-1).ToString("ddMMMyyyy");
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
                     worksheet.View.PageBreakView = true;
@@ -2859,12 +2840,7 @@ namespace WindowsFormsApplication1
             frmClearLocks _frm = new frmClearLocks();
             _frm.ShowDialog();
             ShowMe();
-        }
-
-        private void frmSearch_Shown(object sender, EventArgs e)
-        {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 317, 1000, 0);
-        }
+        }        
 
         private void btnGetLDAP_Click(object sender, EventArgs e)
         {
@@ -3041,7 +3017,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
                     worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
-                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
+                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + Common.GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "AHS_AA_EXCEPTION_TLSYS";
                     worksheet.View.PageBreakView = true;
                     worksheet.PrinterSettings.FitToPage = true; worksheet.PrinterSettings.FitToWidth = 1; worksheet.PrinterSettings.FitToHeight = 0;
@@ -3170,7 +3146,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
                     worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
-                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + GetPP(DateTime.Now.ToString("ddMMMyyyy"));
+                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + Common.GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "AHS_AA_EXCEPTION";
                     worksheet.View.PageBreakView = true;
                     worksheet.PrinterSettings.FitToPage = true; worksheet.PrinterSettings.FitToWidth = 1; worksheet.PrinterSettings.FitToHeight = 0;

@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApplication1
+﻿using System.Drawing;
+
+namespace WindowsFormsApplication1
 {
     partial class frmMainNew
     {
@@ -30,8 +32,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainNew));
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.btnSearch = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnFormatting = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnMisc = new Bunifu.Framework.UI.BunifuTileButton();
@@ -39,64 +40,84 @@
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bunifuDragControl2 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.bunifuTileButton5 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton6 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton7 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton8 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton9 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton10 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton11 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton12 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton13 = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnClearLocks = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnItemsReport = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnGetLDAP = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnUserLatestLogin = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnV_FireCategories = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnSickOnStat = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnUserTrainings = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnESPbatchAccess = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnExceptionLookup = new Bunifu.Framework.UI.BunifuTileButton();
             this.lblClose = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlMisc = new System.Windows.Forms.Panel();
             this.pnlFormatting = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.bunifuTileButton1 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton2 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton3 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton4 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton14 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton15 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton16 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton17 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton20 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton21 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton24 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton25 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.panel1.SuspendLayout();
+            this.btnFile6 = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnFile2 = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnAA_Exception = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnTL_SYS = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnUploadFile1 = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnLOAwithNoRptTime = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnRFLOA = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnRehire = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnPriors = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnBanks = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnTrans = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnAHS_AA_Terms = new Bunifu.Framework.UI.BunifuTileButton();
+            this.pnlSearch = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtUnit = new System.Windows.Forms.TextBox();
+            this.btnSendEmail = new System.Windows.Forms.Button();
+            this.lstResult = new System.Windows.Forms.ListBox();
+            this.lblMsg = new System.Windows.Forms.Label();
+            this.txtOCode = new System.Windows.Forms.TextBox();
+            this.txtEmpNo = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.lblPayPeriod = new System.Windows.Forms.Label();
+            this.txtTCG = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.timerClose = new System.Windows.Forms.Timer(this.components);
+            this.myNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.mnuCopyFromList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuCopyEmpNum = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCopyEmpName = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCopyBothNameAndNum = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuSendEmail = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pnlMain.SuspendLayout();
             this.pnlMisc.SuspendLayout();
             this.pnlFormatting.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlSearch.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.mnuCopyFromList.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // imageList1
+            // pnlMain
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "search.png");
-            this.imageList1.Images.SetKeyName(1, "format.png");
-            this.imageList1.Images.SetKeyName(2, "others.png");
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.panel1.Controls.Add(this.btnSearch);
-            this.panel1.Controls.Add(this.btnFormatting);
-            this.panel1.Controls.Add(this.btnMisc);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(130, 768);
-            this.panel1.TabIndex = 1;
+            this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.pnlMain.Controls.Add(this.btnSearch);
+            this.pnlMain.Controls.Add(this.btnFormatting);
+            this.pnlMain.Controls.Add(this.btnMisc);
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlMain.Location = new System.Drawing.Point(0, 0);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(130, 756);
+            this.pnlMain.TabIndex = 1;
+            this.pnlMain.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmMainNew_MouseDoubleClick);
             // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.btnSearch.color = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.btnSearch.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnSearch.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
@@ -110,12 +131,13 @@
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(111, 103);
             this.btnSearch.TabIndex = 4;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnFormatting
             // 
-            this.btnFormatting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.btnFormatting.color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.btnFormatting.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnFormatting.BackColor = System.Drawing.Color.Transparent;
+            this.btnFormatting.color = System.Drawing.Color.Transparent;
+            this.btnFormatting.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.btnFormatting.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFormatting.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFormatting.ForeColor = System.Drawing.Color.White;
@@ -125,17 +147,17 @@
             this.btnFormatting.LabelPosition = 40;
             this.btnFormatting.LabelText = "Formatting Tools";
             this.btnFormatting.Location = new System.Drawing.Point(9, 127);
-            this.btnFormatting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFormatting.Margin = new System.Windows.Forms.Padding(4);
             this.btnFormatting.Name = "btnFormatting";
             this.btnFormatting.Size = new System.Drawing.Size(111, 103);
             this.btnFormatting.TabIndex = 3;
-            this.btnFormatting.Click += new System.EventHandler(this.bunifuTileButton3_Click);
+            this.btnFormatting.Click += new System.EventHandler(this.btnFormatting_Click);
             // 
             // btnMisc
             // 
             this.btnMisc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.btnMisc.color = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.btnMisc.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnMisc.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.btnMisc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMisc.Font = new System.Drawing.Font("Century Gothic", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMisc.ForeColor = System.Drawing.Color.White;
@@ -155,7 +177,7 @@
             // 
             this.btnFile126.BackColor = System.Drawing.Color.Transparent;
             this.btnFile126.color = System.Drawing.Color.Transparent;
-            this.btnFile126.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnFile126.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnFile126.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFile126.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFile126.ForeColor = System.Drawing.Color.White;
@@ -164,7 +186,7 @@
             this.btnFile126.ImageZoom = 40;
             this.btnFile126.LabelPosition = 30;
             this.btnFile126.LabelText = "FTP File 1, 2 and 6";
-            this.btnFile126.Location = new System.Drawing.Point(29, 4);
+            this.btnFile126.Location = new System.Drawing.Point(15, 4);
             this.btnFile126.Margin = new System.Windows.Forms.Padding(6);
             this.btnFile126.Name = "btnFile126";
             this.btnFile126.Size = new System.Drawing.Size(121, 92);
@@ -194,191 +216,200 @@
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipTitle = "Info:";
             // 
-            // bunifuTileButton5
+            // btnClearLocks
             // 
-            this.bunifuTileButton5.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton5.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton5.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.bunifuTileButton5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton5.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton5.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton5.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton5.Image")));
-            this.bunifuTileButton5.ImagePosition = 7;
-            this.bunifuTileButton5.ImageZoom = 40;
-            this.bunifuTileButton5.LabelPosition = 30;
-            this.bunifuTileButton5.LabelText = "Clear Lock";
-            this.bunifuTileButton5.Location = new System.Drawing.Point(213, 4);
-            this.bunifuTileButton5.Margin = new System.Windows.Forms.Padding(6);
-            this.bunifuTileButton5.Name = "bunifuTileButton5";
-            this.bunifuTileButton5.Size = new System.Drawing.Size(121, 92);
-            this.bunifuTileButton5.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.bunifuTileButton5, "Check who\'s locking a particular record");
+            this.btnClearLocks.BackColor = System.Drawing.Color.Transparent;
+            this.btnClearLocks.color = System.Drawing.Color.Transparent;
+            this.btnClearLocks.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnClearLocks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClearLocks.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearLocks.ForeColor = System.Drawing.Color.White;
+            this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
+            this.btnClearLocks.ImagePosition = 7;
+            this.btnClearLocks.ImageZoom = 40;
+            this.btnClearLocks.LabelPosition = 30;
+            this.btnClearLocks.LabelText = "Clear Lock";
+            this.btnClearLocks.Location = new System.Drawing.Point(168, 4);
+            this.btnClearLocks.Margin = new System.Windows.Forms.Padding(6);
+            this.btnClearLocks.Name = "btnClearLocks";
+            this.btnClearLocks.Size = new System.Drawing.Size(121, 92);
+            this.btnClearLocks.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.btnClearLocks, "Check who\'s locking a particular record");
+            this.btnClearLocks.Click += new System.EventHandler(this.btnClearLocks_Click);
             // 
-            // bunifuTileButton6
+            // btnItemsReport
             // 
-            this.bunifuTileButton6.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton6.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton6.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.bunifuTileButton6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton6.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton6.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton6.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton6.Image")));
-            this.bunifuTileButton6.ImagePosition = 7;
-            this.bunifuTileButton6.ImageZoom = 40;
-            this.bunifuTileButton6.LabelPosition = 30;
-            this.bunifuTileButton6.LabelText = "Items Report";
-            this.bunifuTileButton6.Location = new System.Drawing.Point(401, 4);
-            this.bunifuTileButton6.Margin = new System.Windows.Forms.Padding(6);
-            this.bunifuTileButton6.Name = "bunifuTileButton6";
-            this.bunifuTileButton6.Size = new System.Drawing.Size(121, 92);
-            this.bunifuTileButton6.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.bunifuTileButton6, "Opens the Items Report app");
+            this.btnItemsReport.BackColor = System.Drawing.Color.Transparent;
+            this.btnItemsReport.color = System.Drawing.Color.Transparent;
+            this.btnItemsReport.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnItemsReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnItemsReport.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnItemsReport.ForeColor = System.Drawing.Color.White;
+            this.btnItemsReport.Image = ((System.Drawing.Image)(resources.GetObject("btnItemsReport.Image")));
+            this.btnItemsReport.ImagePosition = 7;
+            this.btnItemsReport.ImageZoom = 40;
+            this.btnItemsReport.LabelPosition = 30;
+            this.btnItemsReport.LabelText = "Items Report";
+            this.btnItemsReport.Location = new System.Drawing.Point(321, 3);
+            this.btnItemsReport.Margin = new System.Windows.Forms.Padding(6);
+            this.btnItemsReport.Name = "btnItemsReport";
+            this.btnItemsReport.Size = new System.Drawing.Size(121, 92);
+            this.btnItemsReport.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.btnItemsReport, "Opens the Items Report app");
+            this.btnItemsReport.Click += new System.EventHandler(this.btnItemsReport_Click);
             // 
-            // bunifuTileButton7
+            // btnGetLDAP
             // 
-            this.bunifuTileButton7.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton7.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton7.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.bunifuTileButton7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton7.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton7.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton7.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton7.Image")));
-            this.bunifuTileButton7.ImagePosition = 7;
-            this.bunifuTileButton7.ImageZoom = 40;
-            this.bunifuTileButton7.LabelPosition = 30;
-            this.bunifuTileButton7.LabelText = "LDAP Info";
-            this.bunifuTileButton7.Location = new System.Drawing.Point(29, 106);
-            this.bunifuTileButton7.Margin = new System.Windows.Forms.Padding(6);
-            this.bunifuTileButton7.Name = "bunifuTileButton7";
-            this.bunifuTileButton7.Size = new System.Drawing.Size(121, 92);
-            this.bunifuTileButton7.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.bunifuTileButton7, "Get LDAP Info");
+            this.btnGetLDAP.BackColor = System.Drawing.Color.Transparent;
+            this.btnGetLDAP.color = System.Drawing.Color.Transparent;
+            this.btnGetLDAP.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnGetLDAP.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGetLDAP.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetLDAP.ForeColor = System.Drawing.Color.White;
+            this.btnGetLDAP.Image = ((System.Drawing.Image)(resources.GetObject("btnGetLDAP.Image")));
+            this.btnGetLDAP.ImagePosition = 7;
+            this.btnGetLDAP.ImageZoom = 40;
+            this.btnGetLDAP.LabelPosition = 30;
+            this.btnGetLDAP.LabelText = "LDAP Info";
+            this.btnGetLDAP.Location = new System.Drawing.Point(15, 106);
+            this.btnGetLDAP.Margin = new System.Windows.Forms.Padding(6);
+            this.btnGetLDAP.Name = "btnGetLDAP";
+            this.btnGetLDAP.Size = new System.Drawing.Size(121, 92);
+            this.btnGetLDAP.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.btnGetLDAP, "Get LDAP Info");
+            this.btnGetLDAP.Click += new System.EventHandler(this.btnGetLDAP_Click);
             // 
-            // bunifuTileButton8
+            // btnUserLatestLogin
             // 
-            this.bunifuTileButton8.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton8.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton8.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton8.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton8.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton8.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton8.Image")));
-            this.bunifuTileButton8.ImagePosition = 7;
-            this.bunifuTileButton8.ImageZoom = 40;
-            this.bunifuTileButton8.LabelPosition = 30;
-            this.bunifuTileButton8.LabelText = "User Latest Login";
-            this.bunifuTileButton8.Location = new System.Drawing.Point(213, 106);
-            this.bunifuTileButton8.Margin = new System.Windows.Forms.Padding(6);
-            this.bunifuTileButton8.Name = "bunifuTileButton8";
-            this.bunifuTileButton8.Size = new System.Drawing.Size(121, 92);
-            this.bunifuTileButton8.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.bunifuTileButton8, "Get user latest login");
+            this.btnUserLatestLogin.BackColor = System.Drawing.Color.Transparent;
+            this.btnUserLatestLogin.color = System.Drawing.Color.Transparent;
+            this.btnUserLatestLogin.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnUserLatestLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUserLatestLogin.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserLatestLogin.ForeColor = System.Drawing.Color.White;
+            this.btnUserLatestLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnUserLatestLogin.Image")));
+            this.btnUserLatestLogin.ImagePosition = 7;
+            this.btnUserLatestLogin.ImageZoom = 40;
+            this.btnUserLatestLogin.LabelPosition = 30;
+            this.btnUserLatestLogin.LabelText = "User Latest Login";
+            this.btnUserLatestLogin.Location = new System.Drawing.Point(168, 106);
+            this.btnUserLatestLogin.Margin = new System.Windows.Forms.Padding(6);
+            this.btnUserLatestLogin.Name = "btnUserLatestLogin";
+            this.btnUserLatestLogin.Size = new System.Drawing.Size(121, 92);
+            this.btnUserLatestLogin.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.btnUserLatestLogin, "Get user latest login");
+            this.btnUserLatestLogin.Click += new System.EventHandler(this.btnUserLatestLogin_Click);
             // 
-            // bunifuTileButton9
+            // btnV_FireCategories
             // 
-            this.bunifuTileButton9.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton9.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton9.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton9.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton9.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton9.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton9.Image")));
-            this.bunifuTileButton9.ImagePosition = 7;
-            this.bunifuTileButton9.ImageZoom = 40;
-            this.bunifuTileButton9.LabelPosition = 30;
-            this.bunifuTileButton9.LabelText = "vFire Categories";
-            this.bunifuTileButton9.Location = new System.Drawing.Point(401, 106);
-            this.bunifuTileButton9.Margin = new System.Windows.Forms.Padding(6);
-            this.bunifuTileButton9.Name = "bunifuTileButton9";
-            this.bunifuTileButton9.Size = new System.Drawing.Size(121, 92);
-            this.bunifuTileButton9.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.bunifuTileButton9, "Open vFire Categories");
+            this.btnV_FireCategories.BackColor = System.Drawing.Color.Transparent;
+            this.btnV_FireCategories.color = System.Drawing.Color.Transparent;
+            this.btnV_FireCategories.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnV_FireCategories.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnV_FireCategories.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV_FireCategories.ForeColor = System.Drawing.Color.White;
+            this.btnV_FireCategories.Image = ((System.Drawing.Image)(resources.GetObject("btnV_FireCategories.Image")));
+            this.btnV_FireCategories.ImagePosition = 7;
+            this.btnV_FireCategories.ImageZoom = 40;
+            this.btnV_FireCategories.LabelPosition = 30;
+            this.btnV_FireCategories.LabelText = "vFire Categories";
+            this.btnV_FireCategories.Location = new System.Drawing.Point(321, 105);
+            this.btnV_FireCategories.Margin = new System.Windows.Forms.Padding(6);
+            this.btnV_FireCategories.Name = "btnV_FireCategories";
+            this.btnV_FireCategories.Size = new System.Drawing.Size(121, 92);
+            this.btnV_FireCategories.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.btnV_FireCategories, "Open vFire Categories");
+            this.btnV_FireCategories.Click += new System.EventHandler(this.btnV_FireCategories_Click);
             // 
-            // bunifuTileButton10
+            // btnSickOnStat
             // 
-            this.bunifuTileButton10.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton10.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton10.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton10.Font = new System.Drawing.Font("Century Gothic", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton10.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton10.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton10.Image")));
-            this.bunifuTileButton10.ImagePosition = 6;
-            this.bunifuTileButton10.ImageZoom = 40;
-            this.bunifuTileButton10.LabelPosition = 35;
-            this.bunifuTileButton10.LabelText = "Upload Sick on a Stat File from ePeople";
-            this.bunifuTileButton10.Location = new System.Drawing.Point(29, 221);
-            this.bunifuTileButton10.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.bunifuTileButton10.Name = "bunifuTileButton10";
-            this.bunifuTileButton10.Size = new System.Drawing.Size(121, 92);
-            this.bunifuTileButton10.TabIndex = 8;
-            this.toolTip1.SetToolTip(this.bunifuTileButton10, "Upload Sick on a Stat File from ePeople to BOO database");
+            this.btnSickOnStat.BackColor = System.Drawing.Color.Transparent;
+            this.btnSickOnStat.color = System.Drawing.Color.Transparent;
+            this.btnSickOnStat.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnSickOnStat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSickOnStat.Font = new System.Drawing.Font("Century Gothic", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSickOnStat.ForeColor = System.Drawing.Color.White;
+            this.btnSickOnStat.Image = ((System.Drawing.Image)(resources.GetObject("btnSickOnStat.Image")));
+            this.btnSickOnStat.ImagePosition = 1;
+            this.btnSickOnStat.ImageZoom = 40;
+            this.btnSickOnStat.LabelPosition = 35;
+            this.btnSickOnStat.LabelText = "Upload Sick on a Stat File from ePeople";
+            this.btnSickOnStat.Location = new System.Drawing.Point(15, 221);
+            this.btnSickOnStat.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSickOnStat.Name = "btnSickOnStat";
+            this.btnSickOnStat.Size = new System.Drawing.Size(121, 92);
+            this.btnSickOnStat.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.btnSickOnStat, "Upload Sick on a Stat File from ePeople to BOO database");
+            this.btnSickOnStat.Click += new System.EventHandler(this.btnSickOnStat_Click);
             // 
-            // bunifuTileButton11
+            // btnUserTrainings
             // 
-            this.bunifuTileButton11.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton11.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton11.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton11.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton11.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton11.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton11.Image")));
-            this.bunifuTileButton11.ImagePosition = 7;
-            this.bunifuTileButton11.ImageZoom = 40;
-            this.bunifuTileButton11.LabelPosition = 40;
-            this.bunifuTileButton11.LabelText = "Exception Lookup";
-            this.bunifuTileButton11.Location = new System.Drawing.Point(213, 220);
-            this.bunifuTileButton11.Margin = new System.Windows.Forms.Padding(6);
-            this.bunifuTileButton11.Name = "bunifuTileButton11";
-            this.bunifuTileButton11.Size = new System.Drawing.Size(121, 92);
-            this.bunifuTileButton11.TabIndex = 9;
+            this.btnUserTrainings.BackColor = System.Drawing.Color.Transparent;
+            this.btnUserTrainings.color = System.Drawing.Color.Transparent;
+            this.btnUserTrainings.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnUserTrainings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUserTrainings.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserTrainings.ForeColor = System.Drawing.Color.White;
+            this.btnUserTrainings.Image = ((System.Drawing.Image)(resources.GetObject("btnUserTrainings.Image")));
+            this.btnUserTrainings.ImagePosition = 1;
+            this.btnUserTrainings.ImageZoom = 40;
+            this.btnUserTrainings.LabelPosition = 35;
+            this.btnUserTrainings.LabelText = "User Trainings (SSRS)";
+            this.btnUserTrainings.Location = new System.Drawing.Point(321, 220);
+            this.btnUserTrainings.Margin = new System.Windows.Forms.Padding(6);
+            this.btnUserTrainings.Name = "btnUserTrainings";
+            this.btnUserTrainings.Size = new System.Drawing.Size(121, 92);
+            this.btnUserTrainings.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.btnUserTrainings, "Open User Trainings data from SSRS");
+            this.btnUserTrainings.Click += new System.EventHandler(this.btnUserTrainings_Click);
             // 
-            // bunifuTileButton12
+            // btnESPbatchAccess
             // 
-            this.bunifuTileButton12.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton12.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton12.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton12.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton12.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton12.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton12.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton12.Image")));
-            this.bunifuTileButton12.ImagePosition = 7;
-            this.bunifuTileButton12.ImageZoom = 40;
-            this.bunifuTileButton12.LabelPosition = 40;
-            this.bunifuTileButton12.LabelText = "User Trainings (SSRS)";
-            this.bunifuTileButton12.Location = new System.Drawing.Point(401, 220);
-            this.bunifuTileButton12.Margin = new System.Windows.Forms.Padding(6);
-            this.bunifuTileButton12.Name = "bunifuTileButton12";
-            this.bunifuTileButton12.Size = new System.Drawing.Size(121, 92);
-            this.bunifuTileButton12.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.bunifuTileButton12, "Open User Trainings data from SSRS");
+            this.btnESPbatchAccess.BackColor = System.Drawing.Color.Transparent;
+            this.btnESPbatchAccess.color = System.Drawing.Color.Transparent;
+            this.btnESPbatchAccess.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnESPbatchAccess.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnESPbatchAccess.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnESPbatchAccess.ForeColor = System.Drawing.Color.White;
+            this.btnESPbatchAccess.Image = ((System.Drawing.Image)(resources.GetObject("btnESPbatchAccess.Image")));
+            this.btnESPbatchAccess.ImagePosition = 7;
+            this.btnESPbatchAccess.ImageZoom = 40;
+            this.btnESPbatchAccess.LabelPosition = 30;
+            this.btnESPbatchAccess.LabelText = "ESP Batch Access";
+            this.btnESPbatchAccess.Location = new System.Drawing.Point(474, 221);
+            this.btnESPbatchAccess.Margin = new System.Windows.Forms.Padding(6);
+            this.btnESPbatchAccess.Name = "btnESPbatchAccess";
+            this.btnESPbatchAccess.Size = new System.Drawing.Size(121, 92);
+            this.btnESPbatchAccess.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.btnESPbatchAccess, "ESP batch access for unit implementation");
+            this.btnESPbatchAccess.Click += new System.EventHandler(this.btnESPbatchAccess_Click);
             // 
-            // bunifuTileButton13
+            // btnExceptionLookup
             // 
-            this.bunifuTileButton13.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton13.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton13.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton13.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton13.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton13.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton13.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton13.Image")));
-            this.bunifuTileButton13.ImagePosition = 7;
-            this.bunifuTileButton13.ImageZoom = 40;
-            this.bunifuTileButton13.LabelPosition = 30;
-            this.bunifuTileButton13.LabelText = "ESP Batch Access";
-            this.bunifuTileButton13.Location = new System.Drawing.Point(574, 221);
-            this.bunifuTileButton13.Margin = new System.Windows.Forms.Padding(6);
-            this.bunifuTileButton13.Name = "bunifuTileButton13";
-            this.bunifuTileButton13.Size = new System.Drawing.Size(121, 92);
-            this.bunifuTileButton13.TabIndex = 11;
-            this.toolTip1.SetToolTip(this.bunifuTileButton13, "ESP batch access for unit implementation");
+            this.btnExceptionLookup.BackColor = System.Drawing.Color.Transparent;
+            this.btnExceptionLookup.color = System.Drawing.Color.Transparent;
+            this.btnExceptionLookup.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnExceptionLookup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExceptionLookup.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExceptionLookup.ForeColor = System.Drawing.Color.White;
+            this.btnExceptionLookup.Image = ((System.Drawing.Image)(resources.GetObject("btnExceptionLookup.Image")));
+            this.btnExceptionLookup.ImagePosition = 1;
+            this.btnExceptionLookup.ImageZoom = 40;
+            this.btnExceptionLookup.LabelPosition = 35;
+            this.btnExceptionLookup.LabelText = "Exception Lookup";
+            this.btnExceptionLookup.Location = new System.Drawing.Point(168, 220);
+            this.btnExceptionLookup.Margin = new System.Windows.Forms.Padding(6);
+            this.btnExceptionLookup.Name = "btnExceptionLookup";
+            this.btnExceptionLookup.Size = new System.Drawing.Size(121, 92);
+            this.btnExceptionLookup.TabIndex = 9;
+            this.btnExceptionLookup.Click += new System.EventHandler(this.btnExceptionLookup_Click);
             // 
             // lblClose
             // 
             this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblClose.Font = new System.Drawing.Font("Arial Black", 10.18868F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClose.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lblClose.Location = new System.Drawing.Point(832, 9);
+            this.lblClose.Location = new System.Drawing.Point(709, 9);
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(20, 20);
             this.lblClose.TabIndex = 12;
@@ -391,7 +422,7 @@
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Arial Black", 10.18868F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label1.Location = new System.Drawing.Point(799, 9);
+            this.label1.Location = new System.Drawing.Point(676, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 20);
             this.label1.TabIndex = 13;
@@ -401,328 +432,601 @@
             // 
             // pnlMisc
             // 
-            this.pnlMisc.Controls.Add(this.bunifuTileButton12);
+            this.pnlMisc.Controls.Add(this.btnUserTrainings);
             this.pnlMisc.Controls.Add(this.btnFile126);
-            this.pnlMisc.Controls.Add(this.bunifuTileButton5);
-            this.pnlMisc.Controls.Add(this.bunifuTileButton13);
-            this.pnlMisc.Controls.Add(this.bunifuTileButton6);
-            this.pnlMisc.Controls.Add(this.bunifuTileButton7);
-            this.pnlMisc.Controls.Add(this.bunifuTileButton11);
-            this.pnlMisc.Controls.Add(this.bunifuTileButton8);
-            this.pnlMisc.Controls.Add(this.bunifuTileButton10);
-            this.pnlMisc.Controls.Add(this.bunifuTileButton9);
+            this.pnlMisc.Controls.Add(this.btnClearLocks);
+            this.pnlMisc.Controls.Add(this.btnESPbatchAccess);
+            this.pnlMisc.Controls.Add(this.btnItemsReport);
+            this.pnlMisc.Controls.Add(this.btnGetLDAP);
+            this.pnlMisc.Controls.Add(this.btnExceptionLookup);
+            this.pnlMisc.Controls.Add(this.btnUserLatestLogin);
+            this.pnlMisc.Controls.Add(this.btnSickOnStat);
+            this.pnlMisc.Controls.Add(this.btnV_FireCategories);
             this.pnlMisc.Location = new System.Drawing.Point(132, 32);
             this.pnlMisc.Name = "pnlMisc";
-            this.pnlMisc.Size = new System.Drawing.Size(720, 325);
+            this.pnlMisc.Size = new System.Drawing.Size(603, 325);
             this.pnlMisc.TabIndex = 14;
+            this.pnlMisc.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmMainNew_MouseDoubleClick);
             // 
             // pnlFormatting
             // 
-            this.pnlFormatting.Controls.Add(this.bunifuTileButton24);
-            this.pnlFormatting.Controls.Add(this.bunifuTileButton25);
-            this.pnlFormatting.Controls.Add(this.bunifuTileButton20);
-            this.pnlFormatting.Controls.Add(this.bunifuTileButton21);
-            this.pnlFormatting.Controls.Add(this.bunifuTileButton14);
-            this.pnlFormatting.Controls.Add(this.bunifuTileButton15);
-            this.pnlFormatting.Controls.Add(this.bunifuTileButton16);
-            this.pnlFormatting.Controls.Add(this.bunifuTileButton17);
-            this.pnlFormatting.Controls.Add(this.bunifuTileButton4);
-            this.pnlFormatting.Controls.Add(this.bunifuTileButton3);
-            this.pnlFormatting.Controls.Add(this.bunifuTileButton2);
-            this.pnlFormatting.Controls.Add(this.bunifuTileButton1);
+            this.pnlFormatting.Controls.Add(this.btnFile6);
+            this.pnlFormatting.Controls.Add(this.btnFile2);
+            this.pnlFormatting.Controls.Add(this.btnAA_Exception);
+            this.pnlFormatting.Controls.Add(this.btnTL_SYS);
+            this.pnlFormatting.Controls.Add(this.btnUploadFile1);
+            this.pnlFormatting.Controls.Add(this.btnLOAwithNoRptTime);
+            this.pnlFormatting.Controls.Add(this.btnRFLOA);
+            this.pnlFormatting.Controls.Add(this.btnRehire);
+            this.pnlFormatting.Controls.Add(this.btnPriors);
+            this.pnlFormatting.Controls.Add(this.btnBanks);
+            this.pnlFormatting.Controls.Add(this.btnTrans);
+            this.pnlFormatting.Controls.Add(this.btnAHS_AA_Terms);
             this.pnlFormatting.Location = new System.Drawing.Point(136, 411);
             this.pnlFormatting.Name = "pnlFormatting";
-            this.pnlFormatting.Size = new System.Drawing.Size(720, 325);
+            this.pnlFormatting.Size = new System.Drawing.Size(603, 325);
             this.pnlFormatting.TabIndex = 15;
+            this.pnlFormatting.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmMainNew_MouseDoubleClick);
             // 
-            // panel2
+            // btnFile6
             // 
-            this.panel2.Controls.Add(this.bunifuFlatButton2);
-            this.panel2.Location = new System.Drawing.Point(884, 275);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(720, 325);
-            this.panel2.TabIndex = 17;
+            this.btnFile6.BackColor = System.Drawing.Color.Transparent;
+            this.btnFile6.color = System.Drawing.Color.Transparent;
+            this.btnFile6.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnFile6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFile6.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFile6.ForeColor = System.Drawing.Color.White;
+            this.btnFile6.Image = ((System.Drawing.Image)(resources.GetObject("btnFile6.Image")));
+            this.btnFile6.ImagePosition = 1;
+            this.btnFile6.ImageZoom = 35;
+            this.btnFile6.LabelPosition = 23;
+            this.btnFile6.LabelText = "Format File 6";
+            this.btnFile6.Location = new System.Drawing.Point(470, 89);
+            this.btnFile6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnFile6.Name = "btnFile6";
+            this.btnFile6.Size = new System.Drawing.Size(104, 64);
+            this.btnFile6.TabIndex = 33;
+            this.btnFile6.Click += new System.EventHandler(this.btnFile6_Click);
             // 
-            // bunifuFlatButton2
+            // btnFile2
             // 
-            this.bunifuFlatButton2.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(99)))), ((int)(((byte)(145)))));
-            this.bunifuFlatButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
-            this.bunifuFlatButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton2.BorderRadius = 0;
-            this.bunifuFlatButton2.ButtonText = "AHS_AA_TERMS";
-            this.bunifuFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton2.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuFlatButton2.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton2.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton2.Iconimage")));
-            this.bunifuFlatButton2.Iconimage_right = null;
-            this.bunifuFlatButton2.Iconimage_right_Selected = null;
-            this.bunifuFlatButton2.Iconimage_Selected = null;
-            this.bunifuFlatButton2.IconMarginLeft = 0;
-            this.bunifuFlatButton2.IconMarginRight = 0;
-            this.bunifuFlatButton2.IconRightVisible = true;
-            this.bunifuFlatButton2.IconRightZoom = 0D;
-            this.bunifuFlatButton2.IconVisible = true;
-            this.bunifuFlatButton2.IconZoom = 90D;
-            this.bunifuFlatButton2.IsTab = false;
-            this.bunifuFlatButton2.Location = new System.Drawing.Point(25, 25);
-            this.bunifuFlatButton2.Name = "bunifuFlatButton2";
-            this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
-            this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
-            this.bunifuFlatButton2.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton2.selected = false;
-            this.bunifuFlatButton2.Size = new System.Drawing.Size(191, 41);
-            this.bunifuFlatButton2.TabIndex = 16;
-            this.bunifuFlatButton2.Text = "AHS_AA_TERMS";
-            this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFile2.BackColor = System.Drawing.Color.Transparent;
+            this.btnFile2.color = System.Drawing.Color.Transparent;
+            this.btnFile2.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnFile2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFile2.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFile2.ForeColor = System.Drawing.Color.White;
+            this.btnFile2.Image = ((System.Drawing.Image)(resources.GetObject("btnFile2.Image")));
+            this.btnFile2.ImagePosition = 1;
+            this.btnFile2.ImageZoom = 35;
+            this.btnFile2.LabelPosition = 23;
+            this.btnFile2.LabelText = "Format File 2";
+            this.btnFile2.Location = new System.Drawing.Point(470, 7);
+            this.btnFile2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnFile2.Name = "btnFile2";
+            this.btnFile2.Size = new System.Drawing.Size(104, 64);
+            this.btnFile2.TabIndex = 32;
+            this.btnFile2.Click += new System.EventHandler(this.btnFile2_Click);
             // 
-            // bunifuTileButton1
+            // btnAA_Exception
             // 
-            this.bunifuTileButton1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton1.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton1.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton1.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton1.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton1.Image")));
-            this.bunifuTileButton1.ImagePosition = 6;
-            this.bunifuTileButton1.ImageZoom = 35;
-            this.bunifuTileButton1.LabelPosition = 20;
-            this.bunifuTileButton1.LabelText = "AHS_AA_TERMS";
-            this.bunifuTileButton1.Location = new System.Drawing.Point(22, 1);
-            this.bunifuTileButton1.Name = "bunifuTileButton1";
-            this.bunifuTileButton1.Size = new System.Drawing.Size(104, 64);
-            this.bunifuTileButton1.TabIndex = 20;
+            this.btnAA_Exception.BackColor = System.Drawing.Color.Transparent;
+            this.btnAA_Exception.color = System.Drawing.Color.Transparent;
+            this.btnAA_Exception.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnAA_Exception.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAA_Exception.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAA_Exception.ForeColor = System.Drawing.Color.White;
+            this.btnAA_Exception.Image = ((System.Drawing.Image)(resources.GetObject("btnAA_Exception.Image")));
+            this.btnAA_Exception.ImagePosition = 1;
+            this.btnAA_Exception.ImageZoom = 35;
+            this.btnAA_Exception.LabelPosition = 23;
+            this.btnAA_Exception.LabelText = "AA_EXCEPTION";
+            this.btnAA_Exception.Location = new System.Drawing.Point(334, 87);
+            this.btnAA_Exception.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAA_Exception.Name = "btnAA_Exception";
+            this.btnAA_Exception.Size = new System.Drawing.Size(104, 64);
+            this.btnAA_Exception.TabIndex = 29;
+            this.btnAA_Exception.Click += new System.EventHandler(this.btnAA_Exception_Click);
             // 
-            // bunifuTileButton2
+            // btnTL_SYS
             // 
-            this.bunifuTileButton2.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton2.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton2.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton2.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton2.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton2.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton2.Image")));
-            this.bunifuTileButton2.ImagePosition = 6;
-            this.bunifuTileButton2.ImageZoom = 25;
-            this.bunifuTileButton2.LabelPosition = 35;
-            this.bunifuTileButton2.LabelText = "AHS_AA_ TRANSFER_RPT";
-            this.bunifuTileButton2.Location = new System.Drawing.Point(22, 83);
-            this.bunifuTileButton2.Name = "bunifuTileButton2";
-            this.bunifuTileButton2.Size = new System.Drawing.Size(104, 64);
-            this.bunifuTileButton2.TabIndex = 21;
+            this.btnTL_SYS.BackColor = System.Drawing.Color.Transparent;
+            this.btnTL_SYS.color = System.Drawing.Color.Transparent;
+            this.btnTL_SYS.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnTL_SYS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTL_SYS.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTL_SYS.ForeColor = System.Drawing.Color.White;
+            this.btnTL_SYS.Image = ((System.Drawing.Image)(resources.GetObject("btnTL_SYS.Image")));
+            this.btnTL_SYS.ImagePosition = 1;
+            this.btnTL_SYS.ImageZoom = 35;
+            this.btnTL_SYS.LabelPosition = 23;
+            this.btnTL_SYS.LabelText = "TL_SYS";
+            this.btnTL_SYS.Location = new System.Drawing.Point(334, 7);
+            this.btnTL_SYS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnTL_SYS.Name = "btnTL_SYS";
+            this.btnTL_SYS.Size = new System.Drawing.Size(104, 64);
+            this.btnTL_SYS.TabIndex = 28;
+            this.btnTL_SYS.Click += new System.EventHandler(this.btnTL_SYS_Click);
             // 
-            // bunifuTileButton3
+            // btnUploadFile1
             // 
-            this.bunifuTileButton3.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton3.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton3.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton3.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton3.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton3.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton3.Image")));
-            this.bunifuTileButton3.ImagePosition = 6;
-            this.bunifuTileButton3.ImageZoom = 30;
-            this.bunifuTileButton3.LabelPosition = 35;
-            this.bunifuTileButton3.LabelText = "Off Codes Vs Banks";
-            this.bunifuTileButton3.Location = new System.Drawing.Point(22, 165);
-            this.bunifuTileButton3.Name = "bunifuTileButton3";
-            this.bunifuTileButton3.Size = new System.Drawing.Size(104, 64);
-            this.bunifuTileButton3.TabIndex = 22;
+            this.btnUploadFile1.BackColor = System.Drawing.Color.Transparent;
+            this.btnUploadFile1.color = System.Drawing.Color.Transparent;
+            this.btnUploadFile1.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnUploadFile1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUploadFile1.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadFile1.ForeColor = System.Drawing.Color.White;
+            this.btnUploadFile1.Image = ((System.Drawing.Image)(resources.GetObject("btnUploadFile1.Image")));
+            this.btnUploadFile1.ImagePosition = 1;
+            this.btnUploadFile1.ImageZoom = 30;
+            this.btnUploadFile1.LabelPosition = 35;
+            this.btnUploadFile1.LabelText = "Upload File 1 for NFP Checking";
+            this.btnUploadFile1.Location = new System.Drawing.Point(470, 171);
+            this.btnUploadFile1.Name = "btnUploadFile1";
+            this.btnUploadFile1.Size = new System.Drawing.Size(104, 64);
+            this.btnUploadFile1.TabIndex = 27;
+            this.btnUploadFile1.Click += new System.EventHandler(this.btnUploadFile1_Click);
             // 
-            // bunifuTileButton4
+            // btnLOAwithNoRptTime
             // 
-            this.bunifuTileButton4.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton4.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton4.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton4.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton4.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton4.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton4.Image")));
-            this.bunifuTileButton4.ImagePosition = 6;
-            this.bunifuTileButton4.ImageZoom = 20;
-            this.bunifuTileButton4.LabelPosition = 35;
-            this.bunifuTileButton4.LabelText = "Prior Pay Period Adjustment";
-            this.bunifuTileButton4.Location = new System.Drawing.Point(22, 247);
-            this.bunifuTileButton4.Name = "bunifuTileButton4";
-            this.bunifuTileButton4.Size = new System.Drawing.Size(104, 64);
-            this.bunifuTileButton4.TabIndex = 23;
+            this.btnLOAwithNoRptTime.BackColor = System.Drawing.Color.Transparent;
+            this.btnLOAwithNoRptTime.color = System.Drawing.Color.Transparent;
+            this.btnLOAwithNoRptTime.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnLOAwithNoRptTime.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLOAwithNoRptTime.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLOAwithNoRptTime.ForeColor = System.Drawing.Color.White;
+            this.btnLOAwithNoRptTime.Image = ((System.Drawing.Image)(resources.GetObject("btnLOAwithNoRptTime.Image")));
+            this.btnLOAwithNoRptTime.ImagePosition = 1;
+            this.btnLOAwithNoRptTime.ImageZoom = 27;
+            this.btnLOAwithNoRptTime.LabelPosition = 35;
+            this.btnLOAwithNoRptTime.LabelText = "AHS_AA_RPTD_ NO_TIME";
+            this.btnLOAwithNoRptTime.Location = new System.Drawing.Point(181, 171);
+            this.btnLOAwithNoRptTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLOAwithNoRptTime.Name = "btnLOAwithNoRptTime";
+            this.btnLOAwithNoRptTime.Size = new System.Drawing.Size(104, 64);
+            this.btnLOAwithNoRptTime.TabIndex = 26;
+            this.btnLOAwithNoRptTime.Click += new System.EventHandler(this.btnLOAwithNoRptTime_Click);
             // 
-            // bunifuTileButton14
+            // btnRFLOA
             // 
-            this.bunifuTileButton14.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton14.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton14.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton14.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton14.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton14.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton14.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton14.Image")));
-            this.bunifuTileButton14.ImagePosition = 6;
-            this.bunifuTileButton14.ImageZoom = 20;
-            this.bunifuTileButton14.LabelPosition = 35;
-            this.bunifuTileButton14.LabelText = "Upload File 1 for NFP Checking";
-            this.bunifuTileButton14.Location = new System.Drawing.Point(568, 167);
-            this.bunifuTileButton14.Name = "bunifuTileButton14";
-            this.bunifuTileButton14.Size = new System.Drawing.Size(104, 64);
-            this.bunifuTileButton14.TabIndex = 27;
+            this.btnRFLOA.BackColor = System.Drawing.Color.Transparent;
+            this.btnRFLOA.color = System.Drawing.Color.Transparent;
+            this.btnRFLOA.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnRFLOA.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRFLOA.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRFLOA.ForeColor = System.Drawing.Color.White;
+            this.btnRFLOA.Image = ((System.Drawing.Image)(resources.GetObject("btnRFLOA.Image")));
+            this.btnRFLOA.ImagePosition = 1;
+            this.btnRFLOA.ImageZoom = 30;
+            this.btnRFLOA.LabelPosition = 35;
+            this.btnRFLOA.LabelText = "Return from LOA";
+            this.btnRFLOA.Location = new System.Drawing.Point(181, 89);
+            this.btnRFLOA.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRFLOA.Name = "btnRFLOA";
+            this.btnRFLOA.Size = new System.Drawing.Size(104, 64);
+            this.btnRFLOA.TabIndex = 25;
+            this.btnRFLOA.Click += new System.EventHandler(this.btnRFLOA_Click);
             // 
-            // bunifuTileButton15
+            // btnRehire
             // 
-            this.bunifuTileButton15.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton15.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton15.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton15.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton15.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton15.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton15.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton15.Image")));
-            this.bunifuTileButton15.ImagePosition = 6;
-            this.bunifuTileButton15.ImageZoom = 25;
-            this.bunifuTileButton15.LabelPosition = 35;
-            this.bunifuTileButton15.LabelText = "AHS_AA_RPTD_ NO_TIME";
-            this.bunifuTileButton15.Location = new System.Drawing.Point(204, 167);
-            this.bunifuTileButton15.Name = "bunifuTileButton15";
-            this.bunifuTileButton15.Size = new System.Drawing.Size(104, 64);
-            this.bunifuTileButton15.TabIndex = 26;
+            this.btnRehire.BackColor = System.Drawing.Color.Transparent;
+            this.btnRehire.color = System.Drawing.Color.Transparent;
+            this.btnRehire.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnRehire.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRehire.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRehire.ForeColor = System.Drawing.Color.White;
+            this.btnRehire.Image = ((System.Drawing.Image)(resources.GetObject("btnRehire.Image")));
+            this.btnRehire.ImagePosition = 1;
+            this.btnRehire.ImageZoom = 35;
+            this.btnRehire.LabelPosition = 23;
+            this.btnRehire.LabelText = "Rehires";
+            this.btnRehire.Location = new System.Drawing.Point(181, 7);
+            this.btnRehire.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRehire.Name = "btnRehire";
+            this.btnRehire.Size = new System.Drawing.Size(104, 64);
+            this.btnRehire.TabIndex = 24;
+            this.btnRehire.Click += new System.EventHandler(this.btnRehire_Click);
             // 
-            // bunifuTileButton16
+            // btnPriors
             // 
-            this.bunifuTileButton16.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton16.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton16.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton16.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton16.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton16.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton16.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton16.Image")));
-            this.bunifuTileButton16.ImagePosition = 6;
-            this.bunifuTileButton16.ImageZoom = 25;
-            this.bunifuTileButton16.LabelPosition = 25;
-            this.bunifuTileButton16.LabelText = "Return from LOA";
-            this.bunifuTileButton16.Location = new System.Drawing.Point(204, 85);
-            this.bunifuTileButton16.Name = "bunifuTileButton16";
-            this.bunifuTileButton16.Size = new System.Drawing.Size(104, 64);
-            this.bunifuTileButton16.TabIndex = 25;
+            this.btnPriors.BackColor = System.Drawing.Color.Transparent;
+            this.btnPriors.color = System.Drawing.Color.Transparent;
+            this.btnPriors.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnPriors.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPriors.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPriors.ForeColor = System.Drawing.Color.White;
+            this.btnPriors.Image = ((System.Drawing.Image)(resources.GetObject("btnPriors.Image")));
+            this.btnPriors.ImagePosition = 1;
+            this.btnPriors.ImageZoom = 25;
+            this.btnPriors.LabelPosition = 35;
+            this.btnPriors.LabelText = "Prior Pay Period Adjustment";
+            this.btnPriors.Location = new System.Drawing.Point(22, 247);
+            this.btnPriors.Name = "btnPriors";
+            this.btnPriors.Size = new System.Drawing.Size(104, 64);
+            this.btnPriors.TabIndex = 23;
+            this.btnPriors.Click += new System.EventHandler(this.btnPriors_Click);
             // 
-            // bunifuTileButton17
+            // btnBanks
             // 
-            this.bunifuTileButton17.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton17.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton17.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton17.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton17.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton17.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton17.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton17.Image")));
-            this.bunifuTileButton17.ImagePosition = 6;
-            this.bunifuTileButton17.ImageZoom = 35;
-            this.bunifuTileButton17.LabelPosition = 20;
-            this.bunifuTileButton17.LabelText = "Rehires";
-            this.bunifuTileButton17.Location = new System.Drawing.Point(204, 3);
-            this.bunifuTileButton17.Name = "bunifuTileButton17";
-            this.bunifuTileButton17.Size = new System.Drawing.Size(104, 64);
-            this.bunifuTileButton17.TabIndex = 24;
+            this.btnBanks.BackColor = System.Drawing.Color.Transparent;
+            this.btnBanks.color = System.Drawing.Color.Transparent;
+            this.btnBanks.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnBanks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBanks.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBanks.ForeColor = System.Drawing.Color.White;
+            this.btnBanks.Image = ((System.Drawing.Image)(resources.GetObject("btnBanks.Image")));
+            this.btnBanks.ImagePosition = 1;
+            this.btnBanks.ImageZoom = 30;
+            this.btnBanks.LabelPosition = 35;
+            this.btnBanks.LabelText = "Off Codes Vs Banks";
+            this.btnBanks.Location = new System.Drawing.Point(22, 165);
+            this.btnBanks.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnBanks.Name = "btnBanks";
+            this.btnBanks.Size = new System.Drawing.Size(104, 64);
+            this.btnBanks.TabIndex = 22;
+            this.btnBanks.Click += new System.EventHandler(this.btnBanks_Click);
             // 
-            // bunifuTileButton20
+            // btnTrans
             // 
-            this.bunifuTileButton20.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton20.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton20.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton20.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton20.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton20.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton20.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton20.Image")));
-            this.bunifuTileButton20.ImagePosition = 6;
-            this.bunifuTileButton20.ImageZoom = 35;
-            this.bunifuTileButton20.LabelPosition = 20;
-            this.bunifuTileButton20.LabelText = "AA_EXCEPTION";
-            this.bunifuTileButton20.Location = new System.Drawing.Point(386, 83);
-            this.bunifuTileButton20.Name = "bunifuTileButton20";
-            this.bunifuTileButton20.Size = new System.Drawing.Size(104, 64);
-            this.bunifuTileButton20.TabIndex = 29;
+            this.btnTrans.BackColor = System.Drawing.Color.Transparent;
+            this.btnTrans.color = System.Drawing.Color.Transparent;
+            this.btnTrans.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnTrans.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTrans.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrans.ForeColor = System.Drawing.Color.White;
+            this.btnTrans.Image = ((System.Drawing.Image)(resources.GetObject("btnTrans.Image")));
+            this.btnTrans.ImagePosition = 1;
+            this.btnTrans.ImageZoom = 30;
+            this.btnTrans.LabelPosition = 35;
+            this.btnTrans.LabelText = "AHS_AA_ TRANSFER_RPT";
+            this.btnTrans.Location = new System.Drawing.Point(22, 83);
+            this.btnTrans.Name = "btnTrans";
+            this.btnTrans.Size = new System.Drawing.Size(104, 64);
+            this.btnTrans.TabIndex = 21;
+            this.btnTrans.Click += new System.EventHandler(this.btnTrans_Click);
             // 
-            // bunifuTileButton21
+            // btnAHS_AA_Terms
             // 
-            this.bunifuTileButton21.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton21.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton21.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton21.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton21.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton21.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton21.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton21.Image")));
-            this.bunifuTileButton21.ImagePosition = 6;
-            this.bunifuTileButton21.ImageZoom = 35;
-            this.bunifuTileButton21.LabelPosition = 20;
-            this.bunifuTileButton21.LabelText = "TL_SYS";
-            this.bunifuTileButton21.Location = new System.Drawing.Point(386, 3);
-            this.bunifuTileButton21.Name = "bunifuTileButton21";
-            this.bunifuTileButton21.Size = new System.Drawing.Size(104, 64);
-            this.bunifuTileButton21.TabIndex = 28;
+            this.btnAHS_AA_Terms.BackColor = System.Drawing.Color.Transparent;
+            this.btnAHS_AA_Terms.color = System.Drawing.Color.Transparent;
+            this.btnAHS_AA_Terms.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnAHS_AA_Terms.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAHS_AA_Terms.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAHS_AA_Terms.ForeColor = System.Drawing.Color.White;
+            this.btnAHS_AA_Terms.Image = ((System.Drawing.Image)(resources.GetObject("btnAHS_AA_Terms.Image")));
+            this.btnAHS_AA_Terms.ImagePosition = 1;
+            this.btnAHS_AA_Terms.ImageZoom = 35;
+            this.btnAHS_AA_Terms.LabelPosition = 23;
+            this.btnAHS_AA_Terms.LabelText = "AHS_AA_TERMS";
+            this.btnAHS_AA_Terms.Location = new System.Drawing.Point(22, 1);
+            this.btnAHS_AA_Terms.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAHS_AA_Terms.Name = "btnAHS_AA_Terms";
+            this.btnAHS_AA_Terms.Size = new System.Drawing.Size(104, 64);
+            this.btnAHS_AA_Terms.TabIndex = 20;
+            this.btnAHS_AA_Terms.Click += new System.EventHandler(this.btnAHS_AA_Terms_Click);
             // 
-            // bunifuTileButton24
+            // pnlSearch
             // 
-            this.bunifuTileButton24.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton24.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton24.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton24.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton24.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton24.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton24.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton24.Image")));
-            this.bunifuTileButton24.ImagePosition = 6;
-            this.bunifuTileButton24.ImageZoom = 30;
-            this.bunifuTileButton24.LabelPosition = 20;
-            this.bunifuTileButton24.LabelText = "Format File 6";
-            this.bunifuTileButton24.Location = new System.Drawing.Point(568, 85);
-            this.bunifuTileButton24.Name = "bunifuTileButton24";
-            this.bunifuTileButton24.Size = new System.Drawing.Size(104, 64);
-            this.bunifuTileButton24.TabIndex = 33;
+            this.pnlSearch.Controls.Add(this.label4);
+            this.pnlSearch.Controls.Add(this.label2);
+            this.pnlSearch.Controls.Add(this.txtUnit);
+            this.pnlSearch.Controls.Add(this.btnSendEmail);
+            this.pnlSearch.Controls.Add(this.lstResult);
+            this.pnlSearch.Controls.Add(this.lblMsg);
+            this.pnlSearch.Controls.Add(this.txtOCode);
+            this.pnlSearch.Controls.Add(this.txtEmpNo);
+            this.pnlSearch.Controls.Add(this.groupBox1);
+            this.pnlSearch.Controls.Add(this.txtTCG);
+            this.pnlSearch.Controls.Add(this.label5);
+            this.pnlSearch.Controls.Add(this.label7);
+            this.pnlSearch.Controls.Add(this.label3);
+            this.pnlSearch.Controls.Add(this.label6);
+            this.pnlSearch.Location = new System.Drawing.Point(884, 275);
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Size = new System.Drawing.Size(603, 325);
+            this.pnlSearch.TabIndex = 17;
+            this.pnlSearch.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmMainNew_MouseDoubleClick);
             // 
-            // bunifuTileButton25
+            // label4
             // 
-            this.bunifuTileButton25.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton25.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton25.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuTileButton25.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton25.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton25.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton25.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton25.Image")));
-            this.bunifuTileButton25.ImagePosition = 6;
-            this.bunifuTileButton25.ImageZoom = 30;
-            this.bunifuTileButton25.LabelPosition = 20;
-            this.bunifuTileButton25.LabelText = "Format File 2";
-            this.bunifuTileButton25.Location = new System.Drawing.Point(568, 3);
-            this.bunifuTileButton25.Name = "bunifuTileButton25";
-            this.bunifuTileButton25.Size = new System.Drawing.Size(104, 64);
-            this.bunifuTileButton25.TabIndex = 32;
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Image = ((System.Drawing.Image)(resources.GetObject("label4.Image")));
+            this.label4.Location = new System.Drawing.Point(18, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 25);
+            this.label4.TabIndex = 40;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.label2.Location = new System.Drawing.Point(42, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(252, 26);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "Emp No or LastName or FirstName:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtUnit
+            // 
+            this.txtUnit.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtUnit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.txtUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUnit.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtUnit.Location = new System.Drawing.Point(300, 80);
+            this.txtUnit.Name = "txtUnit";
+            this.txtUnit.Size = new System.Drawing.Size(149, 20);
+            this.txtUnit.TabIndex = 43;
+            this.txtUnit.TextChanged += new System.EventHandler(this.txtUnit_TextChanged);
+            // 
+            // btnSendEmail
+            // 
+            this.btnSendEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.btnSendEmail.Enabled = false;
+            this.btnSendEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSendEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnSendEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnSendEmail.Image")));
+            this.btnSendEmail.Location = new System.Drawing.Point(454, 132);
+            this.btnSendEmail.Name = "btnSendEmail";
+            this.btnSendEmail.Size = new System.Drawing.Size(136, 48);
+            this.btnSendEmail.TabIndex = 42;
+            this.btnSendEmail.Text = "Send Email to SSC";
+            this.btnSendEmail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSendEmail.UseVisualStyleBackColor = false;
+            this.btnSendEmail.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lstResult
+            // 
+            this.lstResult.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lstResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.lstResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lstResult.Font = new System.Drawing.Font("Courier New", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstResult.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lstResult.FormattingEnabled = true;
+            this.lstResult.ItemHeight = 16;
+            this.lstResult.Location = new System.Drawing.Point(17, 117);
+            this.lstResult.Name = "lstResult";
+            this.lstResult.Size = new System.Drawing.Size(432, 82);
+            this.lstResult.TabIndex = 33;
+            this.lstResult.Click += new System.EventHandler(this.lstResult_Click);
+            this.lstResult.SelectedIndexChanged += new System.EventHandler(this.lstResult_Click);
+            this.lstResult.DoubleClick += new System.EventHandler(this.lstResult_DoubleClick);
+            this.lstResult.MouseLeave += new System.EventHandler(this.lstResult_MouseLeave);
+            this.lstResult.MouseHover += new System.EventHandler(this.lstResult_MouseHover);
+            this.lstResult.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lstResult_MouseUp);
+            // 
+            // lblMsg
+            // 
+            this.lblMsg.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblMsg.AutoSize = true;
+            this.lblMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.lblMsg.Location = new System.Drawing.Point(19, 233);
+            this.lblMsg.Name = "lblMsg";
+            this.lblMsg.Size = new System.Drawing.Size(0, 15);
+            this.lblMsg.TabIndex = 38;
+            // 
+            // txtOCode
+            // 
+            this.txtOCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtOCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.txtOCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtOCode.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtOCode.Location = new System.Drawing.Point(300, 7);
+            this.txtOCode.Name = "txtOCode";
+            this.txtOCode.Size = new System.Drawing.Size(92, 20);
+            this.txtOCode.TabIndex = 34;
+            this.txtOCode.TextChanged += new System.EventHandler(this.txtOCode_TextChanged);
+            // 
+            // txtEmpNo
+            // 
+            this.txtEmpNo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtEmpNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.txtEmpNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmpNo.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtEmpNo.Location = new System.Drawing.Point(300, 43);
+            this.txtEmpNo.Name = "txtEmpNo";
+            this.txtEmpNo.Size = new System.Drawing.Size(149, 20);
+            this.txtEmpNo.TabIndex = 36;
+            this.txtEmpNo.TextChanged += new System.EventHandler(this.txtEmpNo_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.lblPayPeriod);
+            this.groupBox1.Location = new System.Drawing.Point(19, 248);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(430, 42);
+            this.groupBox1.TabIndex = 41;
+            this.groupBox1.TabStop = false;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(6, 15);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(203, 19);
+            this.dateTimePicker1.TabIndex = 7;
+            // 
+            // lblPayPeriod
+            // 
+            this.lblPayPeriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayPeriod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.lblPayPeriod.Location = new System.Drawing.Point(215, 13);
+            this.lblPayPeriod.Name = "lblPayPeriod";
+            this.lblPayPeriod.Size = new System.Drawing.Size(111, 23);
+            this.lblPayPeriod.TabIndex = 8;
+            this.lblPayPeriod.Text = "test";
+            this.lblPayPeriod.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtTCG
+            // 
+            this.txtTCG.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtTCG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.txtTCG.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.txtTCG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTCG.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtTCG.Location = new System.Drawing.Point(17, 204);
+            this.txtTCG.Name = "txtTCG";
+            this.txtTCG.Size = new System.Drawing.Size(432, 23);
+            this.txtTCG.TabIndex = 39;
+            this.txtTCG.Text = "label3";
+            this.txtTCG.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtTCG.Visible = false;
+            this.txtTCG.DoubleClick += new System.EventHandler(this.txtTCG_DoubleClick);
+            this.txtTCG.MouseLeave += new System.EventHandler(this.txtTCG_MouseLeave);
+            this.txtTCG.MouseHover += new System.EventHandler(this.txtTCG_MouseHover);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Image = ((System.Drawing.Image)(resources.GetObject("label5.Image")));
+            this.label5.Location = new System.Drawing.Point(218, 80);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 25);
+            this.label5.TabIndex = 45;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Image = ((System.Drawing.Image)(resources.GetObject("label7.Image")));
+            this.label7.Location = new System.Drawing.Point(119, 4);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 25);
+            this.label7.TabIndex = 46;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(128, -2);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(166, 35);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "Occupation Code:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.label6.Location = new System.Drawing.Point(217, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 20);
+            this.label6.TabIndex = 44;
+            this.label6.Text = "Unit:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // timerClose
+            // 
+            this.timerClose.Interval = 3600000;
+            this.timerClose.Tick += new System.EventHandler(this.timerClose_Tick);
+            // 
+            // myNotifyIcon
+            // 
+            this.myNotifyIcon.BalloonTipText = "Click to open again";
+            this.myNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("myNotifyIcon.Icon")));
+            this.myNotifyIcon.Text = "Search";
+            this.myNotifyIcon.Visible = true;
+            this.myNotifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.myNotifyIcon_MouseClick);
+            // 
+            // mnuCopyFromList
+            // 
+            this.mnuCopyFromList.ImageScalingSize = new System.Drawing.Size(18, 18);
+            this.mnuCopyFromList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuCopyEmpNum,
+            this.mnuCopyEmpName,
+            this.mnuCopyBothNameAndNum});
+            this.mnuCopyFromList.Name = "mnuCopyFromList";
+            this.mnuCopyFromList.Size = new System.Drawing.Size(333, 76);
+            this.mnuCopyFromList.Text = "CopyFromList";
+            // 
+            // mnuCopyEmpNum
+            // 
+            this.mnuCopyEmpNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpNum.Image")));
+            this.mnuCopyEmpNum.Name = "mnuCopyEmpNum";
+            this.mnuCopyEmpNum.Size = new System.Drawing.Size(332, 24);
+            this.mnuCopyEmpNum.Text = "Copy Emp # to clipboard";
+            this.mnuCopyEmpNum.Click += new System.EventHandler(this.mnuCopyEmpNum_Click);
+            // 
+            // mnuCopyEmpName
+            // 
+            this.mnuCopyEmpName.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpName.Image")));
+            this.mnuCopyEmpName.Name = "mnuCopyEmpName";
+            this.mnuCopyEmpName.Size = new System.Drawing.Size(332, 24);
+            this.mnuCopyEmpName.Text = "Copy Emp Name to clipboard";
+            this.mnuCopyEmpName.Click += new System.EventHandler(this.mnuCopyEmpName_Click);
+            // 
+            // mnuCopyBothNameAndNum
+            // 
+            this.mnuCopyBothNameAndNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyBothNameAndNum.Image")));
+            this.mnuCopyBothNameAndNum.Name = "mnuCopyBothNameAndNum";
+            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(332, 24);
+            this.mnuCopyBothNameAndNum.Text = "Copy Both Emp Name and # to clipboard";
+            this.mnuCopyBothNameAndNum.Click += new System.EventHandler(this.mnuCopyBothNameAndNum_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSendEmail});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(193, 28);
+            // 
+            // mnuSendEmail
+            // 
+            this.mnuSendEmail.Name = "mnuSendEmail";
+            this.mnuSendEmail.Size = new System.Drawing.Size(192, 24);
+            this.mnuSendEmail.Text = "Send Email To SSO";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
             // 
             // frmMainNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(23)))), ((int)(((byte)(41)))));
-            this.ClientSize = new System.Drawing.Size(1627, 768);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.pnlFormatting);
-            this.Controls.Add(this.pnlMisc);
+            this.ClientSize = new System.Drawing.Size(1561, 756);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblClose);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlSearch);
+            this.Controls.Add(this.pnlFormatting);
+            this.Controls.Add(this.pnlMain);
+            this.Controls.Add(this.pnlMisc);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SömëKindä Tööl v2017.11.27";
+            this.Activated += new System.EventHandler(this.frmMainNew_Activated);
+            this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);
             this.Load += new System.EventHandler(this.frmMainNew_Load);
-            this.panel1.ResumeLayout(false);
+            this.Shown += new System.EventHandler(this.frmMainNew_Shown);
+            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmMainNew_MouseDoubleClick);
+            this.Resize += new System.EventHandler(this.frmMainNew_Resize);
+            this.pnlMain.ResumeLayout(false);
             this.pnlMisc.ResumeLayout(false);
             this.pnlFormatting.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.pnlSearch.ResumeLayout(false);
+            this.pnlSearch.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.mnuCopyFromList.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlMain;
         private Bunifu.Framework.UI.BunifuTileButton btnMisc;
         private Bunifu.Framework.UI.BunifuTileButton btnFile126;
         private Bunifu.Framework.UI.BunifuTileButton btnSearch;
@@ -730,32 +1034,56 @@
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl2;
         private System.Windows.Forms.ToolTip toolTip1;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton13;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton12;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton11;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton10;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton9;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton8;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton7;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton6;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton5;
+        private Bunifu.Framework.UI.BunifuTileButton btnESPbatchAccess;
+        private Bunifu.Framework.UI.BunifuTileButton btnUserTrainings;
+        private Bunifu.Framework.UI.BunifuTileButton btnExceptionLookup;
+        private Bunifu.Framework.UI.BunifuTileButton btnSickOnStat;
+        private Bunifu.Framework.UI.BunifuTileButton btnV_FireCategories;
+        private Bunifu.Framework.UI.BunifuTileButton btnUserLatestLogin;
+        private Bunifu.Framework.UI.BunifuTileButton btnGetLDAP;
+        private Bunifu.Framework.UI.BunifuTileButton btnItemsReport;
+        private Bunifu.Framework.UI.BunifuTileButton btnClearLocks;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblClose;
         private System.Windows.Forms.Panel pnlFormatting;
         private System.Windows.Forms.Panel pnlMisc;
-        private System.Windows.Forms.Panel panel2;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton4;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton3;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton2;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton1;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton24;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton25;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton20;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton21;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton14;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton15;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton16;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton17;
+        private System.Windows.Forms.Panel pnlSearch;
+        private Bunifu.Framework.UI.BunifuTileButton btnPriors;
+        private Bunifu.Framework.UI.BunifuTileButton btnBanks;
+        private Bunifu.Framework.UI.BunifuTileButton btnTrans;
+        private Bunifu.Framework.UI.BunifuTileButton btnAHS_AA_Terms;
+        private Bunifu.Framework.UI.BunifuTileButton btnFile6;
+        private Bunifu.Framework.UI.BunifuTileButton btnFile2;
+        private Bunifu.Framework.UI.BunifuTileButton btnAA_Exception;
+        private Bunifu.Framework.UI.BunifuTileButton btnTL_SYS;
+        private Bunifu.Framework.UI.BunifuTileButton btnUploadFile1;
+        private Bunifu.Framework.UI.BunifuTileButton btnLOAwithNoRptTime;
+        private Bunifu.Framework.UI.BunifuTileButton btnRFLOA;
+        private Bunifu.Framework.UI.BunifuTileButton btnRehire;
+        private System.Windows.Forms.TextBox txtUnit;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnSendEmail;
+        private System.Windows.Forms.ListBox lstResult;
+        private System.Windows.Forms.Label lblMsg;
+        private System.Windows.Forms.TextBox txtOCode;
+        private System.Windows.Forms.TextBox txtEmpNo;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label lblPayPeriod;
+        private System.Windows.Forms.Label txtTCG;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Timer timerClose;
+        private System.Windows.Forms.NotifyIcon myNotifyIcon;
+        private System.Windows.Forms.ContextMenuStrip mnuCopyFromList;
+        private System.Windows.Forms.ToolStripMenuItem mnuCopyEmpNum;
+        private System.Windows.Forms.ToolStripMenuItem mnuCopyEmpName;
+        private System.Windows.Forms.ToolStripMenuItem mnuCopyBothNameAndNum;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mnuSendEmail;
+        private System.Windows.Forms.Timer timer1;
     }
 }

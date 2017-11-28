@@ -39,7 +39,7 @@ namespace WindowsFormsApplication1
             {
                 if (_conn.State == System.Data.ConnectionState.Open) _conn.Close();
             }
-        }
+        }        
 
         public static string CheckIfMultiJob(string _empNbr)
         {
