@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using System.Threading;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
@@ -22,7 +19,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("App is already running", "Message");
                 return;
             }
- 
+
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -33,8 +30,27 @@ namespace WindowsFormsApplication1
             //    MessageBox.Show("There is already a instance running.", "Information");
             //    System.Environment.Exit(0);
             //}
+            try
+            {
+                AppDomain.CurrentDomain.AssemblyResolve += (Object sender, ResolveEventArgs args) =>
+                {
+                    String thisExe = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+                    System.Reflection.AssemblyName embeddedAssembly = new System.Reflection.AssemblyName(args.Name);
+                    String resourceName = thisExe + "." + embeddedAssembly.Name + ".dll";
+                    using (var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+                    {
+                        Byte[] assemblyData = new Byte[stream.Length];
+                        stream.Read(assemblyData, 0, assemblyData.Length);
+                        return System.Reflection.Assembly.Load(assemblyData);
+                    }
+                };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-            //Application.Run(new frmSearch());            
+            //Application.Run(new frmSearch());
             Application.Run(new frmMainNew());
         }
 

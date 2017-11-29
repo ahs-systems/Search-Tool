@@ -183,10 +183,10 @@ namespace WindowsFormsApplication1
             this.btnFile126.ForeColor = System.Drawing.Color.White;
             this.btnFile126.Image = ((System.Drawing.Image)(resources.GetObject("btnFile126.Image")));
             this.btnFile126.ImagePosition = 7;
-            this.btnFile126.ImageZoom = 40;
+            this.btnFile126.ImageZoom = 45;
             this.btnFile126.LabelPosition = 30;
             this.btnFile126.LabelText = "FTP File 1, 2 and 6";
-            this.btnFile126.Location = new System.Drawing.Point(15, 4);
+            this.btnFile126.Location = new System.Drawing.Point(15, 6);
             this.btnFile126.Margin = new System.Windows.Forms.Padding(6);
             this.btnFile126.Name = "btnFile126";
             this.btnFile126.Size = new System.Drawing.Size(121, 92);
@@ -226,7 +226,7 @@ namespace WindowsFormsApplication1
             this.btnClearLocks.ForeColor = System.Drawing.Color.White;
             this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
             this.btnClearLocks.ImagePosition = 7;
-            this.btnClearLocks.ImageZoom = 40;
+            this.btnClearLocks.ImageZoom = 45;
             this.btnClearLocks.LabelPosition = 30;
             this.btnClearLocks.LabelText = "Clear Lock";
             this.btnClearLocks.Location = new System.Drawing.Point(168, 4);
@@ -247,7 +247,7 @@ namespace WindowsFormsApplication1
             this.btnItemsReport.ForeColor = System.Drawing.Color.White;
             this.btnItemsReport.Image = ((System.Drawing.Image)(resources.GetObject("btnItemsReport.Image")));
             this.btnItemsReport.ImagePosition = 7;
-            this.btnItemsReport.ImageZoom = 40;
+            this.btnItemsReport.ImageZoom = 45;
             this.btnItemsReport.LabelPosition = 30;
             this.btnItemsReport.LabelText = "Items Report";
             this.btnItemsReport.Location = new System.Drawing.Point(321, 3);
@@ -268,7 +268,7 @@ namespace WindowsFormsApplication1
             this.btnGetLDAP.ForeColor = System.Drawing.Color.White;
             this.btnGetLDAP.Image = ((System.Drawing.Image)(resources.GetObject("btnGetLDAP.Image")));
             this.btnGetLDAP.ImagePosition = 7;
-            this.btnGetLDAP.ImageZoom = 40;
+            this.btnGetLDAP.ImageZoom = 45;
             this.btnGetLDAP.LabelPosition = 30;
             this.btnGetLDAP.LabelText = "LDAP Info";
             this.btnGetLDAP.Location = new System.Drawing.Point(15, 106);
@@ -289,7 +289,7 @@ namespace WindowsFormsApplication1
             this.btnUserLatestLogin.ForeColor = System.Drawing.Color.White;
             this.btnUserLatestLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnUserLatestLogin.Image")));
             this.btnUserLatestLogin.ImagePosition = 7;
-            this.btnUserLatestLogin.ImageZoom = 40;
+            this.btnUserLatestLogin.ImageZoom = 45;
             this.btnUserLatestLogin.LabelPosition = 30;
             this.btnUserLatestLogin.LabelText = "User Latest Login";
             this.btnUserLatestLogin.Location = new System.Drawing.Point(168, 106);
@@ -310,7 +310,7 @@ namespace WindowsFormsApplication1
             this.btnV_FireCategories.ForeColor = System.Drawing.Color.White;
             this.btnV_FireCategories.Image = ((System.Drawing.Image)(resources.GetObject("btnV_FireCategories.Image")));
             this.btnV_FireCategories.ImagePosition = 7;
-            this.btnV_FireCategories.ImageZoom = 40;
+            this.btnV_FireCategories.ImageZoom = 45;
             this.btnV_FireCategories.LabelPosition = 30;
             this.btnV_FireCategories.LabelText = "vFire Categories";
             this.btnV_FireCategories.Location = new System.Drawing.Point(321, 105);
@@ -331,7 +331,7 @@ namespace WindowsFormsApplication1
             this.btnSickOnStat.ForeColor = System.Drawing.Color.White;
             this.btnSickOnStat.Image = ((System.Drawing.Image)(resources.GetObject("btnSickOnStat.Image")));
             this.btnSickOnStat.ImagePosition = 1;
-            this.btnSickOnStat.ImageZoom = 40;
+            this.btnSickOnStat.ImageZoom = 45;
             this.btnSickOnStat.LabelPosition = 35;
             this.btnSickOnStat.LabelText = "Upload Sick on a Stat File from ePeople";
             this.btnSickOnStat.Location = new System.Drawing.Point(15, 221);
@@ -352,7 +352,7 @@ namespace WindowsFormsApplication1
             this.btnUserTrainings.ForeColor = System.Drawing.Color.White;
             this.btnUserTrainings.Image = ((System.Drawing.Image)(resources.GetObject("btnUserTrainings.Image")));
             this.btnUserTrainings.ImagePosition = 1;
-            this.btnUserTrainings.ImageZoom = 40;
+            this.btnUserTrainings.ImageZoom = 45;
             this.btnUserTrainings.LabelPosition = 35;
             this.btnUserTrainings.LabelText = "User Trainings (SSRS)";
             this.btnUserTrainings.Location = new System.Drawing.Point(321, 220);
@@ -373,7 +373,7 @@ namespace WindowsFormsApplication1
             this.btnESPbatchAccess.ForeColor = System.Drawing.Color.White;
             this.btnESPbatchAccess.Image = ((System.Drawing.Image)(resources.GetObject("btnESPbatchAccess.Image")));
             this.btnESPbatchAccess.ImagePosition = 7;
-            this.btnESPbatchAccess.ImageZoom = 40;
+            this.btnESPbatchAccess.ImageZoom = 45;
             this.btnESPbatchAccess.LabelPosition = 30;
             this.btnESPbatchAccess.LabelText = "ESP Batch Access";
             this.btnESPbatchAccess.Location = new System.Drawing.Point(474, 221);
@@ -394,7 +394,7 @@ namespace WindowsFormsApplication1
             this.btnExceptionLookup.ForeColor = System.Drawing.Color.White;
             this.btnExceptionLookup.Image = ((System.Drawing.Image)(resources.GetObject("btnExceptionLookup.Image")));
             this.btnExceptionLookup.ImagePosition = 1;
-            this.btnExceptionLookup.ImageZoom = 40;
+            this.btnExceptionLookup.ImageZoom = 45;
             this.btnExceptionLookup.LabelPosition = 35;
             this.btnExceptionLookup.LabelText = "Exception Lookup";
             this.btnExceptionLookup.Location = new System.Drawing.Point(168, 220);
@@ -478,7 +478,7 @@ namespace WindowsFormsApplication1
             this.btnFile6.ForeColor = System.Drawing.Color.White;
             this.btnFile6.Image = ((System.Drawing.Image)(resources.GetObject("btnFile6.Image")));
             this.btnFile6.ImagePosition = 1;
-            this.btnFile6.ImageZoom = 35;
+            this.btnFile6.ImageZoom = 40;
             this.btnFile6.LabelPosition = 23;
             this.btnFile6.LabelText = "Format File 6";
             this.btnFile6.Location = new System.Drawing.Point(470, 89);
@@ -498,7 +498,7 @@ namespace WindowsFormsApplication1
             this.btnFile2.ForeColor = System.Drawing.Color.White;
             this.btnFile2.Image = ((System.Drawing.Image)(resources.GetObject("btnFile2.Image")));
             this.btnFile2.ImagePosition = 1;
-            this.btnFile2.ImageZoom = 35;
+            this.btnFile2.ImageZoom = 40;
             this.btnFile2.LabelPosition = 23;
             this.btnFile2.LabelText = "Format File 2";
             this.btnFile2.Location = new System.Drawing.Point(470, 7);
@@ -518,7 +518,7 @@ namespace WindowsFormsApplication1
             this.btnAA_Exception.ForeColor = System.Drawing.Color.White;
             this.btnAA_Exception.Image = ((System.Drawing.Image)(resources.GetObject("btnAA_Exception.Image")));
             this.btnAA_Exception.ImagePosition = 1;
-            this.btnAA_Exception.ImageZoom = 35;
+            this.btnAA_Exception.ImageZoom = 40;
             this.btnAA_Exception.LabelPosition = 23;
             this.btnAA_Exception.LabelText = "AA_EXCEPTION";
             this.btnAA_Exception.Location = new System.Drawing.Point(334, 87);
@@ -538,7 +538,7 @@ namespace WindowsFormsApplication1
             this.btnTL_SYS.ForeColor = System.Drawing.Color.White;
             this.btnTL_SYS.Image = ((System.Drawing.Image)(resources.GetObject("btnTL_SYS.Image")));
             this.btnTL_SYS.ImagePosition = 1;
-            this.btnTL_SYS.ImageZoom = 35;
+            this.btnTL_SYS.ImageZoom = 40;
             this.btnTL_SYS.LabelPosition = 23;
             this.btnTL_SYS.LabelText = "TL_SYS";
             this.btnTL_SYS.Location = new System.Drawing.Point(334, 7);
@@ -617,7 +617,7 @@ namespace WindowsFormsApplication1
             this.btnRehire.ForeColor = System.Drawing.Color.White;
             this.btnRehire.Image = ((System.Drawing.Image)(resources.GetObject("btnRehire.Image")));
             this.btnRehire.ImagePosition = 1;
-            this.btnRehire.ImageZoom = 35;
+            this.btnRehire.ImageZoom = 40;
             this.btnRehire.LabelPosition = 23;
             this.btnRehire.LabelText = "Rehires";
             this.btnRehire.Location = new System.Drawing.Point(181, 7);
@@ -695,7 +695,7 @@ namespace WindowsFormsApplication1
             this.btnAHS_AA_Terms.ForeColor = System.Drawing.Color.White;
             this.btnAHS_AA_Terms.Image = ((System.Drawing.Image)(resources.GetObject("btnAHS_AA_Terms.Image")));
             this.btnAHS_AA_Terms.ImagePosition = 1;
-            this.btnAHS_AA_Terms.ImageZoom = 35;
+            this.btnAHS_AA_Terms.ImageZoom = 40;
             this.btnAHS_AA_Terms.LabelPosition = 23;
             this.btnAHS_AA_Terms.LabelText = "AHS_AA_TERMS";
             this.btnAHS_AA_Terms.Location = new System.Drawing.Point(22, 1);
@@ -775,7 +775,7 @@ namespace WindowsFormsApplication1
             this.btnSendEmail.Text = "Send Email to SSC";
             this.btnSendEmail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSendEmail.UseVisualStyleBackColor = false;
-            this.btnSendEmail.Click += new System.EventHandler(this.button1_Click);
+            this.btnSendEmail.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // lstResult
             // 
@@ -1005,7 +1005,7 @@ namespace WindowsFormsApplication1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.11.27";
+            this.Text = "SömëKindä Tööl v2017.11.29";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);

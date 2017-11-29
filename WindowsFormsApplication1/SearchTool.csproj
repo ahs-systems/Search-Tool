@@ -42,16 +42,20 @@
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\..\..\..\Downloads\Bunifu\Bunifu_UI_v1.5.3.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EPPlus">
       <HintPath>..\..\File6\File6\bin\Debug\EPPlus.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="ExcelLibrary">
       <HintPath>.\ExcelLibrary.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="MBGlassButton">
       <HintPath>bin\Debug\MBGlassButton.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Exchange.WebServices, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Exchange.WebServices.2.2\lib\40\Microsoft.Exchange.WebServices.dll</HintPath>
@@ -83,6 +87,7 @@
     <Reference Include="VisualEffects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\VisualEffects.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -242,7 +247,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="bin\Debug\VisualEffects.dll" />
-    <Content Include="ExcelLibrary.dll" />
     <Content Include="images\bin.png" />
     <Content Include="images\cancel.png" />
     <Content Include="images\close.png" />

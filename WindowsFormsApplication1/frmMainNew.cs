@@ -3490,15 +3490,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "CSV Files (.csv)|*.csv|All Files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 1;
 
-            bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
-
-            if (!userClickedOK) return;
-
-            ProcessFile1(openFileDialog1.FileName);
         }
 
         private void btnUploadFile1_Click(object sender, EventArgs e)
