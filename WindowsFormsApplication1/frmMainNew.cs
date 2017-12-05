@@ -32,6 +32,10 @@ namespace WindowsFormsApplication1
 
         private void frmMainNew_Load(object sender, EventArgs e)
         {
+            //string screenWidth = Screen.PrimaryScreen.Bounds.Width.ToString();
+            //string screenHeight = Screen.PrimaryScreen.Bounds.Height.ToString();
+            //MessageBox.Show("Resolution: " + screenWidth + "x" + screenHeight);
+
             Height = 0;
 
             StartPosition = FormStartPosition.CenterScreen;
@@ -647,13 +651,13 @@ namespace WindowsFormsApplication1
 
             if (!userClickedOK) return;
 
-            btnFile2.Text = "Processing...";
+            btnFile2.LabelText = "Processing...";
             Cursor.Current = Cursors.WaitCursor;
-            Update();
+            btnFile2.Update();
 
             ProcessFile2(openFileDialog1.FileName);
 
-            btnFile2.Text = "Format File 2";
+            btnFile2.LabelText = "Format File 2";
             Cursor.Current = Cursors.Default;
         }
 
@@ -848,9 +852,9 @@ namespace WindowsFormsApplication1
                 bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
 
                 if (!userClickedOK) return;
-                btnFile6.Text = "Processing...";
+                btnFile6.LabelText = "Processing...";
                 Cursor.Current = Cursors.WaitCursor;
-                Update();
+                btnFile6.Update();
 
                 ProcessFile6(openFileDialog1.FileName);
             }
@@ -860,7 +864,7 @@ namespace WindowsFormsApplication1
             }
             finally
             {
-                btnFile6.Text = "Format File 6";
+                btnFile6.LabelText = "Format File 6";
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -877,9 +881,9 @@ namespace WindowsFormsApplication1
                 bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
 
                 if (!userClickedOK) return;
-                btnBanks.Text = "Processing...";
+                btnBanks.LabelText = "Processing...";
                 Cursor = Cursors.WaitCursor;
-                Update();
+                btnBanks.Update();
 
                 using (ExcelPackage package = new ExcelPackage(new FileInfo(openFileDialog1.FileName)))
                 {
@@ -1286,7 +1290,7 @@ namespace WindowsFormsApplication1
             }
             finally
             {
-                btnBanks.Text = "Off Codes vs" + Environment.NewLine + "Banks";
+                btnBanks.LabelText = "Off Codes vs" + Environment.NewLine + "Banks";
                 Cursor = Cursors.Default;
                 Update();
             }
@@ -2215,10 +2219,10 @@ namespace WindowsFormsApplication1
             string _tempText = "";
             try
             {
-                _tempText = btnFile126.Text;
-                btnFile126.Text = "Processing...";
+                _tempText = btnFile126.LabelText;
+                btnFile126.LabelText = "Processing...";
                 Cursor.Current = Cursors.WaitCursor;
-                Update();
+                btnFile126.Update();
 
                 GetFileListFromFTP();
             }
@@ -2228,7 +2232,7 @@ namespace WindowsFormsApplication1
             }
             finally
             {
-                btnFile126.Text = _tempText;
+                btnFile126.LabelText = _tempText;
                 Cursor.Current = Cursors.Default;
                 Update();
             }
@@ -2304,9 +2308,9 @@ namespace WindowsFormsApplication1
 
                 if (!userClickedOK) return;
 
-                _btn.Text = "Processing...";
+                _btn.LabelText = "Processing...";
                 Cursor.Current = Cursors.WaitCursor;
-                Update();
+                _btn.Update();
 
                 // Create the file using the FileInfo object
                 var file = new FileInfo(_path);
@@ -2406,7 +2410,7 @@ namespace WindowsFormsApplication1
             }
             finally
             {
-                _btn.Text = _origBtnText;
+                _btn.LabelText = _origBtnText;
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -2434,9 +2438,9 @@ namespace WindowsFormsApplication1
                 bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
 
                 if (!userClickedOK) return;
-                btnPriors.Text = "Processing...";
+                btnPriors.LabelText = "Processing...";
                 Cursor.Current = Cursors.WaitCursor;
-                Update();
+                btnPriors.Update();
 
                 book = Workbook.Load(openFileDialog1.FileName);
                 sheet = book.Worksheets[0];
@@ -2564,7 +2568,7 @@ namespace WindowsFormsApplication1
                 book = null;
                 sheet = null;
 
-                btnPriors.Text = "Prior Pay Period Adj";
+                btnPriors.LabelText = "Prior Pay Period Adj";
                 Cursor.Current = Cursors.Default;
                 Update();
             }
@@ -2589,9 +2593,9 @@ namespace WindowsFormsApplication1
                 bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
 
                 if (!userClickedOK) return;
-                btnAHS_AA_Terms.Text = "Processing...";
+                btnAHS_AA_Terms.LabelText = "Processing...";
                 Cursor.Current = Cursors.WaitCursor;
-                Update();
+                btnAHS_AA_Terms.Update();
 
                 Workbook book = Workbook.Load(openFileDialog1.FileName);
                 Worksheet sheet = book.Worksheets[0];
@@ -2712,7 +2716,7 @@ namespace WindowsFormsApplication1
             }
             finally
             {
-                btnAHS_AA_Terms.Text = "AHS_AA_TERMS";
+                btnAHS_AA_Terms.LabelText = "AHS_AA_TERMS";
                 Cursor.Current = Cursors.Default;
                 Update();
             }
@@ -2730,9 +2734,9 @@ namespace WindowsFormsApplication1
                 bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
 
                 if (!userClickedOK) return;
-                btnTrans.Text = "Processing...";
+                btnTrans.LabelText = "Processing...";
                 Cursor.Current = Cursors.WaitCursor;
-                Update();
+                btnTrans.Update();
 
                 Workbook book = Workbook.Load(openFileDialog1.FileName);
                 Worksheet sheet = book.Worksheets[0];
@@ -2852,7 +2856,7 @@ namespace WindowsFormsApplication1
             }
             finally
             {
-                btnTrans.Text = "AHS_AA_TRANSFER_RPT";
+                btnTrans.LabelText = "AHS_AA_TRANSFER_RPT";
                 Cursor.Current = Cursors.Default;
                 Update();
             }
@@ -2970,7 +2974,7 @@ namespace WindowsFormsApplication1
         {
             var _btn = (BunifuTileButton)sender;
 
-            string _origBtnText = _btn.Text;
+            string _origBtnText = _btn.LabelText;
 
             try
             {
@@ -2983,9 +2987,9 @@ namespace WindowsFormsApplication1
 
                 if (!userClickedOK) return;
 
-                _btn.Text = "Processing...";
+                _btn.LabelText = "Processing...";
                 Cursor.Current = Cursors.WaitCursor;
-                Update();
+                _btn.Update();
 
                 string[] lines = File.ReadAllLines(openFileDialog1.FileName);
 
@@ -3031,7 +3035,7 @@ namespace WindowsFormsApplication1
             }
             finally
             {
-                _btn.Text = _origBtnText;
+                _btn.LabelText = _origBtnText;
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -3051,9 +3055,9 @@ namespace WindowsFormsApplication1
                 bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
 
                 if (!userClickedOK) return;
-                btnTL_SYS.Text = "Processing...";
+                btnTL_SYS.LabelText = "Processing...";
                 Cursor.Current = Cursors.WaitCursor;
-                Update();
+                btnTL_SYS.Update();
 
                 book = Workbook.Load(openFileDialog1.FileName);
                 sheet = book.Worksheets[0];
@@ -3159,7 +3163,7 @@ namespace WindowsFormsApplication1
                 book = null;
                 sheet = null;
 
-                btnTL_SYS.Text = "TL_SYS";
+                btnTL_SYS.LabelText = "TL_SYS";
                 Cursor.Current = Cursors.Default;
                 Update();
             }
@@ -3180,9 +3184,9 @@ namespace WindowsFormsApplication1
                 bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
 
                 if (!userClickedOK) return;
-                btnAA_Exception.Text = "Processing...";
+                btnAA_Exception.LabelText = "Processing...";
                 Cursor.Current = Cursors.WaitCursor;
-                Update();
+                btnAA_Exception.Update();
 
                 book = Workbook.Load(openFileDialog1.FileName);
                 sheet = book.Worksheets[0];
@@ -3286,7 +3290,7 @@ namespace WindowsFormsApplication1
                 book = null;
                 sheet = null;
 
-                btnAA_Exception.Text = "AA_EXCEPTION";
+                btnAA_Exception.LabelText = "AA_EXCEPTION";
                 Cursor.Current = Cursors.Default;
                 Update();
             }
@@ -3328,9 +3332,9 @@ namespace WindowsFormsApplication1
                     return;
                 }
 
-                btnLOAwithNoRptTime.Text = "Processing...";
+                btnLOAwithNoRptTime.LabelText = "Processing...";
                 Cursor.Current = Cursors.WaitCursor;
-                Update();
+                btnLOAwithNoRptTime.Update();
 
                 using (var package = new ExcelPackage())
                 {
@@ -3439,7 +3443,7 @@ namespace WindowsFormsApplication1
             }
             finally
             {
-                btnLOAwithNoRptTime.Text = @"AHS_AA_RPTD_" + Environment.NewLine + "NO_TIME";
+                btnLOAwithNoRptTime.LabelText = @"AHS_AA_RPTD_" + Environment.NewLine + "NO_TIME";
                 Cursor.Current = Cursors.Default;
                 Update();
             }
