@@ -1,12 +1,8 @@
 ﻿//using Microsoft.Exchange.WebServices.Data;
 using Microsoft.Exchange.WebServices.Data;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.DirectoryServices;
 using System.IO;
-using System.Net;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 //using VisualEffects;
 //using VisualEffects.Animations.Effects;
@@ -71,7 +67,7 @@ namespace SearchLDAP
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: " +ex.Message, "Ooops, may mali.");
+                MessageBox.Show("ERROR: " + ex.Message, "Ooops, may mali.");
             }
         }
 
@@ -103,7 +99,7 @@ namespace SearchLDAP
             searcher.PropertiesToLoad.Add("givenName");
             searcher.PropertiesToLoad.Add("sn");
             searcher.PropertiesToLoad.Add("manager");
-            
+
             return searcher.FindAll();
         }
 
@@ -131,7 +127,7 @@ namespace SearchLDAP
             }
             catch
             {
-                _ret = ldapName.Replace(@"\",",") + (ldapName.IndexOf(@"\") > -1 ? _searchStr[1] : "");
+                _ret = ldapName.Replace(@"\", ",") + (ldapName.IndexOf(@"\") > -1 ? _searchStr[1] : "");
             }
 
             return _ret;
@@ -219,7 +215,7 @@ namespace SearchLDAP
 
             try
             {
-                SearchResultCollection results = FindByName("healthy.bewell.ca", firstName, lastName);                
+                SearchResultCollection results = FindByName("healthy.bewell.ca", firstName, lastName);
 
                 listBox1.Items.Clear();
 
@@ -235,7 +231,7 @@ namespace SearchLDAP
                         string _mail = result.Properties["mail"].Count > 0 ? result.Properties["mail"][0].ToString() : "No email";
                         string _manager = result.Properties["manager"].Count > 0 ? SearchDisplayName("healthy.bewell.ca", result.Properties["manager"][0].ToString()) : "Mgr Not Found";
 
-                        listBox1.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " + _manager);                        
+                        listBox1.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " + _manager);
                     }
 
                     if (listBox1.Items.Count == 1)
@@ -250,7 +246,7 @@ namespace SearchLDAP
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);                
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -412,7 +408,7 @@ namespace SearchLDAP
                     text = streamReader.ReadToEnd();
                 }
 
-                string[] _sourceIDs = text.Split(',','\n');
+                string[] _sourceIDs = text.Split(',', '\n');
 
                 if (_sourceIDs.Length == 0)
                 {
@@ -487,12 +483,12 @@ namespace SearchLDAP
 
                         Update();
                     }
-                                        
+
                 }
 
                 MessageBox.Show("Done!");
 
-                System.Diagnostics.Process.Start(saveFileDialog1.FileName);                
+                System.Diagnostics.Process.Start(saveFileDialog1.FileName);
 
             }
             catch (Exception ex)
@@ -513,8 +509,8 @@ namespace SearchLDAP
             {
                 #region Send an email using EWS
                 var service = new ExchangeService(ExchangeVersion.Exchange2007_SP1);
-                //service.Credentials = new WebCredentials("RSSS.Help@albertahealthservices.ca", "Support2017b");
-                service.Credentials = new WebCredentials("Darwin.Dizon@albertahealthservices.ca", "Radrein2317");
+                service.Credentials = new WebCredentials("RSSS.Help@albertahealthservices.ca", "Support2017b");
+                //service.Credentials = new WebCredentials("Darwin.Dizon@albertahealthservices.ca", "");
                 service.TraceEnabled = true;
                 service.TraceFlags = TraceFlags.All;
                 service.AutodiscoverUrl("RSSS.Help@albertahealthservices.ca", RedirectionUrlValidationCallback);
