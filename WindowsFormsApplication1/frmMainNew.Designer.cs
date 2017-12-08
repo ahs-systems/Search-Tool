@@ -33,6 +33,7 @@ namespace WindowsFormsApplication1
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainNew));
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pnlHandle = new System.Windows.Forms.Panel();
             this.btnSearch = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnFormatting = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnMisc = new Bunifu.Framework.UI.BunifuTileButton();
@@ -53,6 +54,7 @@ namespace WindowsFormsApplication1
             this.label1 = new System.Windows.Forms.Label();
             this.pnlMisc = new System.Windows.Forms.Panel();
             this.pnlFormatting = new System.Windows.Forms.Panel();
+            this.btnEmailNegStat = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnFile6 = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnFile2 = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnAA_Exception = new Bunifu.Framework.UI.BunifuTileButton();
@@ -103,6 +105,7 @@ namespace WindowsFormsApplication1
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.pnlMain.Controls.Add(this.pnlHandle);
             this.pnlMain.Controls.Add(this.btnSearch);
             this.pnlMain.Controls.Add(this.btnFormatting);
             this.pnlMain.Controls.Add(this.btnMisc);
@@ -112,6 +115,15 @@ namespace WindowsFormsApplication1
             this.pnlMain.Size = new System.Drawing.Size(130, 756);
             this.pnlMain.TabIndex = 1;
             this.pnlMain.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmMainNew_MouseDoubleClick);
+            // 
+            // pnlHandle
+            // 
+            this.pnlHandle.BackColor = System.Drawing.Color.Transparent;
+            this.pnlHandle.Location = new System.Drawing.Point(1, 2);
+            this.pnlHandle.Name = "pnlHandle";
+            this.pnlHandle.Size = new System.Drawing.Size(734, 29);
+            this.pnlHandle.TabIndex = 18;
+            this.toolTip1.SetToolTip(this.pnlHandle, "SömëKindä Tööl v2017.12.08");
             // 
             // btnSearch
             // 
@@ -180,7 +192,7 @@ namespace WindowsFormsApplication1
             this.btnFile126.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnFile126.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFile126.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFile126.ForeColor = System.Drawing.Color.White;
+            this.btnFile126.ForeColor = System.Drawing.Color.DarkGray;
             this.btnFile126.Image = ((System.Drawing.Image)(resources.GetObject("btnFile126.Image")));
             this.btnFile126.ImagePosition = 7;
             this.btnFile126.ImageZoom = 45;
@@ -198,14 +210,14 @@ namespace WindowsFormsApplication1
             // 
             this.bunifuDragControl1.Fixed = true;
             this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = null;
+            this.bunifuDragControl1.TargetControl = this;
             this.bunifuDragControl1.Vertical = true;
             // 
             // bunifuDragControl2
             // 
             this.bunifuDragControl2.Fixed = true;
             this.bunifuDragControl2.Horizontal = true;
-            this.bunifuDragControl2.TargetControl = this;
+            this.bunifuDragControl2.TargetControl = this.pnlHandle;
             this.bunifuDragControl2.Vertical = true;
             // 
             // toolTip1
@@ -223,7 +235,7 @@ namespace WindowsFormsApplication1
             this.btnClearLocks.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnClearLocks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClearLocks.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearLocks.ForeColor = System.Drawing.Color.White;
+            this.btnClearLocks.ForeColor = System.Drawing.Color.DarkGray;
             this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
             this.btnClearLocks.ImagePosition = 7;
             this.btnClearLocks.ImageZoom = 45;
@@ -244,7 +256,7 @@ namespace WindowsFormsApplication1
             this.btnItemsReport.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnItemsReport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnItemsReport.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnItemsReport.ForeColor = System.Drawing.Color.White;
+            this.btnItemsReport.ForeColor = System.Drawing.Color.DarkGray;
             this.btnItemsReport.Image = ((System.Drawing.Image)(resources.GetObject("btnItemsReport.Image")));
             this.btnItemsReport.ImagePosition = 7;
             this.btnItemsReport.ImageZoom = 45;
@@ -265,7 +277,7 @@ namespace WindowsFormsApplication1
             this.btnGetLDAP.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnGetLDAP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGetLDAP.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetLDAP.ForeColor = System.Drawing.Color.White;
+            this.btnGetLDAP.ForeColor = System.Drawing.Color.DarkGray;
             this.btnGetLDAP.Image = ((System.Drawing.Image)(resources.GetObject("btnGetLDAP.Image")));
             this.btnGetLDAP.ImagePosition = 7;
             this.btnGetLDAP.ImageZoom = 45;
@@ -286,7 +298,7 @@ namespace WindowsFormsApplication1
             this.btnUserLatestLogin.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnUserLatestLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUserLatestLogin.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserLatestLogin.ForeColor = System.Drawing.Color.White;
+            this.btnUserLatestLogin.ForeColor = System.Drawing.Color.DarkGray;
             this.btnUserLatestLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnUserLatestLogin.Image")));
             this.btnUserLatestLogin.ImagePosition = 7;
             this.btnUserLatestLogin.ImageZoom = 45;
@@ -307,7 +319,7 @@ namespace WindowsFormsApplication1
             this.btnV_FireCategories.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnV_FireCategories.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnV_FireCategories.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnV_FireCategories.ForeColor = System.Drawing.Color.White;
+            this.btnV_FireCategories.ForeColor = System.Drawing.Color.DarkGray;
             this.btnV_FireCategories.Image = ((System.Drawing.Image)(resources.GetObject("btnV_FireCategories.Image")));
             this.btnV_FireCategories.ImagePosition = 7;
             this.btnV_FireCategories.ImageZoom = 45;
@@ -328,7 +340,7 @@ namespace WindowsFormsApplication1
             this.btnSickOnStat.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnSickOnStat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSickOnStat.Font = new System.Drawing.Font("Century Gothic", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSickOnStat.ForeColor = System.Drawing.Color.White;
+            this.btnSickOnStat.ForeColor = System.Drawing.Color.DarkGray;
             this.btnSickOnStat.Image = ((System.Drawing.Image)(resources.GetObject("btnSickOnStat.Image")));
             this.btnSickOnStat.ImagePosition = 1;
             this.btnSickOnStat.ImageZoom = 45;
@@ -349,7 +361,7 @@ namespace WindowsFormsApplication1
             this.btnUserTrainings.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnUserTrainings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUserTrainings.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserTrainings.ForeColor = System.Drawing.Color.White;
+            this.btnUserTrainings.ForeColor = System.Drawing.Color.DarkGray;
             this.btnUserTrainings.Image = ((System.Drawing.Image)(resources.GetObject("btnUserTrainings.Image")));
             this.btnUserTrainings.ImagePosition = 1;
             this.btnUserTrainings.ImageZoom = 45;
@@ -370,7 +382,7 @@ namespace WindowsFormsApplication1
             this.btnESPbatchAccess.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnESPbatchAccess.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnESPbatchAccess.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnESPbatchAccess.ForeColor = System.Drawing.Color.White;
+            this.btnESPbatchAccess.ForeColor = System.Drawing.Color.DarkGray;
             this.btnESPbatchAccess.Image = ((System.Drawing.Image)(resources.GetObject("btnESPbatchAccess.Image")));
             this.btnESPbatchAccess.ImagePosition = 7;
             this.btnESPbatchAccess.ImageZoom = 45;
@@ -391,7 +403,7 @@ namespace WindowsFormsApplication1
             this.btnExceptionLookup.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnExceptionLookup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExceptionLookup.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExceptionLookup.ForeColor = System.Drawing.Color.White;
+            this.btnExceptionLookup.ForeColor = System.Drawing.Color.DarkGray;
             this.btnExceptionLookup.Image = ((System.Drawing.Image)(resources.GetObject("btnExceptionLookup.Image")));
             this.btnExceptionLookup.ImagePosition = 1;
             this.btnExceptionLookup.ImageZoom = 45;
@@ -409,7 +421,7 @@ namespace WindowsFormsApplication1
             this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblClose.Font = new System.Drawing.Font("Arial Black", 10.18868F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClose.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lblClose.Location = new System.Drawing.Point(709, 9);
+            this.lblClose.Location = new System.Drawing.Point(713, 9);
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(20, 20);
             this.lblClose.TabIndex = 12;
@@ -422,7 +434,7 @@ namespace WindowsFormsApplication1
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Arial Black", 10.18868F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label1.Location = new System.Drawing.Point(676, 9);
+            this.label1.Location = new System.Drawing.Point(680, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 20);
             this.label1.TabIndex = 13;
@@ -450,6 +462,7 @@ namespace WindowsFormsApplication1
             // 
             // pnlFormatting
             // 
+            this.pnlFormatting.Controls.Add(this.btnEmailNegStat);
             this.pnlFormatting.Controls.Add(this.btnFile6);
             this.pnlFormatting.Controls.Add(this.btnFile2);
             this.pnlFormatting.Controls.Add(this.btnAA_Exception);
@@ -468,6 +481,26 @@ namespace WindowsFormsApplication1
             this.pnlFormatting.TabIndex = 15;
             this.pnlFormatting.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmMainNew_MouseDoubleClick);
             // 
+            // btnEmailNegStat
+            // 
+            this.btnEmailNegStat.BackColor = System.Drawing.Color.Transparent;
+            this.btnEmailNegStat.color = System.Drawing.Color.Transparent;
+            this.btnEmailNegStat.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnEmailNegStat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEmailNegStat.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmailNegStat.ForeColor = System.Drawing.Color.DarkGray;
+            this.btnEmailNegStat.Image = ((System.Drawing.Image)(resources.GetObject("btnEmailNegStat.Image")));
+            this.btnEmailNegStat.ImagePosition = 1;
+            this.btnEmailNegStat.ImageZoom = 27;
+            this.btnEmailNegStat.LabelPosition = 35;
+            this.btnEmailNegStat.LabelText = "Format Negative Stats";
+            this.btnEmailNegStat.Location = new System.Drawing.Point(334, 171);
+            this.btnEmailNegStat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnEmailNegStat.Name = "btnEmailNegStat";
+            this.btnEmailNegStat.Size = new System.Drawing.Size(104, 64);
+            this.btnEmailNegStat.TabIndex = 34;
+            this.btnEmailNegStat.Click += new System.EventHandler(this.btnEmailNegStat_Click);
+            // 
             // btnFile6
             // 
             this.btnFile6.BackColor = System.Drawing.Color.Transparent;
@@ -475,7 +508,7 @@ namespace WindowsFormsApplication1
             this.btnFile6.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnFile6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFile6.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFile6.ForeColor = System.Drawing.Color.White;
+            this.btnFile6.ForeColor = System.Drawing.Color.DarkGray;
             this.btnFile6.Image = ((System.Drawing.Image)(resources.GetObject("btnFile6.Image")));
             this.btnFile6.ImagePosition = 1;
             this.btnFile6.ImageZoom = 40;
@@ -495,7 +528,7 @@ namespace WindowsFormsApplication1
             this.btnFile2.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnFile2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFile2.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFile2.ForeColor = System.Drawing.Color.White;
+            this.btnFile2.ForeColor = System.Drawing.Color.DarkGray;
             this.btnFile2.Image = ((System.Drawing.Image)(resources.GetObject("btnFile2.Image")));
             this.btnFile2.ImagePosition = 1;
             this.btnFile2.ImageZoom = 40;
@@ -515,7 +548,7 @@ namespace WindowsFormsApplication1
             this.btnAA_Exception.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnAA_Exception.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAA_Exception.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAA_Exception.ForeColor = System.Drawing.Color.White;
+            this.btnAA_Exception.ForeColor = System.Drawing.Color.DarkGray;
             this.btnAA_Exception.Image = ((System.Drawing.Image)(resources.GetObject("btnAA_Exception.Image")));
             this.btnAA_Exception.ImagePosition = 1;
             this.btnAA_Exception.ImageZoom = 40;
@@ -535,7 +568,7 @@ namespace WindowsFormsApplication1
             this.btnTL_SYS.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnTL_SYS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTL_SYS.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTL_SYS.ForeColor = System.Drawing.Color.White;
+            this.btnTL_SYS.ForeColor = System.Drawing.Color.DarkGray;
             this.btnTL_SYS.Image = ((System.Drawing.Image)(resources.GetObject("btnTL_SYS.Image")));
             this.btnTL_SYS.ImagePosition = 1;
             this.btnTL_SYS.ImageZoom = 40;
@@ -555,7 +588,7 @@ namespace WindowsFormsApplication1
             this.btnUploadFile1.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnUploadFile1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUploadFile1.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUploadFile1.ForeColor = System.Drawing.Color.White;
+            this.btnUploadFile1.ForeColor = System.Drawing.Color.DarkGray;
             this.btnUploadFile1.Image = ((System.Drawing.Image)(resources.GetObject("btnUploadFile1.Image")));
             this.btnUploadFile1.ImagePosition = 1;
             this.btnUploadFile1.ImageZoom = 30;
@@ -574,7 +607,7 @@ namespace WindowsFormsApplication1
             this.btnLOAwithNoRptTime.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnLOAwithNoRptTime.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLOAwithNoRptTime.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLOAwithNoRptTime.ForeColor = System.Drawing.Color.White;
+            this.btnLOAwithNoRptTime.ForeColor = System.Drawing.Color.DarkGray;
             this.btnLOAwithNoRptTime.Image = ((System.Drawing.Image)(resources.GetObject("btnLOAwithNoRptTime.Image")));
             this.btnLOAwithNoRptTime.ImagePosition = 1;
             this.btnLOAwithNoRptTime.ImageZoom = 27;
@@ -594,7 +627,7 @@ namespace WindowsFormsApplication1
             this.btnRFLOA.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnRFLOA.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRFLOA.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRFLOA.ForeColor = System.Drawing.Color.White;
+            this.btnRFLOA.ForeColor = System.Drawing.Color.DarkGray;
             this.btnRFLOA.Image = ((System.Drawing.Image)(resources.GetObject("btnRFLOA.Image")));
             this.btnRFLOA.ImagePosition = 1;
             this.btnRFLOA.ImageZoom = 30;
@@ -614,7 +647,7 @@ namespace WindowsFormsApplication1
             this.btnRehire.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnRehire.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRehire.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRehire.ForeColor = System.Drawing.Color.White;
+            this.btnRehire.ForeColor = System.Drawing.Color.DarkGray;
             this.btnRehire.Image = ((System.Drawing.Image)(resources.GetObject("btnRehire.Image")));
             this.btnRehire.ImagePosition = 1;
             this.btnRehire.ImageZoom = 40;
@@ -634,7 +667,7 @@ namespace WindowsFormsApplication1
             this.btnPriors.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnPriors.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPriors.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPriors.ForeColor = System.Drawing.Color.White;
+            this.btnPriors.ForeColor = System.Drawing.Color.DarkGray;
             this.btnPriors.Image = ((System.Drawing.Image)(resources.GetObject("btnPriors.Image")));
             this.btnPriors.ImagePosition = 1;
             this.btnPriors.ImageZoom = 25;
@@ -653,7 +686,7 @@ namespace WindowsFormsApplication1
             this.btnBanks.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnBanks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBanks.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBanks.ForeColor = System.Drawing.Color.White;
+            this.btnBanks.ForeColor = System.Drawing.Color.DarkGray;
             this.btnBanks.Image = ((System.Drawing.Image)(resources.GetObject("btnBanks.Image")));
             this.btnBanks.ImagePosition = 1;
             this.btnBanks.ImageZoom = 30;
@@ -673,7 +706,7 @@ namespace WindowsFormsApplication1
             this.btnTrans.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnTrans.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTrans.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrans.ForeColor = System.Drawing.Color.White;
+            this.btnTrans.ForeColor = System.Drawing.Color.DarkGray;
             this.btnTrans.Image = ((System.Drawing.Image)(resources.GetObject("btnTrans.Image")));
             this.btnTrans.ImagePosition = 1;
             this.btnTrans.ImageZoom = 30;
@@ -692,7 +725,7 @@ namespace WindowsFormsApplication1
             this.btnAHS_AA_Terms.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
             this.btnAHS_AA_Terms.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAHS_AA_Terms.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAHS_AA_Terms.ForeColor = System.Drawing.Color.White;
+            this.btnAHS_AA_Terms.ForeColor = System.Drawing.Color.DarkGray;
             this.btnAHS_AA_Terms.Image = ((System.Drawing.Image)(resources.GetObject("btnAHS_AA_Terms.Image")));
             this.btnAHS_AA_Terms.ImagePosition = 1;
             this.btnAHS_AA_Terms.ImageZoom = 40;
@@ -783,7 +816,7 @@ namespace WindowsFormsApplication1
             this.lstResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.lstResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lstResult.Font = new System.Drawing.Font("Courier New", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstResult.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lstResult.ForeColor = System.Drawing.Color.GreenYellow;
             this.lstResult.FormattingEnabled = true;
             this.lstResult.ItemHeight = 16;
             this.lstResult.Location = new System.Drawing.Point(17, 117);
@@ -849,6 +882,7 @@ namespace WindowsFormsApplication1
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(203, 19);
             this.dateTimePicker1.TabIndex = 7;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // lblPayPeriod
             // 
@@ -867,7 +901,7 @@ namespace WindowsFormsApplication1
             this.txtTCG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.txtTCG.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.txtTCG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTCG.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtTCG.ForeColor = System.Drawing.Color.GreenYellow;
             this.txtTCG.Location = new System.Drawing.Point(17, 204);
             this.txtTCG.Name = "txtTCG";
             this.txtTCG.Size = new System.Drawing.Size(432, 23);
@@ -999,8 +1033,8 @@ namespace WindowsFormsApplication1
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.pnlSearch);
             this.Controls.Add(this.pnlFormatting);
-            this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlMisc);
+            this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainNew";
@@ -1085,5 +1119,7 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mnuSendEmail;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel pnlHandle;
+        private Bunifu.Framework.UI.BunifuTileButton btnEmailNegStat;
     }
 }

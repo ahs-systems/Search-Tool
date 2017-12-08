@@ -914,11 +914,11 @@ namespace WindowsFormsApplication1
                     //    string _payPeriod = "";
                     //    if (GetStartPP(_currDate) == _currDate)
                     //    {
-                    //        _payPeriod = GetPP(DateTime.ParseExact(_currDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture).AddDays(-1).ToString("yyyy-MM-dd"));
+                    //        _payPeriod = Common.GetPP(DateTime.ParseExact(_currDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture).AddDays(-1).ToString("yyyy-MM-dd"));
                     //    }
                     //    else
                     //    {
-                    //        _payPeriod = GetPP(_currDate);
+                    //        _payPeriod = Common.GetPP(_currDate);
                     //    }
 
                     //    worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + _payPeriod;
@@ -3519,6 +3519,147 @@ namespace WindowsFormsApplication1
             ShowMe();
         }
 
+        private void btnEmailNegStat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btnEmailNegStat.LabelText = "Processing...";
+                Cursor.Current = Cursors.WaitCursor;
+                btnEmailNegStat.Update();
 
+                // Open the file from Time and Labour
+                MessageBox.Show("Select the Excel file that came from Time and Labour that contains the list of EE with negative stat banks.\n\nClick OK to continue.", "Select the Excel file", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Title = "Please select the Excel file that came from Time and Labour";
+                openFileDialog1.Filter = "Excel Files (.xlsx)|*.xlsx|All Files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 1;
+
+                bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+                if (!userClickedOK) return;
+
+                string _timeAndLabourFile = openFileDialog1.FileName;
+
+                // Open the file from Linh or SSRS
+                MessageBox.Show("Now, select the Excel file that came from SSRS that contains the list of EE with \"Rotation-Statutory-On\".\n\nClick OK to continue.", "Select the Excel file", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Title = "Please select the Excel file that came from SSRS";
+                openFileDialog1.Filter = "Excel Files (.xlsx)|*.xlsx|All Files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 1;
+
+                userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+                if (!userClickedOK) return;
+
+                string _ssrsFile = openFileDialog1.FileName;
+
+                List<string> _withRotationalShifts = new List<string>();
+                List<string> _finalList = new List<string>();
+
+                // load  the list of ee with rotational shifts
+                using (ExcelPackage package = new ExcelPackage(new FileInfo(_ssrsFile)))
+                {
+                    ExcelWorkbook workBook = package.Workbook;
+                    ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
+
+                    int totalRows = currentWorksheet.Dimension.End.Row;
+                    int totalCols = currentWorksheet.Dimension.End.Column;
+
+                    for (int i = 2; i <= totalRows; i++)
+                    {
+                        _withRotationalShifts.Add(currentWorksheet.Cells[i, 1].Value.ToString().Trim());
+                    }
+                }
+
+                using (ExcelPackage package = new ExcelPackage(new FileInfo(_timeAndLabourFile)))
+                {
+                    ExcelWorkbook workBook = package.Workbook;
+                    ExcelWorksheet currentWorksheet = workBook.Worksheets["CAL"];
+
+                    int totalRows = currentWorksheet.Dimension.End.Row;
+                    int totalCols = currentWorksheet.Dimension.End.Column;
+
+                    using (ExcelPackage package2 = new ExcelPackage())
+                    {
+                        ExcelWorksheet worksheet = package2.Workbook.Worksheets.Add("CAL - Filtered List");
+
+                        worksheet.Cells[1, 1].Value = "Emp ID"; worksheet.Cells[1, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(1).Width = 4.70;
+                        worksheet.Cells[1, 2].Value = "Name"; worksheet.Cells[1, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(2).Width = 36.30;
+                        worksheet.Cells[1, 3].Value = "Manager Name"; worksheet.Cells[1, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(3).Width = 35;
+                        worksheet.Cells[1, 4].Value = "Manager Email Address"; worksheet.Cells[1, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(4).Width = 14;
+                        worksheet.Cells[1, 5].Value = "Unit"; worksheet.Cells[1, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(5).Width = 5.40;
+
+                        var range = worksheet.Cells[1, 1, 1, 5];
+                        range.Style.Font.Bold = true;
+                        range.Style.Font.Size = 11;
+                        range.Style.Font.Name = "Arial";
+                        range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        range.Style.Fill.BackgroundColor.SetColor(Color.LightBlue);
+
+                        //currentWorksheet.Cells[i, 3].Value.ToString().Trim()
+
+                        int _currentOutRow = 2;
+                        for (int i = 2; i <= totalRows; i++)
+                        {
+                            if (currentWorksheet.Cells[i, 3].Value != null && currentWorksheet.Cells[i, 16].Value != null &&
+                                (_withRotationalShifts.SingleOrDefault(empIdToCheck => empIdToCheck.Contains(currentWorksheet.Cells[i, 3].Value.ToString().Trim())) == null) &&
+                                (_finalList.SingleOrDefault(empIdToCheck => empIdToCheck.Contains(currentWorksheet.Cells[i, 3].Value.ToString().Trim())) == null))
+                            {
+                                try
+                                {
+                                    worksheet.Row(_currentOutRow).Height = 17;
+                                    worksheet.Row(_currentOutRow).Style.Font.Size = 9;
+                                    worksheet.Row(_currentOutRow).Style.Font.Name = "Arial";
+                                    worksheet.Row(_currentOutRow).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+
+                                    worksheet.Cells[_currentOutRow, 1].Value = currentWorksheet.Cells[i, 3].Value != null ? currentWorksheet.Cells[i, 3].Value.ToString().Trim() : ""; worksheet.Cells[_currentOutRow, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                    worksheet.Cells[_currentOutRow, 2].Value = currentWorksheet.Cells[i, 4].Value != null ? currentWorksheet.Cells[i, 4].Value.ToString().Trim() : ""; worksheet.Cells[_currentOutRow, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                    worksheet.Cells[_currentOutRow, 3].Value = currentWorksheet.Cells[i, 15].Value != null ? currentWorksheet.Cells[i, 15].Value.ToString().Trim() : ""; worksheet.Cells[_currentOutRow, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                    worksheet.Cells[_currentOutRow, 4].Value = currentWorksheet.Cells[i, 16].Value != null ? currentWorksheet.Cells[i, 16].Value.ToString().Trim() : ""; worksheet.Cells[_currentOutRow, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                    worksheet.Cells[_currentOutRow, 5].Value = GetTCG(currentWorksheet.Cells[i, 3].Value.ToString().Trim()); worksheet.Cells[_currentOutRow, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+
+                                    _finalList.Add(currentWorksheet.Cells[i, 3].Value.ToString().Trim());
+
+                                    _currentOutRow++;
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(i + ex.Message);
+                                    return;
+                                }
+                            }
+                        }
+
+
+
+
+
+
+                        worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                        worksheet.Cells.AutoFitColumns();
+
+                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                        saveFileDialog1.FilterIndex = 1;
+                        saveFileDialog1.FileName = "Neg Stat Mail Merge";
+                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                        {
+                            package2.SaveAs(new FileInfo(saveFileDialog1.FileName));
+                            System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+            finally
+            {
+                btnEmailNegStat.LabelText = "Format Negative Stats";
+                Cursor.Current = Cursors.Default;
+            }
+        }
     }
 }
