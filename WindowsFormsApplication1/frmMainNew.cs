@@ -32,6 +32,13 @@ namespace WindowsFormsApplication1
 
         private void frmMainNew_Load(object sender, EventArgs e)
         {
+            if (!Common.CheckUsers(System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "")))
+            {
+                MessageBox.Show("Invalid user. Application will abort.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+                return;
+            }
+
             Height = 0;
 
             StartPosition = FormStartPosition.CenterScreen;
@@ -57,8 +64,10 @@ namespace WindowsFormsApplication1
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }            
+            }
         }
+
+        
 
         private void lblClose_Click(object sender, EventArgs e)
         {
@@ -2576,9 +2585,9 @@ namespace WindowsFormsApplication1
 
         private bool IsSystemsMember(string _userName)
         {
-            List<string> systemMembers = new List<string>() { "YEGORNIKITIN", "SCOTTHASTINGS", "MIKAELMANAGAT", "ROTCHELOSANTOS", "DARWINDIZON", "BSANTOS", "LOURDESSHAHPORI", "ADELACRUZ02" };
-
-            return systemMembers.Contains(_userName.Trim().ToUpper());
+            //List<string> systemMembers = new List<string>() { "YEGORNIKITIN", "SCOTTHASTINGS", "MIKAELMANAGAT", "ROTCHELOSANTOS", "DARWINDIZON", "BSANTOS", "LOURDESSHAHPORI", "ADELACRUZ02" };
+            //return systemMembers.Contains(_userName.Trim().ToUpper());
+            return Common.CheckUsers(_userName);
         }
 
         private void btnAHS_AA_Terms_Click(object sender, EventArgs e)
@@ -3624,7 +3633,7 @@ namespace WindowsFormsApplication1
 
                                     _finalList.Add(currentWorksheet.Cells[i, 3].Value.ToString().Trim());
 
-                                    _currentOutRow++;
+                                    if (!worksheet.Cells[_currentOutRow, 7].Value.ToString().ToUpper().Contains("NOT FOR PAYROLL")) _currentOutRow++;
                                 }
                                 catch (Exception ex)
                                 {
@@ -3633,11 +3642,6 @@ namespace WindowsFormsApplication1
                                 }
                             }
                         }
-
-
-
-
-
 
                         worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
                         worksheet.Cells.AutoFitColumns();

@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
@@ -39,7 +40,7 @@ namespace WindowsFormsApplication1
             {
                 if (_conn.State == System.Data.ConnectionState.Open) _conn.Close();
             }
-        }        
+        }
 
         public static string CheckIfMultiJob(string _empNbr)
         {
@@ -76,6 +77,36 @@ namespace WindowsFormsApplication1
                 if (_conn.State == System.Data.ConnectionState.Open) _conn.Close();
             }
         }
+
+        public static bool CheckUsers(string _currentUser)
+        {
+            try
+            {
+                string text;
+                var fileStream = new FileStream(Application.StartupPath + @"\SearchTool_Users.dat", FileMode.Open, FileAccess.Read);
+                using (var streamReader = new StreamReader(fileStream, System.Text.Encoding.UTF8))
+                {
+                    text = streamReader.ReadToEnd();
+                }
+
+                string[] _users = text.Split(',', '\n', '\r');
+
+                _currentUser = _currentUser.ToUpper();
+                for (int i = 0; i < _users.Length; i++)
+                {
+                    if (_users[i].Trim().ToUpper().Contains(_currentUser))
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 
     public class ChangeInUnitAndOrOcc
@@ -94,9 +125,9 @@ namespace WindowsFormsApplication1
     public class ChangeInOcc
     {
         public string empNo { get; set; }
-        public string unit { get; set; }        
+        public string unit { get; set; }
         public string prevPosCode { get; set; }
-        public string currPosCode { get; set; }        
+        public string currPosCode { get; set; }
         public string pp { get; set; }
         public string ppYear { get; set; }
         public string itemsReportLetter { get; set; }
