@@ -32,10 +32,6 @@ namespace WindowsFormsApplication1
 
         private void frmMainNew_Load(object sender, EventArgs e)
         {
-            //string screenWidth = Screen.PrimaryScreen.Bounds.Width.ToString();
-            //string screenHeight = Screen.PrimaryScreen.Bounds.Height.ToString();
-            //MessageBox.Show("Resolution: " + screenWidth + "x" + screenHeight);
-
             Height = 0;
 
             StartPosition = FormStartPosition.CenterScreen;
@@ -61,7 +57,7 @@ namespace WindowsFormsApplication1
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
+            }            
         }
 
         private void lblClose_Click(object sender, EventArgs e)
@@ -1072,12 +1068,16 @@ namespace WindowsFormsApplication1
                     //            worksheetCopy.Column(1).Width = 36; // adjust column width for "Name"
                     //            worksheetCopy.Column(3).Width = 6; // adjust column width for "Off Code Desc"
                     //            worksheetCopy.Column(4).Width = 20; // adjust column width for "Off Code Desc" 
+                    //            worksheetCopy.Column(11).Width = 6; // adjust column width for off codes' true value 
                     //            worksheetCopy.Cells["I1:L1"].Merge = true;
                     //            worksheetCopy.Cells[1, 9].Value = "Pls. ignore these columns if they just only confuse you more :)";
                     //            worksheetCopy.Cells[1, 9].Style.Font.Size = 9;
                     //            worksheetCopy.Cells[1, 9].Style.Font.Bold = true;
                     //            worksheetCopy.Cells[1, 9].Style.Font.Italic = true;
                     //            worksheetCopy.Cells[1, 9].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    //worksheetCopy.Column(11).Style.Font.Name = "Verdana";
+                    //worksheetCopy.Column(11).Style.Font.Size = 10;
+                    //worksheetCopy.Column(11).Style.Font.Italic = false;
                     //            lastCharPosition = saveFileDialog1.FileName.LastIndexOf('.');
                     //            packageCopy.SaveAs(new FileInfo(saveFileDialog1.FileName.Insert(lastCharPosition, " - for RSSS")));
                     //            System.Diagnostics.Process.Start(saveFileDialog1.FileName.Insert(lastCharPosition, " - for RSSS"));
@@ -1197,7 +1197,6 @@ namespace WindowsFormsApplication1
                                 }
                                 #endregion
 
-
                             }
                             catch (Exception ex)
                             {
@@ -1262,15 +1261,16 @@ namespace WindowsFormsApplication1
                                 worksheetCopy.Column(1).Width = 36; // adjust column width for "Name"
                                 worksheetCopy.Column(3).Width = 6; // adjust column width for "Off Code Desc"
                                 worksheetCopy.Column(4).Width = 20; // adjust column width for "Off Code Desc" 
+                                worksheetCopy.Column(11).Width = 6; // adjust column width for off codes' true value 
                                 worksheetCopy.Cells["I1:L1"].Merge = true;
                                 worksheetCopy.Cells[1, 9].Value = "Pls. ignore these columns if they just only confuse you more :)";
-                                worksheetCopy.Cells[1, 9].Style.Font.Size = 9;
+                                worksheetCopy.Cells[1, 9].Style.Font.Size = 8;
                                 worksheetCopy.Cells[1, 9].Style.Font.Bold = true;
                                 worksheetCopy.Cells[1, 9].Style.Font.Italic = true;
                                 worksheetCopy.Cells[1, 9].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
-                                worksheetCopy.Column(10).Style.Font.Name = "Verdana";
-                                worksheetCopy.Column(10).Style.Font.Size = 11;
-                                worksheetCopy.Column(10).Style.Font.Italic = false;
+                                worksheetCopy.Column(11).Style.Font.Name = "Verdana";
+                                worksheetCopy.Column(11).Style.Font.Size = 10;
+                                worksheetCopy.Column(11).Style.Font.Italic = false;
                                 lastCharPosition = saveFileDialog1.FileName.LastIndexOf('.');
                                 packageCopy.SaveAs(new FileInfo(saveFileDialog1.FileName.Insert(lastCharPosition, " - for RSSS")));
                                 System.Diagnostics.Process.Start(saveFileDialog1.FileName.Insert(lastCharPosition, " - for RSSS"));
@@ -3587,9 +3587,11 @@ namespace WindowsFormsApplication1
                         worksheet.Cells[1, 2].Value = "Name"; worksheet.Cells[1, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(2).Width = 36.30;
                         worksheet.Cells[1, 3].Value = "Manager Name"; worksheet.Cells[1, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(3).Width = 35;
                         worksheet.Cells[1, 4].Value = "Manager Email Address"; worksheet.Cells[1, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(4).Width = 14;
-                        worksheet.Cells[1, 5].Value = "Unit"; worksheet.Cells[1, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(5).Width = 5.40;
+                        worksheet.Cells[1, 5].Value = "Rpt Date"; worksheet.Cells[1, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(5).Width = 7.40;
+                        worksheet.Cells[1, 6].Value = "End Balance"; worksheet.Cells[1, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(6).Width = 9.40;
+                        worksheet.Cells[1, 7].Value = "Unit"; worksheet.Cells[1, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(7).Width = 5.40;
 
-                        var range = worksheet.Cells[1, 1, 1, 5];
+                        var range = worksheet.Cells[1, 1, 1, 7];
                         range.Style.Font.Bold = true;
                         range.Style.Font.Size = 11;
                         range.Style.Font.Name = "Arial";
@@ -3616,7 +3618,9 @@ namespace WindowsFormsApplication1
                                     worksheet.Cells[_currentOutRow, 2].Value = currentWorksheet.Cells[i, 4].Value != null ? currentWorksheet.Cells[i, 4].Value.ToString().Trim() : ""; worksheet.Cells[_currentOutRow, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                                     worksheet.Cells[_currentOutRow, 3].Value = currentWorksheet.Cells[i, 15].Value != null ? currentWorksheet.Cells[i, 15].Value.ToString().Trim() : ""; worksheet.Cells[_currentOutRow, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                                     worksheet.Cells[_currentOutRow, 4].Value = currentWorksheet.Cells[i, 16].Value != null ? currentWorksheet.Cells[i, 16].Value.ToString().Trim() : ""; worksheet.Cells[_currentOutRow, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                    worksheet.Cells[_currentOutRow, 5].Value = GetTCG(currentWorksheet.Cells[i, 3].Value.ToString().Trim()); worksheet.Cells[_currentOutRow, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                    worksheet.Cells[_currentOutRow, 5].Value = currentWorksheet.Cells[i, 10].Value != null ? Convert.ToDateTime(currentWorksheet.Cells[i, 10].Value).ToString("dd-MMM-yyyy") : ""; worksheet.Cells[_currentOutRow, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                    worksheet.Cells[_currentOutRow, 6].Value = currentWorksheet.Cells[i, 11].Value != null ? currentWorksheet.Cells[i, 11].Value.ToString().Trim() : ""; worksheet.Cells[_currentOutRow, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                    worksheet.Cells[_currentOutRow, 7].Value = GetTCG(currentWorksheet.Cells[i, 3].Value.ToString().Trim()); worksheet.Cells[_currentOutRow, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
 
                                     _finalList.Add(currentWorksheet.Cells[i, 3].Value.ToString().Trim());
 

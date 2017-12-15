@@ -521,7 +521,7 @@ namespace SearchLDAP
                 email.Importance = Importance.High;
                 email.Body = new MessageBody("1 email using EWS Managed API");
                 email.Body.BodyType = BodyType.HTML;
-                email.Sender = "";
+                email.Sender = "test@ahs.ca";
                 email.SendAndSaveCopy();
                 MessageBox.Show("sent!");
                 #endregion

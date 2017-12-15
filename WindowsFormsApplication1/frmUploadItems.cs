@@ -25,8 +25,8 @@ namespace WindowsFormsApplication1
 
         private void frmUploadItems_Load(object sender, EventArgs e)
         {
-            cboYearPP.Items.Add(DateTime.Today.Year); cboYearPP.Items.Add(DateTime.Today.Year - 1);
-            cboYearPP.SelectedIndex = 0;
+            cboYearPP.Items.Add(DateTime.Today.Year + 1); cboYearPP.Items.Add(DateTime.Today.Year); cboYearPP.Items.Add(DateTime.Today.Year - 1); 
+            cboYearPP.SelectedIndex = 1;
 
             cboPP.SelectedItem = Common.GetPP(DateTime.Now.ToString("yyyy-MM-dd"));
         }
