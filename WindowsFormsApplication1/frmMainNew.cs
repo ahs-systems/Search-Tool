@@ -32,6 +32,10 @@ namespace WindowsFormsApplication1
 
         private void frmMainNew_Load(object sender, EventArgs e)
         {
+
+
+            toolTip1.SetToolTip(pnlHandle, Text);
+
             if (!Common.CheckUsers(System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "")))
             {
                 MessageBox.Show("Invalid user. Application will abort.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -67,7 +71,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        
+
 
         private void lblClose_Click(object sender, EventArgs e)
         {
@@ -956,7 +960,7 @@ namespace WindowsFormsApplication1
                     //    {
                     //        try
                     //        {
-                    //            worksheet.Row(i - 8).Height = 25;
+                    //            worksheet.Row(i - 8).Height = 27;
                     //            worksheet.Row(i - 8).Style.Font.Size = 12;
                     //            worksheet.Row(i - 8).Style.Font.Name = "Arial";
                     //            worksheet.Row(i - 8).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
@@ -1084,9 +1088,9 @@ namespace WindowsFormsApplication1
                     //            worksheetCopy.Cells[1, 9].Style.Font.Bold = true;
                     //            worksheetCopy.Cells[1, 9].Style.Font.Italic = true;
                     //            worksheetCopy.Cells[1, 9].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
-                    //worksheetCopy.Column(11).Style.Font.Name = "Verdana";
-                    //worksheetCopy.Column(11).Style.Font.Size = 10;
-                    //worksheetCopy.Column(11).Style.Font.Italic = false;
+                    //            worksheetCopy.Column(11).Style.Font.Name = "Verdana";
+                    //            worksheetCopy.Column(11).Style.Font.Size = 10;
+                    //            worksheetCopy.Column(11).Style.Font.Italic = false;
                     //            lastCharPosition = saveFileDialog1.FileName.LastIndexOf('.');
                     //            packageCopy.SaveAs(new FileInfo(saveFileDialog1.FileName.Insert(lastCharPosition, " - for RSSS")));
                     //            System.Diagnostics.Process.Start(saveFileDialog1.FileName.Insert(lastCharPosition, " - for RSSS"));
@@ -1156,7 +1160,7 @@ namespace WindowsFormsApplication1
                         {
                             try
                             {
-                                worksheet.Row(i - 10).Height = 25;
+                                worksheet.Row(i - 10).Height = 27;
                                 worksheet.Row(i - 10).Style.Font.Size = 12;
                                 worksheet.Row(i - 10).Style.Font.Name = "Arial";
                                 worksheet.Row(i - 10).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
@@ -3564,6 +3568,7 @@ namespace WindowsFormsApplication1
 
                 List<string> _withRotationalShifts = new List<string>();
                 List<string> _finalList = new List<string>();
+                List<string[]> _data = new List<string[]>();
 
                 // load  the list of ee with rotational shifts
                 using (ExcelPackage package = new ExcelPackage(new FileInfo(_ssrsFile)))
@@ -3588,75 +3593,100 @@ namespace WindowsFormsApplication1
                     int totalRows = currentWorksheet.Dimension.End.Row;
                     int totalCols = currentWorksheet.Dimension.End.Column;
 
-                    using (ExcelPackage package2 = new ExcelPackage())
+                    for (int i = 2; i <= totalRows; i++)
                     {
-                        ExcelWorksheet worksheet = package2.Workbook.Worksheets.Add("CAL - Filtered List");
-
-                        worksheet.Cells[1, 1].Value = "Emp ID"; worksheet.Cells[1, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(1).Width = 4.70;
-                        worksheet.Cells[1, 2].Value = "Name"; worksheet.Cells[1, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(2).Width = 36.30;
-                        worksheet.Cells[1, 3].Value = "Manager Name"; worksheet.Cells[1, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(3).Width = 35;
-                        worksheet.Cells[1, 4].Value = "Manager Email Address"; worksheet.Cells[1, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(4).Width = 14;
-                        worksheet.Cells[1, 5].Value = "Rpt Date"; worksheet.Cells[1, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(5).Width = 7.40;
-                        worksheet.Cells[1, 6].Value = "End Balance"; worksheet.Cells[1, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(6).Width = 9.40;
-                        worksheet.Cells[1, 7].Value = "Unit"; worksheet.Cells[1, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(7).Width = 5.40;
-
-                        var range = worksheet.Cells[1, 1, 1, 7];
-                        range.Style.Font.Bold = true;
-                        range.Style.Font.Size = 11;
-                        range.Style.Font.Name = "Arial";
-                        range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                        range.Style.Fill.BackgroundColor.SetColor(Color.LightBlue);
-
-                        //currentWorksheet.Cells[i, 3].Value.ToString().Trim()
-
-                        int _currentOutRow = 2;
-                        for (int i = 2; i <= totalRows; i++)
+                        if (currentWorksheet.Cells[i, 3].Value != null && currentWorksheet.Cells[i, 16].Value != null &&
+                            (_withRotationalShifts.SingleOrDefault(empIdToCheck => empIdToCheck.Contains(currentWorksheet.Cells[i, 3].Value.ToString().Trim())) == null) &&
+                            (_finalList.SingleOrDefault(empIdToCheck => empIdToCheck.Contains(currentWorksheet.Cells[i, 3].Value.ToString().Trim())) == null))
                         {
-                            if (currentWorksheet.Cells[i, 3].Value != null && currentWorksheet.Cells[i, 16].Value != null &&
-                                (_withRotationalShifts.SingleOrDefault(empIdToCheck => empIdToCheck.Contains(currentWorksheet.Cells[i, 3].Value.ToString().Trim())) == null) &&
-                                (_finalList.SingleOrDefault(empIdToCheck => empIdToCheck.Contains(currentWorksheet.Cells[i, 3].Value.ToString().Trim())) == null))
+                            try
                             {
-                                try
+
+                                string _tcg = GetTCG(currentWorksheet.Cells[i, 3].Value.ToString().Trim());
+
+                                if (!_tcg.ToUpper().Contains("NOT FOR PAYROLL")) // Exclude NFPs
                                 {
-                                    worksheet.Row(_currentOutRow).Height = 17;
-                                    worksheet.Row(_currentOutRow).Style.Font.Size = 9;
-                                    worksheet.Row(_currentOutRow).Style.Font.Name = "Arial";
-                                    worksheet.Row(_currentOutRow).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
-
-                                    worksheet.Cells[_currentOutRow, 1].Value = currentWorksheet.Cells[i, 3].Value != null ? currentWorksheet.Cells[i, 3].Value.ToString().Trim() : ""; worksheet.Cells[_currentOutRow, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                    worksheet.Cells[_currentOutRow, 2].Value = currentWorksheet.Cells[i, 4].Value != null ? currentWorksheet.Cells[i, 4].Value.ToString().Trim() : ""; worksheet.Cells[_currentOutRow, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                    worksheet.Cells[_currentOutRow, 3].Value = currentWorksheet.Cells[i, 15].Value != null ? currentWorksheet.Cells[i, 15].Value.ToString().Trim() : ""; worksheet.Cells[_currentOutRow, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                    worksheet.Cells[_currentOutRow, 4].Value = currentWorksheet.Cells[i, 16].Value != null ? currentWorksheet.Cells[i, 16].Value.ToString().Trim() : ""; worksheet.Cells[_currentOutRow, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                    worksheet.Cells[_currentOutRow, 5].Value = currentWorksheet.Cells[i, 10].Value != null ? Convert.ToDateTime(currentWorksheet.Cells[i, 10].Value).ToString("dd-MMM-yyyy") : ""; worksheet.Cells[_currentOutRow, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                    worksheet.Cells[_currentOutRow, 6].Value = currentWorksheet.Cells[i, 11].Value != null ? currentWorksheet.Cells[i, 11].Value.ToString().Trim() : ""; worksheet.Cells[_currentOutRow, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                                    worksheet.Cells[_currentOutRow, 7].Value = GetTCG(currentWorksheet.Cells[i, 3].Value.ToString().Trim()); worksheet.Cells[_currentOutRow, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-
-                                    _finalList.Add(currentWorksheet.Cells[i, 3].Value.ToString().Trim());
-
-                                    if (!worksheet.Cells[_currentOutRow, 7].Value.ToString().ToUpper().Contains("NOT FOR PAYROLL")) _currentOutRow++;
+                                    _data.Add(new string[] {
+                                            currentWorksheet.Cells[i, 3].Value != null ? currentWorksheet.Cells[i, 3].Value.ToString().Trim() : "",     // EMP ID
+                                            currentWorksheet.Cells[i, 4].Value != null ? currentWorksheet.Cells[i, 4].Value.ToString().Trim() : "",     // Name
+                                            currentWorksheet.Cells[i, 15].Value != null ? currentWorksheet.Cells[i, 15].Value.ToString().Trim() : "",   // Manager Name
+                                            currentWorksheet.Cells[i, 16].Value != null ? currentWorksheet.Cells[i, 16].Value.ToString().Trim() : "",   // Manager Emai Address
+                                            currentWorksheet.Cells[i, 10].Value != null ? Convert.ToDateTime(currentWorksheet.Cells[i, 10].Value).ToString("dd-MMM-yyyy") : "",     // Date Of Incident
+                                            currentWorksheet.Cells[i, 11].Value != null ? currentWorksheet.Cells[i, 11].Value.ToString().Trim() : "",   // End Balance
+                                            _tcg    // Timecard Group
+                                        });
                                 }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show(i + ex.Message);
-                                    return;
-                                }
+
+                                _finalList.Add(currentWorksheet.Cells[i, 3].Value.ToString().Trim());
+                                
                             }
-                        }
-
-                        worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
-                        worksheet.Cells.AutoFitColumns();
-
-                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                        saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-                        saveFileDialog1.FilterIndex = 1;
-                        saveFileDialog1.FileName = "Neg Stat Mail Merge";
-                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                        {
-                            package2.SaveAs(new FileInfo(saveFileDialog1.FileName));
-                            System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(i + ex.Message);
+                                return;
+                            }
                         }
                     }
                 }
+
+                using (ExcelPackage package2 = new ExcelPackage())
+                {
+                    ExcelWorksheet worksheet = package2.Workbook.Worksheets.Add("CAL - Filtered List");
+
+                    worksheet.Cells[1, 1].Value = "Emp ID"; worksheet.Cells[1, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(1).Width = 4.70;
+                    worksheet.Cells[1, 2].Value = "Name"; worksheet.Cells[1, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(2).Width = 36.30;
+                    worksheet.Cells[1, 3].Value = "Manager Name"; worksheet.Cells[1, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(3).Width = 35;
+                    worksheet.Cells[1, 4].Value = "Manager Email Address"; worksheet.Cells[1, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(4).Width = 14;
+                    worksheet.Cells[1, 5].Value = "Date of Incident"; worksheet.Cells[1, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(5).Width = 7.40;
+                    worksheet.Cells[1, 6].Value = "End Balance"; worksheet.Cells[1, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(6).Width = 9.40;
+                    worksheet.Cells[1, 7].Value = "Unit"; worksheet.Cells[1, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(7).Width = 5.40;
+
+                    var range = worksheet.Cells[1, 1, 1, 7];
+                    range.Style.Font.Bold = true;
+                    range.Style.Font.Size = 11;
+                    range.Style.Font.Name = "Arial";
+                    range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    range.Style.Fill.BackgroundColor.SetColor(Color.LightBlue);
+
+                    //currentWorksheet.Cells[i, 3].Value.ToString().Trim()
+
+                    List<string[]> _items = _data.OrderBy(r => r[6]).ThenBy(r => r[1]).ToList();
+                    _data.Clear(); _data = null; // clear the content to free up memory
+
+                    int _currentOutRow = 2;
+                    for (int i = 0; i < _items.Count; i++)
+                    {
+
+                        worksheet.Row(_currentOutRow).Height = 17;
+                        worksheet.Row(_currentOutRow).Style.Font.Size = 9;
+                        worksheet.Row(_currentOutRow).Style.Font.Name = "Arial";
+                        worksheet.Row(_currentOutRow).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+
+                        worksheet.Cells[_currentOutRow, 1].Value = _items[i][0]; worksheet.Cells[_currentOutRow, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        worksheet.Cells[_currentOutRow, 2].Value = _items[i][1]; worksheet.Cells[_currentOutRow, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        worksheet.Cells[_currentOutRow, 3].Value = _items[i][2]; worksheet.Cells[_currentOutRow, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        worksheet.Cells[_currentOutRow, 4].Value = _items[i][3]; worksheet.Cells[_currentOutRow, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        worksheet.Cells[_currentOutRow, 5].Value = _items[i][4]; worksheet.Cells[_currentOutRow, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        worksheet.Cells[_currentOutRow, 6].Value = _items[i][5]; worksheet.Cells[_currentOutRow, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                        worksheet.Cells[_currentOutRow, 7].Value = _items[i][6]; worksheet.Cells[_currentOutRow, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+
+                        _currentOutRow++;
+                    }
+
+                    worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                    worksheet.Cells.AutoFitColumns();
+
+                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                    saveFileDialog1.FilterIndex = 1;
+                    saveFileDialog1.FileName = "Neg Stat Mail Merge";
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        package2.SaveAs(new FileInfo(saveFileDialog1.FileName));
+                        System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                    }
+                }
+
             }
             catch (Exception ex)
             {
