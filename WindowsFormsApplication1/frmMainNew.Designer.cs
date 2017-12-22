@@ -104,7 +104,7 @@ namespace WindowsFormsApplication1
             // 
             // pnlMain
             // 
-            this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.pnlMain.Controls.Add(this.pnlHandle);
             this.pnlMain.Controls.Add(this.btnSearch);
             this.pnlMain.Controls.Add(this.btnFormatting);
@@ -126,9 +126,9 @@ namespace WindowsFormsApplication1
             // 
             // btnSearch
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.btnSearch.color = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.btnSearch.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btnSearch.color = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btnSearch.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
@@ -148,7 +148,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnFormatting.BackColor = System.Drawing.Color.Transparent;
             this.btnFormatting.color = System.Drawing.Color.Transparent;
-            this.btnFormatting.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.btnFormatting.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnFormatting.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFormatting.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFormatting.ForeColor = System.Drawing.Color.White;
@@ -166,9 +166,9 @@ namespace WindowsFormsApplication1
             // 
             // btnMisc
             // 
-            this.btnMisc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.btnMisc.color = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.btnMisc.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.btnMisc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btnMisc.color = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btnMisc.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnMisc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMisc.Font = new System.Drawing.Font("Century Gothic", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMisc.ForeColor = System.Drawing.Color.White;
@@ -188,7 +188,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnFile126.BackColor = System.Drawing.Color.Transparent;
             this.btnFile126.color = System.Drawing.Color.Transparent;
-            this.btnFile126.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnFile126.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnFile126.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFile126.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFile126.ForeColor = System.Drawing.Color.DarkGray;
@@ -231,7 +231,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnClearLocks.BackColor = System.Drawing.Color.Transparent;
             this.btnClearLocks.color = System.Drawing.Color.Transparent;
-            this.btnClearLocks.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnClearLocks.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnClearLocks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClearLocks.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearLocks.ForeColor = System.Drawing.Color.DarkGray;
@@ -252,7 +252,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnItemsReport.BackColor = System.Drawing.Color.Transparent;
             this.btnItemsReport.color = System.Drawing.Color.Transparent;
-            this.btnItemsReport.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnItemsReport.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnItemsReport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnItemsReport.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnItemsReport.ForeColor = System.Drawing.Color.DarkGray;
@@ -273,7 +273,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnGetLDAP.BackColor = System.Drawing.Color.Transparent;
             this.btnGetLDAP.color = System.Drawing.Color.Transparent;
-            this.btnGetLDAP.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnGetLDAP.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnGetLDAP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGetLDAP.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGetLDAP.ForeColor = System.Drawing.Color.DarkGray;
@@ -294,7 +294,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnUserLatestLogin.BackColor = System.Drawing.Color.Transparent;
             this.btnUserLatestLogin.color = System.Drawing.Color.Transparent;
-            this.btnUserLatestLogin.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnUserLatestLogin.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnUserLatestLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUserLatestLogin.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUserLatestLogin.ForeColor = System.Drawing.Color.DarkGray;
@@ -315,7 +315,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnV_FireCategories.BackColor = System.Drawing.Color.Transparent;
             this.btnV_FireCategories.color = System.Drawing.Color.Transparent;
-            this.btnV_FireCategories.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnV_FireCategories.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnV_FireCategories.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnV_FireCategories.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnV_FireCategories.ForeColor = System.Drawing.Color.DarkGray;
@@ -336,7 +336,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnSickOnStat.BackColor = System.Drawing.Color.Transparent;
             this.btnSickOnStat.color = System.Drawing.Color.Transparent;
-            this.btnSickOnStat.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnSickOnStat.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnSickOnStat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSickOnStat.Font = new System.Drawing.Font("Century Gothic", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSickOnStat.ForeColor = System.Drawing.Color.DarkGray;
@@ -357,7 +357,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnUserTrainings.BackColor = System.Drawing.Color.Transparent;
             this.btnUserTrainings.color = System.Drawing.Color.Transparent;
-            this.btnUserTrainings.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnUserTrainings.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnUserTrainings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUserTrainings.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUserTrainings.ForeColor = System.Drawing.Color.DarkGray;
@@ -378,7 +378,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnESPbatchAccess.BackColor = System.Drawing.Color.Transparent;
             this.btnESPbatchAccess.color = System.Drawing.Color.Transparent;
-            this.btnESPbatchAccess.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnESPbatchAccess.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnESPbatchAccess.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnESPbatchAccess.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnESPbatchAccess.ForeColor = System.Drawing.Color.DarkGray;
@@ -399,7 +399,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnExceptionLookup.BackColor = System.Drawing.Color.Transparent;
             this.btnExceptionLookup.color = System.Drawing.Color.Transparent;
-            this.btnExceptionLookup.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnExceptionLookup.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnExceptionLookup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExceptionLookup.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExceptionLookup.ForeColor = System.Drawing.Color.DarkGray;
@@ -484,7 +484,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnEmailNegStat.BackColor = System.Drawing.Color.Transparent;
             this.btnEmailNegStat.color = System.Drawing.Color.Transparent;
-            this.btnEmailNegStat.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnEmailNegStat.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnEmailNegStat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEmailNegStat.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmailNegStat.ForeColor = System.Drawing.Color.DarkGray;
@@ -504,7 +504,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnFile6.BackColor = System.Drawing.Color.Transparent;
             this.btnFile6.color = System.Drawing.Color.Transparent;
-            this.btnFile6.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnFile6.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnFile6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFile6.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFile6.ForeColor = System.Drawing.Color.DarkGray;
@@ -524,7 +524,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnFile2.BackColor = System.Drawing.Color.Transparent;
             this.btnFile2.color = System.Drawing.Color.Transparent;
-            this.btnFile2.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnFile2.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnFile2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFile2.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFile2.ForeColor = System.Drawing.Color.DarkGray;
@@ -544,7 +544,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnAA_Exception.BackColor = System.Drawing.Color.Transparent;
             this.btnAA_Exception.color = System.Drawing.Color.Transparent;
-            this.btnAA_Exception.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnAA_Exception.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnAA_Exception.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAA_Exception.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAA_Exception.ForeColor = System.Drawing.Color.DarkGray;
@@ -564,7 +564,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnTL_SYS.BackColor = System.Drawing.Color.Transparent;
             this.btnTL_SYS.color = System.Drawing.Color.Transparent;
-            this.btnTL_SYS.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnTL_SYS.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnTL_SYS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTL_SYS.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTL_SYS.ForeColor = System.Drawing.Color.DarkGray;
@@ -584,7 +584,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnUploadFile1.BackColor = System.Drawing.Color.Transparent;
             this.btnUploadFile1.color = System.Drawing.Color.Transparent;
-            this.btnUploadFile1.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnUploadFile1.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnUploadFile1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUploadFile1.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUploadFile1.ForeColor = System.Drawing.Color.DarkGray;
@@ -603,7 +603,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnLOAwithNoRptTime.BackColor = System.Drawing.Color.Transparent;
             this.btnLOAwithNoRptTime.color = System.Drawing.Color.Transparent;
-            this.btnLOAwithNoRptTime.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnLOAwithNoRptTime.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnLOAwithNoRptTime.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLOAwithNoRptTime.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLOAwithNoRptTime.ForeColor = System.Drawing.Color.DarkGray;
@@ -623,7 +623,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnRFLOA.BackColor = System.Drawing.Color.Transparent;
             this.btnRFLOA.color = System.Drawing.Color.Transparent;
-            this.btnRFLOA.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnRFLOA.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnRFLOA.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRFLOA.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRFLOA.ForeColor = System.Drawing.Color.DarkGray;
@@ -643,7 +643,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnRehire.BackColor = System.Drawing.Color.Transparent;
             this.btnRehire.color = System.Drawing.Color.Transparent;
-            this.btnRehire.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnRehire.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnRehire.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRehire.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRehire.ForeColor = System.Drawing.Color.DarkGray;
@@ -663,7 +663,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnPriors.BackColor = System.Drawing.Color.Transparent;
             this.btnPriors.color = System.Drawing.Color.Transparent;
-            this.btnPriors.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnPriors.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnPriors.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPriors.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPriors.ForeColor = System.Drawing.Color.DarkGray;
@@ -682,7 +682,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnBanks.BackColor = System.Drawing.Color.Transparent;
             this.btnBanks.color = System.Drawing.Color.Transparent;
-            this.btnBanks.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnBanks.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnBanks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBanks.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBanks.ForeColor = System.Drawing.Color.DarkGray;
@@ -702,7 +702,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnTrans.BackColor = System.Drawing.Color.Transparent;
             this.btnTrans.color = System.Drawing.Color.Transparent;
-            this.btnTrans.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnTrans.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnTrans.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTrans.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrans.ForeColor = System.Drawing.Color.DarkGray;
@@ -721,7 +721,7 @@ namespace WindowsFormsApplication1
             // 
             this.btnAHS_AA_Terms.BackColor = System.Drawing.Color.Transparent;
             this.btnAHS_AA_Terms.color = System.Drawing.Color.Transparent;
-            this.btnAHS_AA_Terms.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(78)))), ((int)(((byte)(121)))));
+            this.btnAHS_AA_Terms.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnAHS_AA_Terms.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAHS_AA_Terms.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAHS_AA_Terms.ForeColor = System.Drawing.Color.DarkGray;
@@ -1026,7 +1026,7 @@ namespace WindowsFormsApplication1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(23)))), ((int)(((byte)(41)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(43)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(1561, 756);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblClose);
@@ -1038,7 +1038,7 @@ namespace WindowsFormsApplication1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2017.12.19";
+            this.Text = "SömëKindä Tööl v2017.12.22";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);
