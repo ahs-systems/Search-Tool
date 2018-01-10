@@ -63,7 +63,7 @@ namespace Sandbox
         public void WinEventProc(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
         {
             string _ret = GetActiveWindowTitle();
-            if (_ret.ToUpper() == "ALBERTA HEALTH SERVICES" || _ret == "Timeout Warning. Click OK to not end the session. - Alberta Health Services")
+            if (_ret.Trim().ToUpper() == "ALBERTA HEALTH SERVICES" || _ret == "Timeout Warning. Click OK to not end the session. - Alberta Health Services")
             {
                 SendKeys.Send("{TAB}");
                 SendKeys.Send("{ENTER}");
