@@ -309,7 +309,8 @@ namespace WindowsFormsApplication1
             this.btnUserLatestLogin.Size = new System.Drawing.Size(121, 92);
             this.btnUserLatestLogin.TabIndex = 6;
             this.toolTip1.SetToolTip(this.btnUserLatestLogin, "Get user latest login");
-            this.btnUserLatestLogin.Click += new System.EventHandler(this.btnUserLatestLogin_Click);
+            this.btnUserLatestLogin.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnUserLatestLogin_MouseClick);
+            this.btnUserLatestLogin.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.btnUserLatestLogin_MouseDoubleClick);
             // 
             // btnV_FireCategories
             // 

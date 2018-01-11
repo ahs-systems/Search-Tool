@@ -32,11 +32,9 @@ namespace WindowsFormsApplication1
 
         private void frmMainNew_Load(object sender, EventArgs e)
         {
-
-
             toolTip1.SetToolTip(pnlHandle, Text);
 
-            if (!Common.CheckUsers(System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "")))
+            if (!Common.CheckUsers(System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "").ToUpper()))
             {
                 MessageBox.Show("Invalid user. Application will abort.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
@@ -118,11 +116,7 @@ namespace WindowsFormsApplication1
 
         private void frmMainNew_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-
-            }
-            else if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
                 this.TopMost = false;
                 frmCredits01 _frm = new frmCredits01();
@@ -2426,15 +2420,7 @@ namespace WindowsFormsApplication1
                 _btn.LabelText = _origBtnText;
                 Cursor.Current = Cursors.Default;
             }
-        }
-
-        private void btnUserLatestLogin_Click(object sender, EventArgs e)
-        {
-            HideMe();
-            frmLatestLogin _frm = new frmLatestLogin();
-            _frm.ShowDialog();
-            ShowMe();
-        }
+        }        
 
         private void btnPriors_Click(object sender, EventArgs e)
         {
@@ -3618,7 +3604,7 @@ namespace WindowsFormsApplication1
                                 }
 
                                 _finalList.Add(currentWorksheet.Cells[i, 3].Value.ToString().Trim());
-                                
+
                             }
                             catch (Exception ex)
                             {
@@ -3697,6 +3683,30 @@ namespace WindowsFormsApplication1
             {
                 btnEmailNegStat.LabelText = "Format Negative Stats";
                 Cursor.Current = Cursors.Default;
+            }
+        }        
+
+        private void btnUserLatestLogin_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                HideMe();
+                this.TopMost = false;
+                frmUsers _frm = new frmUsers();
+                _frm.ShowDialog();
+                this.TopMost = true;
+                ShowMe();
+            }
+        }
+
+        private void btnUserLatestLogin_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                HideMe();
+                frmLatestLogin _frm = new frmLatestLogin();
+                _frm.ShowDialog();
+                ShowMe();
             }
         }
     }

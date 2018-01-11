@@ -97,7 +97,7 @@ namespace WindowsFormsApplication1
                 _currentUser = _currentUser.ToUpper();
                 for (int i = 0; i < _users.Length; i++)
                 {
-                    if (_users[i].Trim().ToUpper().Contains(_currentUser))
+                    if (Common.Decrypt(_users[i],"rsss") .Contains(_currentUser))
                     {
                         return true;
                     }
