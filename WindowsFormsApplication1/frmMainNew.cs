@@ -21,6 +21,7 @@ namespace WindowsFormsApplication1
     {
         SqlConnection _conn = new SqlConnection();
         SqlCommand _comm;
+        BunifuTileButton _prevActiveButton = null;
 
         byte _searchMode; //1=occupation, 2=employee, 3=unit
 
@@ -34,6 +35,7 @@ namespace WindowsFormsApplication1
         {
             toolTip1.SetToolTip(pnlHandle, Text);
 
+            // Check if valid user
             if (!Common.CheckUsers(System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "").ToUpper()))
             {
                 MessageBox.Show("Invalid user. Application will abort.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -45,6 +47,7 @@ namespace WindowsFormsApplication1
 
             StartPosition = FormStartPosition.CenterScreen;
 
+            // Position the panels
             pnlFormatting.Visible = pnlSearch.Visible = false;
             pnlFormatting.Location = pnlSearch.Location = new Point(132, 44);
 
@@ -67,6 +70,9 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show(ex.Message);
             }
+
+            // Initialize the current selected button
+            ChangeBtnBackColor(btnMisc);
         }
 
 
@@ -81,20 +87,35 @@ namespace WindowsFormsApplication1
             this.WindowState = FormWindowState.Minimized;
         }
 
+        private void ChangeBtnBackColor(BunifuTileButton _btn)
+        {
+            if (_prevActiveButton != null)
+            {
+                _prevActiveButton.color = Color.FromArgb(9, 109, 130);
+            }
+
+            _btn.color = Color.FromArgb(4, 84, 100);
+
+            _prevActiveButton = _btn;
+        }
+
         private void btnMisc_Click(object sender, EventArgs e)
         {
+            ChangeBtnBackColor((BunifuTileButton)sender);
             pnlMisc.Visible = true;
             pnlSearch.Visible = pnlFormatting.Visible = false;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            ChangeBtnBackColor((BunifuTileButton)sender);
             pnlSearch.Visible = true;
             pnlMisc.Visible = pnlFormatting.Visible = false;
         }
 
         private void btnFormatting_Click(object sender, EventArgs e)
         {
+            ChangeBtnBackColor((BunifuTileButton)sender);
             pnlFormatting.Visible = true;
             pnlSearch.Visible = pnlMisc.Visible = false;
         }
@@ -2420,7 +2441,7 @@ namespace WindowsFormsApplication1
                 _btn.LabelText = _origBtnText;
                 Cursor.Current = Cursors.Default;
             }
-        }        
+        }
 
         private void btnPriors_Click(object sender, EventArgs e)
         {
@@ -3684,7 +3705,7 @@ namespace WindowsFormsApplication1
                 btnEmailNegStat.LabelText = "Format Negative Stats";
                 Cursor.Current = Cursors.Default;
             }
-        }        
+        }
 
         private void btnUserLatestLogin_MouseDoubleClick(object sender, MouseEventArgs e)
         {
