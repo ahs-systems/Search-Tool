@@ -102,22 +102,25 @@ namespace WindowsFormsApplication1
         private void btnMisc_Click(object sender, EventArgs e)
         {
             ChangeBtnBackColor((BunifuTileButton)sender);
-            pnlMisc.Visible = true;
             pnlSearch.Visible = pnlFormatting.Visible = false;
+            //pnlMisc.Visible = false;
+            bunifuTransition1.ShowSync(pnlMisc, true, null);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             ChangeBtnBackColor((BunifuTileButton)sender);
-            pnlSearch.Visible = true;
+            //pnlSearch.Visible = true;
             pnlMisc.Visible = pnlFormatting.Visible = false;
+            bunifuTransition1.ShowSync(pnlSearch, true, null);
         }
 
         private void btnFormatting_Click(object sender, EventArgs e)
         {
             ChangeBtnBackColor((BunifuTileButton)sender);
-            pnlFormatting.Visible = true;
+            //pnlFormatting.Visible = true;
             pnlSearch.Visible = pnlMisc.Visible = false;
+            bunifuTransition1.ShowSync(pnlFormatting, true, null);
         }
 
         private void timerClose_Tick(object sender, EventArgs e)
