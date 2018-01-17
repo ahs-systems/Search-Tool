@@ -138,7 +138,7 @@ namespace WindowsFormsApplication1
             this.btnSearch.LabelPosition = 30;
             this.btnSearch.LabelText = "Search";
             this.btnSearch.Location = new System.Drawing.Point(9, 230);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(111, 103);
             this.btnSearch.TabIndex = 4;
@@ -178,7 +178,7 @@ namespace WindowsFormsApplication1
             this.btnMisc.LabelPosition = 30;
             this.btnMisc.LabelText = "Misc.";
             this.btnMisc.Location = new System.Drawing.Point(9, 24);
-            this.btnMisc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMisc.Margin = new System.Windows.Forms.Padding(4);
             this.btnMisc.Name = "btnMisc";
             this.btnMisc.Size = new System.Drawing.Size(111, 103);
             this.btnMisc.TabIndex = 2;
@@ -818,10 +818,10 @@ namespace WindowsFormsApplication1
             this.lstResult.Font = new System.Drawing.Font("Courier New", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstResult.ForeColor = System.Drawing.Color.GreenYellow;
             this.lstResult.FormattingEnabled = true;
-            this.lstResult.ItemHeight = 16;
+            this.lstResult.ItemHeight = 15;
             this.lstResult.Location = new System.Drawing.Point(17, 117);
             this.lstResult.Name = "lstResult";
-            this.lstResult.Size = new System.Drawing.Size(432, 82);
+            this.lstResult.Size = new System.Drawing.Size(432, 77);
             this.lstResult.TabIndex = 33;
             this.lstResult.Click += new System.EventHandler(this.lstResult_Click);
             this.lstResult.SelectedIndexChanged += new System.EventHandler(this.lstResult_Click);
@@ -837,7 +837,7 @@ namespace WindowsFormsApplication1
             this.lblMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
             this.lblMsg.Location = new System.Drawing.Point(19, 233);
             this.lblMsg.Name = "lblMsg";
-            this.lblMsg.Size = new System.Drawing.Size(0, 15);
+            this.lblMsg.Size = new System.Drawing.Size(0, 13);
             this.lblMsg.TabIndex = 38;
             // 
             // txtOCode
@@ -880,7 +880,7 @@ namespace WindowsFormsApplication1
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Location = new System.Drawing.Point(6, 15);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(203, 19);
+            this.dateTimePicker1.Size = new System.Drawing.Size(203, 18);
             this.dateTimePicker1.TabIndex = 7;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -978,14 +978,14 @@ namespace WindowsFormsApplication1
             this.mnuCopyEmpName,
             this.mnuCopyBothNameAndNum});
             this.mnuCopyFromList.Name = "mnuCopyFromList";
-            this.mnuCopyFromList.Size = new System.Drawing.Size(333, 76);
+            this.mnuCopyFromList.Size = new System.Drawing.Size(295, 76);
             this.mnuCopyFromList.Text = "CopyFromList";
             // 
             // mnuCopyEmpNum
             // 
             this.mnuCopyEmpNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpNum.Image")));
             this.mnuCopyEmpNum.Name = "mnuCopyEmpNum";
-            this.mnuCopyEmpNum.Size = new System.Drawing.Size(332, 24);
+            this.mnuCopyEmpNum.Size = new System.Drawing.Size(294, 24);
             this.mnuCopyEmpNum.Text = "Copy Emp # to clipboard";
             this.mnuCopyEmpNum.Click += new System.EventHandler(this.mnuCopyEmpNum_Click);
             // 
@@ -993,7 +993,7 @@ namespace WindowsFormsApplication1
             // 
             this.mnuCopyEmpName.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpName.Image")));
             this.mnuCopyEmpName.Name = "mnuCopyEmpName";
-            this.mnuCopyEmpName.Size = new System.Drawing.Size(332, 24);
+            this.mnuCopyEmpName.Size = new System.Drawing.Size(294, 24);
             this.mnuCopyEmpName.Text = "Copy Emp Name to clipboard";
             this.mnuCopyEmpName.Click += new System.EventHandler(this.mnuCopyEmpName_Click);
             // 
@@ -1001,7 +1001,7 @@ namespace WindowsFormsApplication1
             // 
             this.mnuCopyBothNameAndNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyBothNameAndNum.Image")));
             this.mnuCopyBothNameAndNum.Name = "mnuCopyBothNameAndNum";
-            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(332, 24);
+            this.mnuCopyBothNameAndNum.Size = new System.Drawing.Size(294, 24);
             this.mnuCopyBothNameAndNum.Text = "Copy Both Emp Name and # to clipboard";
             this.mnuCopyBothNameAndNum.Click += new System.EventHandler(this.mnuCopyBothNameAndNum_Click);
             // 
@@ -1011,12 +1011,12 @@ namespace WindowsFormsApplication1
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSendEmail});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(193, 28);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 26);
             // 
             // mnuSendEmail
             // 
             this.mnuSendEmail.Name = "mnuSendEmail";
-            this.mnuSendEmail.Size = new System.Drawing.Size(192, 24);
+            this.mnuSendEmail.Size = new System.Drawing.Size(173, 22);
             this.mnuSendEmail.Text = "Send Email To SSO";
             // 
             // timer1
@@ -1025,8 +1025,7 @@ namespace WindowsFormsApplication1
             // 
             // frmMainNew
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(1561, 756);
             this.Controls.Add(this.label1);
@@ -1039,7 +1038,7 @@ namespace WindowsFormsApplication1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.01.12";
+            this.Text = "SömëKindä Tööl v2018.01.17";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);

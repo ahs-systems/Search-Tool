@@ -90,7 +90,7 @@
             this.label1.Location = new System.Drawing.Point(181, 13);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label1.Size = new System.Drawing.Size(76, 15);
+            this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Exception ID";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -118,7 +118,7 @@
             this.label2.ForeColor = System.Drawing.Color.DarkRed;
             this.label2.Location = new System.Drawing.Point(8, 119);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 15);
+            this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Exception Type";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -129,7 +129,7 @@
             this.label3.ForeColor = System.Drawing.Color.DarkRed;
             this.label3.Location = new System.Drawing.Point(-1, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 15);
+            this.label3.Size = new System.Drawing.Size(84, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Employee Name";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -148,7 +148,7 @@
             this.label4.ForeColor = System.Drawing.Color.DarkRed;
             this.label4.Location = new System.Drawing.Point(26, 67);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 15);
+            this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Employee #";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -167,7 +167,7 @@
             this.label5.ForeColor = System.Drawing.Color.DarkRed;
             this.label5.Location = new System.Drawing.Point(8, 145);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 15);
+            this.label5.Size = new System.Drawing.Size(80, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Exception Date";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -186,7 +186,7 @@
             this.label6.ForeColor = System.Drawing.Color.DarkRed;
             this.label6.Location = new System.Drawing.Point(41, 171);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 15);
+            this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 13;
             this.label6.Text = "Shift Icon";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -205,7 +205,7 @@
             this.label7.ForeColor = System.Drawing.Color.DarkRed;
             this.label7.Location = new System.Drawing.Point(36, 197);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 15);
+            this.label7.Size = new System.Drawing.Size(54, 13);
             this.label7.TabIndex = 15;
             this.label7.Text = "Shift Time";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -224,7 +224,7 @@
             this.label8.ForeColor = System.Drawing.Color.DarkRed;
             this.label8.Location = new System.Drawing.Point(325, 91);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 15);
+            this.label8.Size = new System.Drawing.Size(57, 13);
             this.label8.TabIndex = 17;
             this.label8.Text = "Unit Name";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -243,7 +243,7 @@
             this.label9.ForeColor = System.Drawing.Color.DarkRed;
             this.label9.Location = new System.Drawing.Point(301, 117);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(90, 15);
+            this.label9.Size = new System.Drawing.Size(78, 13);
             this.label9.TabIndex = 19;
             this.label9.Text = "Rotation Name";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -262,7 +262,7 @@
             this.label10.ForeColor = System.Drawing.Color.DarkRed;
             this.label10.Location = new System.Drawing.Point(304, 143);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(87, 15);
+            this.label10.Size = new System.Drawing.Size(78, 13);
             this.label10.TabIndex = 21;
             this.label10.Text = "Workplan Row";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -281,7 +281,7 @@
             this.label11.ForeColor = System.Drawing.Color.DarkRed;
             this.label11.Location = new System.Drawing.Point(321, 169);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(70, 15);
+            this.label11.Size = new System.Drawing.Size(62, 13);
             this.label11.TabIndex = 23;
             this.label11.Text = "Cost Centre";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -300,7 +300,7 @@
             this.label12.ForeColor = System.Drawing.Color.DarkRed;
             this.label12.Location = new System.Drawing.Point(26, 223);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 15);
+            this.label12.Size = new System.Drawing.Size(63, 13);
             this.label12.TabIndex = 25;
             this.label12.Text = "Relief Req?";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -319,7 +319,7 @@
             this.label13.ForeColor = System.Drawing.Color.DarkRed;
             this.label13.Location = new System.Drawing.Point(284, 195);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(107, 15);
+            this.label13.Size = new System.Drawing.Size(94, 13);
             this.label13.TabIndex = 27;
             this.label13.Text = "Exception Created";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -338,7 +338,7 @@
             this.label14.ForeColor = System.Drawing.Color.DarkRed;
             this.label14.Location = new System.Drawing.Point(251, 221);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(140, 15);
+            this.label14.Size = new System.Drawing.Size(123, 13);
             this.label14.TabIndex = 29;
             this.label14.Text = "Exception Last Changed";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -357,7 +357,7 @@
             this.label15.ForeColor = System.Drawing.Color.DarkRed;
             this.label15.Location = new System.Drawing.Point(81, 259);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(73, 15);
+            this.label15.Size = new System.Drawing.Size(65, 13);
             this.label15.TabIndex = 31;
             this.label15.Text = "Changed By";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -376,7 +376,7 @@
             this.label16.ForeColor = System.Drawing.Color.DarkRed;
             this.label16.Location = new System.Drawing.Point(322, 65);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(69, 15);
+            this.label16.Size = new System.Drawing.Size(62, 13);
             this.label16.TabIndex = 33;
             this.label16.Text = "Occupation";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -400,8 +400,7 @@
             // exceptionLookupForm
             // 
             this.AcceptButton = this.searchButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(607, 302);
             this.Controls.Add(this.accessType);
             this.Controls.Add(this.occupationText);

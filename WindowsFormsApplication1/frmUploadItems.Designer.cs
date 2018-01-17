@@ -103,7 +103,7 @@
             this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.label34.Location = new System.Drawing.Point(11, 36);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(69, 15);
+            this.label34.Size = new System.Drawing.Size(61, 13);
             this.label34.TabIndex = 61;
             this.label34.Text = "Pay Period:";
             // 
@@ -113,7 +113,7 @@
             this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.label35.Location = new System.Drawing.Point(166, 37);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(35, 15);
+            this.label35.Size = new System.Drawing.Size(32, 13);
             this.label35.TabIndex = 62;
             this.label35.Text = "Year:";
             // 
@@ -121,9 +121,9 @@
             // 
             this.chkUploadToItems.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.chkUploadToItems.AutoSize = true;
-            this.chkUploadToItems.Location = new System.Drawing.Point(19, 8);
+            this.chkUploadToItems.Location = new System.Drawing.Point(19, 10);
             this.chkUploadToItems.Name = "chkUploadToItems";
-            this.chkUploadToItems.Size = new System.Drawing.Size(185, 19);
+            this.chkUploadToItems.Size = new System.Drawing.Size(163, 17);
             this.chkUploadToItems.TabIndex = 63;
             this.chkUploadToItems.Text = "Upload File 2 to Items Report";
             this.chkUploadToItems.UseVisualStyleBackColor = true;
@@ -169,8 +169,7 @@
             // 
             // frmUploadItems
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(554, 166);
             this.Controls.Add(this.btnContinue);
             this.Controls.Add(this.chkUploadToItems);

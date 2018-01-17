@@ -51,7 +51,7 @@
             this.txtShortDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.txtShortDesc.Location = new System.Drawing.Point(109, 8);
             this.txtShortDesc.Name = "txtShortDesc";
-            this.txtShortDesc.Size = new System.Drawing.Size(155, 23);
+            this.txtShortDesc.Size = new System.Drawing.Size(155, 22);
             this.txtShortDesc.TabIndex = 3;
             // 
             // label1
@@ -61,7 +61,7 @@
             this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label1.Location = new System.Drawing.Point(25, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 19);
+            this.label1.Size = new System.Drawing.Size(75, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "Short Desc:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -73,7 +73,7 @@
             this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label2.Location = new System.Drawing.Point(25, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 19);
+            this.label2.Size = new System.Drawing.Size(73, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Long Desc:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -84,7 +84,7 @@
             this.txtLongDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.txtLongDesc.Location = new System.Drawing.Point(109, 37);
             this.txtLongDesc.Name = "txtLongDesc";
-            this.txtLongDesc.Size = new System.Drawing.Size(259, 23);
+            this.txtLongDesc.Size = new System.Drawing.Size(259, 22);
             this.txtLongDesc.TabIndex = 5;
             // 
             // btnExecute
@@ -136,7 +136,7 @@
             this.lblLstUserGroups.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.lblLstUserGroups.Location = new System.Drawing.Point(8, 79);
             this.lblLstUserGroups.Name = "lblLstUserGroups";
-            this.lblLstUserGroups.Size = new System.Drawing.Size(93, 19);
+            this.lblLstUserGroups.Size = new System.Drawing.Size(81, 17);
             this.lblLstUserGroups.TabIndex = 32;
             this.lblLstUserGroups.Text = "User Groups:";
             this.lblLstUserGroups.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -148,7 +148,7 @@
             this.txtUserGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.txtUserGroup.Location = new System.Drawing.Point(333, 104);
             this.txtUserGroup.Name = "txtUserGroup";
-            this.txtUserGroup.Size = new System.Drawing.Size(194, 23);
+            this.txtUserGroup.Size = new System.Drawing.Size(194, 22);
             this.txtUserGroup.TabIndex = 33;
             this.txtUserGroup.Visible = false;
             // 
@@ -159,7 +159,7 @@
             this.lblUserGroup.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.lblUserGroup.Location = new System.Drawing.Point(249, 104);
             this.lblUserGroup.Name = "lblUserGroup";
-            this.lblUserGroup.Size = new System.Drawing.Size(88, 19);
+            this.lblUserGroup.Size = new System.Drawing.Size(76, 17);
             this.lblUserGroup.TabIndex = 34;
             this.lblUserGroup.Text = "User Group:";
             this.lblUserGroup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -224,8 +224,7 @@
             // 
             // frmESPbatchAccess
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(535, 369);
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.lblLstUserGroups);

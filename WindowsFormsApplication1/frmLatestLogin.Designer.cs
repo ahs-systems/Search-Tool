@@ -68,7 +68,7 @@
             this.label2.ForeColor = System.Drawing.Color.Blue;
             this.label2.Location = new System.Drawing.Point(12, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(173, 15);
+            this.label2.Size = new System.Drawing.Size(149, 13);
             this.label2.TabIndex = 27;
             this.label2.Text = "Part of first name or last name:";
             // 
@@ -90,7 +90,7 @@
             this.label1.ForeColor = System.Drawing.Color.Blue;
             this.label1.Location = new System.Drawing.Point(69, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 15);
+            this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 30;
             this.label1.Text = "Employeer Number:";
             // 
@@ -127,8 +127,7 @@
             // 
             // frmLatestLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(397, 228);
             this.Controls.Add(this.btnSearchByEmpNo);
             this.Controls.Add(this.btnSearchName);

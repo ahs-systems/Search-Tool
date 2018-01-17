@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTrainings));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSearchByEmpNo = new System.Windows.Forms.Button();
             this.btnSearchName = new System.Windows.Forms.Button();
             this.txtEmpNo = new System.Windows.Forms.TextBox();
@@ -76,7 +76,7 @@
             this.label1.ForeColor = System.Drawing.Color.Blue;
             this.label1.Location = new System.Drawing.Point(69, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 15);
+            this.label1.Size = new System.Drawing.Size(96, 13);
             this.label1.TabIndex = 37;
             this.label1.Text = "Employee Number:";
             // 
@@ -94,7 +94,7 @@
             this.label2.ForeColor = System.Drawing.Color.Blue;
             this.label2.Location = new System.Drawing.Point(12, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(173, 15);
+            this.label2.Size = new System.Drawing.Size(149, 13);
             this.label2.TabIndex = 36;
             this.label2.Text = "Part of first name or last name:";
             // 
@@ -106,8 +106,8 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 114);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(731, 125);
             this.dataGridView1.TabIndex = 41;
@@ -143,14 +143,13 @@
             this.lblUpdated.ForeColor = System.Drawing.Color.DarkRed;
             this.lblUpdated.Location = new System.Drawing.Point(12, 86);
             this.lblUpdated.Name = "lblUpdated";
-            this.lblUpdated.Size = new System.Drawing.Size(23, 18);
+            this.lblUpdated.Size = new System.Drawing.Size(23, 17);
             this.lblUpdated.TabIndex = 43;
             this.lblUpdated.Text = "---";
             // 
             // frmTrainings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(755, 252);
             this.Controls.Add(this.lblUpdated);

@@ -43,9 +43,9 @@
             this.btnEncrypt.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEncrypt.ForeColor = System.Drawing.Color.White;
             this.btnEncrypt.Image = ((System.Drawing.Image)(resources.GetObject("btnEncrypt.Image")));
-            this.btnEncrypt.Location = new System.Drawing.Point(320, 12);
+            this.btnEncrypt.Location = new System.Drawing.Point(338, 13);
             this.btnEncrypt.Name = "btnEncrypt";
-            this.btnEncrypt.Size = new System.Drawing.Size(136, 48);
+            this.btnEncrypt.Size = new System.Drawing.Size(115, 48);
             this.btnEncrypt.TabIndex = 30;
             this.btnEncrypt.Text = "Encrypt";
             this.btnEncrypt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -58,9 +58,9 @@
             this.btnDecrypt.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDecrypt.ForeColor = System.Drawing.Color.White;
             this.btnDecrypt.Image = ((System.Drawing.Image)(resources.GetObject("btnDecrypt.Image")));
-            this.btnDecrypt.Location = new System.Drawing.Point(320, 66);
+            this.btnDecrypt.Location = new System.Drawing.Point(338, 67);
             this.btnDecrypt.Name = "btnDecrypt";
-            this.btnDecrypt.Size = new System.Drawing.Size(136, 48);
+            this.btnDecrypt.Size = new System.Drawing.Size(115, 48);
             this.btnDecrypt.TabIndex = 31;
             this.btnDecrypt.Text = "Decrypt";
             this.btnDecrypt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -70,18 +70,18 @@
             // txtInput
             // 
             this.txtInput.Font = new System.Drawing.Font("Verdana", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInput.Location = new System.Drawing.Point(74, 27);
+            this.txtInput.Location = new System.Drawing.Point(80, 27);
             this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(240, 23);
+            this.txtInput.Size = new System.Drawing.Size(240, 22);
             this.txtInput.TabIndex = 32;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 29);
+            this.label1.Location = new System.Drawing.Point(30, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 17);
+            this.label1.Size = new System.Drawing.Size(46, 14);
             this.label1.TabIndex = 33;
             this.label1.Text = "Input:";
             // 
@@ -89,24 +89,23 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 68);
+            this.label2.Location = new System.Drawing.Point(18, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 17);
+            this.label2.Size = new System.Drawing.Size(56, 14);
             this.label2.TabIndex = 35;
             this.label2.Text = "Output:";
             // 
             // txtOutput
             // 
             this.txtOutput.Font = new System.Drawing.Font("Verdana", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOutput.Location = new System.Drawing.Point(74, 66);
+            this.txtOutput.Location = new System.Drawing.Point(80, 66);
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(240, 23);
+            this.txtOutput.Size = new System.Drawing.Size(240, 22);
             this.txtOutput.TabIndex = 34;
             // 
             // frmUsers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(471, 135);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtOutput);
