@@ -11,9 +11,9 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
-using VisualEffects;
-using VisualEffects.Animations.Effects;
-using VisualEffects.Easing;
+//using VisualEffects;
+//using VisualEffects.Animations.Effects;
+//using VisualEffects.Easing;
 
 namespace WindowsFormsApplication1
 {
@@ -33,6 +33,7 @@ namespace WindowsFormsApplication1
 
         private void frmMainNew_Load(object sender, EventArgs e)
         {
+            // set toolip for the pnlHandle
             toolTip1.SetToolTip(pnlHandle, Text);
 
             // Check if valid user
@@ -43,8 +44,11 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            Height = 0;
+            // Show the form
+            Hide();
+            transFrm.ShowSync(this, true, null);
 
+            // Center the form
             StartPosition = FormStartPosition.CenterScreen;
 
             // Position the panels
@@ -53,7 +57,7 @@ namespace WindowsFormsApplication1
 
             try
             {
-                _conn.ConnectionString = @"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;";
+                _conn.ConnectionString = Common.ESPServer; //@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;";
 
                 TopMost = true;
 
@@ -75,8 +79,6 @@ namespace WindowsFormsApplication1
             ChangeBtnBackColor(btnMisc);
         }
 
-
-
         private void lblClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -92,6 +94,13 @@ namespace WindowsFormsApplication1
             if (_prevActiveButton != null)
             {
                 _prevActiveButton.color = Color.FromArgb(9, 109, 130);
+
+                //switch (_prevActiveButton.Name)
+                //{
+                //    case "btnMisc":
+                //        bunifuTransition1.HideSync(pnlMisc, true, null);
+                //        break;
+                //}
             }
 
             _btn.color = Color.FromArgb(4, 84, 100);
@@ -104,7 +113,7 @@ namespace WindowsFormsApplication1
             ChangeBtnBackColor((BunifuTileButton)sender);
             pnlSearch.Visible = pnlFormatting.Visible = false;
             //pnlMisc.Visible = false;
-            bunifuTransition1.ShowSync(pnlMisc, true, null);
+            transPanel.ShowSync(pnlMisc, true, null);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -112,7 +121,7 @@ namespace WindowsFormsApplication1
             ChangeBtnBackColor((BunifuTileButton)sender);
             //pnlSearch.Visible = true;
             pnlMisc.Visible = pnlFormatting.Visible = false;
-            bunifuTransition1.ShowSync(pnlSearch, true, null);
+            transPanel.ShowSync(pnlSearch, true, null);
         }
 
         private void btnFormatting_Click(object sender, EventArgs e)
@@ -120,7 +129,7 @@ namespace WindowsFormsApplication1
             ChangeBtnBackColor((BunifuTileButton)sender);
             //pnlFormatting.Visible = true;
             pnlSearch.Visible = pnlMisc.Visible = false;
-            bunifuTransition1.ShowSync(pnlFormatting, true, null);
+            transPanel.ShowSync(pnlFormatting, true, null);
         }
 
         private void timerClose_Tick(object sender, EventArgs e)
@@ -173,21 +182,14 @@ namespace WindowsFormsApplication1
             _conn.Dispose();
         }
 
-        private void frmMainNew_Shown(object sender, EventArgs e)
-        {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 369, 1000, 0);
-        }
-
         private void ShowMe()
         {
             Show();
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 369, 1000, 0);
         }
 
         private void HideMe()
         {
             Hide();
-            Height = 0;
         }
 
         private void OpenConnection()
@@ -316,7 +318,7 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                _conn.ConnectionString = @"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;";
+                _conn.ConnectionString = Common.ESPServer; //@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;";
 
                 TopMost = true;
 

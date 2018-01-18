@@ -26,5 +26,16 @@ namespace WindowsFormsApplication1
         {
             txtOutput.Text = Common.Decrypt(txtInput.Text.Trim(), "rsss");
         }
+
+        private void frmUsers_Load(object sender, EventArgs e)
+        {
+            Hide();
+            transFrm.ShowSync(this, true, null);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

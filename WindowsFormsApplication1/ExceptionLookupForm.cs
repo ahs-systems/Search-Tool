@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using VisualEffects;
-using VisualEffects.Animations.Effects;
-using VisualEffects.Easing;
+
 
 namespace WindowsFormsApplication1
 {
@@ -145,12 +137,6 @@ namespace WindowsFormsApplication1
                 }
 
             }
-
-
-            
-
-
-
         }
 
         private void exceptionIDText_TextChanged(object sender, EventArgs e)
@@ -160,12 +146,19 @@ namespace WindowsFormsApplication1
 
         private void exceptionLookupForm_Load(object sender, EventArgs e)
         {
-            Height = 0;
+            // Show the form
+            Hide();
+            transFrm.ShowSync(this, true, null);
         }
 
         private void exceptionLookupForm_Shown(object sender, EventArgs e)
         {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 330, 1000, 0);
+            //this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 330, 1000, 0);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

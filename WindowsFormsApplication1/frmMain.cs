@@ -10,9 +10,6 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
-using VisualEffects;
-using VisualEffects.Animations.Effects;
-using VisualEffects.Easing;
 
 
 namespace WindowsFormsApplication1
@@ -66,7 +63,7 @@ namespace WindowsFormsApplication1
 
         private void frmSearch_Shown(object sender, EventArgs e)
         {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 317, 1000, 0);
+            //this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 317, 1000, 0);
         }
 
         private void frmSearch_FormClosing(object sender, FormClosingEventArgs e)
@@ -101,7 +98,7 @@ namespace WindowsFormsApplication1
                 }
                 _conn.Close();
             }
-        }        
+        }
 
         private string GetPrevious_PP(string _date)
         {
@@ -222,7 +219,7 @@ namespace WindowsFormsApplication1
                 //enable trigger of closing the application at early morning
                 timerClose.Enabled = true;
 
-                Height = 0;
+                //Height = 0;
             }
             catch (Exception ex)
             {
@@ -308,7 +305,7 @@ namespace WindowsFormsApplication1
             lblMsg.Text = "";
             timer1.Enabled = false;
         }
-        
+
         private void myNotifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
@@ -2199,7 +2196,7 @@ namespace WindowsFormsApplication1
         private void timerClose_Tick(object sender, EventArgs e)
         {
             if (DateTime.Now.Hour > 1 && DateTime.Now.Hour < 5 && Cursor != Cursors.WaitCursor) Application.Exit();
-        }        
+        }
 
         private void btnRFLOA_Click(object sender, EventArgs e)
         {
@@ -2347,7 +2344,7 @@ namespace WindowsFormsApplication1
             frmLatestLogin _frm = new frmLatestLogin();
             _frm.ShowDialog();
             ShowMe();
-        }        
+        }
 
         private void btnPriors_Click(object sender, EventArgs e)
         {
@@ -2825,7 +2822,7 @@ namespace WindowsFormsApplication1
         private void ShowMe()
         {
             Show();
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 317, 1000, 0);
+            //this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 317, 1000, 0);
         }
 
         private void HideMe()
@@ -2840,7 +2837,7 @@ namespace WindowsFormsApplication1
             frmClearLocks _frm = new frmClearLocks();
             _frm.ShowDialog();
             ShowMe();
-        }        
+        }
 
         private void btnGetLDAP_Click(object sender, EventArgs e)
         {

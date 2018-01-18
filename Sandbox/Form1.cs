@@ -70,5 +70,20 @@ namespace Sandbox
             }
             Log.Text += _ret + "\r\n";
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {            
+            bunifuTransition1.ShowSync(this, true, null);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Form2 _frm = new Form2();
+            _frm.ShowDialog();
+            Hide();
+            bunifuTransition1.ShowSync(this, true, null);
+            this.Focus();
+        }
     }
 }

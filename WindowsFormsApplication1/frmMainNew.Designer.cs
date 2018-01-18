@@ -31,7 +31,8 @@ namespace WindowsFormsApplication1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation12 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation11 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainNew));
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlHandle = new System.Windows.Forms.Panel();
@@ -94,7 +95,8 @@ namespace WindowsFormsApplication1
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuSendEmail = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.bunifuTransition1 = new BunifuAnimatorNS.BunifuTransition(this.components);
+            this.transPanel = new BunifuAnimatorNS.BunifuTransition(this.components);
+            this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.pnlMain.SuspendLayout();
             this.pnlMisc.SuspendLayout();
             this.pnlFormatting.SuspendLayout();
@@ -111,7 +113,8 @@ namespace WindowsFormsApplication1
             this.pnlMain.Controls.Add(this.btnSearch);
             this.pnlMain.Controls.Add(this.btnFormatting);
             this.pnlMain.Controls.Add(this.btnMisc);
-            this.bunifuTransition1.SetDecoration(this.pnlMain, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.pnlMain, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.pnlMain, BunifuAnimatorNS.DecorationType.None);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
@@ -122,7 +125,8 @@ namespace WindowsFormsApplication1
             // pnlHandle
             // 
             this.pnlHandle.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTransition1.SetDecoration(this.pnlHandle, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.pnlHandle, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.pnlHandle, BunifuAnimatorNS.DecorationType.None);
             this.pnlHandle.Location = new System.Drawing.Point(1, 2);
             this.pnlHandle.Name = "pnlHandle";
             this.pnlHandle.Size = new System.Drawing.Size(734, 29);
@@ -134,7 +138,8 @@ namespace WindowsFormsApplication1
             this.btnSearch.color = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.btnSearch.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnSearch, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnSearch, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnSearch, BunifuAnimatorNS.DecorationType.None);
             this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
@@ -155,7 +160,8 @@ namespace WindowsFormsApplication1
             this.btnFormatting.color = System.Drawing.Color.Transparent;
             this.btnFormatting.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnFormatting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnFormatting, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnFormatting, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnFormatting, BunifuAnimatorNS.DecorationType.None);
             this.btnFormatting.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFormatting.ForeColor = System.Drawing.Color.White;
             this.btnFormatting.Image = ((System.Drawing.Image)(resources.GetObject("btnFormatting.Image")));
@@ -176,7 +182,8 @@ namespace WindowsFormsApplication1
             this.btnMisc.color = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.btnMisc.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnMisc.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnMisc, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnMisc, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnMisc, BunifuAnimatorNS.DecorationType.None);
             this.btnMisc.Font = new System.Drawing.Font("Century Gothic", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMisc.ForeColor = System.Drawing.Color.White;
             this.btnMisc.Image = ((System.Drawing.Image)(resources.GetObject("btnMisc.Image")));
@@ -197,7 +204,8 @@ namespace WindowsFormsApplication1
             this.btnFile126.color = System.Drawing.Color.Transparent;
             this.btnFile126.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnFile126.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnFile126, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnFile126, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnFile126, BunifuAnimatorNS.DecorationType.None);
             this.btnFile126.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFile126.ForeColor = System.Drawing.Color.DarkGray;
             this.btnFile126.Image = ((System.Drawing.Image)(resources.GetObject("btnFile126.Image")));
@@ -241,14 +249,15 @@ namespace WindowsFormsApplication1
             this.btnClearLocks.color = System.Drawing.Color.Transparent;
             this.btnClearLocks.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnClearLocks.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnClearLocks, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnClearLocks, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnClearLocks, BunifuAnimatorNS.DecorationType.None);
             this.btnClearLocks.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearLocks.ForeColor = System.Drawing.Color.DarkGray;
             this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
             this.btnClearLocks.ImagePosition = 7;
             this.btnClearLocks.ImageZoom = 45;
             this.btnClearLocks.LabelPosition = 30;
-            this.btnClearLocks.LabelText = "Clear Lock";
+            this.btnClearLocks.LabelText = "View Locks";
             this.btnClearLocks.Location = new System.Drawing.Point(168, 4);
             this.btnClearLocks.Margin = new System.Windows.Forms.Padding(6);
             this.btnClearLocks.Name = "btnClearLocks";
@@ -263,7 +272,8 @@ namespace WindowsFormsApplication1
             this.btnItemsReport.color = System.Drawing.Color.Transparent;
             this.btnItemsReport.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnItemsReport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnItemsReport, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnItemsReport, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnItemsReport, BunifuAnimatorNS.DecorationType.None);
             this.btnItemsReport.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnItemsReport.ForeColor = System.Drawing.Color.DarkGray;
             this.btnItemsReport.Image = ((System.Drawing.Image)(resources.GetObject("btnItemsReport.Image")));
@@ -285,14 +295,15 @@ namespace WindowsFormsApplication1
             this.btnGetLDAP.color = System.Drawing.Color.Transparent;
             this.btnGetLDAP.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnGetLDAP.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnGetLDAP, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnGetLDAP, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnGetLDAP, BunifuAnimatorNS.DecorationType.None);
             this.btnGetLDAP.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGetLDAP.ForeColor = System.Drawing.Color.DarkGray;
             this.btnGetLDAP.Image = ((System.Drawing.Image)(resources.GetObject("btnGetLDAP.Image")));
             this.btnGetLDAP.ImagePosition = 7;
             this.btnGetLDAP.ImageZoom = 45;
             this.btnGetLDAP.LabelPosition = 30;
-            this.btnGetLDAP.LabelText = "LDAP Info";
+            this.btnGetLDAP.LabelText = "LDAP Search";
             this.btnGetLDAP.Location = new System.Drawing.Point(15, 106);
             this.btnGetLDAP.Margin = new System.Windows.Forms.Padding(6);
             this.btnGetLDAP.Name = "btnGetLDAP";
@@ -307,14 +318,15 @@ namespace WindowsFormsApplication1
             this.btnUserLatestLogin.color = System.Drawing.Color.Transparent;
             this.btnUserLatestLogin.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnUserLatestLogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnUserLatestLogin, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnUserLatestLogin, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnUserLatestLogin, BunifuAnimatorNS.DecorationType.None);
             this.btnUserLatestLogin.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUserLatestLogin.ForeColor = System.Drawing.Color.DarkGray;
             this.btnUserLatestLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnUserLatestLogin.Image")));
             this.btnUserLatestLogin.ImagePosition = 7;
             this.btnUserLatestLogin.ImageZoom = 45;
             this.btnUserLatestLogin.LabelPosition = 30;
-            this.btnUserLatestLogin.LabelText = "User Latest Login";
+            this.btnUserLatestLogin.LabelText = "Search Latest Login";
             this.btnUserLatestLogin.Location = new System.Drawing.Point(168, 106);
             this.btnUserLatestLogin.Margin = new System.Windows.Forms.Padding(6);
             this.btnUserLatestLogin.Name = "btnUserLatestLogin";
@@ -330,7 +342,8 @@ namespace WindowsFormsApplication1
             this.btnV_FireCategories.color = System.Drawing.Color.Transparent;
             this.btnV_FireCategories.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnV_FireCategories.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnV_FireCategories, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnV_FireCategories, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnV_FireCategories, BunifuAnimatorNS.DecorationType.None);
             this.btnV_FireCategories.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnV_FireCategories.ForeColor = System.Drawing.Color.DarkGray;
             this.btnV_FireCategories.Image = ((System.Drawing.Image)(resources.GetObject("btnV_FireCategories.Image")));
@@ -352,7 +365,8 @@ namespace WindowsFormsApplication1
             this.btnSickOnStat.color = System.Drawing.Color.Transparent;
             this.btnSickOnStat.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnSickOnStat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnSickOnStat, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnSickOnStat, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnSickOnStat, BunifuAnimatorNS.DecorationType.None);
             this.btnSickOnStat.Font = new System.Drawing.Font("Century Gothic", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSickOnStat.ForeColor = System.Drawing.Color.DarkGray;
             this.btnSickOnStat.Image = ((System.Drawing.Image)(resources.GetObject("btnSickOnStat.Image")));
@@ -374,7 +388,8 @@ namespace WindowsFormsApplication1
             this.btnUserTrainings.color = System.Drawing.Color.Transparent;
             this.btnUserTrainings.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnUserTrainings.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnUserTrainings, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnUserTrainings, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnUserTrainings, BunifuAnimatorNS.DecorationType.None);
             this.btnUserTrainings.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUserTrainings.ForeColor = System.Drawing.Color.DarkGray;
             this.btnUserTrainings.Image = ((System.Drawing.Image)(resources.GetObject("btnUserTrainings.Image")));
@@ -396,7 +411,8 @@ namespace WindowsFormsApplication1
             this.btnESPbatchAccess.color = System.Drawing.Color.Transparent;
             this.btnESPbatchAccess.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnESPbatchAccess.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnESPbatchAccess, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnESPbatchAccess, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnESPbatchAccess, BunifuAnimatorNS.DecorationType.None);
             this.btnESPbatchAccess.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnESPbatchAccess.ForeColor = System.Drawing.Color.DarkGray;
             this.btnESPbatchAccess.Image = ((System.Drawing.Image)(resources.GetObject("btnESPbatchAccess.Image")));
@@ -418,7 +434,8 @@ namespace WindowsFormsApplication1
             this.btnExceptionLookup.color = System.Drawing.Color.Transparent;
             this.btnExceptionLookup.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnExceptionLookup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnExceptionLookup, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnExceptionLookup, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnExceptionLookup, BunifuAnimatorNS.DecorationType.None);
             this.btnExceptionLookup.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExceptionLookup.ForeColor = System.Drawing.Color.DarkGray;
             this.btnExceptionLookup.Image = ((System.Drawing.Image)(resources.GetObject("btnExceptionLookup.Image")));
@@ -436,7 +453,8 @@ namespace WindowsFormsApplication1
             // lblClose
             // 
             this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
             this.lblClose.Font = new System.Drawing.Font("Arial Black", 10.18868F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClose.ForeColor = System.Drawing.Color.OrangeRed;
             this.lblClose.Location = new System.Drawing.Point(713, 9);
@@ -450,7 +468,8 @@ namespace WindowsFormsApplication1
             // label1
             // 
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.label1, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.label1, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.label1, BunifuAnimatorNS.DecorationType.None);
             this.label1.Font = new System.Drawing.Font("Arial Black", 10.18868F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.OrangeRed;
             this.label1.Location = new System.Drawing.Point(680, 9);
@@ -473,7 +492,8 @@ namespace WindowsFormsApplication1
             this.pnlMisc.Controls.Add(this.btnUserLatestLogin);
             this.pnlMisc.Controls.Add(this.btnSickOnStat);
             this.pnlMisc.Controls.Add(this.btnV_FireCategories);
-            this.bunifuTransition1.SetDecoration(this.pnlMisc, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.pnlMisc, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.pnlMisc, BunifuAnimatorNS.DecorationType.None);
             this.pnlMisc.Location = new System.Drawing.Point(132, 32);
             this.pnlMisc.Name = "pnlMisc";
             this.pnlMisc.Size = new System.Drawing.Size(603, 325);
@@ -495,7 +515,8 @@ namespace WindowsFormsApplication1
             this.pnlFormatting.Controls.Add(this.btnBanks);
             this.pnlFormatting.Controls.Add(this.btnTrans);
             this.pnlFormatting.Controls.Add(this.btnAHS_AA_Terms);
-            this.bunifuTransition1.SetDecoration(this.pnlFormatting, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.pnlFormatting, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.pnlFormatting, BunifuAnimatorNS.DecorationType.None);
             this.pnlFormatting.Location = new System.Drawing.Point(136, 411);
             this.pnlFormatting.Name = "pnlFormatting";
             this.pnlFormatting.Size = new System.Drawing.Size(603, 325);
@@ -508,7 +529,8 @@ namespace WindowsFormsApplication1
             this.btnEmailNegStat.color = System.Drawing.Color.Transparent;
             this.btnEmailNegStat.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnEmailNegStat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnEmailNegStat, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnEmailNegStat, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnEmailNegStat, BunifuAnimatorNS.DecorationType.None);
             this.btnEmailNegStat.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmailNegStat.ForeColor = System.Drawing.Color.DarkGray;
             this.btnEmailNegStat.Image = ((System.Drawing.Image)(resources.GetObject("btnEmailNegStat.Image")));
@@ -529,7 +551,8 @@ namespace WindowsFormsApplication1
             this.btnFile6.color = System.Drawing.Color.Transparent;
             this.btnFile6.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnFile6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnFile6, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnFile6, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnFile6, BunifuAnimatorNS.DecorationType.None);
             this.btnFile6.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFile6.ForeColor = System.Drawing.Color.DarkGray;
             this.btnFile6.Image = ((System.Drawing.Image)(resources.GetObject("btnFile6.Image")));
@@ -550,7 +573,8 @@ namespace WindowsFormsApplication1
             this.btnFile2.color = System.Drawing.Color.Transparent;
             this.btnFile2.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnFile2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnFile2, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnFile2, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnFile2, BunifuAnimatorNS.DecorationType.None);
             this.btnFile2.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFile2.ForeColor = System.Drawing.Color.DarkGray;
             this.btnFile2.Image = ((System.Drawing.Image)(resources.GetObject("btnFile2.Image")));
@@ -571,7 +595,8 @@ namespace WindowsFormsApplication1
             this.btnAA_Exception.color = System.Drawing.Color.Transparent;
             this.btnAA_Exception.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnAA_Exception.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnAA_Exception, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnAA_Exception, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnAA_Exception, BunifuAnimatorNS.DecorationType.None);
             this.btnAA_Exception.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAA_Exception.ForeColor = System.Drawing.Color.DarkGray;
             this.btnAA_Exception.Image = ((System.Drawing.Image)(resources.GetObject("btnAA_Exception.Image")));
@@ -592,7 +617,8 @@ namespace WindowsFormsApplication1
             this.btnTL_SYS.color = System.Drawing.Color.Transparent;
             this.btnTL_SYS.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnTL_SYS.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnTL_SYS, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnTL_SYS, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnTL_SYS, BunifuAnimatorNS.DecorationType.None);
             this.btnTL_SYS.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTL_SYS.ForeColor = System.Drawing.Color.DarkGray;
             this.btnTL_SYS.Image = ((System.Drawing.Image)(resources.GetObject("btnTL_SYS.Image")));
@@ -613,7 +639,8 @@ namespace WindowsFormsApplication1
             this.btnUploadFile1.color = System.Drawing.Color.Transparent;
             this.btnUploadFile1.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnUploadFile1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnUploadFile1, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnUploadFile1, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnUploadFile1, BunifuAnimatorNS.DecorationType.None);
             this.btnUploadFile1.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUploadFile1.ForeColor = System.Drawing.Color.DarkGray;
             this.btnUploadFile1.Image = ((System.Drawing.Image)(resources.GetObject("btnUploadFile1.Image")));
@@ -633,7 +660,8 @@ namespace WindowsFormsApplication1
             this.btnLOAwithNoRptTime.color = System.Drawing.Color.Transparent;
             this.btnLOAwithNoRptTime.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnLOAwithNoRptTime.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnLOAwithNoRptTime, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnLOAwithNoRptTime, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnLOAwithNoRptTime, BunifuAnimatorNS.DecorationType.None);
             this.btnLOAwithNoRptTime.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLOAwithNoRptTime.ForeColor = System.Drawing.Color.DarkGray;
             this.btnLOAwithNoRptTime.Image = ((System.Drawing.Image)(resources.GetObject("btnLOAwithNoRptTime.Image")));
@@ -654,7 +682,8 @@ namespace WindowsFormsApplication1
             this.btnRFLOA.color = System.Drawing.Color.Transparent;
             this.btnRFLOA.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnRFLOA.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnRFLOA, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnRFLOA, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnRFLOA, BunifuAnimatorNS.DecorationType.None);
             this.btnRFLOA.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRFLOA.ForeColor = System.Drawing.Color.DarkGray;
             this.btnRFLOA.Image = ((System.Drawing.Image)(resources.GetObject("btnRFLOA.Image")));
@@ -675,7 +704,8 @@ namespace WindowsFormsApplication1
             this.btnRehire.color = System.Drawing.Color.Transparent;
             this.btnRehire.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnRehire.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnRehire, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnRehire, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnRehire, BunifuAnimatorNS.DecorationType.None);
             this.btnRehire.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRehire.ForeColor = System.Drawing.Color.DarkGray;
             this.btnRehire.Image = ((System.Drawing.Image)(resources.GetObject("btnRehire.Image")));
@@ -696,7 +726,8 @@ namespace WindowsFormsApplication1
             this.btnPriors.color = System.Drawing.Color.Transparent;
             this.btnPriors.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnPriors.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnPriors, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnPriors, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnPriors, BunifuAnimatorNS.DecorationType.None);
             this.btnPriors.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPriors.ForeColor = System.Drawing.Color.DarkGray;
             this.btnPriors.Image = ((System.Drawing.Image)(resources.GetObject("btnPriors.Image")));
@@ -716,7 +747,8 @@ namespace WindowsFormsApplication1
             this.btnBanks.color = System.Drawing.Color.Transparent;
             this.btnBanks.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnBanks.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnBanks, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnBanks, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnBanks, BunifuAnimatorNS.DecorationType.None);
             this.btnBanks.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBanks.ForeColor = System.Drawing.Color.DarkGray;
             this.btnBanks.Image = ((System.Drawing.Image)(resources.GetObject("btnBanks.Image")));
@@ -737,7 +769,8 @@ namespace WindowsFormsApplication1
             this.btnTrans.color = System.Drawing.Color.Transparent;
             this.btnTrans.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnTrans.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnTrans, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnTrans, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnTrans, BunifuAnimatorNS.DecorationType.None);
             this.btnTrans.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrans.ForeColor = System.Drawing.Color.DarkGray;
             this.btnTrans.Image = ((System.Drawing.Image)(resources.GetObject("btnTrans.Image")));
@@ -757,7 +790,8 @@ namespace WindowsFormsApplication1
             this.btnAHS_AA_Terms.color = System.Drawing.Color.Transparent;
             this.btnAHS_AA_Terms.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
             this.btnAHS_AA_Terms.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.btnAHS_AA_Terms, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnAHS_AA_Terms, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnAHS_AA_Terms, BunifuAnimatorNS.DecorationType.None);
             this.btnAHS_AA_Terms.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAHS_AA_Terms.ForeColor = System.Drawing.Color.DarkGray;
             this.btnAHS_AA_Terms.Image = ((System.Drawing.Image)(resources.GetObject("btnAHS_AA_Terms.Image")));
@@ -788,7 +822,8 @@ namespace WindowsFormsApplication1
             this.pnlSearch.Controls.Add(this.label7);
             this.pnlSearch.Controls.Add(this.label3);
             this.pnlSearch.Controls.Add(this.label6);
-            this.bunifuTransition1.SetDecoration(this.pnlSearch, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.pnlSearch, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.pnlSearch, BunifuAnimatorNS.DecorationType.None);
             this.pnlSearch.Location = new System.Drawing.Point(884, 275);
             this.pnlSearch.Name = "pnlSearch";
             this.pnlSearch.Size = new System.Drawing.Size(603, 325);
@@ -799,7 +834,8 @@ namespace WindowsFormsApplication1
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTransition1.SetDecoration(this.label4, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.label4, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.label4, BunifuAnimatorNS.DecorationType.None);
             this.label4.Image = ((System.Drawing.Image)(resources.GetObject("label4.Image")));
             this.label4.Location = new System.Drawing.Point(24, 41);
             this.label4.Name = "label4";
@@ -809,7 +845,8 @@ namespace WindowsFormsApplication1
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.bunifuTransition1.SetDecoration(this.label2, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.label2, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.label2, BunifuAnimatorNS.DecorationType.None);
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
             this.label2.Location = new System.Drawing.Point(42, 39);
@@ -824,7 +861,8 @@ namespace WindowsFormsApplication1
             this.txtUnit.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtUnit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.txtUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.bunifuTransition1.SetDecoration(this.txtUnit, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.txtUnit, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.txtUnit, BunifuAnimatorNS.DecorationType.None);
             this.txtUnit.ForeColor = System.Drawing.Color.Gainsboro;
             this.txtUnit.Location = new System.Drawing.Point(300, 80);
             this.txtUnit.Name = "txtUnit";
@@ -835,7 +873,8 @@ namespace WindowsFormsApplication1
             // btnSendEmail
             // 
             this.btnSendEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.bunifuTransition1.SetDecoration(this.btnSendEmail, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnSendEmail, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.btnSendEmail, BunifuAnimatorNS.DecorationType.None);
             this.btnSendEmail.Enabled = false;
             this.btnSendEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSendEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
@@ -854,7 +893,8 @@ namespace WindowsFormsApplication1
             this.lstResult.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lstResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.lstResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.bunifuTransition1.SetDecoration(this.lstResult, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.lstResult, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.lstResult, BunifuAnimatorNS.DecorationType.None);
             this.lstResult.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstResult.ForeColor = System.Drawing.Color.GreenYellow;
             this.lstResult.FormattingEnabled = true;
@@ -874,7 +914,8 @@ namespace WindowsFormsApplication1
             // 
             this.lblMsg.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblMsg.AutoSize = true;
-            this.bunifuTransition1.SetDecoration(this.lblMsg, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.lblMsg, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.lblMsg, BunifuAnimatorNS.DecorationType.None);
             this.lblMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
             this.lblMsg.Location = new System.Drawing.Point(19, 233);
             this.lblMsg.Name = "lblMsg";
@@ -886,7 +927,8 @@ namespace WindowsFormsApplication1
             this.txtOCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtOCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.txtOCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.bunifuTransition1.SetDecoration(this.txtOCode, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.txtOCode, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.txtOCode, BunifuAnimatorNS.DecorationType.None);
             this.txtOCode.ForeColor = System.Drawing.Color.Gainsboro;
             this.txtOCode.Location = new System.Drawing.Point(300, 7);
             this.txtOCode.Name = "txtOCode";
@@ -899,7 +941,8 @@ namespace WindowsFormsApplication1
             this.txtEmpNo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtEmpNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.txtEmpNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.bunifuTransition1.SetDecoration(this.txtEmpNo, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.txtEmpNo, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.txtEmpNo, BunifuAnimatorNS.DecorationType.None);
             this.txtEmpNo.ForeColor = System.Drawing.Color.Gainsboro;
             this.txtEmpNo.Location = new System.Drawing.Point(300, 43);
             this.txtEmpNo.Name = "txtEmpNo";
@@ -912,7 +955,8 @@ namespace WindowsFormsApplication1
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.lblPayPeriod);
-            this.bunifuTransition1.SetDecoration(this.groupBox1, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.groupBox1, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.groupBox1, BunifuAnimatorNS.DecorationType.None);
             this.groupBox1.Location = new System.Drawing.Point(19, 248);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(430, 42);
@@ -921,7 +965,8 @@ namespace WindowsFormsApplication1
             // 
             // dateTimePicker1
             // 
-            this.bunifuTransition1.SetDecoration(this.dateTimePicker1, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.dateTimePicker1, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.dateTimePicker1, BunifuAnimatorNS.DecorationType.None);
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Location = new System.Drawing.Point(6, 15);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -931,7 +976,8 @@ namespace WindowsFormsApplication1
             // 
             // lblPayPeriod
             // 
-            this.bunifuTransition1.SetDecoration(this.lblPayPeriod, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.lblPayPeriod, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.lblPayPeriod, BunifuAnimatorNS.DecorationType.None);
             this.lblPayPeriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPayPeriod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
             this.lblPayPeriod.Location = new System.Drawing.Point(215, 13);
@@ -946,7 +992,8 @@ namespace WindowsFormsApplication1
             this.txtTCG.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtTCG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.txtTCG.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.bunifuTransition1.SetDecoration(this.txtTCG, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.txtTCG, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.txtTCG, BunifuAnimatorNS.DecorationType.None);
             this.txtTCG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTCG.ForeColor = System.Drawing.Color.GreenYellow;
             this.txtTCG.Location = new System.Drawing.Point(17, 204);
@@ -964,7 +1011,8 @@ namespace WindowsFormsApplication1
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTransition1.SetDecoration(this.label5, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.label5, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.label5, BunifuAnimatorNS.DecorationType.None);
             this.label5.Image = ((System.Drawing.Image)(resources.GetObject("label5.Image")));
             this.label5.Location = new System.Drawing.Point(228, 80);
             this.label5.Name = "label5";
@@ -975,7 +1023,8 @@ namespace WindowsFormsApplication1
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTransition1.SetDecoration(this.label7, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.label7, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.label7, BunifuAnimatorNS.DecorationType.None);
             this.label7.Image = ((System.Drawing.Image)(resources.GetObject("label7.Image")));
             this.label7.Location = new System.Drawing.Point(127, 4);
             this.label7.Name = "label7";
@@ -985,7 +1034,8 @@ namespace WindowsFormsApplication1
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.bunifuTransition1.SetDecoration(this.label3, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.label3, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.label3, BunifuAnimatorNS.DecorationType.None);
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
             this.label3.Location = new System.Drawing.Point(128, -2);
@@ -998,7 +1048,8 @@ namespace WindowsFormsApplication1
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.bunifuTransition1.SetDecoration(this.label6, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.label6, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.label6, BunifuAnimatorNS.DecorationType.None);
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
             this.label6.Location = new System.Drawing.Point(217, 80);
@@ -1023,7 +1074,8 @@ namespace WindowsFormsApplication1
             // 
             // mnuCopyFromList
             // 
-            this.bunifuTransition1.SetDecoration(this.mnuCopyFromList, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.mnuCopyFromList, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.mnuCopyFromList, BunifuAnimatorNS.DecorationType.None);
             this.mnuCopyFromList.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.mnuCopyFromList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuCopyEmpNum,
@@ -1059,7 +1111,8 @@ namespace WindowsFormsApplication1
             // 
             // contextMenuStrip1
             // 
-            this.bunifuTransition1.SetDecoration(this.contextMenuStrip1, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this.contextMenuStrip1, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.contextMenuStrip1, BunifuAnimatorNS.DecorationType.None);
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSendEmail});
@@ -1076,27 +1129,48 @@ namespace WindowsFormsApplication1
             // 
             this.timer1.Interval = 1000;
             // 
-            // bunifuTransition1
+            // transPanel
             // 
-            this.bunifuTransition1.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
-            this.bunifuTransition1.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(30);
-            animation1.RotateCoeff = 0.5F;
-            animation1.RotateLimit = 0.2F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.bunifuTransition1.DefaultAnimation = animation1;
-            this.bunifuTransition1.MaxAnimationTime = 2000;
+            this.transPanel.AnimationType = BunifuAnimatorNS.AnimationType.Mosaic;
+            this.transPanel.Cursor = null;
+            animation12.AnimateOnlyDifferences = true;
+            animation12.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.BlindCoeff")));
+            animation12.LeafCoeff = 0F;
+            animation12.MaxTime = 1F;
+            animation12.MinTime = 0F;
+            animation12.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.MosaicCoeff")));
+            animation12.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation12.MosaicShift")));
+            animation12.MosaicSize = 20;
+            animation12.Padding = new System.Windows.Forms.Padding(30);
+            animation12.RotateCoeff = 0F;
+            animation12.RotateLimit = 0F;
+            animation12.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.ScaleCoeff")));
+            animation12.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.SlideCoeff")));
+            animation12.TimeCoeff = 0F;
+            animation12.TransparencyCoeff = 0F;
+            this.transPanel.DefaultAnimation = animation12;
+            // 
+            // transFrm
+            // 
+            this.transFrm.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
+            this.transFrm.Cursor = null;
+            animation11.AnimateOnlyDifferences = true;
+            animation11.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.BlindCoeff")));
+            animation11.LeafCoeff = 0F;
+            animation11.MaxTime = 1F;
+            animation11.MinTime = 0F;
+            animation11.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.MosaicCoeff")));
+            animation11.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation11.MosaicShift")));
+            animation11.MosaicSize = 0;
+            animation11.Padding = new System.Windows.Forms.Padding(30);
+            animation11.RotateCoeff = 0.5F;
+            animation11.RotateLimit = 0.2F;
+            animation11.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.ScaleCoeff")));
+            animation11.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.SlideCoeff")));
+            animation11.TimeCoeff = 0F;
+            animation11.TransparencyCoeff = 0F;
+            this.transFrm.DefaultAnimation = animation11;
+            this.transFrm.MaxAnimationTime = 2000;
             // 
             // frmMainNew
             // 
@@ -1109,17 +1183,17 @@ namespace WindowsFormsApplication1
             this.Controls.Add(this.pnlFormatting);
             this.Controls.Add(this.pnlMisc);
             this.Controls.Add(this.pnlMain);
-            this.bunifuTransition1.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.01.17";
+            this.Text = "SömëKindä Tööl v2018.01.18";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);
             this.Load += new System.EventHandler(this.frmMainNew_Load);
-            this.Shown += new System.EventHandler(this.frmMainNew_Shown);
             this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmMainNew_MouseDoubleClick);
             this.Resize += new System.EventHandler(this.frmMainNew_Resize);
             this.pnlMain.ResumeLayout(false);
@@ -1196,6 +1270,7 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel pnlHandle;
         private Bunifu.Framework.UI.BunifuTileButton btnEmailNegStat;
-        private BunifuAnimatorNS.BunifuTransition bunifuTransition1;
+        private BunifuAnimatorNS.BunifuTransition transPanel;
+        private BunifuAnimatorNS.BunifuTransition transFrm;
     }
 }

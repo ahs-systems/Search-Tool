@@ -3,9 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
-using VisualEffects;
-using VisualEffects.Animations.Effects;
-using VisualEffects.Easing;
+
 
 namespace WindowsFormsApplication1
 {
@@ -15,6 +13,7 @@ namespace WindowsFormsApplication1
         public frmClearLocks()
         {
             InitializeComponent();
+            Hide();
         }
 
         private void Search(string _searchStr, string _searchBy)
@@ -81,12 +80,14 @@ namespace WindowsFormsApplication1
 
         private void frmClearLocks_Shown(object sender, EventArgs e)
         {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 259, 1000, 0);
+            //this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 259, 1000, 0);
         }
 
         private void frmClearLocks_Load(object sender, EventArgs e)
         {
-            Height = 0;
+            Hide();
+            transFrm.ShowSync(this, true, null);
+            txtSearchStr.Focus();
         }
 
         private void btnFindByUser_Click(object sender, EventArgs e)
@@ -94,6 +95,11 @@ namespace WindowsFormsApplication1
             if (txtUser.Text.Trim().Length == 0) return;
 
             Search(txtUser.Text.Trim(), "USER");
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

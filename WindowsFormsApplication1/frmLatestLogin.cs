@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using VisualEffects;
-using VisualEffects.Animations.Effects;
-using VisualEffects.Easing;
+
 
 namespace WindowsFormsApplication1
 {
@@ -21,7 +14,8 @@ namespace WindowsFormsApplication1
 
         private void frmLatestLogin_Load(object sender, EventArgs e)
         {
-            Height = 0;
+            Hide();
+            transFrm.ShowSync(this, true, null);
         }
 
         private void Search(Func<string, string[]> myMethod, string _input)
@@ -31,7 +25,7 @@ namespace WindowsFormsApplication1
             lblLastLoginDate.Text = "";
 
             if (lstResult.Items.Count > 0) lstResult.Items.Clear();
-                        
+
             //string[] _ret = SearchMethods.GetUsersByName(txtEmpName.Text.Trim());
             string[] _ret = myMethod(_input);
 
@@ -46,7 +40,7 @@ namespace WindowsFormsApplication1
                     lstResult.SelectedIndex = 0;
                     lstResult_Click(null, null);
                 }
-            }            
+            }
         }
 
         private void lstResult_Click(object sender, EventArgs e)
@@ -89,7 +83,12 @@ namespace WindowsFormsApplication1
 
         private void frmLatestLogin_Shown(object sender, EventArgs e)
         {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 268, 1000, 0);
+            //this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 268, 1000, 0);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

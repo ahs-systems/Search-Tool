@@ -1,15 +1,9 @@
 ﻿using Microsoft.Exchange.WebServices.Data;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.DirectoryServices;
 using System.IO;
-using System.Net;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using VisualEffects;
-using VisualEffects.Animations.Effects;
-using VisualEffects.Easing;
+
 //using EASendEmail;
 
 namespace WindowsFormsApplication1
@@ -27,7 +21,7 @@ namespace WindowsFormsApplication1
 
             SearchResultCollection results = FindByID("healthy.bewell.ca", employeeID);
 
-            ShowData(results, listBox1);            
+            ShowData(results, listBox1);
         }
 
         public static SearchResultCollection FindByName(string domain, string firstName, string lastName)
@@ -58,7 +52,7 @@ namespace WindowsFormsApplication1
             searcher.PropertiesToLoad.Add("givenName");
             searcher.PropertiesToLoad.Add("sn");
             searcher.PropertiesToLoad.Add("manager");
-            
+
             return searcher.FindAll();
         }
 
@@ -86,7 +80,7 @@ namespace WindowsFormsApplication1
             }
             catch
             {
-                _ret = ldapName.Replace(@"\",",") + (ldapName.IndexOf(@"\") > -1 ? _searchStr[1] : "");
+                _ret = ldapName.Replace(@"\", ",") + (ldapName.IndexOf(@"\") > -1 ? _searchStr[1] : "");
             }
 
             return _ret;
@@ -175,7 +169,7 @@ namespace WindowsFormsApplication1
             SearchResultCollection results = FindByName("healthy.bewell.ca", firstName, lastName);
 
             ShowData(results, listBox1);
-            
+
         }
 
         private void ShowData(SearchResultCollection results, ListBox _listBox)
@@ -228,12 +222,13 @@ namespace WindowsFormsApplication1
 
         private void frmLDAP_Shown(object sender, EventArgs e)
         {
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 397, 1000, 0);
+            //this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 397, 1000, 0);
         }
 
         private void frmLDAP_Load(object sender, EventArgs e)
         {
-            Height = 0;
+            Hide();
+            transFrm.ShowSync(this, true, null);
         }
 
         private void firstNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -370,7 +365,7 @@ namespace WindowsFormsApplication1
 
             SearchResultCollection results = FindByLDAP("healthy.bewell.ca", ldapName);
 
-            ShowData(results, listBox1);            
+            ShowData(results, listBox1);
         }
 
         private void txtSearchByLDAP_KeyPress(object sender, KeyPressEventArgs e)
@@ -503,6 +498,11 @@ namespace WindowsFormsApplication1
                 Cursor.Current = Cursors.Default;
                 this.Enabled = true;
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

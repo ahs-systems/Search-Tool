@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using OfficeOpenXml;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Data.Odbc;
-using OfficeOpenXml;
 using System.IO;
-using VisualEffects;
-using VisualEffects.Animations.Effects;
-using VisualEffects.Easing;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
@@ -92,7 +84,7 @@ namespace WindowsFormsApplication1
                         myCommand.CommandText = "UPDATE updated SET dateUpdated = NOW()";
                         myCommand.ExecuteNonQuery();
 
-                        myCommand.CommandText = "SELECT dateUpdated from UPDATED"; 
+                        myCommand.CommandText = "SELECT dateUpdated from UPDATED";
                         OdbcDataReader _dr = myCommand.ExecuteReader();
                         _dr.Read();
                         lblUpdated.Text = "Last Updated: " + _dr["dateUpdated"].ToString();
@@ -128,12 +120,12 @@ namespace WindowsFormsApplication1
 
                     OdbcCommand myCommand = myConnection.CreateCommand();
 
-                    myCommand.CommandText = "SELECT FORMAT(dateUpdated,'(dddd) MMM dd, yyyy hh:mm:ss am/pm') AS _dateUpdated from UPDATED"; 
+                    myCommand.CommandText = "SELECT FORMAT(dateUpdated,'(dddd) MMM dd, yyyy hh:mm:ss am/pm') AS _dateUpdated from UPDATED";
 
                     OdbcDataReader _dr = myCommand.ExecuteReader();
                     _dr.Read();
 
-                    lblUpdated.Text = "Last Updated: " +  _dr["_dateUpdated"].ToString();
+                    lblUpdated.Text = "Last Updated: " + _dr["_dateUpdated"].ToString();
                 }
             }
             catch (Exception ex)
@@ -150,7 +142,7 @@ namespace WindowsFormsApplication1
                 firstLoading = false;
             }
 
-            this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 284, 1000, 0);
+            //this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 284, 1000, 0);
         }
 
         private void btnSearchName_Click(object sender, EventArgs e)
@@ -255,7 +247,7 @@ namespace WindowsFormsApplication1
 
         private void frmTrainings_Load(object sender, EventArgs e)
         {
-            Height = 0;
+            //Height = 0;
         }
     }
 }

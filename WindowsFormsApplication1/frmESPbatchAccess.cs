@@ -17,6 +17,8 @@ namespace WindowsFormsApplication1
 
         private void frmESPbatchAccess_Load(object sender, EventArgs e)
         {
+            Hide();
+            transFrm.ShowSync(this, true, null);
             LoadUserGroups();
         }
 
@@ -235,6 +237,16 @@ namespace WindowsFormsApplication1
                 LoadUserGroups();
                 MessageBox.Show("ERROR: ", "Error updating the source list.");
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
