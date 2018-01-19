@@ -1213,20 +1213,32 @@ namespace WindowsFormsApplication1
                                 if (!worksheet.Cells[i - 10, 10].Value.ToString().StartsWith("(") && worksheet.Cells[i - 10, 10].Value.ToString().Length > 2)
                                 {
                                     _unpaidCode = worksheet.Cells[i - 10, 10].Value.ToString().Substring(0, 3);
-                                }
+                                }                               
 
-                                string[] _split = GetTheSplit(worksheet.Cells[i - 10, 4].Value.ToString().Trim(), worksheet.Cells[i - 10, 5].Value.ToString().Trim(), _unpaidCode,
-                                    Convert.ToDouble(worksheet.Cells[i - 10, 7].Value), Convert.ToDouble(worksheet.Cells[i - 10, 8].Value), Convert.ToDouble(worksheet.Cells[i - 10, 9].Value));
-                                for (int i2 = 11; i2 < _split.Length + 11; i2++)
+                                // Check for A48, don't process the split for those
+                                if (worksheet.Cells[i - 10, 5].Value.ToString().Trim() == "A48")
                                 {
-                                    worksheet.Cells[i - 10, i2].Value = _split[i2 - 11];
-                                    worksheet.Cells[i - 10, i2].Style.Font.Color.SetColor(Color.FromArgb(135, 135, 135));
-                                    worksheet.Cells[i - 10, i2].Style.Font.Italic = true;
-                                    worksheet.Cells[i - 10, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Dotted);
-                                    worksheet.Cells[i - 10, i2].Style.Border.Top.Color.SetColor(Color.Gray);
-                                    worksheet.Cells[i - 10, i2].Style.Border.Right.Color.SetColor(Color.Gray);
-                                    worksheet.Cells[i - 10, i2].Style.Border.Bottom.Color.SetColor(Color.Gray);
-                                    worksheet.Cells[i - 10, i2].Style.Border.Left.Color.SetColor(Color.Gray);
+                                    for (int i2 = 11; i2 < 15; i2++)
+                                    {
+                                        worksheet.Cells[i - 10, i2].Value = "-----";
+                                    }
+                                }
+                                else
+                                {
+                                    string[] _split = GetTheSplit(worksheet.Cells[i - 10, 4].Value.ToString().Trim(), worksheet.Cells[i - 10, 5].Value.ToString().Trim(), _unpaidCode,
+                                    Convert.ToDouble(worksheet.Cells[i - 10, 7].Value), Convert.ToDouble(worksheet.Cells[i - 10, 8].Value), Convert.ToDouble(worksheet.Cells[i - 10, 9].Value));
+
+                                    for (int i2 = 11; i2 < _split.Length + 11; i2++)
+                                    {
+                                        worksheet.Cells[i - 10, i2].Value = _split[i2 - 11];
+                                        worksheet.Cells[i - 10, i2].Style.Font.Color.SetColor(Color.FromArgb(135, 135, 135));
+                                        worksheet.Cells[i - 10, i2].Style.Font.Italic = true;
+                                        worksheet.Cells[i - 10, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Dotted);
+                                        worksheet.Cells[i - 10, i2].Style.Border.Top.Color.SetColor(Color.Gray);
+                                        worksheet.Cells[i - 10, i2].Style.Border.Right.Color.SetColor(Color.Gray);
+                                        worksheet.Cells[i - 10, i2].Style.Border.Bottom.Color.SetColor(Color.Gray);
+                                        worksheet.Cells[i - 10, i2].Style.Border.Left.Color.SetColor(Color.Gray);
+                                    }
                                 }
                                 #endregion
 

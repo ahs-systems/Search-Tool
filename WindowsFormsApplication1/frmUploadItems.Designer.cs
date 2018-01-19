@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUploadItems));
             this.cboItemsReport = new System.Windows.Forms.ComboBox();
             this.cboYearPP = new System.Windows.Forms.ComboBox();
             this.cboPP = new System.Windows.Forms.ComboBox();
@@ -35,7 +36,7 @@
             this.label35 = new System.Windows.Forms.Label();
             this.chkUploadToItems = new System.Windows.Forms.CheckBox();
             this.grpItems = new System.Windows.Forms.GroupBox();
-            this.btnContinue = new MBGlassStyleButton.MBGlassButton();
+            this.btnContinue = new System.Windows.Forms.Button();
             this.grpItems.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,24 +148,17 @@
             // 
             // btnContinue
             // 
-            this.btnContinue.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnContinue.BackColor = System.Drawing.Color.Transparent;
-            this.btnContinue.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.btnContinue.BaseStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnContinue.FlatAppearance.BorderSize = 0;
+            this.btnContinue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.btnContinue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContinue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnContinue.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnContinue.Location = new System.Drawing.Point(207, 112);
-            this.btnContinue.MenuListPosition = new System.Drawing.Point(0, 0);
+            this.btnContinue.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContinue.ForeColor = System.Drawing.Color.White;
+            this.btnContinue.Image = ((System.Drawing.Image)(resources.GetObject("btnContinue.Image")));
+            this.btnContinue.Location = new System.Drawing.Point(212, 112);
             this.btnContinue.Name = "btnContinue";
-            this.btnContinue.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnContinue.OnStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnContinue.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(214)))), ((int)(((byte)(78)))));
-            this.btnContinue.PressStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(177)))), ((int)(((byte)(118)))));
-            this.btnContinue.Size = new System.Drawing.Size(140, 33);
-            this.btnContinue.TabIndex = 65;
+            this.btnContinue.Size = new System.Drawing.Size(130, 42);
+            this.btnContinue.TabIndex = 66;
             this.btnContinue.Text = "Continue";
+            this.btnContinue.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnContinue.UseVisualStyleBackColor = false;
             this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click);
             // 
@@ -197,6 +191,6 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.CheckBox chkUploadToItems;
         private System.Windows.Forms.GroupBox grpItems;
-        private MBGlassStyleButton.MBGlassButton btnContinue;
+        private System.Windows.Forms.Button btnContinue;
     }
 }

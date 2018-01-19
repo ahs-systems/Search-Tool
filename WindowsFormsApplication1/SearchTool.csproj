@@ -52,11 +52,6 @@
       <HintPath>.\ExcelLibrary.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MBGlassButton">
-      <HintPath>bin\Debug\MBGlassButton.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Exchange.WebServices, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Exchange.WebServices.2.2\lib\40\Microsoft.Exchange.WebServices.dll</HintPath>
       <Private>True</Private>
@@ -117,12 +112,6 @@
     <Compile Include="frmESPbatchAccess.Designer.cs">
       <DependentUpon>frmESPbatchAccess.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmClearLocks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,12 +135,6 @@
     </Compile>
     <Compile Include="frmMainNew.Designer.cs">
       <DependentUpon>frmMainNew.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmTrainings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTrainings.Designer.cs">
-      <DependentUpon>frmTrainings.cs</DependentUpon>
     </Compile>
     <Compile Include="frmUploadItems.cs">
       <SubType>Form</SubType>
@@ -189,9 +172,6 @@
     <EmbeddedResource Include="frmESPbatchAccess.resx">
       <DependentUpon>frmESPbatchAccess.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmClearLocks.resx">
       <DependentUpon>frmClearLocks.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,9 +183,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainNew.resx">
       <DependentUpon>frmMainNew.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTrainings.resx">
-      <DependentUpon>frmTrainings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUploadItems.resx">
       <DependentUpon>frmUploadItems.cs</DependentUpon>

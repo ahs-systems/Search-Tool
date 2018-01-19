@@ -46,6 +46,6 @@ namespace WindowsFormsApplication1
                 attr.itemsReportLetter = cboItemsReport.SelectedItem.ToString();
             }
             Close();
-        }
+        }        
     }
 }

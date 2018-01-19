@@ -1170,7 +1170,7 @@ namespace WindowsFormsApplication1
             animation1.TimeCoeff = 0F;
             animation1.TransparencyCoeff = 0F;
             this.transFrm.DefaultAnimation = animation1;
-            this.transFrm.MaxAnimationTime = 2000;
+            this.transFrm.TimeStep = 0.01F;
             // 
             // frmMainNew
             // 

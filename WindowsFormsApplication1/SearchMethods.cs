@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data.SqlClient;
+using Microsoft.VisualBasic;
 
 namespace WindowsFormsApplication1
 {
@@ -21,9 +20,9 @@ namespace WindowsFormsApplication1
 
             switch (_code.Trim())
             {
-                case "A0K":                   
+                case "A0K":
                 case "A0M":
-                case "A15":                
+                case "A15":
                 case "ASC":
                 case "A0L":
                     _ret = CheckIfGSS(_EmpNum) ? "(Check if A0U)" : "A23";
@@ -31,18 +30,30 @@ namespace WindowsFormsApplication1
                 case "A10":
                     _ret = "A24";
                     break;
-                case "A5A":                
-                case "A0E":                                
+                case "A5A":
+                case "A0E":
                 case "A1H":
                     _ret = "A09";
                     break;
                 case "A48":
+                    // Don't process A48 during Tue and Fri of Week 2
+                    //long noOfDays = DateAndTime.DateDiff(DateInterval.Day, Convert.ToDateTime(SearchMethods.GetStartPPDate(DateTime.Today.AddDays(-3).ToString("yyyy-MM-dd"))), DateTime.Today);
+                    //if (noOfDays > 12)
+                    //{
+                    //    _ret = "UrCall / A09";
+                    //}
+                    //else
+                    //{
+                    //    _ret = "(Leave It 4Now)";
+                    //} 
+                    _ret = "(Leave It 4Now)";
+                    break;
                 case "A1F":
-                    _ret = "";
+                    _ret = "(Check VAC)";
                     break;
                 case "A1P":
                     _ret = CheckIfAUPE_AUX(_EmpNum) ? "(AUPE Aux)" : "A09";
-                    break;                                   
+                    break;
                 case "A5B":
                     //_ret = CheckIfAUPE(_EmpNum) ? "A09" : "(Not AUPE)";
                     //_ret = CheckIfAUPE_AUX(_EmpNum) ? "A09" : "(Not AUPE Aux)";
@@ -181,7 +192,7 @@ namespace WindowsFormsApplication1
 
                 //if (_EmpNum == "01030201" || _EmpNum == "01119963")
                 //{                    
-                    
+
                 //    _ret = true;
                 //}
 
@@ -236,7 +247,7 @@ namespace WindowsFormsApplication1
                     _reader.Read();
                     _ret = _reader["StartDate"].ToString();
                 }
-                
+
                 _reader.Dispose();
             }
             catch
@@ -349,10 +360,10 @@ namespace WindowsFormsApplication1
                     }
                     _conn.Close();
                 }
-                _conn.Dispose();                              
+                _conn.Dispose();
             }
 
-            _ret = _tempStorage.ToArray();  
+            _ret = _tempStorage.ToArray();
             return _ret;
         }
 
@@ -449,11 +460,11 @@ namespace WindowsFormsApplication1
                     }
                     _conn.Close();
                 }
-                _conn.Dispose();                              
+                _conn.Dispose();
             }
 
             return _ret;
-        
+
         }
-    }    
+    }
 }
