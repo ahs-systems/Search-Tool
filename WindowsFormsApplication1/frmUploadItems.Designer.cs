@@ -100,7 +100,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
             this.label34.Location = new System.Drawing.Point(11, 36);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(61, 13);
@@ -110,7 +110,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
             this.label35.Location = new System.Drawing.Point(166, 37);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(32, 13);
@@ -121,6 +121,7 @@
             // 
             this.chkUploadToItems.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.chkUploadToItems.AutoSize = true;
+            this.chkUploadToItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
             this.chkUploadToItems.Location = new System.Drawing.Point(19, 10);
             this.chkUploadToItems.Name = "chkUploadToItems";
             this.chkUploadToItems.Size = new System.Drawing.Size(163, 17);
@@ -170,7 +171,9 @@
             // frmUploadItems
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(554, 166);
+            this.ControlBox = false;
             this.Controls.Add(this.btnContinue);
             this.Controls.Add(this.chkUploadToItems);
             this.Controls.Add(this.grpItems);

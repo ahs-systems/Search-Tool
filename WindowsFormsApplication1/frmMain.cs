@@ -206,7 +206,7 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                _conn.ConnectionString = @"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;";
+                _conn.ConnectionString = Common.ESPServer; //@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;";
 
                 TopMost = true;
 
