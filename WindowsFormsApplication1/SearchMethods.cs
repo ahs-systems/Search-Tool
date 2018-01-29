@@ -271,6 +271,49 @@ namespace WindowsFormsApplication1
             return _ret;
         }
 
+        public static string GetPPnumber(string _date)
+        {
+            //SqlConnection _conn = new SqlConnection(@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;");
+            SqlConnection _conn = new SqlConnection(Common.ESPServer);
+            SqlCommand _comm = null;
+
+            string _ret = "";
+
+            try
+            {
+                _conn.Open();
+                _comm = _conn.CreateCommand();
+                _comm.CommandText = "select REPLACE(STR(PP_Nbr, 2), SPACE(1), '0') as PP from PayPeriod where @V_DATE between PP_StartDate and PP_EndDate";
+                _comm.Parameters.Add(new SqlParameter("V_DATE", _date));
+                SqlDataReader _reader = _comm.ExecuteReader();
+                if (_reader.HasRows)
+                {
+                    _reader.Read();
+                    _ret = _reader["PP"].ToString();
+                }
+                _reader.Dispose();
+            }
+            catch
+            {
+                _ret = "";
+            }
+            finally
+            {
+                if (_conn.State == System.Data.ConnectionState.Open)
+                {
+                    if (_comm != null)
+                    {
+                        _comm.Dispose();
+                        _comm = null;
+                    }
+                    _conn.Close();
+                }
+                _conn.Dispose();
+            }
+
+            return _ret;
+        }
+
         public static string GetPreviousPPStartDate(string _date)
         {
             //SqlConnection _conn = new SqlConnection(@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;");

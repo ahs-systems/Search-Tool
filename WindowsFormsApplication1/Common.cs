@@ -46,6 +46,41 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public static string GetUnionGroup(string empID)
+        {
+            SqlConnection _conn = new SqlConnection(ESPServer);
+
+            try
+            {
+                string _ret = "";
+
+                _conn.Open();
+                SqlCommand _comm = _conn.CreateCommand();
+                _comm.CommandText = "SELECT UNN_Desc FROM Emp " +
+                                    "Join EmpSeniority ON E_EmpID = ESN_EmpID " +
+                                    "Join UnionGroup ON ESN_UnionGroupID = UNN_UnionID " +
+                                    "WHERE E_EmpNbr = @empID";
+                _comm.Parameters.Add(new SqlParameter("empID", empID));
+                SqlDataReader _reader = _comm.ExecuteReader();
+                if (_reader.HasRows)
+                {
+                    _reader.Read();
+                    _ret = _reader["UNN_Desc"].ToString();
+                }
+                if (_reader.IsClosed != true) _reader.Close();
+
+                return _ret;
+            }
+            catch
+            {
+                return "";
+            }
+            finally
+            {
+                if (_conn.State == System.Data.ConnectionState.Open) _conn.Close();
+            }
+        }
+
         public static string CheckIfMultiJob(string _empNbr)
         {
             SqlConnection _conn = new SqlConnection(ESPServer);
@@ -98,7 +133,7 @@ namespace WindowsFormsApplication1
                 _currentUser = _currentUser.ToUpper();
                 for (int i = 0; i < _users.Length; i++)
                 {
-                    if (Common.Decrypt(_users[i],"rsss") .Contains(_currentUser))
+                    if (Common.Decrypt(_users[i], "rsss").Contains(_currentUser))
                     {
                         return true;
                     }

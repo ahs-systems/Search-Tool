@@ -11,9 +11,6 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
-//using VisualEffects;
-//using VisualEffects.Animations.Effects;
-//using VisualEffects.Easing;
 
 namespace WindowsFormsApplication1
 {
@@ -185,6 +182,7 @@ namespace WindowsFormsApplication1
         private void ShowMe()
         {
             Show();
+            Update();
         }
 
         private void HideMe()
@@ -985,17 +983,12 @@ namespace WindowsFormsApplication1
                     //            worksheet.Row(i - 8).Style.Font.Name = "Arial";
                     //            worksheet.Row(i - 8).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
 
-                    //            //worksheet.Cells[i - 8, 1].Value = currentWorksheet.Cells[i, 1].Value.ToString().Trim(); worksheet.Cells[i - 8, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     //            worksheet.Cells[i - 8, 1].Value = currentWorksheet.Cells[i, 1].Value; worksheet.Cells[i - 8, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     //            worksheet.Cells[i - 8, 2].Value = currentWorksheet.Cells[i, 2].Value.ToString().Trim(); worksheet.Cells[i - 8, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     //            worksheet.Cells[i - 8, 3].Value = currentWorksheet.Cells[i, 3].Value; worksheet.Cells[i - 8, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     //            worksheet.Cells[i - 8, 4].Value = currentWorksheet.Cells[i, 4].Value; worksheet.Cells[i - 8, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     //            worksheet.Cells[i - 8, 5].Value = currentWorksheet.Cells[i, 5].Value; worksheet.Cells[i - 8, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     //            worksheet.Cells[i - 8, 6].Value = currentWorksheet.Cells[i, 6].Value; worksheet.Cells[i - 8, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    //            //worksheet.Cells[i - 8, 7].Value = currentWorksheet.Cells[i, 7].Value; worksheet.Cells[i - 8, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    //            //worksheet.Cells[i - 8, 8].Value = currentWorksheet.Cells[i, 8].Value; worksheet.Cells[i - 8, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    //            //worksheet.Cells[i - 8, 9].Value = SearchMethods.ChangeTo(currentWorksheet.Cells[i, 4].Value.ToString(), currentWorksheet.Cells[i, 3].Value.ToString().Trim());
-
                     //            worksheet.Cells[i - 8, 7].Value = Math.Floor(Convert.ToDouble(currentWorksheet.Cells[i, 7].Value) * 100) / 100; worksheet.Cells[i - 8, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     //            worksheet.Cells[i - 8, 8].Value = Math.Round(Convert.ToDouble(currentWorksheet.Cells[i, 6].Value) - (Math.Floor(Convert.ToDouble(currentWorksheet.Cells[i, 7].Value) * 100) / 100), 3); worksheet.Cells[i - 8, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     //            worksheet.Cells[i - 8, 9].Value = SearchMethods.ChangeTo(currentWorksheet.Cells[i, 4].Value.ToString(), currentWorksheet.Cells[i, 3].Value.ToString().Trim(), Convert.ToDouble(worksheet.Cells[i - 8, 8].Value));
@@ -1006,6 +999,7 @@ namespace WindowsFormsApplication1
                     //            worksheet.Cells[i - 8, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                     //            worksheet.Cells[i - 8, 9].Style.Font.Italic = true;
                     //            worksheet.Cells[i - 8, 9].Style.Font.Color.SetColor(Color.Gray);
+
                     //            if (worksheet.Cells[i - 8, 9].Value.ToString().IndexOf('(') > -1) // check for opening parenthesis in column 10 for notes
                     //            {
                     //                worksheet.Cells[i - 8, 9].Style.Font.Size = 8;
@@ -1019,18 +1013,35 @@ namespace WindowsFormsApplication1
                     //                _unpaidCode = worksheet.Cells[i - 8, 9].Value.ToString().Substring(0, 3);
                     //            }
 
-                    //            string[] _split = GetTheSplit(worksheet.Cells[i - 8, 3].Value.ToString().Trim(), worksheet.Cells[i - 8, 4].Value.ToString().Trim(), _unpaidCode,
-                    //                Convert.ToDouble(worksheet.Cells[i - 8, 6].Value), Convert.ToDouble(worksheet.Cells[i - 8, 7].Value), Convert.ToDouble(worksheet.Cells[i - 8, 8].Value));
-                    //            for (int i2 = 10; i2 < _split.Length + 10; i2++)
+                    //            // Check for A48, don't process the split for those ones
+                    //            if (worksheet.Cells[i - 8, 4].Value.ToString().Trim() == "A48")
                     //            {
-                    //                worksheet.Cells[i - 8, i2].Value = _split[i2 - 10];
-                    //                worksheet.Cells[i - 8, i2].Style.Font.Color.SetColor(Color.FromArgb(135, 135, 135));
-                    //                worksheet.Cells[i - 8, i2].Style.Font.Italic = true;
-                    //                worksheet.Cells[i - 8, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Dotted);
-                    //                worksheet.Cells[i - 8, i2].Style.Border.Top.Color.SetColor(Color.Gray);
-                    //                worksheet.Cells[i - 8, i2].Style.Border.Right.Color.SetColor(Color.Gray);
-                    //                worksheet.Cells[i - 8, i2].Style.Border.Bottom.Color.SetColor(Color.Gray);
-                    //                worksheet.Cells[i - 8, i2].Style.Border.Left.Color.SetColor(Color.Gray);
+                    //                for (int i2 = 10; i2 < 14; i2++)
+                    //                {
+                    //                    worksheet.Cells[i - 8, i2].Value = "####";
+                    //                    worksheet.Cells[i - 8, i2].Style.Font.Color.SetColor(Color.FromArgb(135, 135, 135));
+                    //                }
+
+                    //                // decrease the font size for row with A48
+                    //                range = worksheet.Cells[i - 8, 10, i - 8, 13];
+                    //                range.Style.Font.Name = "Verdana";
+                    //                range.Style.Font.Size = 10;
+                    //            }
+                    //            else
+                    //            {
+                    //                string[] _split = GetTheSplit(worksheet.Cells[i - 8, 3].Value.ToString().Trim(), worksheet.Cells[i - 8, 4].Value.ToString().Trim(), _unpaidCode,
+                    //                Convert.ToDouble(worksheet.Cells[i - 8, 6].Value), Convert.ToDouble(worksheet.Cells[i - 8, 7].Value), Convert.ToDouble(worksheet.Cells[i - 8, 8].Value));
+                    //                for (int i2 = 10; i2 < _split.Length + 10; i2++)
+                    //                {
+                    //                    worksheet.Cells[i - 8, i2].Value = _split[i2 - 10];
+                    //                    worksheet.Cells[i - 8, i2].Style.Font.Color.SetColor(Color.FromArgb(135, 135, 135));
+                    //                    worksheet.Cells[i - 8, i2].Style.Font.Italic = true;
+                    //                    worksheet.Cells[i - 8, i2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Dotted);
+                    //                    worksheet.Cells[i - 8, i2].Style.Border.Top.Color.SetColor(Color.Gray);
+                    //                    worksheet.Cells[i - 8, i2].Style.Border.Right.Color.SetColor(Color.Gray);
+                    //                    worksheet.Cells[i - 8, i2].Style.Border.Bottom.Color.SetColor(Color.Gray);
+                    //                    worksheet.Cells[i - 8, i2].Style.Border.Left.Color.SetColor(Color.Gray);
+                    //                }
                     //            }
                     //            #endregion
 
@@ -1213,7 +1224,7 @@ namespace WindowsFormsApplication1
                                 if (!worksheet.Cells[i - 10, 10].Value.ToString().StartsWith("(") && worksheet.Cells[i - 10, 10].Value.ToString().Length > 2)
                                 {
                                     _unpaidCode = worksheet.Cells[i - 10, 10].Value.ToString().Substring(0, 3);
-                                }                               
+                                }
 
                                 // Check for A48, don't process the split for those
                                 if (worksheet.Cells[i - 10, 5].Value.ToString().Trim() == "A48")
@@ -2375,7 +2386,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy hh:mm tt");
                     worksheet.HeaderFooter.OddHeader.RightAlignedText = _headerRight;
                     worksheet.HeaderFooter.OddHeader.CenteredText = _headerCenter;
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
@@ -2972,7 +2983,7 @@ namespace WindowsFormsApplication1
 
         private void mnuCopyEmpNum_Click(object sender, EventArgs e)
         {
-            string _clipText = lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(0, 10);
+            string _clipText = lstResult.Items[lstResult.SelectedIndex].ToString().Trim().Substring(0, 8);
             Clipboard.SetText(_clipText);
             MessageBox.Show("'" + _clipText + "' copied to clipboard!");
         }
@@ -3746,6 +3757,400 @@ namespace WindowsFormsApplication1
                 _frm.ShowDialog();
                 ShowMe();
             }
+        }
+
+        private void btnFormatTAER_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Title = "Select the TAER file from ePeople";
+                openFileDialog1.Filter = "XLS Files (.xls)|*.xls|CSV Files (.csv)|*.csv|All Files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 1;
+
+                bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+                if (!userClickedOK)
+                {
+                    return;
+                }
+
+                HideMe();
+                frmPPandStartDate _frm = new frmPPandStartDate();
+                if (_frm.ShowDialog() == DialogResult.Cancel)
+                {
+                    ShowMe();
+                    return;
+                }
+                string _pp = _frm.cboPP.SelectedItem.ToString().Substring(0, 5);
+                DateTime _ppStartDate = DateTime.Parse(_frm.cboPP.SelectedItem.ToString().Substring(9, 12));
+                bool isItFinalRun = _frm.chkFinal.Checked;
+                ShowMe();
+
+
+                ((BunifuTileButton)sender).LabelText = "Processing...";
+                Cursor.Current = Cursors.WaitCursor;
+                ((BunifuTileButton)sender).Update();
+
+                List<string[]> _unknownError = new List<string[]>();
+                List<string[]> _banks = new List<string[]>();
+                List<string[]> _priors = new List<string[]>();
+                List<string[]> _lowAndMedium = new List<string[]>();
+                List<string[]> _Negatives = new List<string[]>();
+                List<string[]> _Schedulers = new List<string[]>();
+                List<string[]> _a1pAux = new List<string[]>();
+                List<string[]> _actingPay = new List<string[]>();
+
+                using (var package = new ExcelPackage())
+                {
+                    // add a new worksheet to the empty workbook
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Original");
+
+                    // Set Page Settings
+                    worksheet.PrinterSettings.Orientation = eOrientation.Landscape;
+                    worksheet.PrinterSettings.ShowGridLines = true;
+                    worksheet.PrinterSettings.HorizontalCentered = true;
+                    worksheet.PrinterSettings.TopMargin = (decimal)1.5 / 2.54M;
+                    worksheet.PrinterSettings.BottomMargin = (decimal)1.5 / 2.54M;
+                    worksheet.PrinterSettings.LeftMargin = (decimal)0.25 / 2.54M;
+                    worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
+                    worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
+                    worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy hh:mm tt");
+                    worksheet.HeaderFooter.OddHeader.RightAlignedText = "";
+                    worksheet.HeaderFooter.OddHeader.CenteredText = "";
+                    worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
+                    worksheet.View.PageBreakView = true;
+                    worksheet.PrinterSettings.RepeatRows = new ExcelAddress("$1:$1");
+                    worksheet.PrinterSettings.FitToPage = true; worksheet.PrinterSettings.FitToWidth = 1; worksheet.PrinterSettings.FitToHeight = 0;
+
+                    //Setting Header Style
+                    worksheet.Row(1).Height = 20;
+                    worksheet.Cells[1, 1].Value = "Exception ID"; //worksheet.Column(2).Width = 12.30;
+                    worksheet.Cells[1, 2].Value = "Empl ID"; //worksheet.Column(3).Width = 10.43; //worksheet.Column(3).AutoFit(); //
+                    worksheet.Cells[1, 3].Value = "Empl Rcd#"; //worksheet.Column(4).Width = 22;
+                    worksheet.Cells[1, 4].Value = "Rpt Dt"; //worksheet.Column(5).Width = 35;
+                    worksheet.Cells[1, 5].Value = "Exception Status"; //worksheet.Column(6).Width = 35;
+                    worksheet.Cells[1, 6].Value = "Severity"; //worksheet.Column(7).Width = 9.86; worksheet.Cells[1, 7].Style.WrapText = true;
+                    worksheet.Cells[1, 7].Value = "Error Message"; //worksheet.Column(8).Width = 15;
+                    worksheet.Cells[1, 8].Value = "DeptID"; //worksheet.Column(8).Width = 15;
+                    worksheet.Cells[1, 9].Value = "Name"; //worksheet.Column(8).Width = 15;
+                    worksheet.Cells[1, 10].Value = "TCD Group"; //worksheet.Column(8).Width = 15;
+                    worksheet.Cells[1, 11].Value = "TCD Type";
+                    var range = worksheet.Cells[1, 1, 1, 11];
+                    range.Style.Font.Bold = true;
+                    range.Style.Font.Size = 10;
+                    range.Style.Font.Name = "Arial";
+
+                    Workbook book = Workbook.Load(openFileDialog1.FileName);
+                    Worksheet sheet = book.Worksheets[0];
+                    int lineCtr = 2;
+
+                    // Loop thru the Excel file from ePeople
+                    for (int rowIndex = sheet.Cells.FirstRowIndex + 9; rowIndex <= sheet.Cells.LastRowIndex; rowIndex++)
+                    {
+                        Row row = sheet.Cells.GetRow(rowIndex);
+
+                        if (row.GetCell(0).StringValue.Trim() != "")
+                        {
+                            worksheet.Row(lineCtr).Height = 20;
+                            worksheet.Row(lineCtr).Style.Font.Name = "Arial";
+                            worksheet.Row(lineCtr).Style.Font.Size = 10;
+                            //worksheet.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+                            worksheet.Cells[lineCtr, 1].Value = row.GetCell(0).StringValue;     // Exception ID
+                            worksheet.Cells[lineCtr, 2].Value = row.GetCell(1).StringValue;     // Empl ID
+                            worksheet.Cells[lineCtr, 3].Value = row.GetCell(2).StringValue;     // Rcd #
+                            worksheet.Cells[lineCtr, 4].Value = Convert.ToDateTime(row.GetCell(3).DateTimeValue).ToString("yyyy/MM/dd");  //  Rpt Dt   
+                            worksheet.Cells[lineCtr, 5].Value = row.GetCell(4).StringValue;     // Exception Status
+                            worksheet.Cells[lineCtr, 6].Value = row.GetCell(5).StringValue;     // Severity
+                            worksheet.Cells[lineCtr, 7].Value = row.GetCell(6).StringValue;     // Error Message
+                            worksheet.Cells[lineCtr, 8].Value = row.GetCell(7).StringValue;     // Dept ID
+                            worksheet.Cells[lineCtr, 9].Value = row.GetCell(8).StringValue;     // Name
+                            worksheet.Cells[lineCtr, 10].Value = row.GetCell(9).StringValue;    // TCD Group   
+                            worksheet.Cells[lineCtr, 11].Value = row.GetCell(10).StringValue;   // TCD Type
+                            lineCtr++;
+
+                            // Check if its Low and Medium
+                            if (row.GetCell(6).StringValue.StartsWith("Report > 12hrs on Day:") ||
+                                row.GetCell(6).StringValue.StartsWith("Greater than 16hrs Reg&OT") ||
+                                row.GetCell(6).StringValue.StartsWith("Report  > 90hrs in period"))
+                            {
+                                _lowAndMedium.Add(new string[] {
+                                    row.GetCell(1).StringValue,
+                                    row.GetCell(2).StringValue,
+                                    Convert.ToDateTime(row.GetCell(3).DateTimeValue).ToString("yyyy/MM/dd"),
+                                    row.GetCell(4).StringValue,
+                                    row.GetCell(5).StringValue,
+                                    row.GetCell(6).StringValue,
+                                    row.GetCell(7).StringValue,
+                                    row.GetCell(8).StringValue,
+                                    row.GetCell(9).StringValue.Substring(0, row.GetCell(9).StringValue.IndexOf("-")-1),
+                                    row.GetCell(9).StringValue.Substring(row.GetCell(9).StringValue.IndexOf("-")+2)
+                                });
+                            }
+
+                            // Check if A1P
+                            else if ((row.GetCell(6).StringValue.StartsWith("A1P more than 7.75hrs reported") ||
+                                    row.GetCell(6).StringValue.StartsWith("Invalid TRC Maximum")) &&
+                                    Common.GetUnionGroup(row.GetCell(1).StringValue.Trim() + "-" + row.GetCell(2).StringValue.Trim()).StartsWith("AUPE Aux"))
+                            {
+                                _a1pAux.Add(new string[] {
+                                    row.GetCell(1).StringValue,
+                                    row.GetCell(2).StringValue,
+                                    Convert.ToDateTime(row.GetCell(3).DateTimeValue).ToString("yyyy/MM/dd"),
+                                    row.GetCell(4).StringValue,
+                                    row.GetCell(5).StringValue,
+                                    row.GetCell(6).StringValue,
+                                    row.GetCell(7).StringValue,
+                                    row.GetCell(8).StringValue,
+                                    row.GetCell(9).StringValue.Substring(0, row.GetCell(9).StringValue.IndexOf("-")-1),
+                                    row.GetCell(9).StringValue.Substring(row.GetCell(9).StringValue.IndexOf("-")+2)
+                                });
+                            }
+
+                            // Check if its Priors
+                            else if (Convert.ToDateTime(row.GetCell(3).DateTimeValue) < _ppStartDate)
+                            {
+                                _priors.Add(new string[] {
+                                    row.GetCell(1).StringValue,
+                                    row.GetCell(2).StringValue,
+                                    Convert.ToDateTime(row.GetCell(3).DateTimeValue).ToString("yyyy/MM/dd"),
+                                    row.GetCell(4).StringValue,
+                                    row.GetCell(5).StringValue,
+                                    row.GetCell(6).StringValue,
+                                    row.GetCell(7).StringValue,
+                                    row.GetCell(8).StringValue,
+                                    row.GetCell(9).StringValue.Substring(0, row.GetCell(9).StringValue.IndexOf("-")-1),
+                                    row.GetCell(9).StringValue.Substring(row.GetCell(9).StringValue.IndexOf("-")+2)
+                                });
+                            }
+
+                            // Check if its Banks
+                            else if (row.GetCell(6).StringValue.StartsWith("A1P -Coded Less Than Recommend") ||
+                                    row.GetCell(6).StringValue.StartsWith("A1P more than 7.75hrs reported") ||
+                                    row.GetCell(6).StringValue.StartsWith("Employee not associated to any Benefit Plan") ||
+                                    row.GetCell(6).StringValue.StartsWith("Exceed Max Neg Hrs on Comp Pln") ||
+                                    row.GetCell(6).StringValue.StartsWith("Payout Created For Term EE") ||
+                                    row.GetCell(6).StringValue.StartsWith("Exceeds Maximum Banking Hours") ||
+                                    row.GetCell(6).StringValue.StartsWith("Invalid Comp Time TRC/Comp Time Balance") ||
+                                    row.GetCell(6).StringValue.StartsWith("Leave Balance is less than the allowed minimum balance") ||
+                                    row.GetCell(6).StringValue.StartsWith("Negative Comp Time balance not allowed") ||
+                                    row.GetCell(6).StringValue.StartsWith("Not enough comp bank balance"))
+                            {
+                                _banks.Add(new string[] {
+                                    row.GetCell(1).StringValue,
+                                    row.GetCell(2).StringValue,
+                                    Convert.ToDateTime(row.GetCell(3).DateTimeValue).ToString("yyyy/MM/dd"),
+                                    row.GetCell(4).StringValue,
+                                    row.GetCell(5).StringValue,
+                                    row.GetCell(6).StringValue,
+                                    row.GetCell(7).StringValue,
+                                    row.GetCell(8).StringValue,
+                                    row.GetCell(9).StringValue.Substring(0, row.GetCell(9).StringValue.IndexOf("-")-1),
+                                    row.GetCell(9).StringValue.Substring(row.GetCell(9).StringValue.IndexOf("-")+2)
+                                });
+                            }
+
+                            // Check if its Schedulers
+                            else if (row.GetCell(6).StringValue.StartsWith("Acting Hours less than 2") ||
+                                    row.GetCell(6).StringValue.StartsWith("Acting JobCode outside Union") ||
+                                    row.GetCell(6).StringValue.StartsWith("Invalid TRC") ||
+                                    row.GetCell(6).StringValue.StartsWith("TRC not in TRC Table") ||
+                                    row.GetCell(6).StringValue.StartsWith("Acting JobCode Same as Current") ||
+                                    row.GetCell(6).StringValue.StartsWith("Employee Ineligible") ||
+                                    row.GetCell(6).StringValue.StartsWith("Could not Determine Acting Pay"))
+                            {
+                                _Schedulers.Add(new string[] {
+                                    row.GetCell(1).StringValue,
+                                    row.GetCell(2).StringValue,
+                                    Convert.ToDateTime(row.GetCell(3).DateTimeValue).ToString("yyyy/MM/dd"),
+                                    row.GetCell(4).StringValue,
+                                    row.GetCell(5).StringValue,
+                                    row.GetCell(6).StringValue,
+                                    row.GetCell(7).StringValue,
+                                    row.GetCell(8).StringValue,
+                                    row.GetCell(9).StringValue.Substring(0, row.GetCell(9).StringValue.IndexOf("-")-1),
+                                    row.GetCell(9).StringValue.Substring(row.GetCell(9).StringValue.IndexOf("-")+2)
+                                });
+                            }
+
+                            // Check if "Acting Pay Rate < Current Rate"
+                            else if (row.GetCell(6).StringValue.StartsWith("Acting Pay Rate < Current Rate"))
+                            {
+                                _actingPay.Add(new string[] {
+                                    row.GetCell(1).StringValue,
+                                    row.GetCell(2).StringValue,
+                                    Convert.ToDateTime(row.GetCell(3).DateTimeValue).ToString("yyyy/MM/dd"),
+                                    row.GetCell(4).StringValue,
+                                    row.GetCell(5).StringValue,
+                                    row.GetCell(6).StringValue,
+                                    row.GetCell(7).StringValue,
+                                    row.GetCell(8).StringValue,
+                                    row.GetCell(9).StringValue.Substring(0, row.GetCell(9).StringValue.IndexOf("-")-1),
+                                    row.GetCell(9).StringValue.Substring(row.GetCell(9).StringValue.IndexOf("-")+2)
+                                });
+                            }
+
+                            // Check if Negatives
+                            else if (row.GetCell(6).StringValue.StartsWith("Negative Hours Reported"))
+                            {
+                                _Negatives.Add(new string[] {
+                                    row.GetCell(1).StringValue,
+                                    row.GetCell(2).StringValue,
+                                    Convert.ToDateTime(row.GetCell(3).DateTimeValue).ToString("yyyy/MM/dd"),
+                                    row.GetCell(4).StringValue,
+                                    row.GetCell(5).StringValue,
+                                    row.GetCell(6).StringValue,
+                                    row.GetCell(7).StringValue,
+                                    row.GetCell(8).StringValue,
+                                    row.GetCell(9).StringValue.Substring(0, row.GetCell(9).StringValue.IndexOf("-")-1),
+                                    row.GetCell(9).StringValue.Substring(row.GetCell(9).StringValue.IndexOf("-")+2)
+                                });
+                            }
+
+                            // All Other Errors, put it in the "Unknown Error" tab
+                            else
+                            {
+                                _unknownError.Add(new string[] {
+                                    row.GetCell(1).StringValue,
+                                    row.GetCell(2).StringValue,
+                                    Convert.ToDateTime(row.GetCell(3).DateTimeValue).ToString("yyyy/MM/dd"),
+                                    row.GetCell(4).StringValue,
+                                    row.GetCell(5).StringValue,
+                                    row.GetCell(6).StringValue,
+                                    row.GetCell(7).StringValue,
+                                    row.GetCell(8).StringValue,
+                                    row.GetCell(9).StringValue.Substring(0, row.GetCell(9).StringValue.IndexOf("-")-1),
+                                    row.GetCell(9).StringValue.Substring(row.GetCell(9).StringValue.IndexOf("-")+2)
+                                });
+                            }
+                        }
+                    }
+
+                    worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+
+                    AddTabInTAER(package, "Unknown Error", _pp, _unknownError, "OTHERS", false, isItFinalRun);
+                    AddTabInTAER(package, "Banks", _pp, _banks, "OTHERS", true, isItFinalRun);
+                    AddTabInTAER(package, "Priors", _pp, _priors, "PRIORS", true, isItFinalRun);
+                    AddTabInTAER(package, "Low & Medium", _pp, _lowAndMedium, "OTHERS", false, isItFinalRun);
+                    AddTabInTAER(package, "Negatives", _pp, _Negatives, "PRIORS", false, isItFinalRun);
+                    AddTabInTAER(package, "Schedulers", _pp, _Schedulers, "OTHERS", true, isItFinalRun);
+                    AddTabInTAER(package, "A1P Aux", _pp, _a1pAux, "OTHERS", false, isItFinalRun);
+                    AddTabInTAER(package, "Acting Pay", _pp, _actingPay, "OTHERS", false, isItFinalRun);
+
+                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                    saveFileDialog1.FilterIndex = 1;
+                    saveFileDialog1.FileName = "TAER " + DateTime.Today.ToString("ddMMMyyyy");
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        package.SaveAs(new FileInfo(saveFileDialog1.FileName));
+                        System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ((BunifuTileButton)sender).LabelText = "Format TAER";
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void AddTabInTAER(ExcelPackage package, string _title, string _payPeriod, List<string[]> _data, string _sortOrder, bool _legalPaper, bool _isItFinalRun)
+        {
+            // add a new worksheet to the empty workbook
+            ExcelWorksheet _ws = package.Workbook.Worksheets.Add(_title);
+
+            // Set Page Settings
+            _ws.PrinterSettings.Orientation = eOrientation.Landscape;
+            if (_legalPaper)
+            {
+                _ws.PrinterSettings.PaperSize = ePaperSize.Legal;
+            }
+            _ws.PrinterSettings.ShowGridLines = true;
+            _ws.PrinterSettings.HorizontalCentered = true;
+            _ws.PrinterSettings.TopMargin = (decimal)1.5 / 2.54M;
+            _ws.PrinterSettings.BottomMargin = (decimal)1.5 / 2.54M;
+            _ws.PrinterSettings.LeftMargin = (decimal)0.25 / 2.54M;
+            _ws.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
+            _ws.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
+            _ws.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
+            _ws.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy hh:mm tt");
+            _ws.HeaderFooter.OddHeader.RightAlignedText = _payPeriod;
+            _ws.HeaderFooter.OddHeader.CenteredText = _isItFinalRun ? "FINAL TAER - " + _title : "TAER - " + _title;
+            _ws.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
+            _ws.View.PageBreakView = true;
+            _ws.PrinterSettings.RepeatRows = new ExcelAddress("$1:$1");
+            _ws.PrinterSettings.FitToPage = true; _ws.PrinterSettings.FitToWidth = 1; _ws.PrinterSettings.FitToHeight = 0;
+
+            //Setting Header Style
+            _ws.Row(1).Height = 20;
+            _ws.Cells[1, 1].Value = "Empl ID"; //_wsPriors.Column(3).Width = 10.43; //_wsPriors.Column(3).AutoFit(); //
+            _ws.Cells[1, 2].Value = "Rcd#"; //_wsPriors.Column(4).Width = 22;
+            _ws.Cells[1, 3].Value = "Rpt Dt"; //_wsPriors.Column(5).Width = 35;
+            _ws.Cells[1, 4].Value = "Status"; //_wsPriors.Column(6).Width = 35;
+            _ws.Cells[1, 5].Value = "Sev"; //_wsPriors.Column(7).Width = 9.86; _wsPriors.Cells[1, 7].Style.WrapText = true;
+            _ws.Cells[1, 6].Value = "Error Message"; //_wsPriors.Column(8).Width = 15;
+            _ws.Cells[1, 7].Value = "DeptID"; //_wsPriors.Column(8).Width = 15;
+            _ws.Cells[1, 8].Value = "Name"; //_wsPriors.Column(8).Width = 15;
+            _ws.Cells[1, 9].Value = "TCD#"; //_wsPriors.Column(8).Width = 15;
+            _ws.Cells[1, 10].Value = "TCD Group Name";
+            var range = _ws.Cells[1, 1, 1, 10];
+            range.Style.Font.Bold = true;
+            range.Style.Font.Size = 10;
+            range.Style.Font.Name = "Arial";
+
+            // Sort order for Priors
+            List<string[]> _items;
+            if (_sortOrder == "PRIORS") // By Error then by Group then by ID
+            {
+                _items = _data.OrderBy(r => r[5]).ThenBy(r => r[9]).ThenBy(r => r[0]).ToList();
+            }
+            else // By Group then By ID then by Date
+            {
+                _items = _data.OrderBy(r => r[9]).ThenBy(r => r[0]).ThenBy(r => r[2]).ToList();
+            }
+
+            int lineCtr = 2;
+
+            for (int i = 0; i < _items.Count; i++)
+            {
+                _ws.Row(lineCtr).Style.Font.Size = 10;
+                _ws.Row(lineCtr).Style.Font.Name = "Arial";
+                _ws.Row(lineCtr).Height = 20;
+                _ws.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+                _ws.Cells[lineCtr, 1].Value = _items[i][0];
+                _ws.Cells[lineCtr, 2].Value = _items[i][1];
+                _ws.Cells[lineCtr, 3].Value = _items[i][2];
+                _ws.Cells[lineCtr, 4].Value = _items[i][3];
+                _ws.Cells[lineCtr, 5].Value = _items[i][4];
+                _ws.Cells[lineCtr, 6].Value = _items[i][5];
+                _ws.Cells[lineCtr, 7].Value = _items[i][6];
+                _ws.Cells[lineCtr, 8].Value = _items[i][7];
+                _ws.Cells[lineCtr, 9].Value = _items[i][8];
+                _ws.Cells[lineCtr, 10].Value = _items[i][9];
+                lineCtr++;
+            }
+
+            _ws.Cells[_ws.Dimension.Address].AutoFitColumns();
+            _ws.Cells.AutoFitColumns();
+
+            // adjust the column width 
+            _ws.Column(2).Width = 5; // "Recd #"
+            if (_legalPaper)
+            {
+                _ws.Column(4).Width = 26; // "Status"
+            }
+            else
+            {
+                _ws.Column(4).Width = 21; //"Status"
+            }
+            _ws.Column(5).Width = 4; // "Sev"
+            _ws.Column(9).Width = 5; // "TCD #" 
         }
     }
 }

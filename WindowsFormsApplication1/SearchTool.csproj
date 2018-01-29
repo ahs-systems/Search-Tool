@@ -136,6 +136,12 @@
     <Compile Include="frmMainNew.Designer.cs">
       <DependentUpon>frmMainNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPPandStartDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPPandStartDate.Designer.cs">
+      <DependentUpon>frmPPandStartDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUploadItems.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainNew.resx">
       <DependentUpon>frmMainNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPPandStartDate.resx">
+      <DependentUpon>frmPPandStartDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUploadItems.resx">
       <DependentUpon>frmUploadItems.cs</DependentUpon>
