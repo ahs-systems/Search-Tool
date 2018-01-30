@@ -31,8 +31,8 @@ namespace WindowsFormsApplication1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation6 = new BunifuAnimatorNS.Animation();
-            BunifuAnimatorNS.Animation animation5 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainNew));
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlHandle = new System.Windows.Forms.Panel();
@@ -56,6 +56,7 @@ namespace WindowsFormsApplication1
             this.label1 = new System.Windows.Forms.Label();
             this.pnlMisc = new System.Windows.Forms.Panel();
             this.pnlFormatting = new System.Windows.Forms.Panel();
+            this.btnFormatTAER = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnEmailNegStat = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnFile6 = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnFile2 = new Bunifu.Framework.UI.BunifuTileButton();
@@ -97,7 +98,6 @@ namespace WindowsFormsApplication1
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.transPanel = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.btnFormatTAER = new Bunifu.Framework.UI.BunifuTileButton();
             this.pnlMain.SuspendLayout();
             this.pnlMisc.SuspendLayout();
             this.pnlFormatting.SuspendLayout();
@@ -524,6 +524,28 @@ namespace WindowsFormsApplication1
             this.pnlFormatting.Size = new System.Drawing.Size(603, 325);
             this.pnlFormatting.TabIndex = 15;
             this.pnlFormatting.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmMainNew_MouseDoubleClick);
+            // 
+            // btnFormatTAER
+            // 
+            this.btnFormatTAER.BackColor = System.Drawing.Color.Transparent;
+            this.btnFormatTAER.color = System.Drawing.Color.Transparent;
+            this.btnFormatTAER.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
+            this.btnFormatTAER.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.btnFormatTAER, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnFormatTAER, BunifuAnimatorNS.DecorationType.None);
+            this.btnFormatTAER.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFormatTAER.ForeColor = System.Drawing.Color.DarkGray;
+            this.btnFormatTAER.Image = ((System.Drawing.Image)(resources.GetObject("btnFormatTAER.Image")));
+            this.btnFormatTAER.ImagePosition = 1;
+            this.btnFormatTAER.ImageZoom = 40;
+            this.btnFormatTAER.LabelPosition = 23;
+            this.btnFormatTAER.LabelText = "Format TAER";
+            this.btnFormatTAER.Location = new System.Drawing.Point(181, 247);
+            this.btnFormatTAER.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnFormatTAER.Name = "btnFormatTAER";
+            this.btnFormatTAER.Size = new System.Drawing.Size(104, 64);
+            this.btnFormatTAER.TabIndex = 35;
+            this.btnFormatTAER.Click += new System.EventHandler(this.btnFormatTAER_Click);
             // 
             // btnEmailNegStat
             // 
@@ -1135,66 +1157,44 @@ namespace WindowsFormsApplication1
             // 
             this.transPanel.AnimationType = BunifuAnimatorNS.AnimationType.Mosaic;
             this.transPanel.Cursor = null;
-            animation6.AnimateOnlyDifferences = true;
-            animation6.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.BlindCoeff")));
-            animation6.LeafCoeff = 0F;
-            animation6.MaxTime = 1F;
-            animation6.MinTime = 0F;
-            animation6.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.MosaicCoeff")));
-            animation6.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation6.MosaicShift")));
-            animation6.MosaicSize = 20;
-            animation6.Padding = new System.Windows.Forms.Padding(30);
-            animation6.RotateCoeff = 0F;
-            animation6.RotateLimit = 0F;
-            animation6.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.ScaleCoeff")));
-            animation6.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.SlideCoeff")));
-            animation6.TimeCoeff = 0F;
-            animation6.TransparencyCoeff = 0F;
-            this.transPanel.DefaultAnimation = animation6;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 20;
+            animation2.Padding = new System.Windows.Forms.Padding(30);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.transPanel.DefaultAnimation = animation2;
             // 
             // transFrm
             // 
             this.transFrm.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.transFrm.Cursor = null;
-            animation5.AnimateOnlyDifferences = true;
-            animation5.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.BlindCoeff")));
-            animation5.LeafCoeff = 0F;
-            animation5.MaxTime = 1F;
-            animation5.MinTime = 0F;
-            animation5.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicCoeff")));
-            animation5.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicShift")));
-            animation5.MosaicSize = 0;
-            animation5.Padding = new System.Windows.Forms.Padding(30);
-            animation5.RotateCoeff = 0.5F;
-            animation5.RotateLimit = 0.2F;
-            animation5.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.ScaleCoeff")));
-            animation5.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.SlideCoeff")));
-            animation5.TimeCoeff = 0F;
-            animation5.TransparencyCoeff = 0F;
-            this.transFrm.DefaultAnimation = animation5;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(30);
+            animation1.RotateCoeff = 0.5F;
+            animation1.RotateLimit = 0.2F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.transFrm.DefaultAnimation = animation1;
             this.transFrm.TimeStep = 0.01F;
-            // 
-            // btnFormatTAER
-            // 
-            this.btnFormatTAER.BackColor = System.Drawing.Color.Transparent;
-            this.btnFormatTAER.color = System.Drawing.Color.Transparent;
-            this.btnFormatTAER.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
-            this.btnFormatTAER.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transFrm.SetDecoration(this.btnFormatTAER, BunifuAnimatorNS.DecorationType.None);
-            this.transPanel.SetDecoration(this.btnFormatTAER, BunifuAnimatorNS.DecorationType.None);
-            this.btnFormatTAER.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFormatTAER.ForeColor = System.Drawing.Color.DarkGray;
-            this.btnFormatTAER.Image = ((System.Drawing.Image)(resources.GetObject("btnFormatTAER.Image")));
-            this.btnFormatTAER.ImagePosition = 1;
-            this.btnFormatTAER.ImageZoom = 40;
-            this.btnFormatTAER.LabelPosition = 23;
-            this.btnFormatTAER.LabelText = "Format TAER";
-            this.btnFormatTAER.Location = new System.Drawing.Point(181, 247);
-            this.btnFormatTAER.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnFormatTAER.Name = "btnFormatTAER";
-            this.btnFormatTAER.Size = new System.Drawing.Size(104, 64);
-            this.btnFormatTAER.TabIndex = 35;
-            this.btnFormatTAER.Click += new System.EventHandler(this.btnFormatTAER_Click);
             // 
             // frmMainNew
             // 
@@ -1213,7 +1213,7 @@ namespace WindowsFormsApplication1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.01.29";
+            this.Text = "SömëKindä Tööl v2018.01.30";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);

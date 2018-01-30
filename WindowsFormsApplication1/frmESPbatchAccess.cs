@@ -143,7 +143,7 @@ namespace WindowsFormsApplication1
                 btnExecute.Enabled = false;
                 btnExecute.Update();
 
-                using (SqlConnection _conn = new SqlConnection(Common.ESPServer))
+                using (SqlConnection _conn = new SqlConnection(Common.ESPServerUsingLocalIdentity))
                 {
                     _conn.Open();
 
