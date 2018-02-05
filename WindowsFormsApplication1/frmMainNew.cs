@@ -3785,6 +3785,7 @@ namespace WindowsFormsApplication1
                 string _pp = _frm.cboPP.SelectedItem.ToString().Substring(0, 5);
                 DateTime _ppStartDate = DateTime.Parse(_frm.cboPP.SelectedItem.ToString().Substring(9, 12));
                 bool isItFinalRun = _frm.chkFinal.Checked;
+                bool createSeparateExcel_A1Pschedulers = _frm.chkA1P_Schedulers.Checked;
                 ShowMe();
 
 
@@ -4038,12 +4039,40 @@ namespace WindowsFormsApplication1
                     AddTabInTAER(package, "A1P Aux", _pp, _a1pAux, "OTHERS", false, isItFinalRun);
                     AddTabInTAER(package, "Acting Pay", _pp, _actingPay, "OTHERS", false, isItFinalRun);
 
+                    // create a separate tab with page breaks for A1P Aux and Schedulers
+                    if (createSeparateExcel_A1Pschedulers)
+                    {
+                        AddTabInTAER(package, "Schdlers with PgBrk", _pp, _Schedulers, "OTHERS", true, isItFinalRun);
+                        AddTabInTAER(package, "A1P Aux with PgBrk", _pp, _a1pAux, "OTHERS", false, isItFinalRun);
+                    }
+
                     SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                     saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
                     saveFileDialog1.FilterIndex = 1;
                     saveFileDialog1.FileName = "TAER " + DateTime.Today.ToString("ddMMMyyyy");
                     if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     {
+                        if (createSeparateExcel_A1Pschedulers)
+                        {
+                            // Save a separate Schedulers Excel file 
+                            using (var _pckgA1Paux = new ExcelPackage())
+                            {
+                                _pckgA1Paux.Workbook.Worksheets.Add("Schedulers", package.Workbook.Worksheets["Schdlers with PgBrk"]);
+                                _pckgA1Paux.SaveAs(new FileInfo(saveFileDialog1.FileName.Substring(0, saveFileDialog1.FileName.LastIndexOf("xlsx") - 1) + " - Schedulers.xlsx"));
+                            }
+
+                            // Save a separate A1P Aux Excel file, copy the A1P Aux
+                            using (var _pckgA1Paux = new ExcelPackage())
+                            {
+                                _pckgA1Paux.Workbook.Worksheets.Add("A1P Aux", package.Workbook.Worksheets["A1P Aux with PgBrk"]);
+                                _pckgA1Paux.SaveAs(new FileInfo(saveFileDialog1.FileName.Substring(0, saveFileDialog1.FileName.LastIndexOf("xlsx") - 1) + " - A1P.xlsx"));
+                            }
+
+                            // Delete the "Schedulers w/ PgBrk" and "A1P Aux w/ PgBrk" worksheet from the original workbook
+                            package.Workbook.Worksheets.Delete("Schdlers with PgBrk");
+                            package.Workbook.Worksheets.Delete("A1P Aux with PgBrk");
+                        }
+
                         package.SaveAs(new FileInfo(saveFileDialog1.FileName));
                         System.Diagnostics.Process.Start(saveFileDialog1.FileName);
                     }
@@ -4116,24 +4145,39 @@ namespace WindowsFormsApplication1
             }
 
             int lineCtr = 2;
-
-            for (int i = 0; i < _items.Count; i++)
+            string _currUnit = "";
+            if (_items.Count > 0)
             {
-                _ws.Row(lineCtr).Style.Font.Size = 10;
-                _ws.Row(lineCtr).Style.Font.Name = "Arial";
-                _ws.Row(lineCtr).Height = 20;
-                _ws.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
-                _ws.Cells[lineCtr, 1].Value = _items[i][0];
-                _ws.Cells[lineCtr, 2].Value = _items[i][1];
-                _ws.Cells[lineCtr, 3].Value = _items[i][2];
-                _ws.Cells[lineCtr, 4].Value = _items[i][3];
-                _ws.Cells[lineCtr, 5].Value = _items[i][4];
-                _ws.Cells[lineCtr, 6].Value = _items[i][5];
-                _ws.Cells[lineCtr, 7].Value = _items[i][6];
-                _ws.Cells[lineCtr, 8].Value = _items[i][7];
-                _ws.Cells[lineCtr, 9].Value = _items[i][8];
-                _ws.Cells[lineCtr, 10].Value = _items[i][9];
-                lineCtr++;
+                _currUnit = _items[0][9].Substring(0, 2);
+
+                for (int i = 0; i < _items.Count; i++)
+                {
+                    _ws.Row(lineCtr).Style.Font.Size = 10;
+                    _ws.Row(lineCtr).Style.Font.Name = "Arial";
+                    _ws.Row(lineCtr).Height = 25;
+                    _ws.Row(lineCtr).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+                    _ws.Cells[lineCtr, 1].Value = _items[i][0];
+                    _ws.Cells[lineCtr, 2].Value = _items[i][1];
+                    _ws.Cells[lineCtr, 3].Value = _items[i][2];
+                    _ws.Cells[lineCtr, 4].Value = _items[i][3];
+                    _ws.Cells[lineCtr, 5].Value = _items[i][4];
+                    _ws.Cells[lineCtr, 6].Value = _items[i][5];
+                    _ws.Cells[lineCtr, 7].Value = _items[i][6];
+                    _ws.Cells[lineCtr, 8].Value = _items[i][7];
+                    _ws.Cells[lineCtr, 9].Value = _items[i][8];
+                    _ws.Cells[lineCtr, 10].Value = _items[i][9];
+
+                    // Check if there is change in unit then insert a page break, only for "A1P Aux with PgBrk" and "Schedulers with PgBrk" tab
+                    if (_title.Contains("with PgBrk") && _currUnit != _items[i][9].Substring(0, 2))
+                    {
+                        _ws.Row(lineCtr - 1).PageBreak = true;
+                    }
+
+                    //  Update the current unit being checked
+                    _currUnit = _items[i][9].Substring(0, 2);
+
+                    lineCtr++;
+                }
             }
 
             _ws.Cells[_ws.Dimension.Address].AutoFitColumns();

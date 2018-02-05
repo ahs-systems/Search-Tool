@@ -925,7 +925,7 @@ namespace WindowsFormsApplication1
             this.lstResult.ItemHeight = 16;
             this.lstResult.Location = new System.Drawing.Point(17, 117);
             this.lstResult.Name = "lstResult";
-            this.lstResult.Size = new System.Drawing.Size(432, 82);
+            this.lstResult.Size = new System.Drawing.Size(432, 66);
             this.lstResult.TabIndex = 33;
             this.lstResult.Click += new System.EventHandler(this.lstResult_Click);
             this.lstResult.SelectedIndexChanged += new System.EventHandler(this.lstResult_Click);
@@ -1213,7 +1213,7 @@ namespace WindowsFormsApplication1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.01.30";
+            this.Text = "SömëKindä Tööl v2018.02.05";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);
