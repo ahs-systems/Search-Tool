@@ -72,20 +72,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(40, 17);
+            this.label1.Location = new System.Drawing.Point(22, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 13);
+            this.label1.Size = new System.Drawing.Size(146, 14);
             this.label1.TabIndex = 69;
             this.label1.Text = "Select the Pay Period:";
             // 
             // chkFinal
             // 
             this.chkFinal.AutoSize = true;
+            this.chkFinal.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkFinal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.chkFinal.Location = new System.Drawing.Point(156, 70);
+            this.chkFinal.Location = new System.Drawing.Point(54, 66);
             this.chkFinal.Name = "chkFinal";
-            this.chkFinal.Size = new System.Drawing.Size(71, 17);
+            this.chkFinal.Size = new System.Drawing.Size(83, 18);
             this.chkFinal.TabIndex = 71;
             this.chkFinal.Text = "Final Run";
             this.chkFinal.UseVisualStyleBackColor = true;
@@ -96,7 +98,7 @@
             this.cboPP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboPP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPP.FormattingEnabled = true;
-            this.cboPP.Location = new System.Drawing.Point(156, 13);
+            this.cboPP.Location = new System.Drawing.Point(174, 13);
             this.cboPP.Name = "cboPP";
             this.cboPP.Size = new System.Drawing.Size(263, 23);
             this.cboPP.TabIndex = 72;
@@ -106,18 +108,18 @@
             this.chkA1P_Schedulers.AutoSize = true;
             this.chkA1P_Schedulers.Checked = true;
             this.chkA1P_Schedulers.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkA1P_Schedulers.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkA1P_Schedulers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.chkA1P_Schedulers.Location = new System.Drawing.Point(156, 46);
+            this.chkA1P_Schedulers.Location = new System.Drawing.Point(54, 42);
             this.chkA1P_Schedulers.Name = "chkA1P_Schedulers";
-            this.chkA1P_Schedulers.Size = new System.Drawing.Size(270, 17);
+            this.chkA1P_Schedulers.Size = new System.Drawing.Size(350, 18);
             this.chkA1P_Schedulers.TabIndex = 73;
             this.chkA1P_Schedulers.Text = "Create a separate Excel file for A1P and Schedulers";
             this.chkA1P_Schedulers.UseVisualStyleBackColor = true;
             // 
             // frmPPandStartDate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(459, 159);
             this.ControlBox = false;

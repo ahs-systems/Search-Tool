@@ -3959,7 +3959,8 @@ namespace WindowsFormsApplication1
                                     row.GetCell(6).StringValue.StartsWith("TRC not in TRC Table") ||
                                     row.GetCell(6).StringValue.StartsWith("Acting JobCode Same as Current") ||
                                     row.GetCell(6).StringValue.StartsWith("Employee Ineligible") ||
-                                    row.GetCell(6).StringValue.StartsWith("Could not Determine Acting Pay"))
+                                    row.GetCell(6).StringValue.StartsWith("Could not Determine Acting Pay") ||
+                                    row.GetCell(6).StringValue.StartsWith("A2P coded > than Allowed value"))
                             {
                                 _Schedulers.Add(new string[] {
                                     row.GetCell(1).StringValue,
