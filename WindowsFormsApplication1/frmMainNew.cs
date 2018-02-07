@@ -30,6 +30,9 @@ namespace WindowsFormsApplication1
 
         private void frmMainNew_Load(object sender, EventArgs e)
         {
+            // Get the current user and put it in a global variable
+            Common.CurrentUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "");
+
             // set toolip for the pnlHandle
             toolTip1.SetToolTip(pnlHandle, Text);
 
@@ -1737,7 +1740,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss") + " [by: " + Common.CurrentUser + "]";
                     worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + Common.GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Positions Report";
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
@@ -2070,7 +2073,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.RightMargin = (decimal)1 / 2.54M;
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss") + " [by: " + Common.CurrentUser + "]"; ;
                     worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + Common.GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Terms and Trans From File 6";
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
@@ -2386,7 +2389,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy hh:mm tt");
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy hh:mm tt") + " [by: " + Common.CurrentUser + "]";
                     worksheet.HeaderFooter.OddHeader.RightAlignedText = _headerRight;
                     worksheet.HeaderFooter.OddHeader.CenteredText = _headerCenter;
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
@@ -2664,7 +2667,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss") + " [by: " + Common.CurrentUser + "]";
                     worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + Common.GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Terms " + CheckTermsAndTransStartDate(DateTime.Today.ToString("yyyy-MM-dd")) + " - " + DateTime.Today.AddDays(-1).ToString("ddMMMyyyy");
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
@@ -2805,7 +2808,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss") + " [by: " + Common.CurrentUser + "]"; 
                     worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + Common.GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Trans " + CheckTermsAndTransStartDate(DateTime.Today.ToString("yyyy-MM-dd")) + " - " + DateTime.Today.AddDays(-1).ToString("ddMMMyyyy");
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
