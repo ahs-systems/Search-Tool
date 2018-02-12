@@ -91,10 +91,10 @@ namespace WindowsFormsApplication1
                     dataGridView1.DataSource = null;
                     dataGridView1.Refresh();
 
-                    string _sqlString = "select RTrim(E.E_EmpNbr) AS EMP_ID, E.E_LastName AS LastName, E.E_FirstName AS FirstName, " +
-                        "(SELECT TCG_Desc from TimeCardGroup where TCG_TCardGroupID =  " +
-                        " (select TOP 1 ETCI_TimeCardGroupID from EmpTimeCardInfo ETCI where ETCI_EmpID = EP.EP_EmpID ORDER BY ETCI_PayPeriodID DESC)) as 'Pay Info',  " +
-                        "  U.U_Desc as 'Primary'  " +
+                    string _sqlString = "select RTrim(E.E_EmpNbr) AS EMP_ID, Rtrim(E.E_LastName) AS LastName, Rtrim(E.E_FirstName) AS FirstName, " +
+                        "Rtrim((SELECT TCG_Desc from TimeCardGroup where TCG_TCardGroupID =  " +
+                        " (select TOP 1 ETCI_TimeCardGroupID from EmpTimeCardInfo ETCI where ETCI_EmpID = EP.EP_EmpID ORDER BY ETCI_PayPeriodID DESC))) as 'Pay Info',  " +
+                        "  Rtrim(U.U_Desc) as 'Primary'  " +
                         "from EmpPosition EP  " +
                         "join Unit U on EP.EP_UnitID = U.U_UnitID  " +
                         "join Emp E on EP.EP_EmpID = E.E_EmpID  " +
