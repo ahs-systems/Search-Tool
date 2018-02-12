@@ -142,6 +142,12 @@
     <Compile Include="frmPPandStartDate.Designer.cs">
       <DependentUpon>frmPPandStartDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPrimary_PayInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrimary_PayInfo.Designer.cs">
+      <DependentUpon>frmPrimary_PayInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUploadItems.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPPandStartDate.resx">
       <DependentUpon>frmPPandStartDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrimary_PayInfo.resx">
+      <DependentUpon>frmPrimary_PayInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUploadItems.resx">
       <DependentUpon>frmUploadItems.cs</DependentUpon>

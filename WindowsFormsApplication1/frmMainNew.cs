@@ -2808,7 +2808,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss") + " [by: " + Common.CurrentUser + "]"; 
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss") + " [by: " + Common.CurrentUser + "]";
                     worksheet.HeaderFooter.OddHeader.RightAlignedText = "PP " + Common.GetPP(DateTime.Now.ToString("ddMMMyyyy"));
                     worksheet.HeaderFooter.OddHeader.CenteredText = "Trans " + CheckTermsAndTransStartDate(DateTime.Today.ToString("yyyy-MM-dd")) + " - " + DateTime.Today.AddDays(-1).ToString("ddMMMyyyy");
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
@@ -4199,6 +4199,14 @@ namespace WindowsFormsApplication1
             }
             _ws.Column(5).Width = 4; // "Sev"
             _ws.Column(9).Width = 5; // "TCD #" 
+        }
+
+        private void bunifuTileButton1_Click(object sender, EventArgs e)
+        {
+            HideMe();
+            frmPrimary_PayInfo _frm = new frmPrimary_PayInfo();
+            _frm.ShowDialog();
+            ShowMe();
         }
     }
 }

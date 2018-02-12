@@ -196,6 +196,36 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public static void PopulateUnitLongDesc(ref AutoCompleteStringCollection _unitsLongDesc)
+        {
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection())
+                {
+                    myConnection.ConnectionString = Common.ESPServer;
+                    myConnection.Open();
+
+                    SqlCommand myCommand = myConnection.CreateCommand();
+
+                    myCommand.CommandText = "select U_Desc from unit where (U_Desc like '0%' OR U_Desc like 'N%') AND U_Active = 1 ORDER BY U_DESC";
+
+                    SqlDataReader myReader = myCommand.ExecuteReader();
+
+                    if (myReader.HasRows)
+                    {
+                        while (myReader.Read())
+                            _unitsLongDesc.Add(myReader["U_Desc"].ToString().Trim());
+                    }
+
+                    myCommand.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ooops, there's an error: " + ex.Message, "ERROR");
+            }
+        }
+
     }
 
     public class SSTCryptographer
