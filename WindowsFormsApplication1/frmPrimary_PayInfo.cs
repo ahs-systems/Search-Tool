@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
@@ -103,7 +104,7 @@ namespace WindowsFormsApplication1
                         " (select TOP 1 ETCI_TimeCardGroupID from EmpTimeCardInfo ETCI where ETCI_EmpID = EP.EP_EmpID ORDER BY ETCI_PayPeriodID DESC)) = 'Not For Payroll'  " +
                         " AND U.U_Desc <> 'Not For Payroll'  " +
                         "and EP.EP_PrimaryInd = 1 and EP.EP_ToDate > getdate()  " +
-                        "ORDER BY E.E_LastName"; 
+                        "ORDER BY E.E_LastName";
 
                     using (SqlDataAdapter da = new SqlDataAdapter(_sqlString, _conn))
                     {
@@ -141,7 +142,33 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            txtSearchStr.Text = "";
             ListNFP();
+        }
+
+        private void dataGridView1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (dataGridView1.Rows.Count != 0 && dataGridView1.CurrentCell.RowIndex != -1)
+            {
+                switch (e.Button)
+                {
+                    case MouseButtons.Right:
+                        {
+                            mnuCopyFromList.Show(dataGridView1, new Point(e.X, e.Y));
+                        }
+                        break;
+                }
+            }
+        }
+
+        private void mnuCopyEmpNum_Click(object sender, EventArgs e)
+        {
+            string _clipText = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString().Substring(0, 8);
+            string _name =  dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value + "  " +
+                            dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[1].Value + ", " +
+                            dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[2].Value;
+            Clipboard.SetText(_clipText);
+            MessageBox.Show("Employee number '" + _clipText + "' copied to clipboard!\n\n" + _name, "Copied", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

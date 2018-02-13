@@ -31,8 +31,8 @@ namespace WindowsFormsApplication1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation6 = new BunifuAnimatorNS.Animation();
-            BunifuAnimatorNS.Animation animation5 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainNew));
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlHandle = new System.Windows.Forms.Panel();
@@ -51,6 +51,7 @@ namespace WindowsFormsApplication1
             this.btnSickOnStat = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnUserTrainings = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnESPbatchAccess = new Bunifu.Framework.UI.BunifuTileButton();
+            this.bunifuTileButton1 = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnExceptionLookup = new Bunifu.Framework.UI.BunifuTileButton();
             this.lblClose = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -98,7 +99,6 @@ namespace WindowsFormsApplication1
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.transPanel = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.bunifuTileButton1 = new Bunifu.Framework.UI.BunifuTileButton();
             this.pnlMain.SuspendLayout();
             this.pnlMisc.SuspendLayout();
             this.pnlFormatting.SuspendLayout();
@@ -429,6 +429,29 @@ namespace WindowsFormsApplication1
             this.btnESPbatchAccess.TabIndex = 11;
             this.toolTip1.SetToolTip(this.btnESPbatchAccess, "ESP batch access for unit implementation");
             this.btnESPbatchAccess.Click += new System.EventHandler(this.btnESPbatchAccess_Click);
+            // 
+            // bunifuTileButton1
+            // 
+            this.bunifuTileButton1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuTileButton1.color = System.Drawing.Color.Transparent;
+            this.bunifuTileButton1.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
+            this.bunifuTileButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.bunifuTileButton1, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.bunifuTileButton1, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTileButton1.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuTileButton1.ForeColor = System.Drawing.Color.DarkGray;
+            this.bunifuTileButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton1.Image")));
+            this.bunifuTileButton1.ImagePosition = 7;
+            this.bunifuTileButton1.ImageZoom = 40;
+            this.bunifuTileButton1.LabelPosition = 30;
+            this.bunifuTileButton1.LabelText = "Primary vs Pay Info";
+            this.bunifuTileButton1.Location = new System.Drawing.Point(474, 106);
+            this.bunifuTileButton1.Margin = new System.Windows.Forms.Padding(6);
+            this.bunifuTileButton1.Name = "bunifuTileButton1";
+            this.bunifuTileButton1.Size = new System.Drawing.Size(121, 92);
+            this.bunifuTileButton1.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.bunifuTileButton1, "Check Primary vs Pay Info ");
+            this.bunifuTileButton1.Click += new System.EventHandler(this.bunifuTileButton1_Click);
             // 
             // btnExceptionLookup
             // 
@@ -1159,67 +1182,44 @@ namespace WindowsFormsApplication1
             // 
             this.transPanel.AnimationType = BunifuAnimatorNS.AnimationType.HorizSlide;
             this.transPanel.Cursor = null;
-            animation6.AnimateOnlyDifferences = true;
-            animation6.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.BlindCoeff")));
-            animation6.LeafCoeff = 0F;
-            animation6.MaxTime = 1F;
-            animation6.MinTime = 0F;
-            animation6.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.MosaicCoeff")));
-            animation6.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation6.MosaicShift")));
-            animation6.MosaicSize = 0;
-            animation6.Padding = new System.Windows.Forms.Padding(0);
-            animation6.RotateCoeff = 0F;
-            animation6.RotateLimit = 0F;
-            animation6.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.ScaleCoeff")));
-            animation6.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.SlideCoeff")));
-            animation6.TimeCoeff = 0F;
-            animation6.TransparencyCoeff = 0F;
-            this.transPanel.DefaultAnimation = animation6;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.transPanel.DefaultAnimation = animation2;
             // 
             // transFrm
             // 
             this.transFrm.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.transFrm.Cursor = null;
-            animation5.AnimateOnlyDifferences = true;
-            animation5.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.BlindCoeff")));
-            animation5.LeafCoeff = 0F;
-            animation5.MaxTime = 1F;
-            animation5.MinTime = 0F;
-            animation5.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicCoeff")));
-            animation5.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicShift")));
-            animation5.MosaicSize = 0;
-            animation5.Padding = new System.Windows.Forms.Padding(30);
-            animation5.RotateCoeff = 0.5F;
-            animation5.RotateLimit = 0.2F;
-            animation5.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.ScaleCoeff")));
-            animation5.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.SlideCoeff")));
-            animation5.TimeCoeff = 0F;
-            animation5.TransparencyCoeff = 0F;
-            this.transFrm.DefaultAnimation = animation5;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(30);
+            animation1.RotateCoeff = 0.5F;
+            animation1.RotateLimit = 0.2F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.transFrm.DefaultAnimation = animation1;
             this.transFrm.TimeStep = 0.01F;
-            // 
-            // bunifuTileButton1
-            // 
-            this.bunifuTileButton1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton1.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton1.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
-            this.bunifuTileButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transFrm.SetDecoration(this.bunifuTileButton1, BunifuAnimatorNS.DecorationType.None);
-            this.transPanel.SetDecoration(this.bunifuTileButton1, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTileButton1.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton1.ForeColor = System.Drawing.Color.DarkGray;
-            this.bunifuTileButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton1.Image")));
-            this.bunifuTileButton1.ImagePosition = 7;
-            this.bunifuTileButton1.ImageZoom = 40;
-            this.bunifuTileButton1.LabelPosition = 30;
-            this.bunifuTileButton1.LabelText = "Primary vs Pay Info";
-            this.bunifuTileButton1.Location = new System.Drawing.Point(474, 106);
-            this.bunifuTileButton1.Margin = new System.Windows.Forms.Padding(6);
-            this.bunifuTileButton1.Name = "bunifuTileButton1";
-            this.bunifuTileButton1.Size = new System.Drawing.Size(121, 92);
-            this.bunifuTileButton1.TabIndex = 12;
-            this.toolTip1.SetToolTip(this.bunifuTileButton1, "Check Primary vs Pay Info ");
-            this.bunifuTileButton1.Click += new System.EventHandler(this.bunifuTileButton1_Click);
             // 
             // frmMainNew
             // 
@@ -1238,7 +1238,7 @@ namespace WindowsFormsApplication1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.02.12";
+            this.Text = "SömëKindä Tööl v2018.02.13";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);
