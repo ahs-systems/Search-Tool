@@ -229,6 +229,8 @@ namespace WindowsFormsApplication1
         {
             Hide();
             transFrm.ShowSync(this, true, null);
+            Activate();
+            textBox1.Focus();
         }
 
         private void firstNameTextBox_KeyPress(object sender, KeyPressEventArgs e)

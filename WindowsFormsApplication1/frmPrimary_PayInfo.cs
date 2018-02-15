@@ -18,7 +18,8 @@ namespace WindowsFormsApplication1
         private void frmPrimary_PayInfo_Load(object sender, EventArgs e)
         {
             Hide();
-            transFrm.ShowSync(this, true, null);
+            transFrm.ShowSync(this, false, null);
+            Activate();
             txtSearchStr.Focus();
 
             Common.PopulateUnitLongDesc(ref unitsLongDesc);

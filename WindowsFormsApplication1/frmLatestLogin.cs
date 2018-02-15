@@ -16,6 +16,8 @@ namespace WindowsFormsApplication1
         {
             Hide();
             transFrm.ShowSync(this, true, null);
+            Activate();
+            txtEmpNo.Focus();
         }
 
         private void Search(Func<string, string[]> myMethod, string _input)

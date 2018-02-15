@@ -9,8 +9,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Radwin")]
-[assembly: AssemblyProduct("WindowsFormsApplication1")]
-[assembly: AssemblyCopyright("Copyright © Radwin 2016")]
+[assembly: AssemblyProduct("SomeKindaTool")]
+[assembly: AssemblyCopyright("©2018 Radwin")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

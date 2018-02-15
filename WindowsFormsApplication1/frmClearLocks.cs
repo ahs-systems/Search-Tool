@@ -87,6 +87,7 @@ namespace WindowsFormsApplication1
         {
             Hide();
             transFrm.ShowSync(this, true, null);
+            Activate();
             txtSearchStr.Focus();
         }
 

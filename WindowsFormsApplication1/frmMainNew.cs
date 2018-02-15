@@ -47,6 +47,7 @@ namespace WindowsFormsApplication1
             // Show the form
             Hide();
             transFrm.ShowSync(this, true, null);
+            Activate();
 
             // Center the form
             StartPosition = FormStartPosition.CenterScreen;

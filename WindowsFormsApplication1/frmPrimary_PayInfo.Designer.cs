@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrimary_PayInfo));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
@@ -41,9 +41,10 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblItemsFound = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.mnuCopyFromList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuCopyEmpNum = new System.Windows.Forms.ToolStripMenuItem();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.mnuCopyFromList.SuspendLayout();
             this.SuspendLayout();
@@ -59,10 +60,10 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 114);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(799, 350);
             this.dataGridView1.TabIndex = 44;
@@ -89,22 +90,22 @@
             // 
             this.transFrm.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.transFrm.Cursor = null;
-            animation2.AnimateOnlyDifferences = true;
-            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
-            animation2.LeafCoeff = 0F;
-            animation2.MaxTime = 1F;
-            animation2.MinTime = 0F;
-            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
-            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
-            animation2.MosaicSize = 0;
-            animation2.Padding = new System.Windows.Forms.Padding(30);
-            animation2.RotateCoeff = 0.5F;
-            animation2.RotateLimit = 0.2F;
-            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
-            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
-            animation2.TimeCoeff = 0F;
-            animation2.TransparencyCoeff = 0F;
-            this.transFrm.DefaultAnimation = animation2;
+            animation4.AnimateOnlyDifferences = true;
+            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
+            animation4.LeafCoeff = 0F;
+            animation4.MaxTime = 1F;
+            animation4.MinTime = 0F;
+            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
+            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
+            animation4.MosaicSize = 0;
+            animation4.Padding = new System.Windows.Forms.Padding(30);
+            animation4.RotateCoeff = 0.5F;
+            animation4.RotateLimit = 0.2F;
+            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
+            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
+            animation4.TimeCoeff = 0F;
+            animation4.TransparencyCoeff = 0F;
+            this.transFrm.DefaultAnimation = animation4;
             this.transFrm.MaxAnimationTime = 2000;
             // 
             // btnSearch
@@ -193,15 +194,10 @@
             this.button1.TabIndex = 55;
             this.button1.Text = "List those EE whose Pay Info are NFP but Primary are not NFP";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.button1, "This is one way of preventing those unpaid EE\'s that we forgot \r\nto flip their Pa" +
+        "y Info from NFP to ESP units");
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // bunifuDragControl1
-            // 
-            this.bunifuDragControl1.Fixed = true;
-            this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = this.lblTitle;
-            this.bunifuDragControl1.Vertical = true;
             // 
             // mnuCopyFromList
             // 
@@ -210,7 +206,7 @@
             this.mnuCopyFromList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuCopyEmpNum});
             this.mnuCopyFromList.Name = "mnuCopyFromList";
-            this.mnuCopyFromList.Size = new System.Drawing.Size(209, 50);
+            this.mnuCopyFromList.Size = new System.Drawing.Size(209, 28);
             this.mnuCopyFromList.Text = "CopyFromList";
             // 
             // mnuCopyEmpNum
@@ -220,6 +216,23 @@
             this.mnuCopyEmpNum.Size = new System.Drawing.Size(208, 24);
             this.mnuCopyEmpNum.Text = "Copy Emp # to clipboard";
             this.mnuCopyEmpNum.Click += new System.EventHandler(this.mnuCopyEmpNum_Click);
+            // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this.lblTitle;
+            this.bunifuDragControl1.Vertical = true;
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutomaticDelay = 200;
+            this.toolTip1.AutoPopDelay = 7000;
+            this.toolTip1.InitialDelay = 200;
+            this.toolTip1.IsBalloon = true;
+            this.toolTip1.ReshowDelay = 40;
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Info";
             // 
             // frmPrimary_PayInfo
             // 
@@ -263,5 +276,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ContextMenuStrip mnuCopyFromList;
         private System.Windows.Forms.ToolStripMenuItem mnuCopyEmpNum;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

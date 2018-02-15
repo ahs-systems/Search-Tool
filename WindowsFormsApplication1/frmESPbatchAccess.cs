@@ -19,6 +19,7 @@ namespace WindowsFormsApplication1
         {
             Hide();
             transFrm.ShowSync(this, true, null);
+            Activate();
             LoadUserGroups();
         }
 
@@ -33,7 +34,7 @@ namespace WindowsFormsApplication1
                     text = streamReader.ReadToEnd();
                 }
 
-                string[] _userGroups = text.Split(',', '\n','\r');                
+                string[] _userGroups = text.Split(',', '\n', '\r');
 
                 lstUserGroups.Items.Clear();
                 for (int i = 0; i < _userGroups.Length; i++)
@@ -42,7 +43,7 @@ namespace WindowsFormsApplication1
                     {
                         lstUserGroups.Items.Add(_userGroups[i]);
                     }
-                }                
+                }
 
                 if (lstUserGroups.Items.Count == 0)
                 {
@@ -92,7 +93,7 @@ namespace WindowsFormsApplication1
             if (UpdateTheSourceFile())
             {
                 LoadUserGroups();
-                MessageBox.Show("User group successfully removed!");                
+                MessageBox.Show("User group successfully removed!");
             }
             else
             {
@@ -227,7 +228,7 @@ namespace WindowsFormsApplication1
             lstUserGroups.Items.Add(txtUserGroup.Text.Trim());
 
             if (UpdateTheSourceFile())
-            {                
+            {
                 LoadUserGroups();
                 btnCancel.PerformClick();
                 MessageBox.Show("User group successfully added!");
