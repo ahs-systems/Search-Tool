@@ -2355,7 +2355,7 @@ namespace WindowsFormsApplication1
 
         private void RFLOA_Rehire(string _headerCenter, string _headerRight, string _openFileTitle, BunifuTileButton _btn, string _path)
         {
-            string _origBtnText = _btn.Text;
+            string _origBtnText = _btn.LabelText;
 
             try
             {
@@ -3008,7 +3008,7 @@ namespace WindowsFormsApplication1
 
         private void lstResult_MouseUp(object sender, MouseEventArgs e)
         {
-            if (_searchMode == 1 || lstResult.Items.Count == 0 || lstResult.SelectedIndex == -1)
+            if (_searchMode == 1 || _searchMode == 3 || lstResult.Items.Count == 0 || lstResult.SelectedIndex == -1)
             {
                 return;
             }
