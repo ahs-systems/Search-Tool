@@ -502,7 +502,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void lblClose_Click(object sender, EventArgs e)
         {
             Close();
         }

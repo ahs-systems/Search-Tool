@@ -22,6 +22,12 @@ namespace SearchLDAP
         {
             var employeeID = textBox1.Text.Trim();
 
+            if (employeeID == "")
+            {
+                MessageBox.Show("Blank field detected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             try
             {
 
@@ -257,7 +263,10 @@ namespace SearchLDAP
 
         private void frmLDAP_Load(object sender, EventArgs e)
         {
-            //Height = 0;
+            // Show the form
+            Hide();
+            transFrm.ShowSync(this, true, null);
+            Activate();
         }
 
         private void firstNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -321,6 +330,12 @@ namespace SearchLDAP
         private void btnSearchByLDAP_Click(object sender, EventArgs e)
         {
             var ldapName = txtSearchByLDAP.Text.Trim();
+
+            if (ldapName == "")
+            {
+                MessageBox.Show("Blank field detected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
             try
             {
@@ -573,6 +588,11 @@ namespace SearchLDAP
             {
                 MessageBox.Show(ex.Message);
             }
+        }       
+
+        private void lblClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
