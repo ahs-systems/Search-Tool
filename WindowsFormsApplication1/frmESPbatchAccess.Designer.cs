@@ -46,9 +46,9 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblUserName = new System.Windows.Forms.Label();
             this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.lblTitle = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.lblClose = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtShortDesc
@@ -275,13 +275,6 @@
             this.transFrm.DefaultAnimation = animation1;
             this.transFrm.MaxAnimationTime = 2000;
             // 
-            // bunifuDragControl1
-            // 
-            this.bunifuDragControl1.Fixed = true;
-            this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = this.lblTitle;
-            this.bunifuDragControl1.Vertical = true;
-            // 
             // lblTitle
             // 
             this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
@@ -297,30 +290,31 @@
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
-            // btnClose
+            // bunifuDragControl1
             // 
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.transFrm.SetDecoration(this.btnClose, BunifuAnimatorNS.DecorationType.None);
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(425, 350);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(98, 42);
-            this.btnClose.TabIndex = 52;
-            this.btnClose.Text = "Close";
-            this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this.lblTitle;
+            this.bunifuDragControl1.Vertical = true;
+            // 
+            // lblClose
+            // 
+            this.lblClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.transFrm.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
+            this.lblClose.Image = ((System.Drawing.Image)(resources.GetObject("lblClose.Image")));
+            this.lblClose.Location = new System.Drawing.Point(507, 2);
+            this.lblClose.Name = "lblClose";
+            this.lblClose.Size = new System.Drawing.Size(22, 23);
+            this.lblClose.TabIndex = 62;
+            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
             // frmESPbatchAccess
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(535, 432);
+            this.Controls.Add(this.lblClose);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.lblLstUserGroups);
             this.Controls.Add(this.lstUserGroups);
@@ -367,6 +361,6 @@
         private BunifuAnimatorNS.BunifuTransition transFrm;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label lblClose;
     }
 }

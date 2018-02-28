@@ -19,6 +19,12 @@ namespace WindowsFormsApplication1
         {
             var employeeID = textBox1.Text.Trim();
 
+            if (employeeID == "")
+            {
+                MessageBox.Show("Blank field detected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             SearchResultCollection results = FindByID("healthy.bewell.ca", employeeID);
 
             ShowData(results, listBox1);
@@ -364,6 +370,12 @@ namespace WindowsFormsApplication1
         private void btnSearchByLDAP_Click(object sender, EventArgs e)
         {
             var ldapName = txtSearchByLDAP.Text.Trim();
+
+            if (ldapName == "")
+            {
+                MessageBox.Show("Blank field detected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
             SearchResultCollection results = FindByLDAP("healthy.bewell.ca", ldapName);
 

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClearLocks));
             this.btnSearchName = new System.Windows.Forms.Button();
             this.txtSearchStr = new System.Windows.Forms.TextBox();
@@ -40,10 +40,10 @@
             this.txtUser = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblItemsFound = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
             this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.lblTitle = new System.Windows.Forms.Label();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.lblClose = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,10 +96,10 @@
             this.dataGridView1.Location = new System.Drawing.Point(10, 104);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(820, 125);
             this.dataGridView1.TabIndex = 43;
@@ -154,51 +154,27 @@
             this.lblItemsFound.TabIndex = 47;
             this.lblItemsFound.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.SteelBlue;
-            this.transFrm.SetDecoration(this.btnClose, BunifuAnimatorNS.DecorationType.None);
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(732, 237);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(98, 42);
-            this.btnClose.TabIndex = 48;
-            this.btnClose.Text = "Close";
-            this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // transFrm
             // 
             this.transFrm.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.transFrm.Cursor = null;
-            animation3.AnimateOnlyDifferences = true;
-            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
-            animation3.LeafCoeff = 0F;
-            animation3.MaxTime = 1F;
-            animation3.MinTime = 0F;
-            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
-            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(30);
-            animation3.RotateCoeff = 0.5F;
-            animation3.RotateLimit = 0.2F;
-            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
-            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
-            animation3.TransparencyCoeff = 0F;
-            this.transFrm.DefaultAnimation = animation3;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(30);
+            animation1.RotateCoeff = 0.5F;
+            animation1.RotateLimit = 0.2F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.transFrm.DefaultAnimation = animation1;
             this.transFrm.MaxAnimationTime = 2000;
-            // 
-            // bunifuDragControl1
-            // 
-            this.bunifuDragControl1.Fixed = true;
-            this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = this.lblTitle;
-            this.bunifuDragControl1.Vertical = true;
             // 
             // lblTitle
             // 
@@ -214,14 +190,32 @@
             this.lblTitle.Text = "View Locks";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this.lblTitle;
+            this.bunifuDragControl1.Vertical = true;
+            // 
+            // lblClose
+            // 
+            this.lblClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.transFrm.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
+            this.lblClose.Image = ((System.Drawing.Image)(resources.GetObject("lblClose.Image")));
+            this.lblClose.Location = new System.Drawing.Point(816, 1);
+            this.lblClose.Name = "lblClose";
+            this.lblClose.Size = new System.Drawing.Size(22, 23);
+            this.lblClose.TabIndex = 62;
+            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
+            // 
             // frmClearLocks
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(844, 294);
+            this.ClientSize = new System.Drawing.Size(844, 269);
             this.ControlBox = false;
+            this.Controls.Add(this.lblClose);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnFindByUser);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.label1);
@@ -255,9 +249,9 @@
         private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblItemsFound;
-        private System.Windows.Forms.Button btnClose;
         private BunifuAnimatorNS.BunifuTransition transFrm;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblClose;
     }
 }

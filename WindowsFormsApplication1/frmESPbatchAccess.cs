@@ -249,5 +249,10 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void lblClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

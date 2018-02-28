@@ -98,7 +98,7 @@ namespace WindowsFormsApplication1
             Search(txtUser.Text.Trim(), "USER");
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void lblClose_Click(object sender, EventArgs e)
         {
             Close();
         }

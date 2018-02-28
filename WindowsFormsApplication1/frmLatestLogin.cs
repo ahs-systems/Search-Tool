@@ -88,7 +88,7 @@ namespace WindowsFormsApplication1
             //this.Animate(new TopAnchoredHeightEffect(), EasingFunctions.BackEaseOut, 268, 1000, 0);
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void lblClose_Click(object sender, EventArgs e)
         {
             Close();
         }

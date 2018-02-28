@@ -165,11 +165,16 @@ namespace WindowsFormsApplication1
         private void mnuCopyEmpNum_Click(object sender, EventArgs e)
         {
             string _clipText = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString().Substring(0, 8);
-            string _name =  dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value + "  " +
+            string _name = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value + "  " +
                             dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[1].Value + ", " +
                             dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[2].Value;
             Clipboard.SetText(_clipText);
             MessageBox.Show("Employee number '" + _clipText + "' copied to clipboard!\n\n" + _name, "Copied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void lblClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
