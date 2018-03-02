@@ -200,9 +200,6 @@
         VCGHY0lKErLjDfAjC6QHOW5LUvKQ3U5SCAvIcUmSwh+KHX+wX+M4L0UWV/l9F+n8AAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="bunifuDragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>119, 21</value>
-  </metadata>
   <data name="lblClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -216,6 +213,9 @@
         2x5KZiLpfuwAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="bunifuDragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>119, 21</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEANTIAAAEAIAAgKwAAFgAAACgAAAA1AAAAZAAAAAEAIAAAAAAAaCkAAMMOAADDDgAAAAAAAAAA

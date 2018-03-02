@@ -42,9 +42,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.mnuCopyFromList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuCopyEmpNum = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblClose = new System.Windows.Forms.Label();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lblClose = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.mnuCopyFromList.SuspendLayout();
             this.SuspendLayout();
@@ -94,7 +94,11 @@
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.btnSearch, BunifuAnimatorNS.DecorationType.None);
+            this.btnSearch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
@@ -165,7 +169,11 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Teal;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.button1, BunifuAnimatorNS.DecorationType.None);
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Teal;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
@@ -200,6 +208,17 @@
             this.mnuCopyEmpNum.Text = "Copy Emp # to clipboard";
             this.mnuCopyEmpNum.Click += new System.EventHandler(this.mnuCopyEmpNum_Click);
             // 
+            // lblClose
+            // 
+            this.lblClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.transFrm.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
+            this.lblClose.Image = ((System.Drawing.Image)(resources.GetObject("lblClose.Image")));
+            this.lblClose.Location = new System.Drawing.Point(797, 2);
+            this.lblClose.Name = "lblClose";
+            this.lblClose.Size = new System.Drawing.Size(22, 23);
+            this.lblClose.TabIndex = 62;
+            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
+            // 
             // bunifuDragControl1
             // 
             this.bunifuDragControl1.Fixed = true;
@@ -216,17 +235,6 @@
             this.toolTip1.ReshowDelay = 40;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Info";
-            // 
-            // lblClose
-            // 
-            this.lblClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
-            this.transFrm.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
-            this.lblClose.Image = ((System.Drawing.Image)(resources.GetObject("lblClose.Image")));
-            this.lblClose.Location = new System.Drawing.Point(797, 2);
-            this.lblClose.Name = "lblClose";
-            this.lblClose.Size = new System.Drawing.Size(22, 23);
-            this.lblClose.TabIndex = 62;
-            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
             // frmPrimary_PayInfo
             // 

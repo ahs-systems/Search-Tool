@@ -64,10 +64,19 @@
     <Compile Include="frmLDAP.designer.cs">
       <DependentUpon>frmLDAP.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRemotePC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRemotePC.Designer.cs">
+      <DependentUpon>frmRemotePC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmLDAP.resx">
       <DependentUpon>frmLDAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRemotePC.resx">
+      <DependentUpon>frmRemotePC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

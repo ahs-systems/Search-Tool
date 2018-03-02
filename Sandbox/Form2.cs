@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
 
 namespace Sandbox
 {
@@ -15,6 +9,19 @@ namespace Sandbox
         public Form2()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            IPAddress[] ipAddr = Dns.GetHostAddresses(textBox1.Text.ToUpper());
+            if (ipAddr.Length == 1)
+            {                
+                System.Diagnostics.Process.Start("https://" + ipAddr[0] + ":4343/index.html");
+            }
+            else
+            {
+                MessageBox.Show("More than one IP address found on the machine");
+            }
         }
     }
 }

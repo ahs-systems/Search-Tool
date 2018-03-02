@@ -52,6 +52,7 @@ namespace WindowsFormsApplication1
             this.btnUserTrainings = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnESPbatchAccess = new Bunifu.Framework.UI.BunifuTileButton();
             this.bunifuTileButton1 = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnRemote = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnExceptionLookup = new Bunifu.Framework.UI.BunifuTileButton();
             this.lblClose = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -454,6 +455,30 @@ namespace WindowsFormsApplication1
             this.toolTip1.SetToolTip(this.bunifuTileButton1, "Check Primary vs Pay Info if there are mismatch per unit");
             this.bunifuTileButton1.Click += new System.EventHandler(this.bunifuTileButton1_Click);
             // 
+            // btnRemote
+            // 
+            this.btnRemote.BackColor = System.Drawing.Color.Transparent;
+            this.btnRemote.color = System.Drawing.Color.Transparent;
+            this.btnRemote.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
+            this.btnRemote.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.btnRemote, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnRemote, BunifuAnimatorNS.DecorationType.None);
+            this.btnRemote.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemote.ForeColor = System.Drawing.Color.DarkGray;
+            this.btnRemote.Image = ((System.Drawing.Image)(resources.GetObject("btnRemote.Image")));
+            this.btnRemote.ImagePosition = 7;
+            this.btnRemote.ImageZoom = 45;
+            this.btnRemote.LabelPosition = 35;
+            this.btnRemote.LabelText = "Remote a PC";
+            this.btnRemote.Location = new System.Drawing.Point(474, 6);
+            this.btnRemote.Margin = new System.Windows.Forms.Padding(6);
+            this.btnRemote.Name = "btnRemote";
+            this.btnRemote.Size = new System.Drawing.Size(121, 92);
+            this.btnRemote.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.btnRemote, "Remote control a PC using LANDESK");
+            this.btnRemote.Visible = false;
+            this.btnRemote.Click += new System.EventHandler(this.btnRemote_Click);
+            // 
             // btnExceptionLookup
             // 
             this.btnExceptionLookup.BackColor = System.Drawing.Color.Transparent;
@@ -508,6 +533,7 @@ namespace WindowsFormsApplication1
             // 
             // pnlMisc
             // 
+            this.pnlMisc.Controls.Add(this.btnRemote);
             this.pnlMisc.Controls.Add(this.bunifuTileButton1);
             this.pnlMisc.Controls.Add(this.btnUserTrainings);
             this.pnlMisc.Controls.Add(this.btnFile126);
@@ -1324,5 +1350,6 @@ namespace WindowsFormsApplication1
         private BunifuAnimatorNS.BunifuTransition transFrm;
         private Bunifu.Framework.UI.BunifuTileButton btnFormatTAER;
         private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton1;
+        private Bunifu.Framework.UI.BunifuTileButton btnRemote;
     }
 }
