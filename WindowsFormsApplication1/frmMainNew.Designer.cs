@@ -469,14 +469,13 @@ namespace WindowsFormsApplication1
             this.btnRemote.ImagePosition = 7;
             this.btnRemote.ImageZoom = 45;
             this.btnRemote.LabelPosition = 35;
-            this.btnRemote.LabelText = "Remote a PC";
+            this.btnRemote.LabelText = "Remote a PC using LanDesk";
             this.btnRemote.Location = new System.Drawing.Point(474, 6);
             this.btnRemote.Margin = new System.Windows.Forms.Padding(6);
             this.btnRemote.Name = "btnRemote";
             this.btnRemote.Size = new System.Drawing.Size(121, 92);
             this.btnRemote.TabIndex = 13;
             this.toolTip1.SetToolTip(this.btnRemote, "Remote control a PC using LANDESK");
-            this.btnRemote.Visible = false;
             this.btnRemote.Click += new System.EventHandler(this.btnRemote_Click);
             // 
             // btnExceptionLookup
@@ -1114,7 +1113,7 @@ namespace WindowsFormsApplication1
             this.transFrm.SetDecoration(this.label3, BunifuAnimatorNS.DecorationType.None);
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(128, 1);
+            this.label3.Location = new System.Drawing.Point(128, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(166, 35);
             this.label3.TabIndex = 35;
@@ -1265,7 +1264,7 @@ namespace WindowsFormsApplication1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.02.28";
+            this.Text = "SömëKindä Tööl v2018.03.07";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);

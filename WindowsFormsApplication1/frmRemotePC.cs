@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
@@ -40,7 +33,12 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                MessageBox.Show("More than one IP address found on the machine, cannot connect.");
+                string _msg = "More than one IP address found on the machine, cannot connect.\n\n Try to connect using LANDESK directly.\n\nIP addresses found:\n";
+                for (int i = 0; i < ipAddr.Length; i++)
+                {
+                    _msg += ipAddr[i] + "\n";
+                }
+                MessageBox.Show(_msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
