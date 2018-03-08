@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common.cs" />
     <Compile Include="frmLDAP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +71,12 @@
     <Compile Include="frmRemotePC.Designer.cs">
       <DependentUpon>frmRemotePC.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSelectZone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectZone.Designer.cs">
+      <DependentUpon>frmSelectZone.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmLDAP.resx">
@@ -77,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRemotePC.resx">
       <DependentUpon>frmRemotePC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectZone.resx">
+      <DependentUpon>frmSelectZone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

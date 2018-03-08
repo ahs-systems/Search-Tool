@@ -2097,7 +2097,7 @@ namespace WindowsFormsApplication1
                     range.Style.Font.Size = 12;
                     range.Style.Font.Name = "Arial";
 
-                    string[] lines = System.IO.File.ReadAllLines(_sourceFile);
+                    string[] lines = File.ReadAllLines(_sourceFile);
 
                     int lineCtr = 2;
 

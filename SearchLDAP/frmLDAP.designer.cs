@@ -63,6 +63,8 @@
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.lblClose = new System.Windows.Forms.Label();
             this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
+            this.label12 = new System.Windows.Forms.Label();
+            this.btnDemoFiles = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -228,7 +230,7 @@
             this.txtEmail.Location = new System.Drawing.Point(322, 244);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
-            this.txtEmail.Size = new System.Drawing.Size(246, 20);
+            this.txtEmail.Size = new System.Drawing.Size(255, 20);
             this.txtEmail.TabIndex = 41;
             // 
             // label6
@@ -290,7 +292,7 @@
             this.txtManager.Location = new System.Drawing.Point(322, 218);
             this.txtManager.Name = "txtManager";
             this.txtManager.ReadOnly = true;
-            this.txtManager.Size = new System.Drawing.Size(246, 20);
+            this.txtManager.Size = new System.Drawing.Size(255, 20);
             this.txtManager.TabIndex = 46;
             // 
             // label8
@@ -371,13 +373,14 @@
             // btnBatchByID
             // 
             this.btnBatchByID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btnBatchByID.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.btnBatchByID, BunifuAnimatorNS.DecorationType.None);
             this.btnBatchByID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBatchByID.ForeColor = System.Drawing.Color.White;
             this.btnBatchByID.Image = ((System.Drawing.Image)(resources.GetObject("btnBatchByID.Image")));
-            this.btnBatchByID.Location = new System.Drawing.Point(446, 43);
+            this.btnBatchByID.Location = new System.Drawing.Point(604, 45);
             this.btnBatchByID.Name = "btnBatchByID";
-            this.btnBatchByID.Size = new System.Drawing.Size(137, 38);
+            this.btnBatchByID.Size = new System.Drawing.Size(159, 38);
             this.btnBatchByID.TabIndex = 52;
             this.btnBatchByID.Text = "Batch By ID";
             this.btnBatchByID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -391,7 +394,7 @@
             // 
             this.transFrm.SetDecoration(this.btnBatchByLDAPName, BunifuAnimatorNS.DecorationType.None);
             this.btnBatchByLDAPName.Image = ((System.Drawing.Image)(resources.GetObject("btnBatchByLDAPName.Image")));
-            this.btnBatchByLDAPName.Location = new System.Drawing.Point(-65, 97);
+            this.btnBatchByLDAPName.Location = new System.Drawing.Point(-25, 90);
             this.btnBatchByLDAPName.Name = "btnBatchByLDAPName";
             this.btnBatchByLDAPName.Size = new System.Drawing.Size(137, 38);
             this.btnBatchByLDAPName.TabIndex = 53;
@@ -405,17 +408,17 @@
             this.transFrm.SetDecoration(this.label11, BunifuAnimatorNS.DecorationType.None);
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.label11.Location = new System.Drawing.Point(443, 82);
+            this.label11.Location = new System.Drawing.Point(604, 88);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(140, 26);
+            this.label11.Size = new System.Drawing.Size(159, 26);
             this.label11.TabIndex = 54;
-            this.label11.Text = "( Comma or Line Feed Delimited Text File )";
+            this.label11.Text = "( Comma CSV or Line Feed Delimited Text File)";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // toolTip1
             // 
             this.toolTip1.AutoPopDelay = 10000;
-            this.toolTip1.InitialDelay = 1000;
+            this.toolTip1.InitialDelay = 200;
             this.toolTip1.IsBalloon = true;
             this.toolTip1.ReshowDelay = 100;
             // 
@@ -428,7 +431,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(592, 29);
+            this.lblTitle.Size = new System.Drawing.Size(775, 29);
             this.lblTitle.TabIndex = 59;
             this.lblTitle.Text = "  LDAP Search";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -442,10 +445,11 @@
             // 
             // lblClose
             // 
+            this.lblClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
             this.transFrm.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
             this.lblClose.Image = ((System.Drawing.Image)(resources.GetObject("lblClose.Image")));
-            this.lblClose.Location = new System.Drawing.Point(561, 2);
+            this.lblClose.Location = new System.Drawing.Point(746, 2);
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(22, 23);
             this.lblClose.TabIndex = 60;
@@ -473,11 +477,42 @@
             this.transFrm.DefaultAnimation = animation1;
             this.transFrm.TimeStep = 0.01F;
             // 
+            // label12
+            // 
+            this.transFrm.SetDecoration(this.label12, BunifuAnimatorNS.DecorationType.None);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.label12.Location = new System.Drawing.Point(603, 170);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(159, 26);
+            this.label12.TabIndex = 62;
+            this.label12.Text = "(For Items Report Use)";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnDemoFiles
+            // 
+            this.btnDemoFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btnDemoFiles.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.btnDemoFiles, BunifuAnimatorNS.DecorationType.None);
+            this.btnDemoFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDemoFiles.ForeColor = System.Drawing.Color.White;
+            this.btnDemoFiles.Image = ((System.Drawing.Image)(resources.GetObject("btnDemoFiles.Image")));
+            this.btnDemoFiles.Location = new System.Drawing.Point(604, 134);
+            this.btnDemoFiles.Name = "btnDemoFiles";
+            this.btnDemoFiles.Size = new System.Drawing.Size(159, 38);
+            this.btnDemoFiles.TabIndex = 61;
+            this.btnDemoFiles.Text = "Import Demo Files";
+            this.btnDemoFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDemoFiles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDemoFiles.UseVisualStyleBackColor = false;
+            this.btnDemoFiles.Click += new System.EventHandler(this.btnDemoFiles_Click);
+            // 
             // frmLDAP
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(592, 420);
+            this.ClientSize = new System.Drawing.Size(775, 420);
+            this.Controls.Add(this.btnDemoFiles);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.label11);
@@ -507,6 +542,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label12);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -556,6 +592,8 @@
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.Label lblClose;
         private BunifuAnimatorNS.BunifuTransition transFrm;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnDemoFiles;
     }
 }
 

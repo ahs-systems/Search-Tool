@@ -1,0 +1,82 @@
+﻿using System.Data.SqlClient;
+
+namespace SearchLDAP
+{
+    public class Common
+    {
+        public static string EDM_Db = @"Server=wssqlc015v02\esp8; Database=esp_edm_prod;User Id=Espreport; Password=Esp4rep0rt;";
+        public static string CAL_Db = @"Server=wssqlc015v02\esp8; Database=esp_cal_prod;User Id=Espreport; Password=Esp4rep0rt;";
+        public static string NCS_Db = @"Server=wssqlc015v02\esp8; Database=esp_ncs_prod;User Id=Espreport; Password=Esp4rep0rt;";
+        public static string BooServer = @"Server=wssqlc015V01.healthy.bewell.ca\esp8; Database=BOO;User Id=BOO_USER;Password=BOO_USER;";
+
+        public static string GetEmpName(string _empID, string _dbServer)
+        {
+            string _ret = "--- Name Not Found ---";
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection(_dbServer))
+                {
+                    SqlCommand _comm = myConnection.CreateCommand();
+
+                    myConnection.Open();
+
+                    _comm.CommandText = "SELECT LTRIM(RTRIM(E_LASTNAME)) + ', ' + LTRIM(RTRIM(E_FIRSTNAME)) 'EMPNAME' FROM EMP WHERE E_EMPNBR LIKE @V_SEARCH AND LEN(E_EMPNBR) > 7 ORDER BY E_ChangeDate DESC";
+
+                    _comm.Parameters.Clear();
+                    _comm.Parameters.Add(new SqlParameter("V_SEARCH", _empID + "%"));
+
+                    SqlDataReader _reader = _comm.ExecuteReader();
+                    if (_reader.HasRows)
+                    {
+                        _reader.Read();
+                        _ret = _reader["EMPNAME"].ToString();
+                    }
+
+                    _reader.Close();
+                    _reader.Dispose();
+                }
+            }
+            catch (System.Exception)
+            {
+                _ret = "--- ERROR in Getting Emp Name ---";
+            }
+            return _ret;
+        }
+
+        public static bool CheckApp(string _appName)
+        {
+            bool _ret = false;
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection(BooServer))
+                {
+                    SqlCommand _comm = myConnection.CreateCommand();
+
+                    myConnection.Open();
+
+                    _comm.CommandText = "SELECT stats from AppLists where UPPER(AppName) = @app";
+
+                    _comm.Parameters.Clear();
+                    _comm.Parameters.Add(new SqlParameter("app", _appName.ToUpper()));
+
+                    SqlDataReader _reader = _comm.ExecuteReader();
+                    if (_reader.HasRows)
+                    {
+                        _reader.Read();
+                        _ret = _reader["stats"].ToString() == "True";
+                    }
+
+                    _reader.Close();
+                    _reader.Dispose();
+                }
+            }
+            catch (System.Exception)
+            {
+                _ret = false;
+            }
+            return _ret;
+        }
+
+        public static string CommonErr = "A problem caused the program to stop working correctly.";
+    }
+}

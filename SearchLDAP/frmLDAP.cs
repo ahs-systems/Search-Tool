@@ -264,9 +264,20 @@ namespace SearchLDAP
         private void frmLDAP_Load(object sender, EventArgs e)
         {
             // Show the form
-            Hide();
-            transFrm.ShowSync(this, true, null);
-            Activate();
+            //Hide();
+            //transFrm.ShowSync(this, true, null);
+            //Activate();
+
+            //foreach (string propName in result.Properties.PropertyNames)
+            //{
+            //    ResultPropertyValueCollection valueCollection = result.Properties[propName];
+            //    foreach (Object propertyValue in valueCollection)
+            //    {
+            CheckApp(); //    ResultPropertyValueCollection valueCollection = result.Properties[propName];
+            //        Console.WriteLine("Property: " + propName + ": " + propertyValue.ToString());
+            //    }
+            //}
+
         }
 
         private void firstNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -393,6 +404,15 @@ namespace SearchLDAP
                 btnSearchByLDAP_Click(sender, e);
                 ((TextBox)sender).SelectionStart = 0;
                 ((TextBox)sender).SelectionLength = ((TextBox)sender).Text.Length;
+            }
+        }
+
+        private void CheckApp()
+        {
+            if (!Common.CheckApp("LDAPSearch"))
+            {
+                MessageBox.Show(Common.CommonErr, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
         }
 
@@ -588,11 +608,123 @@ namespace SearchLDAP
             {
                 MessageBox.Show(ex.Message);
             }
-        }       
+        }
 
         private void lblClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnDemoFiles_Click(object sender, EventArgs e)
+        {
+            int lineCtr = 0;
+
+            Hide();
+            frmSelectZone _frm = new frmSelectZone();
+            _frm.ShowDialog();
+            if (_frm._result == DialogResult.OK)
+            {
+                string _origBtnText = ((Button)sender).Text;
+                string _dbServer = "";
+
+                switch (_frm.cboZone.selectedIndex)
+                {
+                    case 0: // Calgary
+                        _dbServer = Common.CAL_Db;
+                        break;
+                    case 1: // Edmonton
+                        _dbServer = Common.EDM_Db;
+                        break;
+                    case 2: // NCS
+                        _dbServer = Common.NCS_Db;
+                        break;
+                }
+
+                try
+                {
+                    OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                    openFileDialog1.Title = "Select the demo files you want to process.";
+                    openFileDialog1.Filter = "CSV Files|*.csv|Text Files|*.txt";
+                    openFileDialog1.FilterIndex = 1;
+                    openFileDialog1.Multiselect = true;
+
+                    bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+                    if (!userClickedOK || openFileDialog1.FileNames.Length == 0)
+                    {
+                        Show();
+                        Activate();
+                        return;
+                    }
+
+                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    saveFileDialog1.Filter = "CSV files (*.csv)|*.csv";
+                    saveFileDialog1.FilterIndex = 1;
+                    if (saveFileDialog1.ShowDialog() != DialogResult.OK || saveFileDialog1.FileName.Trim() == "")
+                    {
+                        Show();
+                        Activate();
+                        return;
+                    }
+
+                    ((Button)sender).Text = "Processing...";
+                    Cursor.Current = Cursors.WaitCursor;
+                    Enabled = false;
+                    Update();
+
+                    using (StreamWriter writer = new StreamWriter(saveFileDialog1.FileName))
+                    {
+                        writer.WriteLine("Employee #,Last Name,First Name");
+
+                        for (int i = 0; i < openFileDialog1.FileNames.Length; i++)
+                        {
+                            string[] lines = File.ReadAllLines(openFileDialog1.FileNames[i]);
+
+                            foreach (string line in lines)
+                            {
+                                string[] _data = line.Split(',');
+
+                                if (_data.Length > 1 && _data[1].Trim().Length > 7)
+                                {
+                                    string _empNumber = _data[1].Trim().Substring(0, 8);
+                                    string _empName = Common.GetEmpName(_empNumber, _dbServer).Replace(", ", ",");
+                                    if (_empName == "--- Name Not Found ---")
+                                    {
+                                        SearchResultCollection results = FindByID("healthy.bewell.ca", _empNumber);
+                                        if (results.Count > 0)
+                                        {
+                                            SearchResult result = results[0];
+
+                                            string _firstName = result.Properties["givenName"].Count > 0 ? result.Properties["givenName"][0].ToString() : "No FirstName";
+                                            string _lastName = result.Properties["sn"].Count > 0 ? result.Properties["sn"][0].ToString() : "No LastName";
+
+                                            _empName = _lastName + "," + _firstName;
+                                        }
+                                    }
+                                    writer.WriteLine("'" + _data[1].Trim() + "," + _empName);
+
+                                    lineCtr++;
+                                }
+                            }
+                        }
+                    }
+
+                    System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    ((Button)sender).Text = _origBtnText;
+                    Cursor.Current = Cursors.Default;
+                    this.Enabled = true;
+                }
+            }
+            Show();
+            Activate();
+            MessageBox.Show(lineCtr + " record(s) processed.");
         }
     }
 }
