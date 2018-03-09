@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLDAP));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -55,7 +55,6 @@
             this.btnSearchByLDAP = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtSearchByLDAP = new System.Windows.Forms.TextBox();
-            this.btnBatchByID = new System.Windows.Forms.Button();
             this.btnBatchByLDAPName = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -64,7 +63,8 @@
             this.lblClose = new System.Windows.Forms.Label();
             this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.label12 = new System.Windows.Forms.Label();
-            this.btnDemoFiles = new System.Windows.Forms.Button();
+            this.btnBatchByID = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnImportDemoFiles = new Bunifu.Framework.UI.BunifuFlatButton();
             this.SuspendLayout();
             // 
             // textBox1
@@ -146,6 +146,7 @@
             // btnSearchName
             // 
             this.btnSearchName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
+            this.btnSearchName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.btnSearchName, BunifuAnimatorNS.DecorationType.None);
             this.btnSearchName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
@@ -184,6 +185,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.button2, BunifuAnimatorNS.DecorationType.None);
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
@@ -335,6 +337,7 @@
             // btnSearchByLDAP
             // 
             this.btnSearchByLDAP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
+            this.btnSearchByLDAP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.btnSearchByLDAP, BunifuAnimatorNS.DecorationType.None);
             this.btnSearchByLDAP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchByLDAP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
@@ -370,26 +373,6 @@
             this.txtSearchByLDAP.TabIndex = 49;
             this.txtSearchByLDAP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchByLDAP_KeyPress);
             // 
-            // btnBatchByID
-            // 
-            this.btnBatchByID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.btnBatchByID.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transFrm.SetDecoration(this.btnBatchByID, BunifuAnimatorNS.DecorationType.None);
-            this.btnBatchByID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBatchByID.ForeColor = System.Drawing.Color.White;
-            this.btnBatchByID.Image = ((System.Drawing.Image)(resources.GetObject("btnBatchByID.Image")));
-            this.btnBatchByID.Location = new System.Drawing.Point(604, 45);
-            this.btnBatchByID.Name = "btnBatchByID";
-            this.btnBatchByID.Size = new System.Drawing.Size(159, 38);
-            this.btnBatchByID.TabIndex = 52;
-            this.btnBatchByID.Text = "Batch By ID";
-            this.btnBatchByID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBatchByID.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.btnBatchByID, "Tip: You can copy the whole column from an Excel file that \r\ncontains the Employe" +
-        "e ID\'s and paste it on a Notepad, save it \r\nand use that as the source file.");
-            this.btnBatchByID.UseVisualStyleBackColor = false;
-            this.btnBatchByID.Click += new System.EventHandler(this.btnBatchByID_Click);
-            // 
             // btnBatchByLDAPName
             // 
             this.transFrm.SetDecoration(this.btnBatchByLDAPName, BunifuAnimatorNS.DecorationType.None);
@@ -407,7 +390,7 @@
             // 
             this.transFrm.SetDecoration(this.label11, BunifuAnimatorNS.DecorationType.None);
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.label11.ForeColor = System.Drawing.Color.Silver;
             this.label11.Location = new System.Drawing.Point(604, 88);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(159, 26);
@@ -431,9 +414,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(775, 29);
+            this.lblTitle.Size = new System.Drawing.Size(767, 29);
             this.lblTitle.TabIndex = 59;
-            this.lblTitle.Text = "  LDAP Search";
+            this.lblTitle.Text = "  LDAP Search v2018.03.09";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // bunifuDragControl1
@@ -447,9 +430,10 @@
             // 
             this.lblClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
             this.lblClose.Image = ((System.Drawing.Image)(resources.GetObject("lblClose.Image")));
-            this.lblClose.Location = new System.Drawing.Point(746, 2);
+            this.lblClose.Location = new System.Drawing.Point(738, 2);
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(22, 23);
             this.lblClose.TabIndex = 60;
@@ -459,29 +443,29 @@
             // 
             this.transFrm.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.transFrm.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(30);
-            animation1.RotateCoeff = 0.5F;
-            animation1.RotateLimit = 0.2F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.transFrm.DefaultAnimation = animation1;
+            animation4.AnimateOnlyDifferences = true;
+            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
+            animation4.LeafCoeff = 0F;
+            animation4.MaxTime = 1F;
+            animation4.MinTime = 0F;
+            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
+            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
+            animation4.MosaicSize = 0;
+            animation4.Padding = new System.Windows.Forms.Padding(30);
+            animation4.RotateCoeff = 0.5F;
+            animation4.RotateLimit = 0.2F;
+            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
+            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
+            animation4.TimeCoeff = 0F;
+            animation4.TransparencyCoeff = 0F;
+            this.transFrm.DefaultAnimation = animation4;
             this.transFrm.TimeStep = 0.01F;
             // 
             // label12
             // 
             this.transFrm.SetDecoration(this.label12, BunifuAnimatorNS.DecorationType.None);
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.label12.ForeColor = System.Drawing.Color.Silver;
             this.label12.Location = new System.Drawing.Point(603, 170);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(159, 26);
@@ -489,35 +473,90 @@
             this.label12.Text = "(For Items Report Use)";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnDemoFiles
+            // btnBatchByID
             // 
-            this.btnDemoFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.btnDemoFiles.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transFrm.SetDecoration(this.btnDemoFiles, BunifuAnimatorNS.DecorationType.None);
-            this.btnDemoFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDemoFiles.ForeColor = System.Drawing.Color.White;
-            this.btnDemoFiles.Image = ((System.Drawing.Image)(resources.GetObject("btnDemoFiles.Image")));
-            this.btnDemoFiles.Location = new System.Drawing.Point(604, 134);
-            this.btnDemoFiles.Name = "btnDemoFiles";
-            this.btnDemoFiles.Size = new System.Drawing.Size(159, 38);
-            this.btnDemoFiles.TabIndex = 61;
-            this.btnDemoFiles.Text = "Import Demo Files";
-            this.btnDemoFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDemoFiles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDemoFiles.UseVisualStyleBackColor = false;
-            this.btnDemoFiles.Click += new System.EventHandler(this.btnDemoFiles_Click);
+            this.btnBatchByID.Activecolor = System.Drawing.Color.Transparent;
+            this.btnBatchByID.BackColor = System.Drawing.Color.Transparent;
+            this.btnBatchByID.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBatchByID.BorderRadius = 0;
+            this.btnBatchByID.ButtonText = "Batch By ID";
+            this.btnBatchByID.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.btnBatchByID, BunifuAnimatorNS.DecorationType.None);
+            this.btnBatchByID.DisabledColor = System.Drawing.Color.Gray;
+            this.btnBatchByID.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnBatchByID.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnBatchByID.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnBatchByID.Iconimage")));
+            this.btnBatchByID.Iconimage_right = null;
+            this.btnBatchByID.Iconimage_right_Selected = null;
+            this.btnBatchByID.Iconimage_Selected = null;
+            this.btnBatchByID.IconMarginLeft = 0;
+            this.btnBatchByID.IconMarginRight = 0;
+            this.btnBatchByID.IconRightVisible = true;
+            this.btnBatchByID.IconRightZoom = 0D;
+            this.btnBatchByID.IconVisible = true;
+            this.btnBatchByID.IconZoom = 90D;
+            this.btnBatchByID.IsTab = false;
+            this.btnBatchByID.Location = new System.Drawing.Point(619, 43);
+            this.btnBatchByID.Name = "btnBatchByID";
+            this.btnBatchByID.Normalcolor = System.Drawing.Color.Transparent;
+            this.btnBatchByID.OnHovercolor = System.Drawing.Color.Transparent;
+            this.btnBatchByID.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnBatchByID.selected = false;
+            this.btnBatchByID.Size = new System.Drawing.Size(126, 45);
+            this.btnBatchByID.TabIndex = 63;
+            this.btnBatchByID.Text = "Batch By ID";
+            this.btnBatchByID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnBatchByID.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.btnBatchByID.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBatchByID.Click += new System.EventHandler(this.btnBatchByID_Click);
+            // 
+            // btnImportDemoFiles
+            // 
+            this.btnImportDemoFiles.Activecolor = System.Drawing.Color.Transparent;
+            this.btnImportDemoFiles.BackColor = System.Drawing.Color.Transparent;
+            this.btnImportDemoFiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnImportDemoFiles.BorderRadius = 0;
+            this.btnImportDemoFiles.ButtonText = "Import Demo Files";
+            this.btnImportDemoFiles.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.btnImportDemoFiles, BunifuAnimatorNS.DecorationType.None);
+            this.btnImportDemoFiles.DisabledColor = System.Drawing.Color.Gray;
+            this.btnImportDemoFiles.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnImportDemoFiles.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnImportDemoFiles.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnImportDemoFiles.Iconimage")));
+            this.btnImportDemoFiles.Iconimage_right = null;
+            this.btnImportDemoFiles.Iconimage_right_Selected = null;
+            this.btnImportDemoFiles.Iconimage_Selected = null;
+            this.btnImportDemoFiles.IconMarginLeft = 0;
+            this.btnImportDemoFiles.IconMarginRight = 0;
+            this.btnImportDemoFiles.IconRightVisible = true;
+            this.btnImportDemoFiles.IconRightZoom = 0D;
+            this.btnImportDemoFiles.IconVisible = true;
+            this.btnImportDemoFiles.IconZoom = 90D;
+            this.btnImportDemoFiles.IsTab = false;
+            this.btnImportDemoFiles.Location = new System.Drawing.Point(619, 132);
+            this.btnImportDemoFiles.Name = "btnImportDemoFiles";
+            this.btnImportDemoFiles.Normalcolor = System.Drawing.Color.Transparent;
+            this.btnImportDemoFiles.OnHovercolor = System.Drawing.Color.Transparent;
+            this.btnImportDemoFiles.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnImportDemoFiles.selected = false;
+            this.btnImportDemoFiles.Size = new System.Drawing.Size(143, 45);
+            this.btnImportDemoFiles.TabIndex = 64;
+            this.btnImportDemoFiles.Text = "Import Demo Files";
+            this.btnImportDemoFiles.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnImportDemoFiles.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.btnImportDemoFiles.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportDemoFiles.Click += new System.EventHandler(this.btnDemoFiles_Click);
             // 
             // frmLDAP
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(775, 420);
-            this.Controls.Add(this.btnDemoFiles);
+            this.ClientSize = new System.Drawing.Size(767, 420);
+            this.Controls.Add(this.btnImportDemoFiles);
+            this.Controls.Add(this.btnBatchByID);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.btnBatchByLDAPName);
-            this.Controls.Add(this.btnBatchByID);
             this.Controls.Add(this.btnSearchByLDAP);
             this.Controls.Add(this.txtSearchByLDAP);
             this.Controls.Add(this.txtEmpNo);
@@ -543,7 +582,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label12);
-            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Controls.Add(this.label11);
+            this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.transFrm.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -584,7 +624,6 @@
         private System.Windows.Forms.Button btnSearchByLDAP;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtSearchByLDAP;
-        private System.Windows.Forms.Button btnBatchByID;
         private System.Windows.Forms.Button btnBatchByLDAPName;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ToolTip toolTip1;
@@ -593,7 +632,8 @@
         private System.Windows.Forms.Label lblClose;
         private BunifuAnimatorNS.BunifuTransition transFrm;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button btnDemoFiles;
+        private Bunifu.Framework.UI.BunifuFlatButton btnBatchByID;
+        private Bunifu.Framework.UI.BunifuFlatButton btnImportDemoFiles;
     }
 }
 

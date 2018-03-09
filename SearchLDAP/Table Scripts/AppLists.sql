@@ -1,7 +1,7 @@
 USE [Boo]
 GO
 
-/****** Object:  Table [dbo].[AppLists]    Script Date: 3/8/2018 12:20:19 PM ******/
+/****** Object:  Table [dbo].[AppLists]    Script Date: 3/9/2018 12:32:39 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -12,7 +12,7 @@ CREATE TABLE [dbo].[AppLists](
 	[AppID] [int] NOT NULL,
 	[AppName] [nvarchar](150) NOT NULL,
 	[AppVersion] [nvarchar](50) NOT NULL,
-	[Stats] [bit] NOT NULL,
+	[Err] [nvarchar](250) NOT NULL,
  CONSTRAINT [PK_AppLists] PRIMARY KEY CLUSTERED 
 (
 	[AppID] ASC
@@ -20,5 +20,4 @@ CREATE TABLE [dbo].[AppLists](
 ) ON [PRIMARY]
 
 GO
-
 

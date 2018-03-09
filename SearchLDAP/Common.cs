@@ -43,7 +43,7 @@ namespace SearchLDAP
             return _ret;
         }
 
-        public static bool CheckApp(string _appName)
+        public static bool CheckApp(string _appName, ref string _msg)
         {
             bool _ret = false;
             try
@@ -54,7 +54,7 @@ namespace SearchLDAP
 
                     myConnection.Open();
 
-                    _comm.CommandText = "SELECT stats from AppLists where UPPER(AppName) = @app";
+                    _comm.CommandText = "SELECT AppID, Err from AppLists where UPPER(AppName) = @app";
 
                     _comm.Parameters.Clear();
                     _comm.Parameters.Add(new SqlParameter("app", _appName.ToUpper()));
@@ -63,7 +63,14 @@ namespace SearchLDAP
                     if (_reader.HasRows)
                     {
                         _reader.Read();
-                        _ret = _reader["stats"].ToString() == "True";
+                        if (_reader["AppID"].ToString() == "1")
+                        {
+                            _ret = true;
+                        }
+                        else
+                        {
+                            _msg = _reader["Err"].ToString();
+                        }
                     }
 
                     _reader.Close();
@@ -75,8 +82,6 @@ namespace SearchLDAP
                 _ret = false;
             }
             return _ret;
-        }
-
-        public static string CommonErr = "A problem caused the program to stop working correctly.";
+        }        
     }
 }

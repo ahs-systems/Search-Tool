@@ -1,4 +1,5 @@
 ﻿//using Microsoft.Exchange.WebServices.Data;
+using Bunifu.Framework.UI;
 using Microsoft.Exchange.WebServices.Data;
 using System;
 using System.DirectoryServices;
@@ -409,29 +410,31 @@ namespace SearchLDAP
 
         private void CheckApp()
         {
-            if (!Common.CheckApp("LDAPSearch"))
+            string _msg = "";
+
+            if (!Common.CheckApp("SearchLDAP", ref _msg))
             {
-                MessageBox.Show(Common.CommonErr, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(_msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
 
         private void btnBatchByID_Click(object sender, EventArgs e)
         {
-            string _origBtnText = ((Button)sender).Text;
+            string _origBtnText = ((BunifuFlatButton)sender).Text;
 
             try
             {
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
                 openFileDialog1.Title = "Select the comma delimited file that contains the employee ID's";
-                openFileDialog1.Filter = "CSV Files|*.csv|Text Files|*.txt";
+                openFileDialog1.Filter = "All Files|*.*|CSV Files|*.csv|Text Files|*.txt";
                 openFileDialog1.FilterIndex = 1;
 
                 bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
 
                 if (!userClickedOK) return;
 
-                ((Button)sender).Text = "Processing...";
+                ((BunifuFlatButton)sender).Text = "Processing...";
                 Cursor.Current = Cursors.WaitCursor;
                 this.Enabled = false;
                 Update();
@@ -521,7 +524,8 @@ namespace SearchLDAP
 
                 }
 
-                MessageBox.Show("Done!");
+                MessageBox.Show("Done!", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
                 System.Diagnostics.Process.Start(saveFileDialog1.FileName);
 
@@ -532,7 +536,7 @@ namespace SearchLDAP
             }
             finally
             {
-                ((Button)sender).Text = _origBtnText;
+                ((BunifuFlatButton)sender).Text = _origBtnText;
                 Cursor.Current = Cursors.Default;
                 this.Enabled = true;
             }
@@ -624,7 +628,7 @@ namespace SearchLDAP
             _frm.ShowDialog();
             if (_frm._result == DialogResult.OK)
             {
-                string _origBtnText = ((Button)sender).Text;
+                string _origBtnText = ((BunifuFlatButton)sender).Text;
                 string _dbServer = "";
 
                 switch (_frm.cboZone.selectedIndex)
@@ -667,7 +671,7 @@ namespace SearchLDAP
                         return;
                     }
 
-                    ((Button)sender).Text = "Processing...";
+                    ((BunifuFlatButton)sender).Text = "Processing...";
                     Cursor.Current = Cursors.WaitCursor;
                     Enabled = false;
                     Update();
@@ -717,9 +721,9 @@ namespace SearchLDAP
                 }
                 finally
                 {
-                    ((Button)sender).Text = _origBtnText;
+                    ((BunifuFlatButton)sender).Text = _origBtnText;
                     Cursor.Current = Cursors.Default;
-                    this.Enabled = true;
+                    Enabled = true;
                 }
             }
             Show();
