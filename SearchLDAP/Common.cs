@@ -43,7 +43,7 @@ namespace SearchLDAP
             return _ret;
         }
 
-        public static bool CheckApp(string _appName, ref string _msg)
+        public static bool LoadIt(string _appName, ref string _msg)
         {
             bool _ret = false;
             try
@@ -82,6 +82,6 @@ namespace SearchLDAP
                 _ret = false;
             }
             return _ret;
-        }        
+        }
     }
 }

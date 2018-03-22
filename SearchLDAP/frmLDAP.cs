@@ -2,6 +2,9 @@
 using Bunifu.Framework.UI;
 using Microsoft.Exchange.WebServices.Data;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.DirectoryServices;
 using System.IO;
 using System.Windows.Forms;
@@ -274,7 +277,7 @@ namespace SearchLDAP
             //    ResultPropertyValueCollection valueCollection = result.Properties[propName];
             //    foreach (Object propertyValue in valueCollection)
             //    {
-            CheckApp(); //    ResultPropertyValueCollection valueCollection = result.Properties[propName];
+            LoadIt(); //    ResultPropertyValueCollection valueCollection = result.Properties[propName];
             //        Console.WriteLine("Property: " + propName + ": " + propertyValue.ToString());
             //    }
             //}
@@ -408,11 +411,11 @@ namespace SearchLDAP
             }
         }
 
-        private void CheckApp()
+        private void LoadIt()
         {
             string _msg = "";
 
-            if (!Common.CheckApp("SearchLDAP", ref _msg))
+            if (!Common.LoadIt("SearchLDAP", ref _msg))
             {
                 MessageBox.Show(_msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
@@ -546,23 +549,68 @@ namespace SearchLDAP
         {
             try
             {
-                #region Send an email using EWS
-                var service = new ExchangeService(ExchangeVersion.Exchange2007_SP1);
-                service.Credentials = new WebCredentials("RSSS.Help@albertahealthservices.ca", "Support2017b");
-                //service.Credentials = new WebCredentials("Darwin.Dizon@albertahealthservices.ca", "");
-                service.TraceEnabled = true;
-                service.TraceFlags = TraceFlags.All;
-                service.AutodiscoverUrl("RSSS.Help@albertahealthservices.ca", RedirectionUrlValidationCallback);
-                EmailMessage email = new EmailMessage(service);
+                // list all properties
+                try
+                {
+                    DirectoryEntry root = new DirectoryEntry("LDAP://healthy.bewell.ca");
+                    //root = new DirectoryEntry("LDAP://" + root.Properties["defaultNamingContext"][0]);
+                    DirectorySearcher search = new DirectorySearcher(root);
+                    //search.Filter = string.Format("(employeeNumber=01074637)");
+                    //search.Filter = string.Format("(&(ObjectClass=person)(memberOf=CN=PSS Application Support,OU=CAL,OU=DistributionLists,OU=Exchange,OU=Applications,DC=healthy,DC=bewell,DC=ca))");
+                    search.Filter = string.Format("(memberOf=CN=EDM.ESP Self-Service Users,OU=EDM,OU=DistributionLists,OU=Exchange,OU=Applications,DC=healthy,DC=bewell,DC=ca)");
 
-                email.ToRecipients.Add("darwin.dizon@albertahealthservices.ca");
-                email.Subject = "HelloWorld " + DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
-                email.Importance = Importance.High;
-                email.Body = new MessageBody("1 email using EWS Managed API");
-                email.Body.BodyType = BodyType.HTML;
-                email.Sender = "test@ahs.ca";
-                email.SendAndSaveCopy();
-                MessageBox.Show("sent!");
+                    //search.PropertiesToLoad.Add("samaccountname");
+                    //search.PropertiesToLoad.Add("displayname");
+                    //search.PropertiesToLoad.Add("mail");
+                    //search.PropertiesToLoad.Add("telephoneNumber");
+                    //search.PropertiesToLoad.Add("department");
+                    //search.PropertiesToLoad.Add("title");
+
+                    SearchResultCollection results = search.FindAll();
+                    int _ctr = 0;
+                    if (results != null)
+                    {
+                        
+                        foreach (SearchResult result in results)
+                        {
+                            _ctr++;
+
+                            //foreach (DictionaryEntry property in result.Properties)
+                            //{
+                            //    Debug.Write(property.Key + ": ");
+                            //    foreach (var val in (property.Value as ResultPropertyValueCollection))
+                            //    {
+                            //        Debug.Write(val + "; ");
+                            //    }
+                            //    Debug.WriteLine("");
+                            //}
+                        }
+                    }
+
+                    MessageBox.Show("Done!" + _ctr);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                #region Send an email using EWS
+                //var service = new ExchangeService(ExchangeVersion.Exchange2007_SP1);
+                //service.Credentials = new WebCredentials("RSSS.Help@albertahealthservices.ca", "Support2017b");
+                ////service.Credentials = new WebCredentials("Darwin.Dizon@albertahealthservices.ca", "");
+                //service.TraceEnabled = true;
+                //service.TraceFlags = TraceFlags.All;
+                //service.AutodiscoverUrl("RSSS.Help@albertahealthservices.ca", RedirectionUrlValidationCallback);
+                //EmailMessage email = new EmailMessage(service);
+
+                //email.ToRecipients.Add("darwin.dizon@albertahealthservices.ca");
+                //email.Subject = "HelloWorld " + DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
+                //email.Importance = Importance.High;
+                //email.Body = new MessageBody("1 email using EWS Managed API");
+                //email.Body.BodyType = BodyType.HTML;
+                //email.Sender = "test@ahs.ca";
+                //email.SendAndSaveCopy();
+                //MessageBox.Show("sent!");
                 #endregion
 
                 //var service = new ExchangeService(ExchangeVersion.Exchange2007_SP1);

@@ -53,6 +53,7 @@ namespace WindowsFormsApplication1
             this.btnESPbatchAccess = new Bunifu.Framework.UI.BunifuTileButton();
             this.bunifuTileButton1 = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnRemote = new Bunifu.Framework.UI.BunifuTileButton();
+            this.bunifuTileButton2 = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnExceptionLookup = new Bunifu.Framework.UI.BunifuTileButton();
             this.lblClose = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -213,13 +214,13 @@ namespace WindowsFormsApplication1
             this.btnFile126.ForeColor = System.Drawing.Color.DarkGray;
             this.btnFile126.Image = ((System.Drawing.Image)(resources.GetObject("btnFile126.Image")));
             this.btnFile126.ImagePosition = 7;
-            this.btnFile126.ImageZoom = 45;
-            this.btnFile126.LabelPosition = 30;
+            this.btnFile126.ImageZoom = 35;
+            this.btnFile126.LabelPosition = 20;
             this.btnFile126.LabelText = "FTP File 1, 2 and 6";
             this.btnFile126.Location = new System.Drawing.Point(15, 6);
             this.btnFile126.Margin = new System.Windows.Forms.Padding(6);
             this.btnFile126.Name = "btnFile126";
-            this.btnFile126.Size = new System.Drawing.Size(121, 92);
+            this.btnFile126.Size = new System.Drawing.Size(121, 70);
             this.btnFile126.TabIndex = 0;
             this.toolTip1.SetToolTip(this.btnFile126, "FTP file 1, 2 and 6 and then automatically formats File 2 and 6");
             this.btnFile126.Click += new System.EventHandler(this.btnFile126_Click);
@@ -259,13 +260,13 @@ namespace WindowsFormsApplication1
             this.btnClearLocks.ForeColor = System.Drawing.Color.DarkGray;
             this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
             this.btnClearLocks.ImagePosition = 7;
-            this.btnClearLocks.ImageZoom = 45;
-            this.btnClearLocks.LabelPosition = 30;
+            this.btnClearLocks.ImageZoom = 35;
+            this.btnClearLocks.LabelPosition = 20;
             this.btnClearLocks.LabelText = "View Locks";
-            this.btnClearLocks.Location = new System.Drawing.Point(168, 4);
+            this.btnClearLocks.Location = new System.Drawing.Point(159, 8);
             this.btnClearLocks.Margin = new System.Windows.Forms.Padding(6);
             this.btnClearLocks.Name = "btnClearLocks";
-            this.btnClearLocks.Size = new System.Drawing.Size(121, 92);
+            this.btnClearLocks.Size = new System.Drawing.Size(121, 70);
             this.btnClearLocks.TabIndex = 3;
             this.toolTip1.SetToolTip(this.btnClearLocks, "Check who\'s locking a particular record");
             this.btnClearLocks.Click += new System.EventHandler(this.btnClearLocks_Click);
@@ -282,13 +283,13 @@ namespace WindowsFormsApplication1
             this.btnItemsReport.ForeColor = System.Drawing.Color.DarkGray;
             this.btnItemsReport.Image = ((System.Drawing.Image)(resources.GetObject("btnItemsReport.Image")));
             this.btnItemsReport.ImagePosition = 7;
-            this.btnItemsReport.ImageZoom = 45;
-            this.btnItemsReport.LabelPosition = 30;
+            this.btnItemsReport.ImageZoom = 35;
+            this.btnItemsReport.LabelPosition = 20;
             this.btnItemsReport.LabelText = "Items Report";
-            this.btnItemsReport.Location = new System.Drawing.Point(321, 3);
+            this.btnItemsReport.Location = new System.Drawing.Point(321, 8);
             this.btnItemsReport.Margin = new System.Windows.Forms.Padding(6);
             this.btnItemsReport.Name = "btnItemsReport";
-            this.btnItemsReport.Size = new System.Drawing.Size(121, 92);
+            this.btnItemsReport.Size = new System.Drawing.Size(121, 70);
             this.btnItemsReport.TabIndex = 4;
             this.toolTip1.SetToolTip(this.btnItemsReport, "Opens the Items Report app");
             this.btnItemsReport.Click += new System.EventHandler(this.btnItemsReport_Click);
@@ -305,13 +306,13 @@ namespace WindowsFormsApplication1
             this.btnGetLDAP.ForeColor = System.Drawing.Color.DarkGray;
             this.btnGetLDAP.Image = ((System.Drawing.Image)(resources.GetObject("btnGetLDAP.Image")));
             this.btnGetLDAP.ImagePosition = 7;
-            this.btnGetLDAP.ImageZoom = 45;
-            this.btnGetLDAP.LabelPosition = 30;
+            this.btnGetLDAP.ImageZoom = 35;
+            this.btnGetLDAP.LabelPosition = 20;
             this.btnGetLDAP.LabelText = "LDAP Search";
-            this.btnGetLDAP.Location = new System.Drawing.Point(15, 106);
+            this.btnGetLDAP.Location = new System.Drawing.Point(15, 87);
             this.btnGetLDAP.Margin = new System.Windows.Forms.Padding(6);
             this.btnGetLDAP.Name = "btnGetLDAP";
-            this.btnGetLDAP.Size = new System.Drawing.Size(121, 92);
+            this.btnGetLDAP.Size = new System.Drawing.Size(121, 70);
             this.btnGetLDAP.TabIndex = 5;
             this.toolTip1.SetToolTip(this.btnGetLDAP, "Get LDAP Info");
             this.btnGetLDAP.Click += new System.EventHandler(this.btnGetLDAP_Click);
@@ -328,13 +329,13 @@ namespace WindowsFormsApplication1
             this.btnUserLatestLogin.ForeColor = System.Drawing.Color.DarkGray;
             this.btnUserLatestLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnUserLatestLogin.Image")));
             this.btnUserLatestLogin.ImagePosition = 7;
-            this.btnUserLatestLogin.ImageZoom = 45;
-            this.btnUserLatestLogin.LabelPosition = 30;
+            this.btnUserLatestLogin.ImageZoom = 35;
+            this.btnUserLatestLogin.LabelPosition = 20;
             this.btnUserLatestLogin.LabelText = "Search Latest Login";
-            this.btnUserLatestLogin.Location = new System.Drawing.Point(168, 106);
+            this.btnUserLatestLogin.Location = new System.Drawing.Point(159, 87);
             this.btnUserLatestLogin.Margin = new System.Windows.Forms.Padding(6);
             this.btnUserLatestLogin.Name = "btnUserLatestLogin";
-            this.btnUserLatestLogin.Size = new System.Drawing.Size(121, 92);
+            this.btnUserLatestLogin.Size = new System.Drawing.Size(121, 70);
             this.btnUserLatestLogin.TabIndex = 6;
             this.toolTip1.SetToolTip(this.btnUserLatestLogin, "Get user latest login");
             this.btnUserLatestLogin.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnUserLatestLogin_MouseClick);
@@ -352,13 +353,13 @@ namespace WindowsFormsApplication1
             this.btnV_FireCategories.ForeColor = System.Drawing.Color.DarkGray;
             this.btnV_FireCategories.Image = ((System.Drawing.Image)(resources.GetObject("btnV_FireCategories.Image")));
             this.btnV_FireCategories.ImagePosition = 7;
-            this.btnV_FireCategories.ImageZoom = 45;
-            this.btnV_FireCategories.LabelPosition = 30;
+            this.btnV_FireCategories.ImageZoom = 35;
+            this.btnV_FireCategories.LabelPosition = 20;
             this.btnV_FireCategories.LabelText = "vFire Categories";
-            this.btnV_FireCategories.Location = new System.Drawing.Point(321, 105);
+            this.btnV_FireCategories.Location = new System.Drawing.Point(321, 87);
             this.btnV_FireCategories.Margin = new System.Windows.Forms.Padding(6);
             this.btnV_FireCategories.Name = "btnV_FireCategories";
-            this.btnV_FireCategories.Size = new System.Drawing.Size(121, 92);
+            this.btnV_FireCategories.Size = new System.Drawing.Size(121, 70);
             this.btnV_FireCategories.TabIndex = 7;
             this.toolTip1.SetToolTip(this.btnV_FireCategories, "Open vFire Categories");
             this.btnV_FireCategories.Click += new System.EventHandler(this.btnV_FireCategories_Click);
@@ -375,13 +376,13 @@ namespace WindowsFormsApplication1
             this.btnSickOnStat.ForeColor = System.Drawing.Color.DarkGray;
             this.btnSickOnStat.Image = ((System.Drawing.Image)(resources.GetObject("btnSickOnStat.Image")));
             this.btnSickOnStat.ImagePosition = 1;
-            this.btnSickOnStat.ImageZoom = 45;
-            this.btnSickOnStat.LabelPosition = 35;
+            this.btnSickOnStat.ImageZoom = 35;
+            this.btnSickOnStat.LabelPosition = 30;
             this.btnSickOnStat.LabelText = "Upload Sick on a Stat File from ePeople";
-            this.btnSickOnStat.Location = new System.Drawing.Point(15, 221);
+            this.btnSickOnStat.Location = new System.Drawing.Point(15, 168);
             this.btnSickOnStat.Margin = new System.Windows.Forms.Padding(5);
             this.btnSickOnStat.Name = "btnSickOnStat";
-            this.btnSickOnStat.Size = new System.Drawing.Size(121, 92);
+            this.btnSickOnStat.Size = new System.Drawing.Size(121, 70);
             this.btnSickOnStat.TabIndex = 8;
             this.toolTip1.SetToolTip(this.btnSickOnStat, "Upload Sick on a Stat File from ePeople to BOO database");
             this.btnSickOnStat.Click += new System.EventHandler(this.btnSickOnStat_Click);
@@ -398,13 +399,13 @@ namespace WindowsFormsApplication1
             this.btnUserTrainings.ForeColor = System.Drawing.Color.DarkGray;
             this.btnUserTrainings.Image = ((System.Drawing.Image)(resources.GetObject("btnUserTrainings.Image")));
             this.btnUserTrainings.ImagePosition = 1;
-            this.btnUserTrainings.ImageZoom = 45;
-            this.btnUserTrainings.LabelPosition = 35;
+            this.btnUserTrainings.ImageZoom = 35;
+            this.btnUserTrainings.LabelPosition = 20;
             this.btnUserTrainings.LabelText = "User Trainings (SSRS)";
-            this.btnUserTrainings.Location = new System.Drawing.Point(321, 220);
+            this.btnUserTrainings.Location = new System.Drawing.Point(321, 168);
             this.btnUserTrainings.Margin = new System.Windows.Forms.Padding(6);
             this.btnUserTrainings.Name = "btnUserTrainings";
-            this.btnUserTrainings.Size = new System.Drawing.Size(121, 92);
+            this.btnUserTrainings.Size = new System.Drawing.Size(121, 70);
             this.btnUserTrainings.TabIndex = 10;
             this.toolTip1.SetToolTip(this.btnUserTrainings, "Open User Trainings data from SSRS");
             this.btnUserTrainings.Click += new System.EventHandler(this.btnUserTrainings_Click);
@@ -421,13 +422,13 @@ namespace WindowsFormsApplication1
             this.btnESPbatchAccess.ForeColor = System.Drawing.Color.DarkGray;
             this.btnESPbatchAccess.Image = ((System.Drawing.Image)(resources.GetObject("btnESPbatchAccess.Image")));
             this.btnESPbatchAccess.ImagePosition = 7;
-            this.btnESPbatchAccess.ImageZoom = 45;
-            this.btnESPbatchAccess.LabelPosition = 30;
+            this.btnESPbatchAccess.ImageZoom = 35;
+            this.btnESPbatchAccess.LabelPosition = 20;
             this.btnESPbatchAccess.LabelText = "ESP Batch Access";
-            this.btnESPbatchAccess.Location = new System.Drawing.Point(474, 221);
+            this.btnESPbatchAccess.Location = new System.Drawing.Point(15, 249);
             this.btnESPbatchAccess.Margin = new System.Windows.Forms.Padding(6);
             this.btnESPbatchAccess.Name = "btnESPbatchAccess";
-            this.btnESPbatchAccess.Size = new System.Drawing.Size(121, 92);
+            this.btnESPbatchAccess.Size = new System.Drawing.Size(121, 70);
             this.btnESPbatchAccess.TabIndex = 11;
             this.toolTip1.SetToolTip(this.btnESPbatchAccess, "ESP batch access for unit implementation");
             this.btnESPbatchAccess.Click += new System.EventHandler(this.btnESPbatchAccess_Click);
@@ -444,13 +445,13 @@ namespace WindowsFormsApplication1
             this.bunifuTileButton1.ForeColor = System.Drawing.Color.DarkGray;
             this.bunifuTileButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton1.Image")));
             this.bunifuTileButton1.ImagePosition = 7;
-            this.bunifuTileButton1.ImageZoom = 40;
-            this.bunifuTileButton1.LabelPosition = 30;
+            this.bunifuTileButton1.ImageZoom = 35;
+            this.bunifuTileButton1.LabelPosition = 20;
             this.bunifuTileButton1.LabelText = "Primary vs Pay Info";
-            this.bunifuTileButton1.Location = new System.Drawing.Point(474, 106);
+            this.bunifuTileButton1.Location = new System.Drawing.Point(159, 168);
             this.bunifuTileButton1.Margin = new System.Windows.Forms.Padding(6);
             this.bunifuTileButton1.Name = "bunifuTileButton1";
-            this.bunifuTileButton1.Size = new System.Drawing.Size(121, 92);
+            this.bunifuTileButton1.Size = new System.Drawing.Size(121, 70);
             this.bunifuTileButton1.TabIndex = 12;
             this.toolTip1.SetToolTip(this.bunifuTileButton1, "Check Primary vs Pay Info if there are mismatch per unit");
             this.bunifuTileButton1.Click += new System.EventHandler(this.bunifuTileButton1_Click);
@@ -466,17 +467,40 @@ namespace WindowsFormsApplication1
             this.btnRemote.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemote.ForeColor = System.Drawing.Color.DarkGray;
             this.btnRemote.Image = ((System.Drawing.Image)(resources.GetObject("btnRemote.Image")));
-            this.btnRemote.ImagePosition = 7;
-            this.btnRemote.ImageZoom = 45;
+            this.btnRemote.ImagePosition = 0;
+            this.btnRemote.ImageZoom = 35;
             this.btnRemote.LabelPosition = 35;
             this.btnRemote.LabelText = "Remote a PC using LanDesk";
             this.btnRemote.Location = new System.Drawing.Point(474, 6);
             this.btnRemote.Margin = new System.Windows.Forms.Padding(6);
             this.btnRemote.Name = "btnRemote";
-            this.btnRemote.Size = new System.Drawing.Size(121, 92);
+            this.btnRemote.Size = new System.Drawing.Size(121, 70);
             this.btnRemote.TabIndex = 13;
             this.toolTip1.SetToolTip(this.btnRemote, "Remote control a PC using LANDESK");
             this.btnRemote.Click += new System.EventHandler(this.btnRemote_Click);
+            // 
+            // bunifuTileButton2
+            // 
+            this.bunifuTileButton2.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuTileButton2.color = System.Drawing.Color.Transparent;
+            this.bunifuTileButton2.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
+            this.bunifuTileButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.bunifuTileButton2, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.bunifuTileButton2, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTileButton2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuTileButton2.ForeColor = System.Drawing.Color.DarkGray;
+            this.bunifuTileButton2.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton2.Image")));
+            this.bunifuTileButton2.ImagePosition = 0;
+            this.bunifuTileButton2.ImageZoom = 30;
+            this.bunifuTileButton2.LabelPosition = 35;
+            this.bunifuTileButton2.LabelText = "Update Valid Email Suffixes in ASC";
+            this.bunifuTileButton2.Location = new System.Drawing.Point(474, 95);
+            this.bunifuTileButton2.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuTileButton2.Name = "bunifuTileButton2";
+            this.bunifuTileButton2.Size = new System.Drawing.Size(121, 70);
+            this.bunifuTileButton2.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.bunifuTileButton2, "Update the list of valid email suffixes in ASC");
+            this.bunifuTileButton2.Click += new System.EventHandler(this.bunifuTileButton2_Click);
             // 
             // btnExceptionLookup
             // 
@@ -490,13 +514,13 @@ namespace WindowsFormsApplication1
             this.btnExceptionLookup.ForeColor = System.Drawing.Color.DarkGray;
             this.btnExceptionLookup.Image = ((System.Drawing.Image)(resources.GetObject("btnExceptionLookup.Image")));
             this.btnExceptionLookup.ImagePosition = 1;
-            this.btnExceptionLookup.ImageZoom = 45;
-            this.btnExceptionLookup.LabelPosition = 35;
+            this.btnExceptionLookup.ImageZoom = 35;
+            this.btnExceptionLookup.LabelPosition = 20;
             this.btnExceptionLookup.LabelText = "Exception Lookup";
-            this.btnExceptionLookup.Location = new System.Drawing.Point(168, 220);
+            this.btnExceptionLookup.Location = new System.Drawing.Point(159, 249);
             this.btnExceptionLookup.Margin = new System.Windows.Forms.Padding(6);
             this.btnExceptionLookup.Name = "btnExceptionLookup";
-            this.btnExceptionLookup.Size = new System.Drawing.Size(121, 92);
+            this.btnExceptionLookup.Size = new System.Drawing.Size(121, 70);
             this.btnExceptionLookup.TabIndex = 9;
             this.btnExceptionLookup.Click += new System.EventHandler(this.btnExceptionLookup_Click);
             // 
@@ -532,6 +556,7 @@ namespace WindowsFormsApplication1
             // 
             // pnlMisc
             // 
+            this.pnlMisc.Controls.Add(this.bunifuTileButton2);
             this.pnlMisc.Controls.Add(this.btnRemote);
             this.pnlMisc.Controls.Add(this.bunifuTileButton1);
             this.pnlMisc.Controls.Add(this.btnUserTrainings);
@@ -588,13 +613,13 @@ namespace WindowsFormsApplication1
             this.btnFormatTAER.ForeColor = System.Drawing.Color.DarkGray;
             this.btnFormatTAER.Image = ((System.Drawing.Image)(resources.GetObject("btnFormatTAER.Image")));
             this.btnFormatTAER.ImagePosition = 1;
-            this.btnFormatTAER.ImageZoom = 40;
-            this.btnFormatTAER.LabelPosition = 23;
+            this.btnFormatTAER.ImageZoom = 35;
+            this.btnFormatTAER.LabelPosition = 30;
             this.btnFormatTAER.LabelText = "Format TAER";
-            this.btnFormatTAER.Location = new System.Drawing.Point(181, 247);
+            this.btnFormatTAER.Location = new System.Drawing.Point(171, 247);
             this.btnFormatTAER.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnFormatTAER.Name = "btnFormatTAER";
-            this.btnFormatTAER.Size = new System.Drawing.Size(104, 64);
+            this.btnFormatTAER.Size = new System.Drawing.Size(121, 70);
             this.btnFormatTAER.TabIndex = 35;
             this.btnFormatTAER.Click += new System.EventHandler(this.btnFormatTAER_Click);
             // 
@@ -610,13 +635,13 @@ namespace WindowsFormsApplication1
             this.btnEmailNegStat.ForeColor = System.Drawing.Color.DarkGray;
             this.btnEmailNegStat.Image = ((System.Drawing.Image)(resources.GetObject("btnEmailNegStat.Image")));
             this.btnEmailNegStat.ImagePosition = 1;
-            this.btnEmailNegStat.ImageZoom = 27;
-            this.btnEmailNegStat.LabelPosition = 35;
+            this.btnEmailNegStat.ImageZoom = 35;
+            this.btnEmailNegStat.LabelPosition = 30;
             this.btnEmailNegStat.LabelText = "Format Negative Stats";
-            this.btnEmailNegStat.Location = new System.Drawing.Point(334, 171);
+            this.btnEmailNegStat.Location = new System.Drawing.Point(320, 171);
             this.btnEmailNegStat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEmailNegStat.Name = "btnEmailNegStat";
-            this.btnEmailNegStat.Size = new System.Drawing.Size(104, 64);
+            this.btnEmailNegStat.Size = new System.Drawing.Size(121, 70);
             this.btnEmailNegStat.TabIndex = 34;
             this.btnEmailNegStat.Click += new System.EventHandler(this.btnEmailNegStat_Click);
             // 
@@ -632,13 +657,13 @@ namespace WindowsFormsApplication1
             this.btnFile6.ForeColor = System.Drawing.Color.DarkGray;
             this.btnFile6.Image = ((System.Drawing.Image)(resources.GetObject("btnFile6.Image")));
             this.btnFile6.ImagePosition = 1;
-            this.btnFile6.ImageZoom = 40;
-            this.btnFile6.LabelPosition = 23;
+            this.btnFile6.ImageZoom = 35;
+            this.btnFile6.LabelPosition = 30;
             this.btnFile6.LabelText = "Format File 6";
-            this.btnFile6.Location = new System.Drawing.Point(470, 89);
+            this.btnFile6.Location = new System.Drawing.Point(469, 89);
             this.btnFile6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnFile6.Name = "btnFile6";
-            this.btnFile6.Size = new System.Drawing.Size(104, 64);
+            this.btnFile6.Size = new System.Drawing.Size(121, 70);
             this.btnFile6.TabIndex = 33;
             this.btnFile6.Click += new System.EventHandler(this.btnFile6_Click);
             // 
@@ -654,13 +679,13 @@ namespace WindowsFormsApplication1
             this.btnFile2.ForeColor = System.Drawing.Color.DarkGray;
             this.btnFile2.Image = ((System.Drawing.Image)(resources.GetObject("btnFile2.Image")));
             this.btnFile2.ImagePosition = 1;
-            this.btnFile2.ImageZoom = 40;
-            this.btnFile2.LabelPosition = 23;
+            this.btnFile2.ImageZoom = 35;
+            this.btnFile2.LabelPosition = 25;
             this.btnFile2.LabelText = "Format File 2";
-            this.btnFile2.Location = new System.Drawing.Point(470, 7);
+            this.btnFile2.Location = new System.Drawing.Point(469, 7);
             this.btnFile2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnFile2.Name = "btnFile2";
-            this.btnFile2.Size = new System.Drawing.Size(104, 64);
+            this.btnFile2.Size = new System.Drawing.Size(121, 70);
             this.btnFile2.TabIndex = 32;
             this.btnFile2.Click += new System.EventHandler(this.btnFile2_Click);
             // 
@@ -676,13 +701,13 @@ namespace WindowsFormsApplication1
             this.btnAA_Exception.ForeColor = System.Drawing.Color.DarkGray;
             this.btnAA_Exception.Image = ((System.Drawing.Image)(resources.GetObject("btnAA_Exception.Image")));
             this.btnAA_Exception.ImagePosition = 1;
-            this.btnAA_Exception.ImageZoom = 40;
-            this.btnAA_Exception.LabelPosition = 23;
+            this.btnAA_Exception.ImageZoom = 35;
+            this.btnAA_Exception.LabelPosition = 25;
             this.btnAA_Exception.LabelText = "AA_EXCEPTION";
-            this.btnAA_Exception.Location = new System.Drawing.Point(334, 87);
+            this.btnAA_Exception.Location = new System.Drawing.Point(320, 87);
             this.btnAA_Exception.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAA_Exception.Name = "btnAA_Exception";
-            this.btnAA_Exception.Size = new System.Drawing.Size(104, 64);
+            this.btnAA_Exception.Size = new System.Drawing.Size(121, 70);
             this.btnAA_Exception.TabIndex = 29;
             this.btnAA_Exception.Click += new System.EventHandler(this.btnAA_Exception_Click);
             // 
@@ -698,13 +723,13 @@ namespace WindowsFormsApplication1
             this.btnTL_SYS.ForeColor = System.Drawing.Color.DarkGray;
             this.btnTL_SYS.Image = ((System.Drawing.Image)(resources.GetObject("btnTL_SYS.Image")));
             this.btnTL_SYS.ImagePosition = 1;
-            this.btnTL_SYS.ImageZoom = 40;
-            this.btnTL_SYS.LabelPosition = 23;
+            this.btnTL_SYS.ImageZoom = 35;
+            this.btnTL_SYS.LabelPosition = 25;
             this.btnTL_SYS.LabelText = "TL_SYS";
-            this.btnTL_SYS.Location = new System.Drawing.Point(334, 7);
+            this.btnTL_SYS.Location = new System.Drawing.Point(320, 7);
             this.btnTL_SYS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTL_SYS.Name = "btnTL_SYS";
-            this.btnTL_SYS.Size = new System.Drawing.Size(104, 64);
+            this.btnTL_SYS.Size = new System.Drawing.Size(121, 70);
             this.btnTL_SYS.TabIndex = 28;
             this.btnTL_SYS.Click += new System.EventHandler(this.btnTL_SYS_Click);
             // 
@@ -720,12 +745,12 @@ namespace WindowsFormsApplication1
             this.btnUploadFile1.ForeColor = System.Drawing.Color.DarkGray;
             this.btnUploadFile1.Image = ((System.Drawing.Image)(resources.GetObject("btnUploadFile1.Image")));
             this.btnUploadFile1.ImagePosition = 1;
-            this.btnUploadFile1.ImageZoom = 30;
-            this.btnUploadFile1.LabelPosition = 35;
+            this.btnUploadFile1.ImageZoom = 35;
+            this.btnUploadFile1.LabelPosition = 30;
             this.btnUploadFile1.LabelText = "Upload File 1 for NFP Checking";
-            this.btnUploadFile1.Location = new System.Drawing.Point(470, 171);
+            this.btnUploadFile1.Location = new System.Drawing.Point(469, 171);
             this.btnUploadFile1.Name = "btnUploadFile1";
-            this.btnUploadFile1.Size = new System.Drawing.Size(104, 64);
+            this.btnUploadFile1.Size = new System.Drawing.Size(121, 70);
             this.btnUploadFile1.TabIndex = 27;
             this.btnUploadFile1.Click += new System.EventHandler(this.btnUploadFile1_Click);
             // 
@@ -737,17 +762,17 @@ namespace WindowsFormsApplication1
             this.btnLOAwithNoRptTime.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.btnLOAwithNoRptTime, BunifuAnimatorNS.DecorationType.None);
             this.transPanel.SetDecoration(this.btnLOAwithNoRptTime, BunifuAnimatorNS.DecorationType.None);
-            this.btnLOAwithNoRptTime.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLOAwithNoRptTime.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLOAwithNoRptTime.ForeColor = System.Drawing.Color.DarkGray;
             this.btnLOAwithNoRptTime.Image = ((System.Drawing.Image)(resources.GetObject("btnLOAwithNoRptTime.Image")));
             this.btnLOAwithNoRptTime.ImagePosition = 1;
-            this.btnLOAwithNoRptTime.ImageZoom = 27;
-            this.btnLOAwithNoRptTime.LabelPosition = 35;
+            this.btnLOAwithNoRptTime.ImageZoom = 35;
+            this.btnLOAwithNoRptTime.LabelPosition = 24;
             this.btnLOAwithNoRptTime.LabelText = "AHS_AA_RPTD_ NO_TIME";
-            this.btnLOAwithNoRptTime.Location = new System.Drawing.Point(181, 171);
+            this.btnLOAwithNoRptTime.Location = new System.Drawing.Point(171, 171);
             this.btnLOAwithNoRptTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLOAwithNoRptTime.Name = "btnLOAwithNoRptTime";
-            this.btnLOAwithNoRptTime.Size = new System.Drawing.Size(104, 64);
+            this.btnLOAwithNoRptTime.Size = new System.Drawing.Size(121, 70);
             this.btnLOAwithNoRptTime.TabIndex = 26;
             this.btnLOAwithNoRptTime.Click += new System.EventHandler(this.btnLOAwithNoRptTime_Click);
             // 
@@ -763,13 +788,13 @@ namespace WindowsFormsApplication1
             this.btnRFLOA.ForeColor = System.Drawing.Color.DarkGray;
             this.btnRFLOA.Image = ((System.Drawing.Image)(resources.GetObject("btnRFLOA.Image")));
             this.btnRFLOA.ImagePosition = 1;
-            this.btnRFLOA.ImageZoom = 30;
-            this.btnRFLOA.LabelPosition = 35;
+            this.btnRFLOA.ImageZoom = 35;
+            this.btnRFLOA.LabelPosition = 30;
             this.btnRFLOA.LabelText = "Return from LOA";
-            this.btnRFLOA.Location = new System.Drawing.Point(181, 89);
+            this.btnRFLOA.Location = new System.Drawing.Point(171, 89);
             this.btnRFLOA.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRFLOA.Name = "btnRFLOA";
-            this.btnRFLOA.Size = new System.Drawing.Size(104, 64);
+            this.btnRFLOA.Size = new System.Drawing.Size(121, 70);
             this.btnRFLOA.TabIndex = 25;
             this.btnRFLOA.Click += new System.EventHandler(this.btnRFLOA_Click);
             // 
@@ -785,13 +810,13 @@ namespace WindowsFormsApplication1
             this.btnRehire.ForeColor = System.Drawing.Color.DarkGray;
             this.btnRehire.Image = ((System.Drawing.Image)(resources.GetObject("btnRehire.Image")));
             this.btnRehire.ImagePosition = 1;
-            this.btnRehire.ImageZoom = 40;
-            this.btnRehire.LabelPosition = 23;
+            this.btnRehire.ImageZoom = 35;
+            this.btnRehire.LabelPosition = 25;
             this.btnRehire.LabelText = "Rehires";
-            this.btnRehire.Location = new System.Drawing.Point(181, 7);
+            this.btnRehire.Location = new System.Drawing.Point(171, 7);
             this.btnRehire.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRehire.Name = "btnRehire";
-            this.btnRehire.Size = new System.Drawing.Size(104, 64);
+            this.btnRehire.Size = new System.Drawing.Size(121, 70);
             this.btnRehire.TabIndex = 24;
             this.btnRehire.Click += new System.EventHandler(this.btnRehire_Click);
             // 
@@ -807,12 +832,12 @@ namespace WindowsFormsApplication1
             this.btnPriors.ForeColor = System.Drawing.Color.DarkGray;
             this.btnPriors.Image = ((System.Drawing.Image)(resources.GetObject("btnPriors.Image")));
             this.btnPriors.ImagePosition = 1;
-            this.btnPriors.ImageZoom = 25;
-            this.btnPriors.LabelPosition = 35;
+            this.btnPriors.ImageZoom = 32;
+            this.btnPriors.LabelPosition = 30;
             this.btnPriors.LabelText = "Prior Pay Period Adjustment";
             this.btnPriors.Location = new System.Drawing.Point(22, 247);
             this.btnPriors.Name = "btnPriors";
-            this.btnPriors.Size = new System.Drawing.Size(104, 64);
+            this.btnPriors.Size = new System.Drawing.Size(121, 70);
             this.btnPriors.TabIndex = 23;
             this.btnPriors.Click += new System.EventHandler(this.btnPriors_Click);
             // 
@@ -828,13 +853,13 @@ namespace WindowsFormsApplication1
             this.btnBanks.ForeColor = System.Drawing.Color.DarkGray;
             this.btnBanks.Image = ((System.Drawing.Image)(resources.GetObject("btnBanks.Image")));
             this.btnBanks.ImagePosition = 1;
-            this.btnBanks.ImageZoom = 30;
-            this.btnBanks.LabelPosition = 35;
+            this.btnBanks.ImageZoom = 35;
+            this.btnBanks.LabelPosition = 25;
             this.btnBanks.LabelText = "Off Codes Vs Banks";
             this.btnBanks.Location = new System.Drawing.Point(22, 165);
             this.btnBanks.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnBanks.Name = "btnBanks";
-            this.btnBanks.Size = new System.Drawing.Size(104, 64);
+            this.btnBanks.Size = new System.Drawing.Size(121, 70);
             this.btnBanks.TabIndex = 22;
             this.btnBanks.Click += new System.EventHandler(this.btnBanks_Click);
             // 
@@ -850,12 +875,12 @@ namespace WindowsFormsApplication1
             this.btnTrans.ForeColor = System.Drawing.Color.DarkGray;
             this.btnTrans.Image = ((System.Drawing.Image)(resources.GetObject("btnTrans.Image")));
             this.btnTrans.ImagePosition = 1;
-            this.btnTrans.ImageZoom = 30;
-            this.btnTrans.LabelPosition = 35;
+            this.btnTrans.ImageZoom = 35;
+            this.btnTrans.LabelPosition = 25;
             this.btnTrans.LabelText = "AHS_AA_ TRANSFER_RPT";
             this.btnTrans.Location = new System.Drawing.Point(22, 83);
             this.btnTrans.Name = "btnTrans";
-            this.btnTrans.Size = new System.Drawing.Size(104, 64);
+            this.btnTrans.Size = new System.Drawing.Size(121, 70);
             this.btnTrans.TabIndex = 21;
             this.btnTrans.Click += new System.EventHandler(this.btnTrans_Click);
             // 
@@ -871,13 +896,13 @@ namespace WindowsFormsApplication1
             this.btnAHS_AA_Terms.ForeColor = System.Drawing.Color.DarkGray;
             this.btnAHS_AA_Terms.Image = ((System.Drawing.Image)(resources.GetObject("btnAHS_AA_Terms.Image")));
             this.btnAHS_AA_Terms.ImagePosition = 1;
-            this.btnAHS_AA_Terms.ImageZoom = 40;
-            this.btnAHS_AA_Terms.LabelPosition = 23;
+            this.btnAHS_AA_Terms.ImageZoom = 35;
+            this.btnAHS_AA_Terms.LabelPosition = 25;
             this.btnAHS_AA_Terms.LabelText = "AHS_AA_TERMS";
             this.btnAHS_AA_Terms.Location = new System.Drawing.Point(22, 1);
             this.btnAHS_AA_Terms.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAHS_AA_Terms.Name = "btnAHS_AA_Terms";
-            this.btnAHS_AA_Terms.Size = new System.Drawing.Size(104, 64);
+            this.btnAHS_AA_Terms.Size = new System.Drawing.Size(121, 70);
             this.btnAHS_AA_Terms.TabIndex = 20;
             this.btnAHS_AA_Terms.Click += new System.EventHandler(this.btnAHS_AA_Terms_Click);
             // 
@@ -1264,7 +1289,7 @@ namespace WindowsFormsApplication1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.03.07";
+            this.Text = "SömëKindä Tööl v2018.03.22";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);
@@ -1350,5 +1375,6 @@ namespace WindowsFormsApplication1
         private Bunifu.Framework.UI.BunifuTileButton btnFormatTAER;
         private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton1;
         private Bunifu.Framework.UI.BunifuTileButton btnRemote;
+        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton2;
     }
 }

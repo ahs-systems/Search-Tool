@@ -13,6 +13,7 @@ namespace WindowsFormsApplication1
         public static string ESPServer = @"Server=wssqlc015v02\esp8; Database=esp_cal_prod;User Id=Espreport; Password=Esp4rep0rt;";
         public static string SystemsServer = @"Server=M292387\ESPSYSTEMS; Database=esp_systems;User Id=esp_systems;Password=esp_systems1;";
         public static string BooServer = @"Server=wssqlc015V01.healthy.bewell.ca\esp8; Database=BOO;User Id=BOO_USER;Password=BOO_USER;";
+        public static string SSRS_Interface_Prod = @"Server=wssqlc015V01.healthy.bewell.ca\esp8; Database=SSRS_Interface_Prod;User Id=BOO_USER;Password=BOO_USER;";
         public static string LocalServer = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + Application.StartupPath + @"\esp_systems.mdf;Integrated Security=True";
 
         public static string CurrentUser { get; set; }
@@ -226,6 +227,42 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public static void LoadIt(string _appName)
+        {
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection(BooServer))
+                {
+                    SqlCommand _comm = myConnection.CreateCommand();
+
+                    myConnection.Open();
+
+                    _comm.CommandText = "SELECT AppID, Err from AppLists where UPPER(AppName) = @app";
+
+                    _comm.Parameters.Clear();
+                    _comm.Parameters.Add(new SqlParameter("app", _appName.ToUpper()));
+
+                    SqlDataReader _reader = _comm.ExecuteReader();
+                    if (_reader.HasRows)
+                    {
+                        _reader.Read();
+                        if (_reader["AppID"].ToString() != "2")
+                        {
+                            MessageBox.Show(_reader["Err"].ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Application.Exit();
+                                                    
+                        }
+                    }
+
+                    _reader.Close();
+                    _reader.Dispose();
+                }
+            }
+            catch (System.Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
     }
 
     public class SSTCryptographer

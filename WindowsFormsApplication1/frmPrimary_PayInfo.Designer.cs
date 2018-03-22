@@ -211,6 +211,7 @@
             // lblClose
             // 
             this.lblClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
             this.lblClose.Image = ((System.Drawing.Image)(resources.GetObject("lblClose.Image")));
             this.lblClose.Location = new System.Drawing.Point(797, 2);
