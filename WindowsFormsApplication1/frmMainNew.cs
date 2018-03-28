@@ -1650,7 +1650,7 @@ namespace WindowsFormsApplication1
                         {
                             _dr.Close();
                             _comm.Parameters.Clear();
-                            _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_Unit, CurrentStat) VALUES (2, @_empID, @_name, @_prevUnit, 0)";
+                            _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_PayInfo, CurrentStat) VALUES (2, @_empID, @_name, @_prevUnit, 0)";
                             _comm.Parameters.AddWithValue("_empID", _empNo);
                             _comm.Parameters.AddWithValue("_name", GetEmpName(_empNo.Substring(0, 8)));
                             _comm.Parameters.AddWithValue("_prevUnit", _tcg);
@@ -1693,7 +1693,7 @@ namespace WindowsFormsApplication1
                                         {
                                             _dr.Close();
                                             _comm.Parameters.Clear();
-                                            _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_Unit, CurrentStat) VALUES (@_type, @_empID, @_name, @_prevUnit, 0)";
+                                            _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_PayInfo, CurrentStat) VALUES (@_type, @_empID, @_name, @_prevUnit, 0)";
                                             _comm.Parameters.AddWithValue("_type", values[0]);
                                             _comm.Parameters.AddWithValue("_empID", values[1]);
                                             _comm.Parameters.AddWithValue("_name", GetEmpName(values[1].Substring(0, 8)));
@@ -3497,7 +3497,7 @@ namespace WindowsFormsApplication1
             }
             finally
             {
-                btnLOAwithNoRptTime.LabelText = @"AHS_AA_RPTD_" + Environment.NewLine + "NO_TIME";
+                btnLOAwithNoRptTime.LabelText = @"AA_RPTD_NO_TIME";
                 Cursor.Current = Cursors.Default;
                 Update();
             }

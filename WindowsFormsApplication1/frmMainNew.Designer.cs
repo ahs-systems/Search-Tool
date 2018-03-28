@@ -260,8 +260,8 @@ namespace WindowsFormsApplication1
             this.btnClearLocks.ForeColor = System.Drawing.Color.DarkGray;
             this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
             this.btnClearLocks.ImagePosition = 7;
-            this.btnClearLocks.ImageZoom = 35;
-            this.btnClearLocks.LabelPosition = 20;
+            this.btnClearLocks.ImageZoom = 30;
+            this.btnClearLocks.LabelPosition = 23;
             this.btnClearLocks.LabelText = "View Locks";
             this.btnClearLocks.Location = new System.Drawing.Point(159, 8);
             this.btnClearLocks.Margin = new System.Windows.Forms.Padding(6);
@@ -767,8 +767,8 @@ namespace WindowsFormsApplication1
             this.btnLOAwithNoRptTime.Image = ((System.Drawing.Image)(resources.GetObject("btnLOAwithNoRptTime.Image")));
             this.btnLOAwithNoRptTime.ImagePosition = 1;
             this.btnLOAwithNoRptTime.ImageZoom = 35;
-            this.btnLOAwithNoRptTime.LabelPosition = 24;
-            this.btnLOAwithNoRptTime.LabelText = "AHS_AA_RPTD_ NO_TIME";
+            this.btnLOAwithNoRptTime.LabelPosition = 25;
+            this.btnLOAwithNoRptTime.LabelText = "AA_RPTD_NO_TIME";
             this.btnLOAwithNoRptTime.Location = new System.Drawing.Point(171, 171);
             this.btnLOAwithNoRptTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLOAwithNoRptTime.Name = "btnLOAwithNoRptTime";
@@ -1276,7 +1276,7 @@ namespace WindowsFormsApplication1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(1561, 756);
+            this.ClientSize = new System.Drawing.Size(1512, 756);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.pnlSearch);
@@ -1289,7 +1289,7 @@ namespace WindowsFormsApplication1
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.03.22";
+            this.Text = "SömëKindä Tööl v2018.03.28";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);
