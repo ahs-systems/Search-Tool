@@ -99,6 +99,7 @@ namespace WindowsFormsApplication1
                         "where ep.EP_ToDate > getdate() " +
                         "and ep.EP_PrimaryInd = 1 " +
                         "and e.E_EmpNbr = @V_EmpNbr " +
+                        "AND ep.EP_StatusID IN (100, 101, 103, 104) " +
                         "group by e.E_EmpNbr " +
                         "having count(ep.EP_PrimaryInd) > 1 ";
                 _comm.Parameters.Add(new SqlParameter("V_EmpNbr", _empNbr));

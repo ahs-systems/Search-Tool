@@ -1352,7 +1352,7 @@ namespace WindowsFormsApplication1
             }
             finally
             {
-                btnBanks.LabelText = "Off Codes vs" + Environment.NewLine + "Banks";
+                btnBanks.LabelText = "Off Codes vs Banks";
                 Cursor = Cursors.Default;
                 Update();
             }
