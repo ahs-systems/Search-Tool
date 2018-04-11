@@ -101,6 +101,7 @@ namespace WindowsFormsApplication1
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.transPanel = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
+            this.btnFormatA06 = new Bunifu.Framework.UI.BunifuTileButton();
             this.pnlMain.SuspendLayout();
             this.pnlMisc.SuspendLayout();
             this.pnlFormatting.SuspendLayout();
@@ -579,6 +580,7 @@ namespace WindowsFormsApplication1
             // 
             // pnlFormatting
             // 
+            this.pnlFormatting.Controls.Add(this.btnFormatA06);
             this.pnlFormatting.Controls.Add(this.btnFormatTAER);
             this.pnlFormatting.Controls.Add(this.btnEmailNegStat);
             this.pnlFormatting.Controls.Add(this.btnFile6);
@@ -1272,6 +1274,28 @@ namespace WindowsFormsApplication1
             this.transFrm.DefaultAnimation = animation1;
             this.transFrm.TimeStep = 0.01F;
             // 
+            // btnFormatA06
+            // 
+            this.btnFormatA06.BackColor = System.Drawing.Color.Transparent;
+            this.btnFormatA06.color = System.Drawing.Color.Transparent;
+            this.btnFormatA06.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
+            this.btnFormatA06.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.btnFormatA06, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnFormatA06, BunifuAnimatorNS.DecorationType.None);
+            this.btnFormatA06.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFormatA06.ForeColor = System.Drawing.Color.DarkGray;
+            this.btnFormatA06.Image = ((System.Drawing.Image)(resources.GetObject("btnFormatA06.Image")));
+            this.btnFormatA06.ImagePosition = 1;
+            this.btnFormatA06.ImageZoom = 30;
+            this.btnFormatA06.LabelPosition = 30;
+            this.btnFormatA06.LabelText = "Format A06";
+            this.btnFormatA06.Location = new System.Drawing.Point(320, 247);
+            this.btnFormatA06.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnFormatA06.Name = "btnFormatA06";
+            this.btnFormatA06.Size = new System.Drawing.Size(121, 70);
+            this.btnFormatA06.TabIndex = 36;
+            this.btnFormatA06.Click += new System.EventHandler(this.btnFormatA06_Click);
+            // 
             // frmMainNew
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1377,5 +1401,6 @@ namespace WindowsFormsApplication1
         private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton1;
         private Bunifu.Framework.UI.BunifuTileButton btnRemote;
         private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton2;
+        private Bunifu.Framework.UI.BunifuTileButton btnFormatA06;
     }
 }

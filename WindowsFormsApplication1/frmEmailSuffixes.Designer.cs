@@ -153,6 +153,7 @@
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.btnAdd, BunifuAnimatorNS.DecorationType.None);
             this.btnAdd.DisabledColor = System.Drawing.Color.Gray;
+            this.btnAdd.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAdd.Iconcolor = System.Drawing.Color.Transparent;
             this.btnAdd.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnAdd.Iconimage")));
@@ -164,7 +165,7 @@
             this.btnAdd.IconRightVisible = true;
             this.btnAdd.IconRightZoom = 0D;
             this.btnAdd.IconVisible = true;
-            this.btnAdd.IconZoom = 90D;
+            this.btnAdd.IconZoom = 60D;
             this.btnAdd.IsTab = false;
             this.btnAdd.Location = new System.Drawing.Point(162, 39);
             this.btnAdd.Name = "btnAdd";
@@ -175,9 +176,9 @@
             this.btnAdd.Size = new System.Drawing.Size(141, 45);
             this.btnAdd.TabIndex = 69;
             this.btnAdd.Text = "Add Selected Invalid Suffix";
-            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdd.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.btnAdd.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.TextFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnShowInvalid
@@ -190,6 +191,7 @@
             this.btnShowInvalid.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.btnShowInvalid, BunifuAnimatorNS.DecorationType.None);
             this.btnShowInvalid.DisabledColor = System.Drawing.Color.Gray;
+            this.btnShowInvalid.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowInvalid.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnShowInvalid.Iconcolor = System.Drawing.Color.Transparent;
             this.btnShowInvalid.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnShowInvalid.Iconimage")));
@@ -201,7 +203,7 @@
             this.btnShowInvalid.IconRightVisible = true;
             this.btnShowInvalid.IconRightZoom = 0D;
             this.btnShowInvalid.IconVisible = true;
-            this.btnShowInvalid.IconZoom = 90D;
+            this.btnShowInvalid.IconZoom = 60D;
             this.btnShowInvalid.IsTab = false;
             this.btnShowInvalid.Location = new System.Drawing.Point(15, 39);
             this.btnShowInvalid.Name = "btnShowInvalid";
@@ -212,9 +214,9 @@
             this.btnShowInvalid.Size = new System.Drawing.Size(141, 45);
             this.btnShowInvalid.TabIndex = 70;
             this.btnShowInvalid.Text = "Show List Of Invalid Suffix";
-            this.btnShowInvalid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnShowInvalid.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnShowInvalid.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.btnShowInvalid.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowInvalid.TextFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowInvalid.Click += new System.EventHandler(this.btnShowInvalid_Click);
             // 
             // btnShowValidList
@@ -227,6 +229,7 @@
             this.btnShowValidList.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.btnShowValidList, BunifuAnimatorNS.DecorationType.None);
             this.btnShowValidList.DisabledColor = System.Drawing.Color.Gray;
+            this.btnShowValidList.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowValidList.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnShowValidList.Iconcolor = System.Drawing.Color.Transparent;
             this.btnShowValidList.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnShowValidList.Iconimage")));
@@ -238,7 +241,7 @@
             this.btnShowValidList.IconRightVisible = true;
             this.btnShowValidList.IconRightZoom = 0D;
             this.btnShowValidList.IconVisible = true;
-            this.btnShowValidList.IconZoom = 90D;
+            this.btnShowValidList.IconZoom = 60D;
             this.btnShowValidList.IsTab = false;
             this.btnShowValidList.Location = new System.Drawing.Point(382, 40);
             this.btnShowValidList.Name = "btnShowValidList";
@@ -249,9 +252,9 @@
             this.btnShowValidList.Size = new System.Drawing.Size(141, 45);
             this.btnShowValidList.TabIndex = 72;
             this.btnShowValidList.Text = "Show Valid List of Suffixes";
-            this.btnShowValidList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnShowValidList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnShowValidList.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.btnShowValidList.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowValidList.TextFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowValidList.Click += new System.EventHandler(this.btnShowValidList_Click);
             // 
             // btnRemoveFromList
@@ -264,6 +267,7 @@
             this.btnRemoveFromList.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.btnRemoveFromList, BunifuAnimatorNS.DecorationType.None);
             this.btnRemoveFromList.DisabledColor = System.Drawing.Color.Gray;
+            this.btnRemoveFromList.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveFromList.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnRemoveFromList.Iconcolor = System.Drawing.Color.Transparent;
             this.btnRemoveFromList.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnRemoveFromList.Iconimage")));
@@ -275,7 +279,7 @@
             this.btnRemoveFromList.IconRightVisible = true;
             this.btnRemoveFromList.IconRightZoom = 0D;
             this.btnRemoveFromList.IconVisible = true;
-            this.btnRemoveFromList.IconZoom = 90D;
+            this.btnRemoveFromList.IconZoom = 60D;
             this.btnRemoveFromList.IsTab = false;
             this.btnRemoveFromList.Location = new System.Drawing.Point(529, 40);
             this.btnRemoveFromList.Name = "btnRemoveFromList";
@@ -286,9 +290,9 @@
             this.btnRemoveFromList.Size = new System.Drawing.Size(141, 45);
             this.btnRemoveFromList.TabIndex = 71;
             this.btnRemoveFromList.Text = "Remove Selected Valid Suffix";
-            this.btnRemoveFromList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnRemoveFromList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRemoveFromList.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.btnRemoveFromList.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveFromList.TextFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveFromList.Click += new System.EventHandler(this.btnRemoveFromList_Click);
             // 
             // bunifuSeparator1
@@ -318,7 +322,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.lblTitle);
-            this.transFrm.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
+            this.transFrm.SetDecoration(this, BunifuAnimatorNS.DecorationType.BottomMirror);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEmailSuffixes";

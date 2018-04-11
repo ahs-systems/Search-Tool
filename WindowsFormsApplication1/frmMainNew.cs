@@ -4227,5 +4227,183 @@ namespace WindowsFormsApplication1
             _frm.ShowDialog();
             ShowMe();
         }
+
+        private void btnFormatA06_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btnFormatA06.LabelText = "Processing...";
+                Cursor.Current = Cursors.WaitCursor;
+                btnFormatA06.Update();
+
+                // Open the file from SSRS with A06
+                MessageBox.Show("Select the Excel file that came from SSRS that contains the list of EE with A06 Exceptions.\n\nClick OK to continue.", "Select the Excel file", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Title = "Please select the Excel file that came from SSRS that contains the list of EE with A06 Exceptions";
+                openFileDialog1.Filter = "Excel Files (.xlsx)|*.xlsx|All Files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 1;
+
+                bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+                if (!userClickedOK) return;
+
+                string _A06File = openFileDialog1.FileName;
+
+                // Open the file from Linh or SSRS with Rotational Stats
+                MessageBox.Show("Now, select the Excel file that came from SSRS that contains the list of EE with \"Rotation-Statutory-On\".\n\nClick OK to continue.", "Select the Excel file", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Title = "Please select the Excel file that came from SSRS";
+                openFileDialog1.Filter = "Excel Files (.xlsx)|*.xlsx|All Files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 1;
+
+                userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+                if (!userClickedOK) return;
+
+                string _ssrsFile = openFileDialog1.FileName;
+
+                List<string> _withRotationalShifts = new List<string>();
+
+                // load  the list of ee with rotational shifts
+                using (ExcelPackage package = new ExcelPackage(new FileInfo(_ssrsFile)))
+                {
+                    ExcelWorkbook workBook = package.Workbook;
+                    ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
+
+                    int totalRows = currentWorksheet.Dimension.End.Row;
+                    int totalCols = currentWorksheet.Dimension.End.Column;
+
+                    for (int i = 2; i <= totalRows; i++)
+                    {
+                        _withRotationalShifts.Add(currentWorksheet.Cells[i, 1].Value.ToString().Trim());
+                    }
+                }
+
+                using (ExcelPackage package = new ExcelPackage(new FileInfo(_A06File)))
+                {
+                    ExcelWorkbook workBook = package.Workbook;
+                    ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
+
+                    int totalRows = currentWorksheet.Dimension.End.Row;
+                    int totalCols = currentWorksheet.Dimension.End.Column;
+
+                    #region Old Formatting
+                    using (ExcelPackage package2 = new ExcelPackage())
+                    {
+                        ExcelWorksheet worksheet = package2.Workbook.Worksheets.Add("Stat Codes Vs Banks");
+
+                        // Set Page Settings
+                        worksheet.PrinterSettings.Orientation = eOrientation.Landscape;
+                        worksheet.PrinterSettings.ShowGridLines = true;
+                        worksheet.PrinterSettings.HorizontalCentered = true;
+                        worksheet.PrinterSettings.TopMargin = (decimal)1.5 / 2.54M;
+                        worksheet.PrinterSettings.BottomMargin = (decimal)1.5 / 2.54M;
+                        worksheet.PrinterSettings.LeftMargin = (decimal)0.3 / 2.54M;
+                        worksheet.PrinterSettings.RightMargin = (decimal)0.3 / 2.54M;
+                        worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
+                        worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
+                        worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy");
+
+                        string _currDate = DateTime.Today.ToString("yyyy-MM-dd");
+                        string _payPeriod = "";
+                        if (GetStartPP(_currDate) == _currDate)
+                        {
+                            _payPeriod = Common.GetPP(DateTime.ParseExact(_currDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture).AddDays(-1).ToString("yyyy-MM-dd"));
+                        }
+                        else
+                        {
+                            _payPeriod = Common.GetPP(_currDate);
+                        }
+
+                        worksheet.HeaderFooter.OddHeader.RightAlignedText = "Pay Period: " + _payPeriod;
+                        worksheet.HeaderFooter.OddHeader.CenteredText = "Stat Codes Vs Banks";
+                        worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
+                        worksheet.View.PageBreakView = true;
+                        worksheet.PrinterSettings.FitToPage = true; worksheet.PrinterSettings.FitToWidth = 1; worksheet.PrinterSettings.FitToHeight = 0;
+                        worksheet.PrinterSettings.RepeatRows = new ExcelAddress("$1:$1");
+
+                        worksheet.Cells[1, 1].Value = "Site"; worksheet.Cells[1, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(1).Width = 4.70;
+                        worksheet.Cells[1, 2].Value = "Unit"; worksheet.Cells[1, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(2).Width = 36.30;
+                        worksheet.Cells[1, 3].Value = "Name"; worksheet.Cells[1, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(3).Width = 35;
+                        worksheet.Cells[1, 4].Value = "Emp No."; worksheet.Cells[1, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(4).Width = 14;
+                        worksheet.Cells[1, 5].Value = ""; worksheet.Cells[1, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(5).Width = 5.40;
+                        worksheet.Cells[1, 6].Value = "Off Code"; worksheet.Cells[1, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(6).Width = 23;
+                        worksheet.Cells[1, 7].Value = "Off"; worksheet.Cells[1, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(7).Width = 8.40;
+                        worksheet.Cells[1, 8].Value = "Bank Hrs"; worksheet.Cells[1, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(8).Width = 9.3;
+                        worksheet.Cells[1, 9].Value = "Difference"; worksheet.Cells[1, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(9).Width = 10.7;
+                        worksheet.Cells[1, 10].Value = "Comments"; worksheet.Cells[1, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin); worksheet.Column(10).Width = 12;
+
+                        var range = worksheet.Cells[1, 1, 1, 10];
+                        range.Style.Font.Bold = true;
+                        range.Style.Font.Size = 11;
+                        range.Style.Font.Name = "Arial";
+                        range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        range.Style.Fill.BackgroundColor.SetColor(Color.LightBlue);
+
+                        for (int i = 12; i <= totalRows; i++)
+                        {
+                            try
+                            {
+                                worksheet.Row(i - 10).Height = 27;
+                                worksheet.Row(i - 10).Style.Font.Size = 12;
+                                worksheet.Row(i - 10).Style.Font.Name = "Arial";
+                                worksheet.Row(i - 10).Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+
+                                worksheet.Cells[i - 10, 1].Value = currentWorksheet.Cells[i, 1].Value.ToString().Trim(); worksheet.Cells[i - 10, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 2].Value = currentWorksheet.Cells[i, 2].Value; worksheet.Cells[i - 10, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 3].Value = currentWorksheet.Cells[i, 5].Value.ToString().Trim(); worksheet.Cells[i - 10, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 4].Value = currentWorksheet.Cells[i, 7].Value; worksheet.Cells[i - 10, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 5].Value = currentWorksheet.Cells[i, 8].Value; worksheet.Cells[i - 10, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 6].Value = currentWorksheet.Cells[i, 9].Value; worksheet.Cells[i - 10, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 7].Value = currentWorksheet.Cells[i, 11].Value; worksheet.Cells[i - 10, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 8].Value = Math.Floor(Convert.ToDouble(currentWorksheet.Cells[i, 13].Value) * 100) / 100; worksheet.Cells[i - 10, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                worksheet.Cells[i - 10, 9].Value = Math.Round(Convert.ToDouble(currentWorksheet.Cells[i, 11].Value) - (Math.Floor(Convert.ToDouble(currentWorksheet.Cells[i, 13].Value) * 100) / 100), 3); worksheet.Cells[i - 10, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+
+                                // Check if the EE belongs to the list of EE with Rotational Stats
+                                bool _withRotShifts = _withRotationalShifts.SingleOrDefault(empIdToCheck => empIdToCheck.Contains(currentWorksheet.Cells[i, 7].Value.ToString().Trim())) != null;
+
+                                if (_withRotShifts)
+                                {
+                                    worksheet.Cells[i - 10, 10].Value = "Rotational";
+                                    worksheet.Cells[i - 10, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                                return;
+                            }
+
+                        }
+
+                        //worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                        //worksheet.Cells.AutoFitColumns();
+
+                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                        saveFileDialog1.FilterIndex = 1;
+                        saveFileDialog1.FileName = "Stats Compare - ";
+                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                        {
+                            package2.SaveAs(new FileInfo(saveFileDialog1.FileName));
+                            System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                        }
+                    }
+                    #endregion
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+            finally
+            {
+                btnFormatA06.LabelText = "Format A06";
+                Cursor.Current = Cursors.Default;
+            }
+        }
     }
 }
