@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Media;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -84,6 +85,16 @@ namespace Sandbox
             Hide();
             bunifuTransition1.ShowSync(this, true, null);
             this.Focus();
+        }
+
+        [DllImport("kernel32.dll")]
+        public static extern bool Beep(int freq, int duration);
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SystemSounds.Beep.Play();
+            //Console.Beep();
+            //Beep(1000, 1000);
         }
     }
 }
