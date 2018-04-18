@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRemotePC));
             this.lblClose = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -37,10 +37,10 @@
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnConnect = new System.Windows.Forms.Button();
-            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.rdoOldClient = new System.Windows.Forms.RadioButton();
             this.rdoWebClient = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,22 +73,22 @@
             // 
             this.transFrm.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.transFrm.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(30);
-            animation1.RotateCoeff = 0.5F;
-            animation1.RotateLimit = 0.2F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.transFrm.DefaultAnimation = animation1;
+            animation3.AnimateOnlyDifferences = true;
+            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
+            animation3.LeafCoeff = 0F;
+            animation3.MaxTime = 1F;
+            animation3.MinTime = 0F;
+            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
+            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
+            animation3.MosaicSize = 0;
+            animation3.Padding = new System.Windows.Forms.Padding(30);
+            animation3.RotateCoeff = 0.5F;
+            animation3.RotateLimit = 0.2F;
+            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
+            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
+            animation3.TimeCoeff = 0F;
+            animation3.TransparencyCoeff = 0F;
+            this.transFrm.DefaultAnimation = animation3;
             this.transFrm.MaxAnimationTime = 2000;
             // 
             // txtBarcode
@@ -135,13 +135,6 @@
             this.btnConnect.UseVisualStyleBackColor = false;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
-            // bunifuDragControl1
-            // 
-            this.bunifuDragControl1.Fixed = true;
-            this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = this.lblTitle;
-            this.bunifuDragControl1.Vertical = true;
-            // 
             // rdoOldClient
             // 
             this.rdoOldClient.AutoSize = true;
@@ -156,6 +149,7 @@
             this.rdoOldClient.TabStop = true;
             this.rdoOldClient.Text = "Old LanDesk Client (Desktop)";
             this.rdoOldClient.UseVisualStyleBackColor = false;
+            this.rdoOldClient.Click += new System.EventHandler(this.rdoOldClient_Click);
             // 
             // rdoWebClient
             // 
@@ -169,6 +163,7 @@
             this.rdoWebClient.TabIndex = 68;
             this.rdoWebClient.Text = "New Client (WebUI)";
             this.rdoWebClient.UseVisualStyleBackColor = false;
+            this.rdoWebClient.Click += new System.EventHandler(this.rdoOldClient_Click);
             // 
             // groupBox1
             // 
@@ -182,6 +177,13 @@
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connect Option";
+            // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this.lblTitle;
+            this.bunifuDragControl1.Vertical = true;
             // 
             // frmRemotePC
             // 

@@ -28,6 +28,13 @@ namespace WindowsFormsApplication1
         {
             try
             {
+                if (txtBarcode.Text.Trim() == "")
+                {
+                    MessageBox.Show("Please enter the barcode of the PC you want to connect.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtBarcode.Focus();
+                    return;
+                }
+
                 IPAddress[] ipAddr = Dns.GetHostAddresses(txtBarcode.Text.Trim().ToUpper());
                 if (ipAddr.Length == 1)
                 {
@@ -62,8 +69,13 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == (char)13)
             {
-                btnConnect.PerformClick();                
+                btnConnect.PerformClick();
             }
+        }        
+
+        private void rdoOldClient_Click(object sender, EventArgs e)
+        {
+            txtBarcode.Focus();
         }
     }
 }
