@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
 
             using (SqlConnection conn = new SqlConnection())
             {
-                conn.ConnectionString = @"Data Source=wssqlc015v02\esp8; Initial Catalog=esp_cal_train; Trusted_Connection=true";
+                conn.ConnectionString = @"Data Source=wssqlc015v02\esp8; Initial Catalog=esp_cal_prod; Trusted_Connection=true";
 
                 progress.PerformStep();
 
@@ -127,7 +127,10 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
-
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
                 finally
                 {
                     if (conn.State == ConnectionState.Open)

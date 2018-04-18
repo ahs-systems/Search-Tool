@@ -59,6 +59,7 @@ namespace WindowsFormsApplication1
             this.label1 = new System.Windows.Forms.Label();
             this.pnlMisc = new System.Windows.Forms.Panel();
             this.pnlFormatting = new System.Windows.Forms.Panel();
+            this.btnFormatA06 = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnFormatTAER = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnEmailNegStat = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnFile6 = new Bunifu.Framework.UI.BunifuTileButton();
@@ -101,7 +102,6 @@ namespace WindowsFormsApplication1
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.transPanel = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.btnFormatA06 = new Bunifu.Framework.UI.BunifuTileButton();
             this.pnlMain.SuspendLayout();
             this.pnlMisc.SuspendLayout();
             this.pnlFormatting.SuspendLayout();
@@ -602,6 +602,28 @@ namespace WindowsFormsApplication1
             this.pnlFormatting.Size = new System.Drawing.Size(603, 325);
             this.pnlFormatting.TabIndex = 15;
             this.pnlFormatting.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmMainNew_MouseDoubleClick);
+            // 
+            // btnFormatA06
+            // 
+            this.btnFormatA06.BackColor = System.Drawing.Color.Transparent;
+            this.btnFormatA06.color = System.Drawing.Color.Transparent;
+            this.btnFormatA06.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
+            this.btnFormatA06.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.btnFormatA06, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnFormatA06, BunifuAnimatorNS.DecorationType.None);
+            this.btnFormatA06.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFormatA06.ForeColor = System.Drawing.Color.DarkGray;
+            this.btnFormatA06.Image = ((System.Drawing.Image)(resources.GetObject("btnFormatA06.Image")));
+            this.btnFormatA06.ImagePosition = 1;
+            this.btnFormatA06.ImageZoom = 30;
+            this.btnFormatA06.LabelPosition = 30;
+            this.btnFormatA06.LabelText = "Format A06";
+            this.btnFormatA06.Location = new System.Drawing.Point(320, 247);
+            this.btnFormatA06.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnFormatA06.Name = "btnFormatA06";
+            this.btnFormatA06.Size = new System.Drawing.Size(121, 70);
+            this.btnFormatA06.TabIndex = 36;
+            this.btnFormatA06.Click += new System.EventHandler(this.btnFormatA06_Click);
             // 
             // btnFormatTAER
             // 
@@ -1274,28 +1296,6 @@ namespace WindowsFormsApplication1
             this.transFrm.DefaultAnimation = animation1;
             this.transFrm.TimeStep = 0.01F;
             // 
-            // btnFormatA06
-            // 
-            this.btnFormatA06.BackColor = System.Drawing.Color.Transparent;
-            this.btnFormatA06.color = System.Drawing.Color.Transparent;
-            this.btnFormatA06.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
-            this.btnFormatA06.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transFrm.SetDecoration(this.btnFormatA06, BunifuAnimatorNS.DecorationType.None);
-            this.transPanel.SetDecoration(this.btnFormatA06, BunifuAnimatorNS.DecorationType.None);
-            this.btnFormatA06.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFormatA06.ForeColor = System.Drawing.Color.DarkGray;
-            this.btnFormatA06.Image = ((System.Drawing.Image)(resources.GetObject("btnFormatA06.Image")));
-            this.btnFormatA06.ImagePosition = 1;
-            this.btnFormatA06.ImageZoom = 30;
-            this.btnFormatA06.LabelPosition = 30;
-            this.btnFormatA06.LabelText = "Format A06";
-            this.btnFormatA06.Location = new System.Drawing.Point(320, 247);
-            this.btnFormatA06.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnFormatA06.Name = "btnFormatA06";
-            this.btnFormatA06.Size = new System.Drawing.Size(121, 70);
-            this.btnFormatA06.TabIndex = 36;
-            this.btnFormatA06.Click += new System.EventHandler(this.btnFormatA06_Click);
-            // 
             // frmMainNew
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1314,7 +1314,7 @@ namespace WindowsFormsApplication1
             this.Name = "frmMainNew";
             this.Opacity = 0.8D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.04.10";
+            this.Text = "SömëKindä Tööl v2018.04.13";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);

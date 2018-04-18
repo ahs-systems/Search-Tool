@@ -2266,8 +2266,9 @@ namespace WindowsFormsApplication1
                     ProcessFile6(_destFolder + _fileName, _destFolder);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show("ERROR: " + ex.Message);
             }
         }
 
@@ -4250,33 +4251,53 @@ namespace WindowsFormsApplication1
 
                 string _A06File = openFileDialog1.FileName;
 
+                #region Old Code in using Linh's Report for Rotational Stats in Excel
                 // Open the file from Linh or SSRS with Rotational Stats
-                MessageBox.Show("Now, select the Excel file that came from SSRS that contains the list of EE with \"Rotation-Statutory-On\".\n\nClick OK to continue.", "Select the Excel file", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                openFileDialog1 = new OpenFileDialog();
-                openFileDialog1.Title = "Please select the Excel file that came from SSRS";
-                openFileDialog1.Filter = "Excel Files (.xlsx)|*.xlsx|All Files (*.*)|*.*";
-                openFileDialog1.FilterIndex = 1;
+                //MessageBox.Show("Now, select the Excel file that came from SSRS that contains the list of EE with \"Rotation-Statutory-On\".\n\nClick OK to continue.", "Select the Excel file", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //openFileDialog1 = new OpenFileDialog();
+                //openFileDialog1.Title = "Please select the Excel file that came from SSRS";
+                //openFileDialog1.Filter = "Excel Files (.xlsx)|*.xlsx|All Files (*.*)|*.*";
+                //openFileDialog1.FilterIndex = 1;
 
-                userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+                //userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
 
-                if (!userClickedOK) return;
+                //if (!userClickedOK) return;
 
-                string _ssrsFile = openFileDialog1.FileName;
+                //string _ssrsFile = openFileDialog1.FileName;
+
+                //List<string> _withRotationalShifts = new List<string>();
+
+                //// load  the list of ee with rotational shifts
+                //using (ExcelPackage package = new ExcelPackage(new FileInfo(_ssrsFile)))
+                //{
+                //    ExcelWorkbook workBook = package.Workbook;
+                //    ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
+
+                //    int totalRows = currentWorksheet.Dimension.End.Row;
+                //    int totalCols = currentWorksheet.Dimension.End.Column;
+
+                //    for (int i = 2; i <= totalRows; i++)
+                //    {
+                //        _withRotationalShifts.Add(currentWorksheet.Cells[i, 1].Value.ToString().Trim());
+                //    }
+                //}
+                #endregion
 
                 List<string> _withRotationalShifts = new List<string>();
 
-                // load  the list of ee with rotational shifts
-                using (ExcelPackage package = new ExcelPackage(new FileInfo(_ssrsFile)))
+                // Load the list of EE with Rotational Shifts from a stored procedure
+                using (SqlConnection _conn = new SqlConnection(Common.BooServer))
                 {
-                    ExcelWorkbook workBook = package.Workbook;
-                    ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
+                    SqlCommand _comm = _conn.CreateCommand();
+                    _conn.Open();
+                    _comm.CommandText = "dbo.sp_rotational_cal";
+                    _comm.CommandType = CommandType.StoredProcedure;
 
-                    int totalRows = currentWorksheet.Dimension.End.Row;
-                    int totalCols = currentWorksheet.Dimension.End.Column;
+                    SqlDataReader _dr = _comm.ExecuteReader();
 
-                    for (int i = 2; i <= totalRows; i++)
+                    while (_dr.Read())
                     {
-                        _withRotationalShifts.Add(currentWorksheet.Cells[i, 1].Value.ToString().Trim());
+                        _withRotationalShifts.Add(_dr["E_EmpNbr"].ToString().Trim());
                     }
                 }
 
