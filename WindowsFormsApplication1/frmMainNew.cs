@@ -2525,11 +2525,16 @@ namespace WindowsFormsApplication1
                     int outCurrRowIndex = 1;
                     int rowStartOfRecord = 1;
                     bool notIncluded = false;
+
                     for (int rowIndex = sheet.Cells.FirstRowIndex; rowIndex <= sheet.Cells.LastRowIndex; rowIndex++)
                     {
                         Row row = sheet.Cells.GetRow(rowIndex);
 
-                        //MessageBox.Show("rowIndex=" + rowIndex + ", row.FirstColIndex=" + row.FirstColIndex + ", row.LastColIndex=" + row.LastColIndex + "\n\r");
+                        // Check if the file is in proper format, check if "PAY PERIOD ADJUSTMENTS" is in column 18 (zero based)
+                        if (rowIndex == sheet.Cells.FirstRowIndex && !row.GetCell(18).StringValue.ToUpper().StartsWith("PAY PERIOD ADJUSTMENTS"))
+                        {
+                            throw new Exception("File not in proper format to process, aborting....");
+                        }
 
                         if ((row.LastColIndex < 100) && (row.GetCell(0).StringValue.ToUpper().IndexOf("PRINTED BY") < 0)) // DONT PROCESS EMPTY ROWS AND ROWS WITH "PRINTED BY"
                         {
@@ -2570,23 +2575,23 @@ namespace WindowsFormsApplication1
                                 if (cell.StringValue.Trim() != "") worksheet.Cells[outCurrRowIndex, colIndex + 1].Value = cell.StringValue;
                             }
                             outCurrRowIndex++;
-                        }
+                        }                        
+                    }
 
-                        // check the last record written if its should be included or not
-                        if (notIncluded) // remove the written record
+                    // check the last record written if its should be included or not
+                    if (notIncluded) // remove the written record
+                    {
+                        for (int _start = rowStartOfRecord; _start < outCurrRowIndex; _start++)
                         {
-                            for (int _start = rowStartOfRecord; _start < outCurrRowIndex; _start++)
-                            {
-                                worksheet.DeleteRow(rowStartOfRecord);
-                            }
-                            worksheet = package.Workbook.Worksheets.First();
+                            worksheet.DeleteRow(rowStartOfRecord);
                         }
+                        worksheet = package.Workbook.Worksheets.First();
                     }
 
                     worksheet.DeleteColumn(1); worksheet.DeleteColumn(25); // DELETE COLUMN A AND Z
                     worksheet.Column(2).Width = worksheet.Column(3).Width = worksheet.Column(4).Width = worksheet.Column(5).Width = worksheet.Column(6).Width = worksheet.Column(7).Width =
-                        worksheet.Column(8).Width = worksheet.Column(15).Width = worksheet.Column(16).Width = worksheet.Column(18).Width = worksheet.Column(20).Width =
-                        worksheet.Column(21).Width = worksheet.Column(24).Width = 5; // set column width to 5 for columns B to H, O, P, R, T, U, X
+                    worksheet.Column(8).Width = worksheet.Column(15).Width = worksheet.Column(16).Width = worksheet.Column(18).Width = worksheet.Column(20).Width =
+                    worksheet.Column(21).Width = worksheet.Column(24).Width = 5; // set column width to 5 for columns B to H, O, P, R, T, U, X
 
                     if (worksheet.Cells[1, 18].Value != null)
                     {
@@ -3595,35 +3600,23 @@ namespace WindowsFormsApplication1
 
                 string _timeAndLabourFile = openFileDialog1.FileName;
 
-                // Open the file from Linh or SSRS
-                MessageBox.Show("Now, select the Excel file that came from SSRS that contains the list of EE with \"Rotation-Statutory-On\".\n\nClick OK to continue.", "Select the Excel file", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                openFileDialog1 = new OpenFileDialog();
-                openFileDialog1.Title = "Please select the Excel file that came from SSRS";
-                openFileDialog1.Filter = "Excel Files (.xlsx)|*.xlsx|All Files (*.*)|*.*";
-                openFileDialog1.FilterIndex = 1;
-
-                userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
-
-                if (!userClickedOK) return;
-
-                string _ssrsFile = openFileDialog1.FileName;
-
                 List<string> _withRotationalShifts = new List<string>();
                 List<string> _finalList = new List<string>();
                 List<string[]> _data = new List<string[]>();
 
-                // load  the list of ee with rotational shifts
-                using (ExcelPackage package = new ExcelPackage(new FileInfo(_ssrsFile)))
+                // Load the list of EE with Rotational Shifts from a stored procedure
+                using (SqlConnection _conn = new SqlConnection(Common.BooServer))
                 {
-                    ExcelWorkbook workBook = package.Workbook;
-                    ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
+                    SqlCommand _comm = _conn.CreateCommand();
+                    _conn.Open();
+                    _comm.CommandText = "dbo.sp_rotational_cal";
+                    _comm.CommandType = CommandType.StoredProcedure;
 
-                    int totalRows = currentWorksheet.Dimension.End.Row;
-                    int totalCols = currentWorksheet.Dimension.End.Column;
+                    SqlDataReader _dr = _comm.ExecuteReader();
 
-                    for (int i = 2; i <= totalRows; i++)
+                    while (_dr.Read())
                     {
-                        _withRotationalShifts.Add(currentWorksheet.Cells[i, 1].Value.ToString().Trim());
+                        _withRotationalShifts.Add(_dr["E_EmpNbr"].ToString().Trim());
                     }
                 }
 
