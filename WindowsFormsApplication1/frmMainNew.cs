@@ -2564,10 +2564,7 @@ namespace WindowsFormsApplication1
                             if (row.LastColIndex == 10)
                             {
                                 notIncluded = IsSystemsMember(row.GetCell(10).StringValue.ToUpper());
-                                //if (row.GetCell(10).StringValue.ToUpper() == "ROTCHELOSANTOSS") { 
-                                //    MessageBox.Show("ASDF"); };
                             }
-
 
                             for (int colIndex = row.FirstColIndex; colIndex <= row.LastColIndex; colIndex++)
                             {
@@ -2575,7 +2572,7 @@ namespace WindowsFormsApplication1
                                 if (cell.StringValue.Trim() != "") worksheet.Cells[outCurrRowIndex, colIndex + 1].Value = cell.StringValue;
                             }
                             outCurrRowIndex++;
-                        }                        
+                        }
                     }
 
                     // check the last record written if its should be included or not
@@ -4418,6 +4415,214 @@ namespace WindowsFormsApplication1
             {
                 btnFormatA06.LabelText = "Format A06";
                 Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void btnFormatSickOnStat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Title = "Select the Sick On A Stat from SSRS (CSV Format)";
+                openFileDialog1.Filter = "CSV Files (.csv)|*.csv|All Files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 1;
+
+                bool userClickedOK = openFileDialog1.ShowDialog() == DialogResult.OK;
+
+                if (!userClickedOK)
+                {
+                    return;
+                }
+
+                btnSickOnStat.LabelText = "Processing...";
+                Cursor = Cursors.WaitCursor;
+                btnBanks.Update();
+
+                string[] lines = File.ReadAllLines(openFileDialog1.FileName);
+
+                using (ExcelPackage package = new ExcelPackage())
+                {
+                    ExcelWorkbook workBook = package.Workbook;
+
+                    // Create tab for "Other Unions"
+                    ExcelWorksheet wsOriginal = workBook.Worksheets.Add("Original File");
+
+                    // Create tab for "Other Unions"
+                    ExcelWorksheet wsOtherUnions = workBook.Worksheets.Add("Other Unions");
+
+                    // Set Page Settings
+                    wsOtherUnions.PrinterSettings.Orientation = eOrientation.Landscape;
+                    wsOtherUnions.PrinterSettings.ShowGridLines = true;
+                    wsOtherUnions.PrinterSettings.HorizontalCentered = true;
+                    wsOtherUnions.PrinterSettings.TopMargin = (decimal)1.5 / 2.54M;
+                    wsOtherUnions.PrinterSettings.BottomMargin = (decimal)1.5 / 2.54M;
+                    wsOtherUnions.PrinterSettings.LeftMargin = (decimal)0.3 / 2.54M;
+                    wsOtherUnions.PrinterSettings.RightMargin = (decimal)0.3 / 2.54M;
+                    wsOtherUnions.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
+                    wsOtherUnions.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
+                    wsOtherUnions.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
+                    wsOtherUnions.PrinterSettings.PaperSize = ePaperSize.Legal;
+
+                    wsOtherUnions.HeaderFooter.OddHeader.CenteredText = "Sick On A Stat - UNA, HSAA, NUEE, AUPE GSS";
+                    wsOtherUnions.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
+                    //wsOtherUnions.View.PageBreakView = true;
+                    wsOtherUnions.PrinterSettings.FitToPage = true; wsOtherUnions.PrinterSettings.FitToWidth = 1; wsOtherUnions.PrinterSettings.FitToHeight = 0;
+                    wsOtherUnions.PrinterSettings.RepeatRows = new ExcelAddress("$1:$1");
+
+                    wsOtherUnions.Cells[1, 1].Value = "Emp #"; wsOtherUnions.Cells[1, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsOtherUnions.Cells[1, 2].Value = "Employee Name"; wsOtherUnions.Cells[1, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsOtherUnions.Cells[1, 3].Value = "Occupation"; wsOtherUnions.Cells[1, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsOtherUnions.Cells[1, 4].Value = "Union"; wsOtherUnions.Cells[1, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsOtherUnions.Cells[1, 5].Value = "Shift Symbol"; wsOtherUnions.Cells[1, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsOtherUnions.Cells[1, 6].Value = "Date"; wsOtherUnions.Cells[1, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsOtherUnions.Cells[1, 7].Value = "Start Time"; wsOtherUnions.Cells[1, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsOtherUnions.Cells[1, 8].Value = "End Time"; wsOtherUnions.Cells[1, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsOtherUnions.Cells[1, 9].Value = "Quantity"; wsOtherUnions.Cells[1, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsOtherUnions.Cells[1, 10].Value = "Pay Code"; wsOtherUnions.Cells[1, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsOtherUnions.Cells[1, 11].Value = "STBAL/Comments"; wsOtherUnions.Cells[1, 11].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+
+                    var range = wsOtherUnions.Cells[1, 1, 1, 11];
+                    range.Style.Font.Bold = true;
+                    range.Style.Font.Size = 11;
+                    range.Style.Font.Name = "Arial";
+                    range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    range.Style.Fill.BackgroundColor.SetColor(Color.LightBlue);
+
+                    // Create tab for "Aux"
+                    ExcelWorksheet wsAux = workBook.Worksheets.Add("Aux");
+
+                    // Set Page Settings
+                    wsAux.PrinterSettings.Orientation = eOrientation.Landscape;
+                    wsAux.PrinterSettings.ShowGridLines = true;
+                    wsAux.PrinterSettings.HorizontalCentered = true;
+                    wsAux.PrinterSettings.TopMargin = (decimal)1.5 / 2.54M;
+                    wsAux.PrinterSettings.BottomMargin = (decimal)1.5 / 2.54M;
+                    wsAux.PrinterSettings.LeftMargin = (decimal)0.3 / 2.54M;
+                    wsAux.PrinterSettings.RightMargin = (decimal)0.3 / 2.54M;
+                    wsAux.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
+                    wsAux.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
+                    wsAux.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy HH:mm:ss");
+                    wsAux.PrinterSettings.PaperSize = ePaperSize.Legal;
+
+                    wsAux.HeaderFooter.OddHeader.CenteredText = "Sick On A Stat - AUPE Aux";
+                    wsAux.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
+                    //wsAux.View.PageBreakView = true;
+                    wsAux.PrinterSettings.FitToPage = true; wsAux.PrinterSettings.FitToWidth = 1; wsAux.PrinterSettings.FitToHeight = 0;
+                    wsAux.PrinterSettings.RepeatRows = new ExcelAddress("$1:$1");
+
+                    wsAux.Cells[1, 1].Value = "Emp #"; wsAux.Cells[1, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsAux.Cells[1, 2].Value = "Employee Name"; wsAux.Cells[1, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsAux.Cells[1, 3].Value = "Occupation"; wsAux.Cells[1, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsAux.Cells[1, 4].Value = "Union"; wsAux.Cells[1, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsAux.Cells[1, 5].Value = "Shift Symbol"; wsAux.Cells[1, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsAux.Cells[1, 6].Value = "Date"; wsAux.Cells[1, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsAux.Cells[1, 7].Value = "Start Time"; wsAux.Cells[1, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsAux.Cells[1, 8].Value = "End Time"; wsAux.Cells[1, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsAux.Cells[1, 9].Value = "Quantity"; wsAux.Cells[1, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsAux.Cells[1, 10].Value = "Pay Code"; wsAux.Cells[1, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                    wsAux.Cells[1, 11].Value = "STBAL/Comments"; wsAux.Cells[1, 11].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+
+                    range = wsAux.Cells[1, 1, 1, 11];
+                    range.Style.Font.Bold = true;
+                    range.Style.Font.Size = 11;
+                    range.Style.Font.Name = "Arial";
+                    range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    range.Style.Fill.BackgroundColor.SetColor(Color.LightBlue);
+
+                    int rowCtrOriginal = 1;
+                    int rowCtrAux = 2;
+                    int rowCtrOtherUnions = 2;
+
+                    foreach (string line in lines)
+                    {
+                        string[] values = line.Split(',');
+                        if (values.Count() != 12 && values.Count() != 13)
+                        {
+                            continue;
+                        }
+                        if (values[0].Trim().ToUpper() != "UNIT" && values.Count() == 13)
+                        {
+                            // If the EE belongs to AUPE Aux, Occupation code starts with "A", save it to the "Aux" tab
+                            if (values[4].Substring(0, 1).ToUpper() == "A")
+                            {
+                                wsAux.Cells[rowCtrAux, 1].Value = values[1].Trim(); wsAux.Cells[rowCtrAux, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsAux.Cells[rowCtrAux, 2].Value = values[2].Trim().Replace("\"", "") + ", " + values[3].Trim().Replace("\"", ""); wsAux.Cells[rowCtrAux, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsAux.Cells[rowCtrAux, 3].Value = values[4].Trim(); wsAux.Cells[rowCtrAux, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsAux.Cells[rowCtrAux, 4].Value = values[5].Trim(); wsAux.Cells[rowCtrAux, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsAux.Cells[rowCtrAux, 5].Value = values[6].Trim(); wsAux.Cells[rowCtrAux, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsAux.Cells[rowCtrAux, 6].Value = values[7].Trim(); wsAux.Cells[rowCtrAux, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsAux.Cells[rowCtrAux, 7].Value = values[8].Trim(); wsAux.Cells[rowCtrAux, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsAux.Cells[rowCtrAux, 8].Value = values[9].Trim(); wsAux.Cells[rowCtrAux, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsAux.Cells[rowCtrAux, 9].Value = values[10].Trim(); wsAux.Cells[rowCtrAux, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsAux.Cells[rowCtrAux, 10].Value = values[11].Trim(); wsAux.Cells[rowCtrAux, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsAux.Cells[rowCtrAux, 11].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                rowCtrAux++;
+                            }
+                            // If the EE belongs to other unions, save it to the "Other Union" tab
+                            else
+                            {
+                                wsOtherUnions.Cells[rowCtrOtherUnions, 1].Value = values[1].Trim(); wsOtherUnions.Cells[rowCtrOtherUnions, 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsOtherUnions.Cells[rowCtrOtherUnions, 2].Value = values[2].Trim().Replace("\"", "") + ", " + values[3].Trim().Replace("\"", ""); wsOtherUnions.Cells[rowCtrOtherUnions, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsOtherUnions.Cells[rowCtrOtherUnions, 3].Value = values[4].Trim(); wsOtherUnions.Cells[rowCtrOtherUnions, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsOtherUnions.Cells[rowCtrOtherUnions, 4].Value = values[5].Trim(); wsOtherUnions.Cells[rowCtrOtherUnions, 4].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsOtherUnions.Cells[rowCtrOtherUnions, 5].Value = values[6].Trim(); wsOtherUnions.Cells[rowCtrOtherUnions, 5].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsOtherUnions.Cells[rowCtrOtherUnions, 6].Value = values[7].Trim(); wsOtherUnions.Cells[rowCtrOtherUnions, 6].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsOtherUnions.Cells[rowCtrOtherUnions, 7].Value = values[8].Trim(); wsOtherUnions.Cells[rowCtrOtherUnions, 7].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsOtherUnions.Cells[rowCtrOtherUnions, 8].Value = values[9].Trim(); wsOtherUnions.Cells[rowCtrOtherUnions, 8].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsOtherUnions.Cells[rowCtrOtherUnions, 9].Value = values[10].Trim(); wsOtherUnions.Cells[rowCtrOtherUnions, 9].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsOtherUnions.Cells[rowCtrOtherUnions, 10].Value = values[11].Trim(); wsOtherUnions.Cells[rowCtrOtherUnions, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                wsOtherUnions.Cells[rowCtrOtherUnions, 11].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                                rowCtrOtherUnions++;
+                            }
+                        }
+                        for (int i = 0; i < values.Count(); i++)
+                        {
+                            // if names separated by comma, combine them on a single column
+                            if (i == 2 && values.Count() == 13)
+                            {
+                                wsOriginal.Cells[rowCtrOriginal, i + 1].Value = values[i].Trim().Replace("\"", "") + ", " + values[i + 1].Trim().Replace("\"", "");
+                                i++;
+                            }
+                            else if (i > 2 && values.Count() == 13)
+                            {
+                                wsOriginal.Cells[rowCtrOriginal, i].Value = values[i];
+                            }
+                            else
+                            {
+                                wsOriginal.Cells[rowCtrOriginal, i + 1].Value = values[i];
+                            }
+                        }
+                        rowCtrOriginal++;
+                    }
+
+                    // autofit columns
+                    wsOriginal.Cells[wsOriginal.Dimension.Address].AutoFitColumns();
+                    wsOriginal.Cells.AutoFitColumns();
+                    wsAux.Cells[wsAux.Dimension.Address].AutoFitColumns();
+                    wsAux.Cells.AutoFitColumns();
+                    wsOtherUnions.Cells[wsOtherUnions.Dimension.Address].AutoFitColumns();
+                    wsOtherUnions.Cells.AutoFitColumns();
+
+                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    saveFileDialog1.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                    saveFileDialog1.FilterIndex = 1;
+                    saveFileDialog1.FileName = DateTime.Today.ToString("ddMMMyyyy") + " - Sick on Stat for RFT-TFT.xlsx";
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        package.SaveAs(new FileInfo(saveFileDialog1.FileName));
+                        System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                btnSickOnStat.LabelText = "Sick On A Stat";
+                Cursor = Cursors.Default;
+                Update();
             }
         }
     }

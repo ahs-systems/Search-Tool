@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Media;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -95,6 +96,56 @@ namespace Sandbox
             SystemSounds.Beep.Play();
             //Console.Beep();
             //Beep(1000, 1000);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection())
+                {
+                    myConnection.ConnectionString = @"Server=wssqlc015v02\esp8; Database=esp_cal_prod;User Id=Espreport; Password=Esp4rep0rt;";
+                    myConnection.Open();
+
+                    SqlCommand myCommand = myConnection.CreateCommand();
+
+                    myCommand.CommandText = "select U_Desc from unit where (U_Desc like '0%' OR U_Desc like 'N%') AND U_Active = 1 ORDER BY U_DESC";
+
+                    SqlDataReader myReader = myCommand.ExecuteReader();
+
+                    int[] count = new int[7];
+
+                    int iteration = 0;
+
+                    int loopCount = 0;
+                    if (myReader.HasRows)
+                    {                        
+                        while (myReader.Read())
+                        {
+                            if (myReader["U_Desc"].ToString().Trim().Contains("Staffing Service"))
+                            {
+                                count[iteration] = loopCount-1;
+                                iteration++;
+                                loopCount = 0;
+                            }
+                            loopCount++;
+                        }
+                    }
+                    count[iteration] = loopCount - 1;
+                    myCommand.Dispose();
+
+                    string _sscCount = "";
+                    for (int i = 0; i < count.Length; i++)
+                    {
+                        _sscCount += count[i] + " , ";
+                    }
+                    MessageBox.Show(_sscCount);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ooops, there's an error: " + ex.Message, "ERROR");
+            }
         }
     }
 }
