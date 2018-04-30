@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLDAP));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -61,6 +61,10 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblClose = new System.Windows.Forms.Label();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.txtLocation = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtPosition = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -87,7 +91,7 @@
             this.listBox1.ForeColor = System.Drawing.Color.GreenYellow;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.HorizontalScrollbar = true;
-            this.listBox1.Location = new System.Drawing.Point(13, 259);
+            this.listBox1.Location = new System.Drawing.Point(13, 291);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(709, 132);
             this.listBox1.TabIndex = 2;
@@ -284,7 +288,7 @@
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.transFrm.SetDecoration(this.button1, BunifuAnimatorNS.DecorationType.None);
-            this.button1.Location = new System.Drawing.Point(579, 162);
+            this.button1.Location = new System.Drawing.Point(605, 137);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 23);
             this.button1.TabIndex = 44;
@@ -421,22 +425,22 @@
             // 
             this.transFrm.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.transFrm.Cursor = null;
-            animation3.AnimateOnlyDifferences = true;
-            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
-            animation3.LeafCoeff = 0F;
-            animation3.MaxTime = 1F;
-            animation3.MinTime = 0F;
-            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
-            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(30);
-            animation3.RotateCoeff = 0.5F;
-            animation3.RotateLimit = 0.2F;
-            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
-            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
-            animation3.TransparencyCoeff = 0F;
-            this.transFrm.DefaultAnimation = animation3;
+            animation4.AnimateOnlyDifferences = true;
+            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
+            animation4.LeafCoeff = 0F;
+            animation4.MaxTime = 1F;
+            animation4.MinTime = 0F;
+            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
+            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
+            animation4.MosaicSize = 0;
+            animation4.Padding = new System.Windows.Forms.Padding(30);
+            animation4.RotateCoeff = 0.5F;
+            animation4.RotateLimit = 0.2F;
+            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
+            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
+            animation4.TimeCoeff = 0F;
+            animation4.TransparencyCoeff = 0F;
+            this.transFrm.DefaultAnimation = animation4;
             this.transFrm.MaxAnimationTime = 2000;
             // 
             // lblTitle
@@ -472,11 +476,67 @@
             this.bunifuDragControl1.TargetControl = this.lblTitle;
             this.bunifuDragControl1.Vertical = true;
             // 
+            // txtLocation
+            // 
+            this.txtLocation.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtLocation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.txtLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.transFrm.SetDecoration(this.txtLocation, BunifuAnimatorNS.DecorationType.None);
+            this.txtLocation.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLocation.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtLocation.Location = new System.Drawing.Point(391, 165);
+            this.txtLocation.Name = "txtLocation";
+            this.txtLocation.ReadOnly = true;
+            this.txtLocation.Size = new System.Drawing.Size(331, 25);
+            this.txtLocation.TabIndex = 63;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label12.AutoSize = true;
+            this.transFrm.SetDecoration(this.label12, BunifuAnimatorNS.DecorationType.None);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
+            this.label12.Location = new System.Drawing.Point(338, 169);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(51, 13);
+            this.label12.TabIndex = 62;
+            this.label12.Text = "Location:";
+            // 
+            // txtPosition
+            // 
+            this.txtPosition.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtPosition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.txtPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.transFrm.SetDecoration(this.txtPosition, BunifuAnimatorNS.DecorationType.None);
+            this.txtPosition.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPosition.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtPosition.Location = new System.Drawing.Point(81, 258);
+            this.txtPosition.Name = "txtPosition";
+            this.txtPosition.ReadOnly = true;
+            this.txtPosition.Size = new System.Drawing.Size(270, 25);
+            this.txtPosition.TabIndex = 65;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label13.AutoSize = true;
+            this.transFrm.SetDecoration(this.label13, BunifuAnimatorNS.DecorationType.None);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
+            this.label13.Location = new System.Drawing.Point(45, 263);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(30, 13);
+            this.label13.TabIndex = 64;
+            this.label13.Text = "Title:";
+            // 
             // frmLDAP
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(734, 417);
+            this.ClientSize = new System.Drawing.Size(734, 436);
+            this.Controls.Add(this.txtPosition);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.txtLocation);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.btnBatchByID);
             this.Controls.Add(this.lblTitle);
@@ -552,6 +612,10 @@
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblClose;
+        private System.Windows.Forms.TextBox txtLocation;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtPosition;
+        private System.Windows.Forms.Label label13;
     }
 }
 

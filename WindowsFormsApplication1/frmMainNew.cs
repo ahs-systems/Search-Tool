@@ -39,7 +39,7 @@ namespace WindowsFormsApplication1
             // Check if valid user
             if (!Common.CheckUsers(System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "").ToUpper()))
             {
-                MessageBox.Show("Invalid user. Application will abort.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: Unknown user.\n\nApplication will abort.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
                 return;
             }
@@ -4444,8 +4444,8 @@ namespace WindowsFormsApplication1
                 {
                     ExcelWorkbook workBook = package.Workbook;
 
-                    // Create tab for "Other Unions"
-                    ExcelWorksheet wsOriginal = workBook.Worksheets.Add("Original File");
+                    // Create tab for the "Original CSV file"
+                    ExcelWorksheet wsOriginal = workBook.Worksheets.Add("Original CSV File");
 
                     // Create tab for "Other Unions"
                     ExcelWorksheet wsOtherUnions = workBook.Worksheets.Add("Other Unions");

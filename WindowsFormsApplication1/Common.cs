@@ -123,25 +123,26 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                string text;
-                var fileStream = new FileStream(Application.StartupPath + @"\SearchTool_Users.dat", FileMode.Open, FileAccess.Read);
-                using (var streamReader = new StreamReader(fileStream, System.Text.Encoding.UTF8))
+                using (SqlConnection myConnection = new SqlConnection())
                 {
-                    text = streamReader.ReadToEnd();
+                    bool _ret = false;
+                    
+                    myConnection.ConnectionString = Common.BooServer;
+                    myConnection.Open();
+
+                    SqlCommand myCommand = myConnection.CreateCommand();
+
+                    myCommand.CommandText = "SELECT username FROM AppUsers WHERE username = '" + _currentUser.ToUpper() + "' AND zone = 'CAL'";
+
+                    SqlDataReader myReader = myCommand.ExecuteReader();
+
+                    // if found then it is a valid user
+                    _ret = myReader.HasRows;
+
+                    myCommand.Dispose();
+
+                    return _ret;
                 }
-
-                string[] _users = text.Split(',', '\n', '\r');
-
-                _currentUser = _currentUser.ToUpper();
-                for (int i = 0; i < _users.Length; i++)
-                {
-                    if (Common.Decrypt(_users[i], "rsss").Contains(_currentUser))
-                    {
-                        return true;
-                    }
-                }
-
-                return false;
             }
             catch
             {

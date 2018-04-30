@@ -58,7 +58,9 @@ namespace WindowsFormsApplication1
             this.lblClose = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlMisc = new System.Windows.Forms.Panel();
+            this.btnUploadFile1 = new Bunifu.Framework.UI.BunifuTileButton();
             this.pnlFormatting = new System.Windows.Forms.Panel();
+            this.btnFormatSickOnStat = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnFormatA06 = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnFormatTAER = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnEmailNegStat = new Bunifu.Framework.UI.BunifuTileButton();
@@ -66,7 +68,6 @@ namespace WindowsFormsApplication1
             this.btnFile2 = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnAA_Exception = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnTL_SYS = new Bunifu.Framework.UI.BunifuTileButton();
-            this.btnUploadFile1 = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnLOAwithNoRptTime = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnRFLOA = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnRehire = new Bunifu.Framework.UI.BunifuTileButton();
@@ -102,7 +103,6 @@ namespace WindowsFormsApplication1
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.transPanel = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.btnFormatSickOnStat = new Bunifu.Framework.UI.BunifuTileButton();
             this.pnlMain.SuspendLayout();
             this.pnlMisc.SuspendLayout();
             this.pnlFormatting.SuspendLayout();
@@ -216,10 +216,10 @@ namespace WindowsFormsApplication1
             this.btnFile126.ForeColor = System.Drawing.Color.DarkGray;
             this.btnFile126.Image = ((System.Drawing.Image)(resources.GetObject("btnFile126.Image")));
             this.btnFile126.ImagePosition = 7;
-            this.btnFile126.ImageZoom = 35;
+            this.btnFile126.ImageZoom = 30;
             this.btnFile126.LabelPosition = 20;
             this.btnFile126.LabelText = "FTP File 1, 2 and 6";
-            this.btnFile126.Location = new System.Drawing.Point(15, 6);
+            this.btnFile126.Location = new System.Drawing.Point(15, 8);
             this.btnFile126.Margin = new System.Windows.Forms.Padding(6);
             this.btnFile126.Name = "btnFile126";
             this.btnFile126.Size = new System.Drawing.Size(121, 70);
@@ -263,9 +263,9 @@ namespace WindowsFormsApplication1
             this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
             this.btnClearLocks.ImagePosition = 7;
             this.btnClearLocks.ImageZoom = 30;
-            this.btnClearLocks.LabelPosition = 23;
+            this.btnClearLocks.LabelPosition = 20;
             this.btnClearLocks.LabelText = "View Locks";
-            this.btnClearLocks.Location = new System.Drawing.Point(159, 8);
+            this.btnClearLocks.Location = new System.Drawing.Point(167, 8);
             this.btnClearLocks.Margin = new System.Windows.Forms.Padding(6);
             this.btnClearLocks.Name = "btnClearLocks";
             this.btnClearLocks.Size = new System.Drawing.Size(121, 70);
@@ -285,10 +285,10 @@ namespace WindowsFormsApplication1
             this.btnItemsReport.ForeColor = System.Drawing.Color.DarkGray;
             this.btnItemsReport.Image = ((System.Drawing.Image)(resources.GetObject("btnItemsReport.Image")));
             this.btnItemsReport.ImagePosition = 7;
-            this.btnItemsReport.ImageZoom = 35;
+            this.btnItemsReport.ImageZoom = 30;
             this.btnItemsReport.LabelPosition = 20;
             this.btnItemsReport.LabelText = "Items Report";
-            this.btnItemsReport.Location = new System.Drawing.Point(321, 8);
+            this.btnItemsReport.Location = new System.Drawing.Point(319, 8);
             this.btnItemsReport.Margin = new System.Windows.Forms.Padding(6);
             this.btnItemsReport.Name = "btnItemsReport";
             this.btnItemsReport.Size = new System.Drawing.Size(121, 70);
@@ -308,7 +308,7 @@ namespace WindowsFormsApplication1
             this.btnGetLDAP.ForeColor = System.Drawing.Color.DarkGray;
             this.btnGetLDAP.Image = ((System.Drawing.Image)(resources.GetObject("btnGetLDAP.Image")));
             this.btnGetLDAP.ImagePosition = 7;
-            this.btnGetLDAP.ImageZoom = 35;
+            this.btnGetLDAP.ImageZoom = 30;
             this.btnGetLDAP.LabelPosition = 20;
             this.btnGetLDAP.LabelText = "LDAP Search";
             this.btnGetLDAP.Location = new System.Drawing.Point(15, 87);
@@ -334,7 +334,7 @@ namespace WindowsFormsApplication1
             this.btnUserLatestLogin.ImageZoom = 35;
             this.btnUserLatestLogin.LabelPosition = 20;
             this.btnUserLatestLogin.LabelText = "Search Latest Login";
-            this.btnUserLatestLogin.Location = new System.Drawing.Point(159, 87);
+            this.btnUserLatestLogin.Location = new System.Drawing.Point(167, 87);
             this.btnUserLatestLogin.Margin = new System.Windows.Forms.Padding(6);
             this.btnUserLatestLogin.Name = "btnUserLatestLogin";
             this.btnUserLatestLogin.Size = new System.Drawing.Size(121, 70);
@@ -358,7 +358,7 @@ namespace WindowsFormsApplication1
             this.btnV_FireCategories.ImageZoom = 35;
             this.btnV_FireCategories.LabelPosition = 20;
             this.btnV_FireCategories.LabelText = "vFire Categories";
-            this.btnV_FireCategories.Location = new System.Drawing.Point(321, 87);
+            this.btnV_FireCategories.Location = new System.Drawing.Point(319, 87);
             this.btnV_FireCategories.Margin = new System.Windows.Forms.Padding(6);
             this.btnV_FireCategories.Name = "btnV_FireCategories";
             this.btnV_FireCategories.Size = new System.Drawing.Size(121, 70);
@@ -378,7 +378,7 @@ namespace WindowsFormsApplication1
             this.btnSickOnStat.ForeColor = System.Drawing.Color.DarkGray;
             this.btnSickOnStat.Image = ((System.Drawing.Image)(resources.GetObject("btnSickOnStat.Image")));
             this.btnSickOnStat.ImagePosition = 1;
-            this.btnSickOnStat.ImageZoom = 35;
+            this.btnSickOnStat.ImageZoom = 30;
             this.btnSickOnStat.LabelPosition = 30;
             this.btnSickOnStat.LabelText = "Upload Sick on a Stat File from ePeople";
             this.btnSickOnStat.Location = new System.Drawing.Point(15, 168);
@@ -404,7 +404,7 @@ namespace WindowsFormsApplication1
             this.btnUserTrainings.ImageZoom = 35;
             this.btnUserTrainings.LabelPosition = 20;
             this.btnUserTrainings.LabelText = "User Trainings (SSRS)";
-            this.btnUserTrainings.Location = new System.Drawing.Point(321, 168);
+            this.btnUserTrainings.Location = new System.Drawing.Point(319, 168);
             this.btnUserTrainings.Margin = new System.Windows.Forms.Padding(6);
             this.btnUserTrainings.Name = "btnUserTrainings";
             this.btnUserTrainings.Size = new System.Drawing.Size(121, 70);
@@ -450,7 +450,7 @@ namespace WindowsFormsApplication1
             this.bunifuTileButton1.ImageZoom = 35;
             this.bunifuTileButton1.LabelPosition = 20;
             this.bunifuTileButton1.LabelText = "Primary vs Pay Info";
-            this.bunifuTileButton1.Location = new System.Drawing.Point(159, 168);
+            this.bunifuTileButton1.Location = new System.Drawing.Point(167, 168);
             this.bunifuTileButton1.Margin = new System.Windows.Forms.Padding(6);
             this.bunifuTileButton1.Name = "bunifuTileButton1";
             this.bunifuTileButton1.Size = new System.Drawing.Size(121, 70);
@@ -473,7 +473,7 @@ namespace WindowsFormsApplication1
             this.btnRemote.ImageZoom = 35;
             this.btnRemote.LabelPosition = 35;
             this.btnRemote.LabelText = "Remote a PC using LanDesk";
-            this.btnRemote.Location = new System.Drawing.Point(474, 6);
+            this.btnRemote.Location = new System.Drawing.Point(471, 6);
             this.btnRemote.Margin = new System.Windows.Forms.Padding(6);
             this.btnRemote.Name = "btnRemote";
             this.btnRemote.Size = new System.Drawing.Size(121, 70);
@@ -496,7 +496,7 @@ namespace WindowsFormsApplication1
             this.bunifuTileButton2.ImageZoom = 30;
             this.bunifuTileButton2.LabelPosition = 35;
             this.bunifuTileButton2.LabelText = "Update Valid Email Suffixes in ASC";
-            this.bunifuTileButton2.Location = new System.Drawing.Point(474, 95);
+            this.bunifuTileButton2.Location = new System.Drawing.Point(471, 87);
             this.bunifuTileButton2.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuTileButton2.Name = "bunifuTileButton2";
             this.bunifuTileButton2.Size = new System.Drawing.Size(121, 70);
@@ -519,7 +519,7 @@ namespace WindowsFormsApplication1
             this.btnExceptionLookup.ImageZoom = 35;
             this.btnExceptionLookup.LabelPosition = 20;
             this.btnExceptionLookup.LabelText = "Exception Lookup";
-            this.btnExceptionLookup.Location = new System.Drawing.Point(159, 249);
+            this.btnExceptionLookup.Location = new System.Drawing.Point(167, 249);
             this.btnExceptionLookup.Margin = new System.Windows.Forms.Padding(6);
             this.btnExceptionLookup.Name = "btnExceptionLookup";
             this.btnExceptionLookup.Size = new System.Drawing.Size(121, 70);
@@ -566,6 +566,7 @@ namespace WindowsFormsApplication1
             this.pnlMisc.Controls.Add(this.btnClearLocks);
             this.pnlMisc.Controls.Add(this.btnESPbatchAccess);
             this.pnlMisc.Controls.Add(this.btnItemsReport);
+            this.pnlMisc.Controls.Add(this.btnUploadFile1);
             this.pnlMisc.Controls.Add(this.btnGetLDAP);
             this.pnlMisc.Controls.Add(this.btnExceptionLookup);
             this.pnlMisc.Controls.Add(this.btnUserLatestLogin);
@@ -579,6 +580,27 @@ namespace WindowsFormsApplication1
             this.pnlMisc.TabIndex = 14;
             this.pnlMisc.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmMainNew_MouseDoubleClick);
             // 
+            // btnUploadFile1
+            // 
+            this.btnUploadFile1.BackColor = System.Drawing.Color.Transparent;
+            this.btnUploadFile1.color = System.Drawing.Color.Transparent;
+            this.btnUploadFile1.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
+            this.btnUploadFile1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.btnUploadFile1, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnUploadFile1, BunifuAnimatorNS.DecorationType.None);
+            this.btnUploadFile1.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadFile1.ForeColor = System.Drawing.Color.DarkGray;
+            this.btnUploadFile1.Image = ((System.Drawing.Image)(resources.GetObject("btnUploadFile1.Image")));
+            this.btnUploadFile1.ImagePosition = 1;
+            this.btnUploadFile1.ImageZoom = 35;
+            this.btnUploadFile1.LabelPosition = 30;
+            this.btnUploadFile1.LabelText = "Upload File 1 for NFP Checking";
+            this.btnUploadFile1.Location = new System.Drawing.Point(319, 249);
+            this.btnUploadFile1.Name = "btnUploadFile1";
+            this.btnUploadFile1.Size = new System.Drawing.Size(121, 70);
+            this.btnUploadFile1.TabIndex = 27;
+            this.btnUploadFile1.Click += new System.EventHandler(this.btnUploadFile1_Click);
+            // 
             // pnlFormatting
             // 
             this.pnlFormatting.Controls.Add(this.btnFormatSickOnStat);
@@ -589,7 +611,6 @@ namespace WindowsFormsApplication1
             this.pnlFormatting.Controls.Add(this.btnFile2);
             this.pnlFormatting.Controls.Add(this.btnAA_Exception);
             this.pnlFormatting.Controls.Add(this.btnTL_SYS);
-            this.pnlFormatting.Controls.Add(this.btnUploadFile1);
             this.pnlFormatting.Controls.Add(this.btnLOAwithNoRptTime);
             this.pnlFormatting.Controls.Add(this.btnRFLOA);
             this.pnlFormatting.Controls.Add(this.btnRehire);
@@ -605,6 +626,27 @@ namespace WindowsFormsApplication1
             this.pnlFormatting.TabIndex = 15;
             this.pnlFormatting.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmMainNew_MouseDoubleClick);
             // 
+            // btnFormatSickOnStat
+            // 
+            this.btnFormatSickOnStat.BackColor = System.Drawing.Color.Transparent;
+            this.btnFormatSickOnStat.color = System.Drawing.Color.Transparent;
+            this.btnFormatSickOnStat.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
+            this.btnFormatSickOnStat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.btnFormatSickOnStat, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnFormatSickOnStat, BunifuAnimatorNS.DecorationType.None);
+            this.btnFormatSickOnStat.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFormatSickOnStat.ForeColor = System.Drawing.Color.DarkGray;
+            this.btnFormatSickOnStat.Image = ((System.Drawing.Image)(resources.GetObject("btnFormatSickOnStat.Image")));
+            this.btnFormatSickOnStat.ImagePosition = 5;
+            this.btnFormatSickOnStat.ImageZoom = 30;
+            this.btnFormatSickOnStat.LabelPosition = 20;
+            this.btnFormatSickOnStat.LabelText = "Format Sick On A Stat";
+            this.btnFormatSickOnStat.Location = new System.Drawing.Point(470, 171);
+            this.btnFormatSickOnStat.Name = "btnFormatSickOnStat";
+            this.btnFormatSickOnStat.Size = new System.Drawing.Size(120, 70);
+            this.btnFormatSickOnStat.TabIndex = 37;
+            this.btnFormatSickOnStat.Click += new System.EventHandler(this.btnFormatSickOnStat_Click);
+            // 
             // btnFormatA06
             // 
             this.btnFormatA06.BackColor = System.Drawing.Color.Transparent;
@@ -618,7 +660,7 @@ namespace WindowsFormsApplication1
             this.btnFormatA06.Image = ((System.Drawing.Image)(resources.GetObject("btnFormatA06.Image")));
             this.btnFormatA06.ImagePosition = 1;
             this.btnFormatA06.ImageZoom = 30;
-            this.btnFormatA06.LabelPosition = 30;
+            this.btnFormatA06.LabelPosition = 20;
             this.btnFormatA06.LabelText = "Format A06";
             this.btnFormatA06.Location = new System.Drawing.Point(320, 247);
             this.btnFormatA06.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -640,7 +682,7 @@ namespace WindowsFormsApplication1
             this.btnFormatTAER.Image = ((System.Drawing.Image)(resources.GetObject("btnFormatTAER.Image")));
             this.btnFormatTAER.ImagePosition = 1;
             this.btnFormatTAER.ImageZoom = 35;
-            this.btnFormatTAER.LabelPosition = 30;
+            this.btnFormatTAER.LabelPosition = 20;
             this.btnFormatTAER.LabelText = "Format TAER";
             this.btnFormatTAER.Location = new System.Drawing.Point(171, 247);
             this.btnFormatTAER.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -662,7 +704,7 @@ namespace WindowsFormsApplication1
             this.btnEmailNegStat.Image = ((System.Drawing.Image)(resources.GetObject("btnEmailNegStat.Image")));
             this.btnEmailNegStat.ImagePosition = 1;
             this.btnEmailNegStat.ImageZoom = 35;
-            this.btnEmailNegStat.LabelPosition = 24;
+            this.btnEmailNegStat.LabelPosition = 20;
             this.btnEmailNegStat.LabelText = "Format Negative Stats";
             this.btnEmailNegStat.Location = new System.Drawing.Point(320, 171);
             this.btnEmailNegStat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -684,9 +726,9 @@ namespace WindowsFormsApplication1
             this.btnFile6.Image = ((System.Drawing.Image)(resources.GetObject("btnFile6.Image")));
             this.btnFile6.ImagePosition = 1;
             this.btnFile6.ImageZoom = 35;
-            this.btnFile6.LabelPosition = 25;
+            this.btnFile6.LabelPosition = 20;
             this.btnFile6.LabelText = "Format File 6";
-            this.btnFile6.Location = new System.Drawing.Point(469, 89);
+            this.btnFile6.Location = new System.Drawing.Point(469, 87);
             this.btnFile6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnFile6.Name = "btnFile6";
             this.btnFile6.Size = new System.Drawing.Size(121, 70);
@@ -708,7 +750,7 @@ namespace WindowsFormsApplication1
             this.btnFile2.ImageZoom = 35;
             this.btnFile2.LabelPosition = 20;
             this.btnFile2.LabelText = "Format File 2";
-            this.btnFile2.Location = new System.Drawing.Point(469, 7);
+            this.btnFile2.Location = new System.Drawing.Point(470, 7);
             this.btnFile2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnFile2.Name = "btnFile2";
             this.btnFile2.Size = new System.Drawing.Size(121, 70);
@@ -728,7 +770,7 @@ namespace WindowsFormsApplication1
             this.btnAA_Exception.Image = ((System.Drawing.Image)(resources.GetObject("btnAA_Exception.Image")));
             this.btnAA_Exception.ImagePosition = 1;
             this.btnAA_Exception.ImageZoom = 35;
-            this.btnAA_Exception.LabelPosition = 25;
+            this.btnAA_Exception.LabelPosition = 20;
             this.btnAA_Exception.LabelText = "AA_EXCEPTION";
             this.btnAA_Exception.Location = new System.Drawing.Point(320, 87);
             this.btnAA_Exception.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -750,7 +792,7 @@ namespace WindowsFormsApplication1
             this.btnTL_SYS.Image = ((System.Drawing.Image)(resources.GetObject("btnTL_SYS.Image")));
             this.btnTL_SYS.ImagePosition = 1;
             this.btnTL_SYS.ImageZoom = 35;
-            this.btnTL_SYS.LabelPosition = 25;
+            this.btnTL_SYS.LabelPosition = 20;
             this.btnTL_SYS.LabelText = "TL_SYS";
             this.btnTL_SYS.Location = new System.Drawing.Point(320, 7);
             this.btnTL_SYS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -758,27 +800,6 @@ namespace WindowsFormsApplication1
             this.btnTL_SYS.Size = new System.Drawing.Size(121, 70);
             this.btnTL_SYS.TabIndex = 28;
             this.btnTL_SYS.Click += new System.EventHandler(this.btnTL_SYS_Click);
-            // 
-            // btnUploadFile1
-            // 
-            this.btnUploadFile1.BackColor = System.Drawing.Color.Transparent;
-            this.btnUploadFile1.color = System.Drawing.Color.Transparent;
-            this.btnUploadFile1.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
-            this.btnUploadFile1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transFrm.SetDecoration(this.btnUploadFile1, BunifuAnimatorNS.DecorationType.None);
-            this.transPanel.SetDecoration(this.btnUploadFile1, BunifuAnimatorNS.DecorationType.None);
-            this.btnUploadFile1.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUploadFile1.ForeColor = System.Drawing.Color.DarkGray;
-            this.btnUploadFile1.Image = ((System.Drawing.Image)(resources.GetObject("btnUploadFile1.Image")));
-            this.btnUploadFile1.ImagePosition = 1;
-            this.btnUploadFile1.ImageZoom = 35;
-            this.btnUploadFile1.LabelPosition = 30;
-            this.btnUploadFile1.LabelText = "Upload File 1 for NFP Checking";
-            this.btnUploadFile1.Location = new System.Drawing.Point(469, 171);
-            this.btnUploadFile1.Name = "btnUploadFile1";
-            this.btnUploadFile1.Size = new System.Drawing.Size(121, 70);
-            this.btnUploadFile1.TabIndex = 27;
-            this.btnUploadFile1.Click += new System.EventHandler(this.btnUploadFile1_Click);
             // 
             // btnLOAwithNoRptTime
             // 
@@ -793,7 +814,7 @@ namespace WindowsFormsApplication1
             this.btnLOAwithNoRptTime.Image = ((System.Drawing.Image)(resources.GetObject("btnLOAwithNoRptTime.Image")));
             this.btnLOAwithNoRptTime.ImagePosition = 1;
             this.btnLOAwithNoRptTime.ImageZoom = 35;
-            this.btnLOAwithNoRptTime.LabelPosition = 25;
+            this.btnLOAwithNoRptTime.LabelPosition = 20;
             this.btnLOAwithNoRptTime.LabelText = "AA_RPTD_NO_TIME";
             this.btnLOAwithNoRptTime.Location = new System.Drawing.Point(171, 171);
             this.btnLOAwithNoRptTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -815,7 +836,7 @@ namespace WindowsFormsApplication1
             this.btnRFLOA.Image = ((System.Drawing.Image)(resources.GetObject("btnRFLOA.Image")));
             this.btnRFLOA.ImagePosition = 1;
             this.btnRFLOA.ImageZoom = 35;
-            this.btnRFLOA.LabelPosition = 30;
+            this.btnRFLOA.LabelPosition = 20;
             this.btnRFLOA.LabelText = "Return from LOA";
             this.btnRFLOA.Location = new System.Drawing.Point(171, 89);
             this.btnRFLOA.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -837,7 +858,7 @@ namespace WindowsFormsApplication1
             this.btnRehire.Image = ((System.Drawing.Image)(resources.GetObject("btnRehire.Image")));
             this.btnRehire.ImagePosition = 1;
             this.btnRehire.ImageZoom = 35;
-            this.btnRehire.LabelPosition = 25;
+            this.btnRehire.LabelPosition = 20;
             this.btnRehire.LabelText = "Rehires";
             this.btnRehire.Location = new System.Drawing.Point(171, 7);
             this.btnRehire.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -880,9 +901,9 @@ namespace WindowsFormsApplication1
             this.btnBanks.Image = ((System.Drawing.Image)(resources.GetObject("btnBanks.Image")));
             this.btnBanks.ImagePosition = 1;
             this.btnBanks.ImageZoom = 35;
-            this.btnBanks.LabelPosition = 25;
+            this.btnBanks.LabelPosition = 20;
             this.btnBanks.LabelText = "Off Codes Vs Banks";
-            this.btnBanks.Location = new System.Drawing.Point(22, 165);
+            this.btnBanks.Location = new System.Drawing.Point(22, 171);
             this.btnBanks.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnBanks.Name = "btnBanks";
             this.btnBanks.Size = new System.Drawing.Size(121, 70);
@@ -902,9 +923,9 @@ namespace WindowsFormsApplication1
             this.btnTrans.Image = ((System.Drawing.Image)(resources.GetObject("btnTrans.Image")));
             this.btnTrans.ImagePosition = 1;
             this.btnTrans.ImageZoom = 35;
-            this.btnTrans.LabelPosition = 25;
+            this.btnTrans.LabelPosition = 20;
             this.btnTrans.LabelText = "AHS_AA_ TRANSFER_RPT";
-            this.btnTrans.Location = new System.Drawing.Point(22, 83);
+            this.btnTrans.Location = new System.Drawing.Point(22, 87);
             this.btnTrans.Name = "btnTrans";
             this.btnTrans.Size = new System.Drawing.Size(121, 70);
             this.btnTrans.TabIndex = 21;
@@ -923,9 +944,9 @@ namespace WindowsFormsApplication1
             this.btnAHS_AA_Terms.Image = ((System.Drawing.Image)(resources.GetObject("btnAHS_AA_Terms.Image")));
             this.btnAHS_AA_Terms.ImagePosition = 1;
             this.btnAHS_AA_Terms.ImageZoom = 35;
-            this.btnAHS_AA_Terms.LabelPosition = 25;
+            this.btnAHS_AA_Terms.LabelPosition = 20;
             this.btnAHS_AA_Terms.LabelText = "AHS_AA_TERMS";
-            this.btnAHS_AA_Terms.Location = new System.Drawing.Point(22, 1);
+            this.btnAHS_AA_Terms.Location = new System.Drawing.Point(22, 7);
             this.btnAHS_AA_Terms.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAHS_AA_Terms.Name = "btnAHS_AA_Terms";
             this.btnAHS_AA_Terms.Size = new System.Drawing.Size(121, 70);
@@ -1298,27 +1319,6 @@ namespace WindowsFormsApplication1
             this.transFrm.DefaultAnimation = animation3;
             this.transFrm.TimeStep = 0.01F;
             // 
-            // btnFormatSickOnStat
-            // 
-            this.btnFormatSickOnStat.BackColor = System.Drawing.Color.Transparent;
-            this.btnFormatSickOnStat.color = System.Drawing.Color.Transparent;
-            this.btnFormatSickOnStat.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
-            this.btnFormatSickOnStat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transFrm.SetDecoration(this.btnFormatSickOnStat, BunifuAnimatorNS.DecorationType.None);
-            this.transPanel.SetDecoration(this.btnFormatSickOnStat, BunifuAnimatorNS.DecorationType.None);
-            this.btnFormatSickOnStat.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFormatSickOnStat.ForeColor = System.Drawing.Color.DarkGray;
-            this.btnFormatSickOnStat.Image = ((System.Drawing.Image)(resources.GetObject("btnFormatSickOnStat.Image")));
-            this.btnFormatSickOnStat.ImagePosition = 1;
-            this.btnFormatSickOnStat.ImageZoom = 30;
-            this.btnFormatSickOnStat.LabelPosition = 30;
-            this.btnFormatSickOnStat.LabelText = "Format Sick On A Stat";
-            this.btnFormatSickOnStat.Location = new System.Drawing.Point(470, 247);
-            this.btnFormatSickOnStat.Name = "btnFormatSickOnStat";
-            this.btnFormatSickOnStat.Size = new System.Drawing.Size(120, 70);
-            this.btnFormatSickOnStat.TabIndex = 37;
-            this.btnFormatSickOnStat.Click += new System.EventHandler(this.btnFormatSickOnStat_Click);
-            // 
             // frmMainNew
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1337,7 +1337,7 @@ namespace WindowsFormsApplication1
             this.Name = "frmMainNew";
             this.Opacity = 0.8D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.04.19";
+            this.Text = "SömëKindä Tööl v2018.04.27";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);
