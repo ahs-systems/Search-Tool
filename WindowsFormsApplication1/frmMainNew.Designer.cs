@@ -31,8 +31,8 @@ namespace WindowsFormsApplication1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
-            BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainNew));
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlHandle = new System.Windows.Forms.Panel();
@@ -103,6 +103,9 @@ namespace WindowsFormsApplication1
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.transPanel = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
+            this.mnuFormat2and6 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.formatFile2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formatFile6ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             this.pnlMisc.SuspendLayout();
             this.pnlFormatting.SuspendLayout();
@@ -110,6 +113,7 @@ namespace WindowsFormsApplication1
             this.groupBox1.SuspendLayout();
             this.mnuCopyFromList.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.mnuFormat2and6.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -1280,44 +1284,72 @@ namespace WindowsFormsApplication1
             // 
             this.transPanel.AnimationType = BunifuAnimatorNS.AnimationType.HorizSlide;
             this.transPanel.Cursor = null;
-            animation4.AnimateOnlyDifferences = true;
-            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
-            animation4.LeafCoeff = 0F;
-            animation4.MaxTime = 1F;
-            animation4.MinTime = 0F;
-            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
-            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
-            animation4.MosaicSize = 0;
-            animation4.Padding = new System.Windows.Forms.Padding(0);
-            animation4.RotateCoeff = 0F;
-            animation4.RotateLimit = 0F;
-            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
-            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
-            animation4.TimeCoeff = 0F;
-            animation4.TransparencyCoeff = 0F;
-            this.transPanel.DefaultAnimation = animation4;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.transPanel.DefaultAnimation = animation2;
             // 
             // transFrm
             // 
             this.transFrm.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.transFrm.Cursor = null;
-            animation3.AnimateOnlyDifferences = true;
-            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
-            animation3.LeafCoeff = 0F;
-            animation3.MaxTime = 1F;
-            animation3.MinTime = 0F;
-            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
-            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(30);
-            animation3.RotateCoeff = 0.5F;
-            animation3.RotateLimit = 0.2F;
-            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
-            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
-            animation3.TransparencyCoeff = 0F;
-            this.transFrm.DefaultAnimation = animation3;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(30);
+            animation1.RotateCoeff = 0.5F;
+            animation1.RotateLimit = 0.2F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.transFrm.DefaultAnimation = animation1;
             this.transFrm.TimeStep = 0.01F;
+            // 
+            // mnuFormat2and6
+            // 
+            this.mnuFormat2and6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.transFrm.SetDecoration(this.mnuFormat2and6, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.mnuFormat2and6, BunifuAnimatorNS.DecorationType.None);
+            this.mnuFormat2and6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mnuFormat2and6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.formatFile2ToolStripMenuItem,
+            this.formatFile6ToolStripMenuItem});
+            this.mnuFormat2and6.Name = "mnuFormat2and6";
+            this.mnuFormat2and6.Size = new System.Drawing.Size(156, 48);
+            // 
+            // formatFile2ToolStripMenuItem
+            // 
+            this.formatFile2ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.formatFile2ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("formatFile2ToolStripMenuItem.Image")));
+            this.formatFile2ToolStripMenuItem.Name = "formatFile2ToolStripMenuItem";
+            this.formatFile2ToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.formatFile2ToolStripMenuItem.Text = "Format File 2";
+            // 
+            // formatFile6ToolStripMenuItem
+            // 
+            this.formatFile6ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.formatFile6ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("formatFile6ToolStripMenuItem.Image")));
+            this.formatFile6ToolStripMenuItem.Name = "formatFile6ToolStripMenuItem";
+            this.formatFile6ToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.formatFile6ToolStripMenuItem.Text = "Format File 6";
             // 
             // frmMainNew
             // 
@@ -1352,6 +1384,7 @@ namespace WindowsFormsApplication1
             this.groupBox1.ResumeLayout(false);
             this.mnuCopyFromList.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.mnuFormat2and6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1426,5 +1459,8 @@ namespace WindowsFormsApplication1
         private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton2;
         private Bunifu.Framework.UI.BunifuTileButton btnFormatA06;
         private Bunifu.Framework.UI.BunifuTileButton btnFormatSickOnStat;
+        private System.Windows.Forms.ContextMenuStrip mnuFormat2and6;
+        private System.Windows.Forms.ToolStripMenuItem formatFile2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem formatFile6ToolStripMenuItem;
     }
 }

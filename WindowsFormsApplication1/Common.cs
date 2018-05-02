@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -126,7 +125,7 @@ namespace WindowsFormsApplication1
                 using (SqlConnection myConnection = new SqlConnection())
                 {
                     bool _ret = false;
-                    
+
                     myConnection.ConnectionString = Common.BooServer;
                     myConnection.Open();
 
@@ -144,7 +143,7 @@ namespace WindowsFormsApplication1
                     return _ret;
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 return false;
             }
@@ -252,7 +251,7 @@ namespace WindowsFormsApplication1
                         {
                             MessageBox.Show(_reader["Err"].ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             Application.Exit();
-                                                    
+
                         }
                     }
 
