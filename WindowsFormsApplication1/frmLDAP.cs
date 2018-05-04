@@ -62,6 +62,7 @@ namespace WindowsFormsApplication1
             searcher.PropertiesToLoad.Add("manager");
             searcher.PropertiesToLoad.Add("departmentnumber");
             searcher.PropertiesToLoad.Add("title");
+            searcher.PropertiesToLoad.Add("useraccountcontrol");
 
             return searcher.FindAll();
         }
@@ -164,8 +165,12 @@ namespace WindowsFormsApplication1
                             ? result.Properties["departmentnumber"][0].ToString().Substring(result.Properties["departmentnumber"][0].ToString().IndexOf(":") + 1) 
                             : "Location Not Found";
                         string _position = result.Properties["title"].Count > 0 ? result.Properties["title"][0].ToString() : "Title Not Found";
+                        string _status = result.Properties["useraccountcontrol"].Count > 0 
+                            ? (!Convert.ToBoolean(Convert.ToInt32(result.Properties["useraccountcontrol"][0]) & 0x0002) ? "Active" : "Disabled" )
+                            : "- Unknown -";
 
-                        _listBox.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " + _manager + " | " + _location + " | " + _position);
+                        _listBox.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " + 
+                            _manager + " | " + _location + " | " + _position + " | " + _status);
                     }
 
                     //string _manager = result.Properties["manager"].Count > 0 ? result.Properties["manager"][0].ToString() : "Mgr Not Found";
@@ -235,6 +240,8 @@ namespace WindowsFormsApplication1
             txtManager.Text = _details[4].Trim();
             txtLocation.Text = _details[5].Trim();
             txtPosition.Text = _details[6].Trim();
+            txtStatus.Text = _details[7].Trim();
+
         }
 
         private int GetNthIndex(string s, char t, int n)

@@ -37,7 +37,8 @@ namespace WindowsFormsApplication1
             toolTip1.SetToolTip(pnlHandle, Text);
 
             // Check if valid user
-            if (!Common.CheckUsers(System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "").ToUpper()))
+            string _currentUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "");
+            if (!Common.CheckUsers(_currentUser.ToUpper()))
             {
                 MessageBox.Show("Error: Unknown user.\n\nApplication will abort.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
@@ -3629,11 +3630,11 @@ namespace WindowsFormsApplication1
                     {
                         if (currentWorksheet.Cells[i, 3].Value != null && currentWorksheet.Cells[i, 16].Value != null &&
                             (_withRotationalShifts.SingleOrDefault(empIdToCheck => empIdToCheck.Contains(currentWorksheet.Cells[i, 3].Value.ToString().Trim())) == null) &&
-                            (_finalList.SingleOrDefault(empIdToCheck => empIdToCheck.Contains(currentWorksheet.Cells[i, 3].Value.ToString().Trim())) == null))
+                            (_finalList.SingleOrDefault(empIdToCheck => empIdToCheck.Contains(currentWorksheet.Cells[i, 3].Value.ToString().Trim())) == null) &&
+                            (currentWorksheet.Cells[i, 12].Value.ToString().Trim() == "A"))
                         {
                             try
                             {
-
                                 string _tcg = GetTCG(currentWorksheet.Cells[i, 3].Value.ToString().Trim());
 
                                 if (!_tcg.ToUpper().Contains("NOT FOR PAYROLL")) // Exclude NFPs

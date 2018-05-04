@@ -147,5 +147,10 @@ namespace Sandbox
                 MessageBox.Show("Ooops, there's an error: " + ex.Message, "ERROR");
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show((!Convert.ToBoolean(512 & 0x0002)).ToString());
+        }
     }
 }
