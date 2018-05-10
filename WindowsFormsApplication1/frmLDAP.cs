@@ -10,10 +10,7 @@ namespace WindowsFormsApplication1
 {
     public partial class frmLDAP : Form
     {
-        public frmLDAP()
-        {
-            InitializeComponent();
-        }
+        public frmLDAP() => InitializeComponent();
 
         private void button1_Click(object sender, EventArgs e)
         {

@@ -181,8 +181,8 @@ namespace WindowsFormsApplication1
                 _conn.Open();
                 _comm = _conn.CreateCommand();
                 _comm.CommandText = "select uo_occID from unionocc where uo_occid in " +
-                    "(select ep_occid from EmpPOsition where ep_empid = (select top 1 E_EmpID from emp where emp.e_empnbr = @V_SEARCH) " +
-                    "and ep_todate >= @V_START_DATE_PP and ep_primaryind = 1) and UO_UnionID in (121, 104, 103)";
+                    "(select ep_occid from EmpPosition where ep_empid = (select top 1 E_EmpID from emp where emp.e_empnbr = @V_SEARCH) " +
+                    "and ep_todate >= @V_START_DATE_PP and ep_primaryind = 1 AND EP_FTERating > 0) and UO_UnionID in (121, 104, 103)";
                 _comm.Parameters.Add(new SqlParameter("V_SEARCH", _EmpNum));
                 _comm.Parameters.Add(new SqlParameter("V_START_DATE_PP", GetStartPPDate(DateTime.Today.AddDays(-3).ToString("yyyy-MM-dd"))));
 
