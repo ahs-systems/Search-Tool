@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormatType2And6", "FormatFi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.csproj", "{DFA5297A-EED1-44C2-BB96-501023DCA4AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASC_EmailAudit", "ASC_EmailAudit\ASC_EmailAudit.csproj", "{8FB5CCF4-FFC6-4B38-9C1E-19250648BC77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,14 @@ Global
 		{DFA5297A-EED1-44C2-BB96-501023DCA4AA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DFA5297A-EED1-44C2-BB96-501023DCA4AA}.Release|x86.ActiveCfg = Release|Any CPU
 		{DFA5297A-EED1-44C2-BB96-501023DCA4AA}.Release|x86.Build.0 = Release|Any CPU
+		{8FB5CCF4-FFC6-4B38-9C1E-19250648BC77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FB5CCF4-FFC6-4B38-9C1E-19250648BC77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FB5CCF4-FFC6-4B38-9C1E-19250648BC77}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8FB5CCF4-FFC6-4B38-9C1E-19250648BC77}.Debug|x86.Build.0 = Debug|Any CPU
+		{8FB5CCF4-FFC6-4B38-9C1E-19250648BC77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FB5CCF4-FFC6-4B38-9C1E-19250648BC77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FB5CCF4-FFC6-4B38-9C1E-19250648BC77}.Release|x86.ActiveCfg = Release|Any CPU
+		{8FB5CCF4-FFC6-4B38-9C1E-19250648BC77}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -143,7 +143,7 @@ namespace WindowsFormsApplication1
                     return _ret;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }

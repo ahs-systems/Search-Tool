@@ -30,6 +30,8 @@ namespace WindowsFormsApplication1
 
         private void frmMainNew_Load(object sender, EventArgs e)
         {
+            Common.LoadIt("SearchTool");
+
             // Get the current user and put it in a global variable
             Common.CurrentUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "");
 
@@ -44,8 +46,6 @@ namespace WindowsFormsApplication1
                 Close();
                 return;
             }
-
-            Common.LoadIt("SearchTool");
 
             // Show the form
             Hide();
