@@ -282,6 +282,15 @@ namespace SearchLDAP
             //    }
             //}
 
+            // Check if valid user
+            string _username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "");
+            if (!Common.CheckUsers(_username.ToUpper()))
+            {
+                MessageBox.Show("Error: Unknown user.\n\nApplication will abort.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+                return;
+            }
+
         }
 
         private void firstNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -417,7 +426,7 @@ namespace SearchLDAP
 
             if (!Common.LoadIt("SearchLDAP", ref _msg))
             {
-                MessageBox.Show(_msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(_msg, "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

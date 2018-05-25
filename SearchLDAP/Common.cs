@@ -63,7 +63,7 @@ namespace SearchLDAP
                     if (_reader.HasRows)
                     {
                         _reader.Read();
-                        if (_reader["AppID"].ToString() == "1")
+                        if (_reader["AppID"].ToString() == "11")
                         {
                             _ret = true;
                         }
@@ -82,6 +82,37 @@ namespace SearchLDAP
                 _ret = false;
             }
             return _ret;
+        }
+
+        public static bool CheckUsers(string _currentUser)
+        {
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection())
+                {
+                    bool _ret = false;
+
+                    myConnection.ConnectionString = Common.BooServer;
+                    myConnection.Open();
+
+                    SqlCommand myCommand = myConnection.CreateCommand();
+
+                    myCommand.CommandText = "SELECT username FROM AppUsers WHERE username = '" + _currentUser.ToUpper() + "' AND [status] = 1";
+
+                    SqlDataReader myReader = myCommand.ExecuteReader();
+
+                    // if found then it is a valid user
+                    _ret = myReader.HasRows;
+
+                    myCommand.Dispose();
+
+                    return _ret;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -72,7 +72,7 @@ namespace ASC_EmailAudit
                         _reader.Read();
                         if (_reader["AppID"].ToString() != "41")
                         {
-                            MessageBox.Show(_reader["Err"].ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(_reader["Err"].ToString(), "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             Application.Exit();
 
                         }
