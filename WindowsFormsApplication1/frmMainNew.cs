@@ -61,7 +61,7 @@ namespace WindowsFormsApplication1
 
             try
             {
-                _conn.ConnectionString = Common.ESPServer; //@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;";
+                _conn.ConnectionString = Common.ESPServer;
 
                 TopMost = true;
 
@@ -323,7 +323,7 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                _conn.ConnectionString = Common.ESPServer; //@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;";
+                _conn.ConnectionString = Common.ESPServer;
 
                 TopMost = true;
 
@@ -3815,7 +3815,7 @@ namespace WindowsFormsApplication1
                     worksheet.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
                     worksheet.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
                     worksheet.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy hh:mm tt");
+                    worksheet.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy hh:mm tt") + " [by: " + Common.CurrentUser + "]"; ;
                     worksheet.HeaderFooter.OddHeader.RightAlignedText = "";
                     worksheet.HeaderFooter.OddHeader.CenteredText = "";
                     worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
@@ -4030,6 +4030,8 @@ namespace WindowsFormsApplication1
 
                     worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
 
+                    bool includeUserInHeader = createSeparateExcel_A1Pschedulers;
+
                     AddTabInTAER(package, "Unknown Error", _pp, _unknownError, "OTHERS", false, isItFinalRun);
                     AddTabInTAER(package, "Banks", _pp, _banks, "OTHERS", true, isItFinalRun);
                     AddTabInTAER(package, "Priors", _pp, _priors, "PRIORS", true, isItFinalRun);
@@ -4089,10 +4091,10 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void AddTabInTAER(ExcelPackage package, string _title, string _payPeriod, List<string[]> _data, string _sortOrder, bool _legalPaper, bool _isItFinalRun)
+        private void AddTabInTAER(ExcelPackage package, string _tabTitle, string _payPeriod, List<string[]> _data, string _sortOrder, bool _legalPaper, bool _isItFinalRun)
         {
             // add a new worksheet to the empty workbook
-            ExcelWorksheet _ws = package.Workbook.Worksheets.Add(_title);
+            ExcelWorksheet _ws = package.Workbook.Worksheets.Add(_tabTitle);
 
             // Set Page Settings
             _ws.PrinterSettings.Orientation = eOrientation.Landscape;
@@ -4108,9 +4110,10 @@ namespace WindowsFormsApplication1
             _ws.PrinterSettings.RightMargin = (decimal)0.25 / 2.54M;
             _ws.PrinterSettings.HeaderMargin = (decimal)0.5 / 2.54M;
             _ws.PrinterSettings.FooterMargin = (decimal)0.5 / 2.54M;
-            _ws.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy hh:mm tt");
+            // if _title.Contains("with PgBrk") then don't include the user on the header as this tab or file will be sent to SSC
+            _ws.HeaderFooter.OddHeader.LeftAlignedText = DateTime.Now.ToString("ddMMMyyyy hh:mm tt") + (_tabTitle.Contains("with PgBrk") ? " [by: " + Common.CurrentUser + "]" : "");
             _ws.HeaderFooter.OddHeader.RightAlignedText = _payPeriod;
-            _ws.HeaderFooter.OddHeader.CenteredText = _isItFinalRun ? "FINAL TAER - " + _title : "TAER - " + _title;
+            _ws.HeaderFooter.OddHeader.CenteredText = _isItFinalRun ? "FINAL TAER - " + _tabTitle : "TAER - " + _tabTitle;
             _ws.HeaderFooter.OddFooter.RightAlignedText = string.Format("Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages);
             _ws.View.PageBreakView = true;
             _ws.PrinterSettings.RepeatRows = new ExcelAddress("$1:$1");
@@ -4168,7 +4171,7 @@ namespace WindowsFormsApplication1
                     _ws.Cells[lineCtr, 10].Value = _items[i][9];
 
                     // Check if there is change in unit then insert a page break, only for "A1P Aux with PgBrk" and "Schedulers with PgBrk" tab
-                    if (_title.Contains("with PgBrk") && _currUnit != _items[i][9].Substring(0, 2))
+                    if (_tabTitle.Contains("with PgBrk") && _currUnit != _items[i][9].Substring(0, 2))
                     {
                         _ws.Row(lineCtr - 1).PageBreak = true;
                     }
@@ -4423,6 +4426,8 @@ namespace WindowsFormsApplication1
         {
             try
             {
+                MessageBox.Show("Select the file that came from SSRS Report.\n\nThe file should be in CSV format.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
                 openFileDialog1.Title = "Select the Sick On A Stat from SSRS (CSV Format)";
                 openFileDialog1.Filter = "CSV Files (.csv)|*.csv|All Files (*.*)|*.*";

@@ -1369,7 +1369,7 @@ namespace WindowsFormsApplication1
             this.Name = "frmMainNew";
             this.Opacity = 0.8D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.05.04";
+            this.Text = "SömëKindä Tööl v2018.05.29";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);

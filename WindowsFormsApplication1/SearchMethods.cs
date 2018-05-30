@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using Microsoft.VisualBasic;
 
 namespace WindowsFormsApplication1
 {
@@ -69,7 +68,6 @@ namespace WindowsFormsApplication1
 
         private static bool CheckIfUNA_HSAA(string _EmpNum)
         {
-            //SqlConnection _conn = new SqlConnection(@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;");
             SqlConnection _conn = new SqlConnection(Common.ESPServer);
             SqlCommand _comm = null;
 
@@ -120,7 +118,6 @@ namespace WindowsFormsApplication1
 
         private static bool CheckIfAUPE_AUX(string _EmpNum)
         {
-            //SqlConnection _conn = new SqlConnection(@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;");
             SqlConnection _conn = new SqlConnection(Common.ESPServer);
             SqlCommand _comm = null;
 
@@ -170,7 +167,6 @@ namespace WindowsFormsApplication1
 
         public static bool CheckIfGSS(string _EmpNum)
         {
-            //SqlConnection _conn = new SqlConnection(@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;");
             SqlConnection _conn = new SqlConnection(Common.ESPServer);
             SqlCommand _comm = null;
 
@@ -229,7 +225,6 @@ namespace WindowsFormsApplication1
 
         public static string GetStartPPDate(string _date)
         {
-            //SqlConnection _conn = new SqlConnection(@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;");
             SqlConnection _conn = new SqlConnection(Common.ESPServer);
             SqlCommand _comm = null;
 
@@ -273,7 +268,6 @@ namespace WindowsFormsApplication1
 
         public static string GetPPnumber(string _date)
         {
-            //SqlConnection _conn = new SqlConnection(@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;");
             SqlConnection _conn = new SqlConnection(Common.ESPServer);
             SqlCommand _comm = null;
 
@@ -316,7 +310,6 @@ namespace WindowsFormsApplication1
 
         public static string GetPreviousPPStartDate(string _date)
         {
-            //SqlConnection _conn = new SqlConnection(@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;");
             SqlConnection _conn = new SqlConnection(Common.ESPServer);
             SqlCommand _comm = null;
 
@@ -361,7 +354,6 @@ namespace WindowsFormsApplication1
 
         public static string[] GetUsersByName(string _searchStr)
         {
-            //SqlConnection _conn = new SqlConnection(@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;");
             SqlConnection _conn = new SqlConnection(Common.ESPServer);
             SqlCommand _comm = null;
 
@@ -412,7 +404,6 @@ namespace WindowsFormsApplication1
 
         public static string[] GetUsersByEmpNo(string _searchStr)
         {
-            //SqlConnection _conn = new SqlConnection(@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;");
             SqlConnection _conn = new SqlConnection(Common.ESPServer);
             SqlCommand _comm = null;
 
@@ -464,7 +455,6 @@ namespace WindowsFormsApplication1
 
         public static string GetLatestLogin(string _userID)
         {
-            //SqlConnection _conn = new SqlConnection(@"Server=" + SearchMethods.dbServer + "; Initial Catalog=esp_cal_prod;Integrated Security=SSPI;");
             SqlConnection _conn = new SqlConnection(Common.ESPServer);
             SqlCommand _comm = null;
 
