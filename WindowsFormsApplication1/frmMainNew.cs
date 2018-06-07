@@ -15,9 +15,7 @@ using System.Windows.Forms;
 namespace WindowsFormsApplication1
 {
     public partial class frmMainNew : Form
-    {
-        SqlConnection _conn = new SqlConnection();
-        SqlCommand _comm;
+    {        
         BunifuTileButton _prevActiveButton = null;
 
         byte _searchMode; //1=occupation, 2=employee, 3=unit
@@ -61,8 +59,6 @@ namespace WindowsFormsApplication1
 
             try
             {
-                _conn.ConnectionString = Common.ESPServer;
-
                 TopMost = true;
 
                 // Show pay period
@@ -172,20 +168,6 @@ namespace WindowsFormsApplication1
             if (Opacity < 1) Opacity = 1;
         }
 
-        private void frmMainNew_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (_conn.State == ConnectionState.Open)
-            {
-                if (_comm != null)
-                {
-                    _comm.Dispose();
-                    _comm = null;
-                }
-                _conn.Close();
-            }
-            _conn.Dispose();
-        }
-
         private void ShowMe()
         {
             Show();
@@ -197,40 +179,24 @@ namespace WindowsFormsApplication1
             Hide();
         }
 
-        private void OpenConnection()
-        {
-            if (_conn.State == ConnectionState.Open) _conn.Close();
-            _conn.Open();
-            _comm = _conn.CreateCommand();
-        }
-
-        private void CloseConnection()
-        {
-            if (_conn.State == ConnectionState.Open)
-            {
-                if (_comm != null)
-                {
-                    _comm.Dispose();
-                    _comm = null;
-                }
-                _conn.Close();
-            }
-        }
-
         private string GetPrevious_PP(string _date)
         {
             string _ret = "";
 
-            OpenConnection();
-            _comm.CommandText = "Select PP_NBR from payperiod where pp_startdate = ( " +
+            using (SqlConnection _conn = new SqlConnection(Common.ESPServer))
+            {
+                _conn.Open();
+
+                SqlCommand _comm = _conn.CreateCommand();
+                _comm.CommandText = "Select PP_NBR from payperiod where pp_startdate = ( " +
                                 "select MAX(pp_startdate) AS PP_NBR from payperiod where pp_startdate < " +
                                 "(select pp_startdate from payperiod where @V_DATE between pp_startdate and pp_enddate))";
-            _comm.Parameters.Add(new SqlParameter("V_DATE", _date));
-            SqlDataReader _reader = _comm.ExecuteReader();
-            _reader.Read();
-            _ret = _reader["PP_NBR"].ToString();
-            if (_reader.IsClosed != true) _reader.Close();
-            CloseConnection();
+                _comm.Parameters.Add(new SqlParameter("V_DATE", _date));
+                SqlDataReader _reader = _comm.ExecuteReader();
+                _reader.Read();
+                _ret = _reader["PP_NBR"].ToString();
+                if (_reader.IsClosed != true) _reader.Close();
+            }
 
             return _ret != "" ? _ret.PadLeft(2, '0') : _ret;
         }
@@ -239,16 +205,20 @@ namespace WindowsFormsApplication1
         {
             string _ret = "";
 
-            OpenConnection();
-            _comm.CommandText = "select FORMAT(max(pp_startdate),'ddMMMyy') +  ' - ' + FORMAT(MAX(PP_ENDDATE),'ddMMMyy') " +
+            using (SqlConnection _conn = new SqlConnection(Common.ESPServer))
+            {
+                _conn.Open();
+
+                SqlCommand _comm = _conn.CreateCommand();
+                _comm.CommandText = "select FORMAT(max(pp_startdate),'ddMMMyy') +  ' - ' + FORMAT(MAX(PP_ENDDATE),'ddMMMyy') " +
                                 "as PayPeriod from payperiod where pp_startdate < " +
                                 "(select pp_startdate from payperiod where @V_DATE between pp_startdate and pp_enddate)";
-            _comm.Parameters.Add(new SqlParameter("V_DATE", _date));
-            SqlDataReader _reader = _comm.ExecuteReader();
-            _reader.Read();
-            _ret = _reader["PayPeriod"].ToString();
-            if (_reader.IsClosed != true) _reader.Close();
-            CloseConnection();
+                _comm.Parameters.Add(new SqlParameter("V_DATE", _date));
+                SqlDataReader _reader = _comm.ExecuteReader();
+                _reader.Read();
+                _ret = _reader["PayPeriod"].ToString();
+                if (_reader.IsClosed != true) _reader.Close();
+            }
 
             return _ret;
         }
@@ -257,14 +227,18 @@ namespace WindowsFormsApplication1
         {
             string _ret = "";
 
-            OpenConnection();
-            _comm.CommandText = "select Convert(varchar(10),PP_StartDate,23) as StartDate from payperiod where @V_DATE between pp_startdate and pp_enddate";
-            _comm.Parameters.Add(new SqlParameter("V_DATE", _date));
-            SqlDataReader _reader = _comm.ExecuteReader();
-            _reader.Read();
-            _ret = _reader["StartDate"].ToString();
-            if (_reader.IsClosed != true) _reader.Close();
-            CloseConnection();
+            using (SqlConnection _conn = new SqlConnection(Common.ESPServer))
+            {
+                _conn.Open();
+
+                SqlCommand _comm = _conn.CreateCommand();
+                _comm.CommandText = "select Convert(varchar(10),PP_StartDate,23) as StartDate from payperiod where @V_DATE between pp_startdate and pp_enddate";
+                _comm.Parameters.Add(new SqlParameter("V_DATE", _date));
+                SqlDataReader _reader = _comm.ExecuteReader();
+                _reader.Read();
+                _ret = _reader["StartDate"].ToString();
+                if (_reader.IsClosed != true) _reader.Close();
+            }
 
             return _ret;
         }
@@ -275,7 +249,6 @@ namespace WindowsFormsApplication1
 
             btnSendEmail.Enabled = txtTCG.Visible = false;
 
-
             string _searchString = "";
 
             if (txtOCode.Text.Trim().Length == 0)
@@ -283,6 +256,8 @@ namespace WindowsFormsApplication1
                 lstResult.Items.Clear();
                 return;
             }
+
+            txtEmpNo.Text = txtUnit.Text = "";
 
             if ("0123456789".IndexOf(txtOCode.Text.Trim()[0]) != -1)
             {
@@ -296,24 +271,28 @@ namespace WindowsFormsApplication1
             lblMsg.Text = "Please wait...";
             Update();
 
-            OpenConnection();
-            _comm.CommandText = "SELECT LTRIM(RTRIM(O_CODE)) + ' - ' + O_DESC 'DESC' FROM OCCUPATION WHERE O_CODE LIKE @V_O_CODE AND O_OccClassID <> 612 order by o_code";
-            _comm.Parameters.Add(new SqlParameter("V_O_CODE", _searchString + "%")); //) + "
-            SqlDataReader _reader = _comm.ExecuteReader();
-            if (_reader.HasRows)
+            using (SqlConnection _conn = new SqlConnection(Common.ESPServer))
             {
-                lstResult.Items.Clear();
-                while (_reader.Read())
+                _conn.Open();
+
+                SqlCommand _comm = _conn.CreateCommand();
+                _comm.CommandText = "SELECT LTRIM(RTRIM(O_CODE)) + ' - ' + O_DESC 'DESC' FROM OCCUPATION WHERE O_CODE LIKE @V_O_CODE AND O_OccClassID <> 612 order by o_code";
+                _comm.Parameters.Add(new SqlParameter("V_O_CODE", _searchString + "%")); //) + "
+                SqlDataReader _reader = _comm.ExecuteReader();
+                if (_reader.HasRows)
                 {
-                    lstResult.Items.Add(_reader["DESC"].ToString());
+                    lstResult.Items.Clear();
+                    while (_reader.Read())
+                    {
+                        lstResult.Items.Add(_reader["DESC"].ToString());
+                    }
                 }
+                else
+                {
+                    lstResult.Items.Clear();
+                }
+                _reader.Close();
             }
-            else
-            {
-                lstResult.Items.Clear();
-            }
-            _reader.Close();
-            CloseConnection();
 
             lblMsg.Text = lstResult.Items.Count + " record(s) found.";
             Update();
@@ -323,8 +302,6 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                _conn.ConnectionString = Common.ESPServer;
-
                 TopMost = true;
 
                 // Show pay period
@@ -372,6 +349,14 @@ namespace WindowsFormsApplication1
                 return;
             }
 
+            // Search with atleast 2 characters or numbers
+            if (txtEmpNo.Text.Trim().Length < 2)
+            {
+                return;
+            }
+
+            txtOCode.Text = txtUnit.Text = "";
+
             if ("0123456789".IndexOf(txtEmpNo.Text.Trim()[0]) != -1)
             {
                 _searchString = txtEmpNo.Text.Trim().PadLeft(8, '0');
@@ -385,33 +370,37 @@ namespace WindowsFormsApplication1
             lblMsg.Text = "Please wait...";
             Update();
 
-            OpenConnection();
-            if (_searchEmpNo) // SEARCH BY EMP NO
+            using (SqlConnection _conn = new SqlConnection(Common.ESPServer))
             {
-                _comm.CommandText = "SELECT LTRIM(RTRIM(E_EMPNBR)) + '  -  ' + LTRIM(RTRIM(E_LASTNAME)) + ', ' + LTRIM(RTRIM(E_FIRSTNAME)) 'DESC' FROM EMP WHERE E_EMPNBR LIKE @V_SEARCH AND LEN(E_EMPNBR) > 7 ORDER BY E_LASTNAME, E_FIRSTNAME";
-            }
-            else // SEARCH BY LAST NAME
-            {
-                _comm.CommandText = "SELECT LTRIM(RTRIM(E_EMPNBR)) + '  -  ' + LTRIM(RTRIM(E_LASTNAME)) + ', ' + LTRIM(RTRIM(E_FIRSTNAME)) 'DESC' FROM EMP WHERE (UPPER(E_LASTNAME) LIKE @V_SEARCH OR UPPER(E_FIRSTNAME) LIKE @V_SEARCH) AND LEN(E_EMPNBR) > 7 ORDER BY E_LASTNAME, E_FIRSTNAME";
-            }
+                _conn.Open();
 
-            _comm.Parameters.Add(new SqlParameter("V_SEARCH", _searchString + "%")); //) + "
-            SqlDataReader _reader = _comm.ExecuteReader();
-            if (_reader.HasRows)
-            {
-                lstResult.Items.Clear();
-                while (_reader.Read())
+                SqlCommand _comm = _conn.CreateCommand();
+                if (_searchEmpNo) // SEARCH BY EMP NO
                 {
-                    lstResult.Items.Add(_reader["DESC"].ToString());
+                    _comm.CommandText = "SELECT LTRIM(RTRIM(E_EMPNBR)) + '  -  ' + LTRIM(RTRIM(E_LASTNAME)) + ', ' + LTRIM(RTRIM(E_FIRSTNAME)) 'DESC' FROM EMP WHERE E_EMPNBR LIKE @V_SEARCH AND LEN(E_EMPNBR) > 7 ORDER BY E_LASTNAME, E_FIRSTNAME";
                 }
-            }
-            else
-            {
-                lstResult.Items.Clear();
-            }
-            _reader.Close();
+                else // SEARCH BY LAST NAME
+                {
+                    _comm.CommandText = "SELECT LTRIM(RTRIM(E_EMPNBR)) + '  -  ' + LTRIM(RTRIM(E_LASTNAME)) + ', ' + LTRIM(RTRIM(E_FIRSTNAME)) 'DESC' FROM EMP WHERE (UPPER(E_LASTNAME) LIKE @V_SEARCH OR UPPER(E_FIRSTNAME) LIKE @V_SEARCH) AND LEN(E_EMPNBR) > 7 ORDER BY E_LASTNAME, E_FIRSTNAME";
+                }
 
-            CloseConnection();
+                _comm.Parameters.Add(new SqlParameter("V_SEARCH", _searchString + "%")); //) + "
+                SqlDataReader _reader = _comm.ExecuteReader();
+                if (_reader.HasRows)
+                {
+                    lstResult.Items.Clear();
+                    while (_reader.Read())
+                    {
+                        lstResult.Items.Add(_reader["DESC"].ToString());
+                    }
+                }
+                else
+                {
+                    lstResult.Items.Clear();
+                }
+                _reader.Close();
+
+            }
 
             lblMsg.Text = lstResult.Items.Count + " record(s) found.";
             Update();
@@ -522,46 +511,50 @@ namespace WindowsFormsApplication1
         {
             string _ret = "";
 
-            OpenConnection();
-            _comm.CommandText = "select emp.e_empid EMPID from emp " +
+            using (SqlConnection _conn = new SqlConnection(Common.ESPServer))
+            {
+                _conn.Open();
+
+                SqlCommand _comm = _conn.CreateCommand();
+                _comm.CommandText = "select emp.e_empid EMPID from emp " +
                  "inner join empPosition on emp.e_empid = empPosition.ep_empid " +
                  "inner join employmentStatus on emp.e_empid = employmentStatus.EMS_EmpID " +
                  "where emp.e_empnbr = @V_SEARCH and empPosition.ep_todate >= GetDAte() " +
                  "AND EmploymentStatus.EMS_EmploymentType = 1 AND EmploymentStatus.EMS_EndDate >= GetDAte() ";
 
-            _comm.Parameters.Add(new SqlParameter("V_SEARCH", _empID));
-            SqlDataReader _reader = _comm.ExecuteReader();
-            if (_reader.HasRows)
-            {
-                _reader.Read();
-
-                string _retEmpID = _reader["EMPID"].ToString();
-
-                _comm.CommandText = "select tcg_desc from timecardgroup where tcg_tcardgroupid = " +
-                    "(select tc_tcardgroupid from timecard where tc_empid = " + _retEmpID + " and " +
-                    "tc_payperiodid = (select max(tc_payperiodid) from timecard where tc_empid = " + _retEmpID + "))";
-
-                _comm.Parameters.Clear();
-                _reader.Close();
-                _reader = _comm.ExecuteReader();
-
+                _comm.Parameters.Add(new SqlParameter("V_SEARCH", _empID));
+                SqlDataReader _reader = _comm.ExecuteReader();
                 if (_reader.HasRows)
                 {
                     _reader.Read();
-                    _ret = _reader["tcg_desc"].ToString().Trim();
-                }
-            }
-            else
-            {
-                _ret = GetEmpName(_empID.Substring(0, 8)); // Check if the name is already existing in ESP ,if it is then it means it is just INACTIVE
-                if (!_ret.ToUpper().Contains("NAME NOT FOUND"))
-                {
-                    _ret = "--- INACTIVE ---";
-                }
-            }
 
-            _reader.Close();
-            CloseConnection();
+                    string _retEmpID = _reader["EMPID"].ToString();
+
+                    _comm.CommandText = "select tcg_desc from timecardgroup where tcg_tcardgroupid = " +
+                        "(select tc_tcardgroupid from timecard where tc_empid = " + _retEmpID + " and " +
+                        "tc_payperiodid = (select max(tc_payperiodid) from timecard where tc_empid = " + _retEmpID + "))";
+
+                    _comm.Parameters.Clear();
+                    _reader.Close();
+                    _reader = _comm.ExecuteReader();
+
+                    if (_reader.HasRows)
+                    {
+                        _reader.Read();
+                        _ret = _reader["tcg_desc"].ToString().Trim();
+                    }
+                }
+                else
+                {
+                    _ret = GetEmpName(_empID.Substring(0, 8)); // Check if the name is already existing in ESP ,if it is then it means it is just INACTIVE
+                    if (!_ret.ToUpper().Contains("NAME NOT FOUND"))
+                    {
+                        _ret = "--- INACTIVE ---";
+                    }
+                }
+
+                _reader.Close();
+            }
 
             return _ret;
         }
@@ -628,23 +621,27 @@ namespace WindowsFormsApplication1
         {
             string _ret = "";
 
-            OpenConnection();
-            _comm.CommandText = "SELECT LTRIM(RTRIM(O_CODE)) + ' - ' + O_DESC 'DESC' FROM OCCUPATION WHERE O_CODE LIKE @V_O_CODE AND O_OccClassID <> 612 order by o_code, O_DESC DESC";
-            _comm.Parameters.Add(new SqlParameter("V_O_CODE", _code.Trim().ToUpper() + "%"));
-            SqlDataReader _reader = _comm.ExecuteReader();
-            if (_reader.HasRows)
+            using (SqlConnection _conn = new SqlConnection(Common.ESPServer))
             {
-                _reader.Read();
-                _ret = _reader["DESC"].ToString();
-            }
-            else
-            {
-                _ret = _code;
-            }
-            if (_reader.IsClosed != true) _reader.Close();
-            _reader.Dispose();
+                _conn.Open();
 
-            CloseConnection();
+                SqlCommand _comm = _conn.CreateCommand();
+                _comm.CommandText = "SELECT LTRIM(RTRIM(O_CODE)) + ' - ' + O_DESC 'DESC' FROM OCCUPATION WHERE O_CODE LIKE @V_O_CODE AND O_OccClassID <> 612 order by o_code, O_DESC DESC";
+                _comm.Parameters.Add(new SqlParameter("V_O_CODE", _code.Trim().ToUpper() + "%"));
+                SqlDataReader _reader = _comm.ExecuteReader();
+                if (_reader.HasRows)
+                {
+                    _reader.Read();
+                    _ret = _reader["DESC"].ToString();
+                }
+                else
+                {
+                    _ret = _code;
+                }
+                if (_reader.IsClosed != true) _reader.Close();
+                _reader.Dispose();
+
+            }
 
             return _ret;
         }
@@ -653,22 +650,25 @@ namespace WindowsFormsApplication1
         {
             string _ret = "--- Name Not Found ---";
 
-            OpenConnection();
-            _comm.CommandText = "SELECT LTRIM(RTRIM(E_LASTNAME)) + ', ' + LTRIM(RTRIM(E_FIRSTNAME)) 'EMPNAME' FROM EMP WHERE E_EMPNBR LIKE @V_SEARCH AND LEN(E_EMPNBR) > 7 ORDER BY E_ChangeDate DESC";
-
-            _comm.Parameters.Clear();
-            _comm.Parameters.Add(new SqlParameter("V_SEARCH", _empID + "%"));
-            SqlDataReader _reader = _comm.ExecuteReader();
-            if (_reader.HasRows)
+            using (SqlConnection _conn = new SqlConnection(Common.ESPServer))
             {
-                _reader.Read();
-                _ret = _reader["EMPNAME"].ToString();
+                _conn.Open();
+
+                SqlCommand _comm = _conn.CreateCommand();
+                _comm.CommandText = "SELECT LTRIM(RTRIM(E_LASTNAME)) + ', ' + LTRIM(RTRIM(E_FIRSTNAME)) 'EMPNAME' FROM EMP WHERE E_EMPNBR LIKE @V_SEARCH AND LEN(E_EMPNBR) > 7 ORDER BY E_ChangeDate DESC";
+
+                _comm.Parameters.Clear();
+                _comm.Parameters.Add(new SqlParameter("V_SEARCH", _empID + "%"));
+                SqlDataReader _reader = _comm.ExecuteReader();
+                if (_reader.HasRows)
+                {
+                    _reader.Read();
+                    _ret = _reader["EMPNAME"].ToString();
+                }
+
+                _reader.Close();
+                _reader.Dispose();
             }
-
-            _reader.Close();
-            _reader.Dispose();
-
-            CloseConnection();
 
             return _ret;
         }
@@ -3518,33 +3518,38 @@ namespace WindowsFormsApplication1
                 return;
             }
 
+            txtOCode.Text = txtEmpNo.Text = "";
+
             if (txtUnit.Text.Trim().Length < 2) return;
 
             lblMsg.Text = "Please wait...";
             Update();
 
-            OpenConnection();
+            using (SqlConnection _conn = new SqlConnection(Common.ESPServer))
+            {
+                _conn.Open();
 
-            _comm.CommandText = "select U_desc + ' | ' + Rtrim(LTrim(U_ShortDesc)) AS Units from unit where " +
+                SqlCommand _comm = _conn.CreateCommand();
+
+                _comm.CommandText = "select U_desc + ' | ' + Rtrim(LTrim(U_ShortDesc)) AS Units from unit where " +
                 "(UPPER(U_Desc) LIKE @_SearchStr OR UPPER(U_ShortDesc) LIKE @_SearchStr) AND U_Active = 1 order by U_Desc";
 
-            _comm.Parameters.Add(new SqlParameter("_SearchStr", "%" + txtUnit.Text.Trim().ToUpper() + "%"));
-            SqlDataReader _reader = _comm.ExecuteReader();
-            if (_reader.HasRows)
-            {
-                lstResult.Items.Clear();
-                while (_reader.Read())
+                _comm.Parameters.Add(new SqlParameter("_SearchStr", "%" + txtUnit.Text.Trim().ToUpper() + "%"));
+                SqlDataReader _reader = _comm.ExecuteReader();
+                if (_reader.HasRows)
                 {
-                    lstResult.Items.Add(_reader["Units"].ToString());
+                    lstResult.Items.Clear();
+                    while (_reader.Read())
+                    {
+                        lstResult.Items.Add(_reader["Units"].ToString());
+                    }
                 }
+                else
+                {
+                    lstResult.Items.Clear();
+                }
+                _reader.Close();
             }
-            else
-            {
-                lstResult.Items.Clear();
-            }
-            _reader.Close();
-
-            CloseConnection();
 
             lblMsg.Text = lstResult.Items.Count + " record(s) found.";
             Update();

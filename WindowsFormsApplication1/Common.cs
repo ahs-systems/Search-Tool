@@ -11,6 +11,8 @@ namespace WindowsFormsApplication1
         public static string ESPServerUsingLocalIdentity = @"Server=wssqlc015v02\esp8; Initial Catalog = esp_cal_prod; Integrated Security = SSPI;";
         // public static string ESPServer = @"Server=wssqlc015v02\esp8; Database=esp_cal_prod;User Id=Espreport; Password=Esp4rep0rt;";
         public static string ESPServer = @"Server=wssqlc015v02\esp8; Database=esp_cal_prod;User Id=BOO_USER; Password=BOO_USER;";
+        public static string EDM_Db = @"Server=wssqlc015v02\esp8; Database=esp_edm_prod;User Id=BOO_USER; Password=BOO_USER;";
+        public static string NCS_Db = @"Server=wssqlc015v02\esp8; Database=esp_ncs_prod;User Id=BOO_USER; Password=BOO_USER;";
         public static string SystemsServer = @"Server=M292387\ESPSYSTEMS; Database=esp_systems;User Id=esp_systems;Password=esp_systems1;";
         public static string BooServer = @"Server=wssqlc015V01.healthy.bewell.ca\esp8; Database=BOO;User Id=BOO_USER;Password=BOO_USER;";
         public static string SSRS_Interface_Prod = @"Server=wssqlc015V01.healthy.bewell.ca\esp8; Database=SSRS_Interface_Prod;User Id=BOO_USER;Password=BOO_USER;";
@@ -264,6 +266,65 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show(err.Message);
             }
+        }
+
+        public static string GetUsersZone(string _currentUser)
+        {
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection())
+                {
+                    string _ret = "";
+
+                    myConnection.ConnectionString = Common.BooServer;
+                    myConnection.Open();
+
+                    SqlCommand myCommand = myConnection.CreateCommand();
+
+                    myCommand.CommandText = "SELECT zone FROM AppUsers WHERE username = '" + _currentUser.ToUpper() + "' AND [status] = 1";
+
+                    SqlDataReader myReader = myCommand.ExecuteReader();
+
+                    if (myReader.HasRows)
+                    {
+                        while (myReader.Read())
+                        {
+                            _ret = _ret + myReader["zone"].ToString().Trim().ToUpper() + "','";
+                        }
+
+                        // remove the last "',"
+                        _ret = "'" + _ret.Substring(0, _ret.Length - 2);
+                    }
+
+                    myCommand.Dispose();
+
+                    return _ret;
+                }
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+        public static string GetZoneConnectionString(string _zone)
+        {
+            string _ret = "";
+
+            switch (_zone.ToUpper())
+            {
+                case "CAL":
+                    _ret = ESPServer;
+                    break;
+                case "NCS":
+                    _ret = NCS_Db;
+                    break;
+                case "EDM":
+                    _ret = EDM_Db;
+                    break;
+            }
+
+            return _ret;
         }
     }
 

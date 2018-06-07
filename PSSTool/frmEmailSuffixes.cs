@@ -95,16 +95,17 @@ namespace PSSTool
 
         private void frmEmailSuffixes_Load(object sender, EventArgs e)
         {
-            Common.LoadIt("ASCEmailAudit");
+            //Common.LoadIt("ASCEmailAudit");
 
-            // Check if valid user
             string _username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "");
-            if (!Common.CheckUsers(_username.ToUpper()))
-            {
-                MessageBox.Show("Error: Unknown user.\n\nApplication will abort.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close();
-                return;
-            }
+
+            // Check if valid user            
+            //if (!Common.CheckUsers(_username.ToUpper()))
+            //{
+            //    MessageBox.Show("Error: Unknown user.\n\nApplication will abort.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    Close();
+            //    return;
+            //}
 
             //Hide();
             //transFrm.ShowSync(this, false, null);

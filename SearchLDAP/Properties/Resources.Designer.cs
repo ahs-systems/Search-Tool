@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SearchLDAP.Properties {
+namespace PSSTool.Properties {
     using System;
     
     

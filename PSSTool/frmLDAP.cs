@@ -1,17 +1,9 @@
-﻿//using Microsoft.Exchange.WebServices.Data;
-using Bunifu.Framework.UI;
-using Microsoft.Exchange.WebServices.Data;
+﻿using Bunifu.Framework.UI;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.DirectoryServices;
 using System.IO;
 using System.Windows.Forms;
-//using VisualEffects;
-//using VisualEffects.Animations.Effects;
-//using VisualEffects.Easing;
-//using EASendEmail;
+
 
 namespace PSSTool
 {
@@ -277,19 +269,21 @@ namespace PSSTool
             //    ResultPropertyValueCollection valueCollection = result.Properties[propName];
             //    foreach (Object propertyValue in valueCollection)
             //    {
-            LoadIt(); //    ResultPropertyValueCollection valueCollection = result.Properties[propName];
+            //    ResultPropertyValueCollection valueCollection = result.Properties[propName];
             //        Console.WriteLine("Property: " + propName + ": " + propertyValue.ToString());
             //    }
             //}
 
-            // Check if valid user
-            string _username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "");
-            if (!Common.CheckUsers(_username.ToUpper()))
-            {
-                MessageBox.Show("Error: Unknown user.\n\nApplication will abort.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close();
-                return;
-            }
+            //LoadIt();
+
+            //// Check if valid user
+            //string _username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "");
+            //if (!Common.CheckUsers(_username.ToUpper()))
+            //{
+            //    MessageBox.Show("Error: Unknown user.\n\nApplication will abort.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    Close();
+            //    return;
+            //}
 
         }
 
@@ -579,7 +573,7 @@ namespace PSSTool
                     int _ctr = 0;
                     if (results != null)
                     {
-                        
+
                         foreach (SearchResult result in results)
                         {
                             _ctr++;

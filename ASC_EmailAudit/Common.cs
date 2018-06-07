@@ -1,7 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace ASC_EmailAudit
+namespace PSSTool
 {
     class Common
     {

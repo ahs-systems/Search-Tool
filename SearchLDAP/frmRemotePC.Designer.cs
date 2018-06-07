@@ -1,4 +1,4 @@
-﻿namespace SearchLDAP
+﻿namespace PSSTool
 {
     partial class frmRemotePC
     {

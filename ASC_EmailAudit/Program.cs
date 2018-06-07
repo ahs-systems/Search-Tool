@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ASC_EmailAudit
+namespace PSSTool
 {
     static class Program
     {
