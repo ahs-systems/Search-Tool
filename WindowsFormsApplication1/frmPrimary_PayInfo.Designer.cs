@@ -45,6 +45,7 @@
             this.lblClose = new System.Windows.Forms.Label();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblMinimize = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.mnuCopyFromList.SuspendLayout();
             this.SuspendLayout();
@@ -214,7 +215,7 @@
             this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
             this.lblClose.Image = ((System.Drawing.Image)(resources.GetObject("lblClose.Image")));
-            this.lblClose.Location = new System.Drawing.Point(797, 2);
+            this.lblClose.Location = new System.Drawing.Point(797, 3);
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(22, 23);
             this.lblClose.TabIndex = 62;
@@ -237,12 +238,25 @@
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Info";
             // 
+            // lblMinimize
+            // 
+            this.lblMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.lblMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.lblMinimize, BunifuAnimatorNS.DecorationType.None);
+            this.lblMinimize.Image = ((System.Drawing.Image)(resources.GetObject("lblMinimize.Image")));
+            this.lblMinimize.Location = new System.Drawing.Point(772, 3);
+            this.lblMinimize.Name = "lblMinimize";
+            this.lblMinimize.Size = new System.Drawing.Size(22, 23);
+            this.lblMinimize.TabIndex = 70;
+            this.lblMinimize.Click += new System.EventHandler(this.lblMinimize_Click);
+            // 
             // frmPrimary_PayInfo
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(823, 514);
             this.ControlBox = false;
+            this.Controls.Add(this.lblMinimize);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblItemsFound);
@@ -280,5 +294,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCopyEmpNum;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label lblClose;
+        private System.Windows.Forms.Label lblMinimize;
     }
 }

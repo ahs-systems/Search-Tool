@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
         }
 
         public static SearchResultCollection FindByName(string domain, string firstName, string lastName)
-        {            
+        {
             string filter;
             if (lastName == "")
             {
@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1
             else
             {
                 filter = string.Format("(&(sn={0})(givenName={1}))", lastName, firstName);
-            }           
+            }
 
             return SearchLDAP(domain, filter);
         }
@@ -158,15 +158,15 @@ namespace WindowsFormsApplication1
                         string _lastName = result.Properties["sn"].Count > 0 ? result.Properties["sn"][0].ToString() : "No LastName";
                         string _mail = result.Properties["mail"].Count > 0 ? result.Properties["mail"][0].ToString() : "No email";
                         string _manager = result.Properties["manager"].Count > 0 ? SearchDisplayName("healthy.bewell.ca", result.Properties["manager"][0].ToString()) : "Mgr Not Found";
-                        string _location = result.Properties["departmentnumber"].Count > 0 
-                            ? result.Properties["departmentnumber"][0].ToString().Substring(result.Properties["departmentnumber"][0].ToString().IndexOf(":") + 1) 
+                        string _location = result.Properties["departmentnumber"].Count > 0
+                            ? result.Properties["departmentnumber"][0].ToString().Substring(result.Properties["departmentnumber"][0].ToString().IndexOf(":") + 1)
                             : "Location Not Found";
                         string _position = result.Properties["title"].Count > 0 ? result.Properties["title"][0].ToString() : "Title Not Found";
-                        string _status = result.Properties["useraccountcontrol"].Count > 0 
-                            ? (!Convert.ToBoolean(Convert.ToInt32(result.Properties["useraccountcontrol"][0]) & 0x0002) ? "Active" : "Disabled" )
+                        string _status = result.Properties["useraccountcontrol"].Count > 0
+                            ? (!Convert.ToBoolean(Convert.ToInt32(result.Properties["useraccountcontrol"][0]) & 0x0002) ? "Active" : "Disabled")
                             : "- Unknown -";
 
-                        _listBox.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " + 
+                        _listBox.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " +
                             _manager + " | " + _location + " | " + _position + " | " + _status);
                     }
 
@@ -187,8 +187,10 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        txtEmpNo.Text = txtLocation.Text = txtEmpName.Text = txtManager.Text = txtLDAP.Text = txtEmail.Text = txtPosition.Text = "";
+                        txtEmpNo.Text = txtLocation.Text = txtEmpName.Text = txtManager.Text = txtLDAP.Text = txtEmail.Text = txtPosition.Text = txtStatus.Text = "";
                     }
+
+                    lblCount.Text = "Count: " + _listBox.Items.Count.ToString();
                 }
                 else
                 {
@@ -495,6 +497,11 @@ namespace WindowsFormsApplication1
         private void lblClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void lblMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

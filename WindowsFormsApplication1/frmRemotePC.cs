@@ -77,5 +77,10 @@ namespace WindowsFormsApplication1
         {
             txtBarcode.Focus();
         }
+
+        private void lblMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
     }
 }

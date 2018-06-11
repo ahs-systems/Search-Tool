@@ -42,8 +42,9 @@
             this.lblItemsFound = new System.Windows.Forms.Label();
             this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.lblTitle = new System.Windows.Forms.Label();
-            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.lblClose = new System.Windows.Forms.Label();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.lblMinimize = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -190,6 +191,17 @@
             this.lblTitle.Text = "View Locks";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // lblClose
+            // 
+            this.lblClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.transFrm.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
+            this.lblClose.Image = ((System.Drawing.Image)(resources.GetObject("lblClose.Image")));
+            this.lblClose.Location = new System.Drawing.Point(816, 3);
+            this.lblClose.Name = "lblClose";
+            this.lblClose.Size = new System.Drawing.Size(22, 23);
+            this.lblClose.TabIndex = 62;
+            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
+            // 
             // bunifuDragControl1
             // 
             this.bunifuDragControl1.Fixed = true;
@@ -197,16 +209,17 @@
             this.bunifuDragControl1.TargetControl = this.lblTitle;
             this.bunifuDragControl1.Vertical = true;
             // 
-            // lblClose
+            // lblMinimize
             // 
-            this.lblClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
-            this.transFrm.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
-            this.lblClose.Image = ((System.Drawing.Image)(resources.GetObject("lblClose.Image")));
-            this.lblClose.Location = new System.Drawing.Point(816, 1);
-            this.lblClose.Name = "lblClose";
-            this.lblClose.Size = new System.Drawing.Size(22, 23);
-            this.lblClose.TabIndex = 62;
-            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
+            this.lblMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.lblMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.lblMinimize, BunifuAnimatorNS.DecorationType.None);
+            this.lblMinimize.Image = ((System.Drawing.Image)(resources.GetObject("lblMinimize.Image")));
+            this.lblMinimize.Location = new System.Drawing.Point(791, 3);
+            this.lblMinimize.Name = "lblMinimize";
+            this.lblMinimize.Size = new System.Drawing.Size(22, 23);
+            this.lblMinimize.TabIndex = 69;
+            this.lblMinimize.Click += new System.EventHandler(this.lblMinimize_Click);
             // 
             // frmClearLocks
             // 
@@ -214,6 +227,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(844, 269);
             this.ControlBox = false;
+            this.Controls.Add(this.lblMinimize);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnFindByUser);
@@ -253,5 +267,6 @@
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblClose;
+        private System.Windows.Forms.Label lblMinimize;
     }
 }

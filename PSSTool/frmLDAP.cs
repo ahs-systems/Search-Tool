@@ -9,27 +9,13 @@ namespace PSSTool
 {
     public partial class frmLDAP : Form
     {
-        public frmLDAP()
+        public frmLDAP() => InitializeComponent();
+
+        private void ShowData(SearchResultCollection results, ListBox _listBox)
         {
-            InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var employeeID = textBox1.Text.Trim();
-
-            if (employeeID == "")
-            {
-                MessageBox.Show("Blank field detected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
             try
             {
-
-                SearchResultCollection results = FindByID("healthy.bewell.ca", employeeID);
-
-                listBox1.Items.Clear();
+                _listBox.Items.Clear();
 
                 if (results.Count > 0)
                 {
@@ -42,25 +28,28 @@ namespace PSSTool
                         string _lastName = result.Properties["sn"].Count > 0 ? result.Properties["sn"][0].ToString() : "No LastName";
                         string _mail = result.Properties["mail"].Count > 0 ? result.Properties["mail"][0].ToString() : "No email";
                         string _manager = result.Properties["manager"].Count > 0 ? SearchDisplayName("healthy.bewell.ca", result.Properties["manager"][0].ToString()) : "Mgr Not Found";
-                        //string _manager = result.Properties["manager"].Count > 0 ? result.Properties["manager"][0].ToString() : "Mgr Not Found";
+                        string _location = result.Properties["departmentnumber"].Count > 0
+                            ? result.Properties["departmentnumber"][0].ToString().Substring(result.Properties["departmentnumber"][0].ToString().IndexOf(":") + 1)
+                            : "Location Not Found";
+                        string _position = result.Properties["title"].Count > 0 ? result.Properties["title"][0].ToString() : "Title Not Found";
+                        string _status = result.Properties["useraccountcontrol"].Count > 0
+                            ? (!Convert.ToBoolean(Convert.ToInt32(result.Properties["useraccountcontrol"][0]) & 0x0002) ? "Active" : "Disabled")
+                            : "- Unknown -";
 
-                        //foreach (string propName in result.Properties.PropertyNames)
-                        //{
-                        //    ResultPropertyValueCollection valueCollection = result.Properties[propName];
-                        //    foreach (Object propertyValue in valueCollection)
-                        //    {
-                        //        Console.WriteLine("Property: " + propName + ": " + propertyValue.ToString());
-                        //    }
-                        //}
+                        _listBox.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " +
+                            _manager + " | " + _location + " | " + _position + " | " + _status);
+                    }                    
 
-
-                        listBox1.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " + _manager);
-                    }
-
-                    if (listBox1.Items.Count == 1)
+                    if (_listBox.Items.Count == 1)
                     {
-                        listBox1.SelectedIndex = 0;
+                        _listBox.SelectedIndex = 0;                        
                     }
+                    else 
+                    {
+                        txtEmpNo.Text = txtLocation.Text = txtEmpName.Text = txtManager.Text = txtLDAP.Text = txtEmail.Text = txtPosition.Text = txtStatus.Text = "";
+                    }
+
+                    lblCount.Text = "Count: " + _listBox.Items.Count.ToString();
                 }
                 else
                 {
@@ -69,18 +58,27 @@ namespace PSSTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: " + ex.Message, "Ooops, may mali.");
+                MessageBox.Show(ex.Message);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var employeeID = textBox1.Text.Trim();
+
+            if (employeeID == "")
+            {
+                MessageBox.Show("Blank field detected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            SearchResultCollection results = FindByID("healthy.bewell.ca", employeeID);
+
+            ShowData(results, listBox1);
         }
 
         public static SearchResultCollection FindByName(string domain, string firstName, string lastName)
         {
-            //var rootEntry = new DirectoryEntry("LDAP://" + domain);
-            //var filter = string.Format("(&(sn={0})(givenName={1}))", lastName, firstName);
-            //var searcher = new DirectorySearcher(rootEntry, filter, properties);
-            //searcher.PropertiesToLoad.Add("sAMAccountName");
-
-            var rootEntry = new DirectoryEntry("LDAP://" + domain);
             string filter;
             if (lastName == "")
             {
@@ -94,15 +92,8 @@ namespace PSSTool
             {
                 filter = string.Format("(&(sn={0})(givenName={1}))", lastName, firstName);
             }
-            var searcher = new DirectorySearcher(rootEntry, filter);
-            searcher.PropertiesToLoad.Add("sAMAccountName");
-            searcher.PropertiesToLoad.Add("mail");
-            searcher.PropertiesToLoad.Add("employeeNumber");
-            searcher.PropertiesToLoad.Add("givenName");
-            searcher.PropertiesToLoad.Add("sn");
-            searcher.PropertiesToLoad.Add("manager");
 
-            return searcher.FindAll();
+            return SearchLDAP(domain, filter);
         }
 
         private static string SearchDisplayName(string domain, string searchStr)
@@ -137,70 +128,16 @@ namespace PSSTool
 
         public static SearchResultCollection FindByID(string domain, string idNumber)
         {
-            var rootEntry = new DirectoryEntry("LDAP://" + domain);
             var filter = string.Format("(employeeNumber=" + idNumber + ")");
-            var searcher = new DirectorySearcher(rootEntry, filter);
 
-            searcher.PropertiesToLoad.Add("sAMAccountName");
-            searcher.PropertiesToLoad.Add("mail");
-            searcher.PropertiesToLoad.Add("employeeNumber");
-            searcher.PropertiesToLoad.Add("sn");
-            searcher.PropertiesToLoad.Add("givenName");
-            searcher.PropertiesToLoad.Add("manager");
-
-            SearchResultCollection results = searcher.FindAll();
-
-            //if (results != null)
-            //{
-            //    foreach (SearchResult result in results)
-            //    {
-            //        foreach (DictionaryEntry property in result.Properties)
-            //        {
-            //            Console.Write(property.Key + ": ");
-            //            foreach (var val in (property.Value as ResultPropertyValueCollection))
-            //            {
-            //                Console.Write(val + "; ");
-            //            }
-            //            Console.WriteLine("");
-            //        }
-            //    }
-            //}
-
-            return results;
+            return SearchLDAP(domain, filter);             
         }
 
         public static SearchResultCollection FindByLDAP(string domain, string ldapName)
         {
-            var rootEntry = new DirectoryEntry("LDAP://" + domain);
             var filter = string.Format("(sAMAccountName=" + ldapName + ")");
-            var searcher = new DirectorySearcher(rootEntry, filter);
 
-            searcher.PropertiesToLoad.Add("sAMAccountName");
-            searcher.PropertiesToLoad.Add("mail");
-            searcher.PropertiesToLoad.Add("employeeNumber");
-            searcher.PropertiesToLoad.Add("sn");
-            searcher.PropertiesToLoad.Add("givenName");
-            searcher.PropertiesToLoad.Add("manager");
-
-            SearchResultCollection results = searcher.FindAll();
-
-            //if (results != null)
-            //{
-            //    foreach (SearchResult result in results)
-            //    {
-            //        foreach (DictionaryEntry property in result.Properties)
-            //        {
-            //            Console.Write(property.Key + ": ");
-            //            foreach (var val in (property.Value as ResultPropertyValueCollection))
-            //            {
-            //                Console.Write(val + "; ");
-            //            }
-            //            Console.WriteLine("");
-            //        }
-            //    }
-            //}
-
-            return results;
+            return SearchLDAP(domain, filter);              
         }
 
         private void checkLDAPByName_Click(object sender, EventArgs e)
@@ -215,41 +152,9 @@ namespace PSSTool
                 return;
             }
 
-            try
-            {
-                SearchResultCollection results = FindByName("healthy.bewell.ca", firstName, lastName);
+            SearchResultCollection results = FindByName("healthy.bewell.ca", firstName, lastName);
 
-                listBox1.Items.Clear();
-
-                if (results.Count > 0)
-                {
-
-                    foreach (SearchResult result in results)
-                    {
-                        string _empNo = result.Properties["employeeNumber"].Count > 0 ? result.Properties["employeeNumber"][0].ToString() : "No EmpNo";
-                        string _ldapName = result.Properties["sAMAccountName"].Count > 0 ? result.Properties["sAMAccountName"][0].ToString() : "No LDAP Name";
-                        string _firstName = result.Properties["givenName"].Count > 0 ? result.Properties["givenName"][0].ToString() : "No FirstName";
-                        string _lastName = result.Properties["sn"].Count > 0 ? result.Properties["sn"][0].ToString() : "No LastName";
-                        string _mail = result.Properties["mail"].Count > 0 ? result.Properties["mail"][0].ToString() : "No email";
-                        string _manager = result.Properties["manager"].Count > 0 ? SearchDisplayName("healthy.bewell.ca", result.Properties["manager"][0].ToString()) : "Mgr Not Found";
-
-                        listBox1.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " + _manager);
-                    }
-
-                    if (listBox1.Items.Count == 1)
-                    {
-                        listBox1.SelectedIndex = 0;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Not Found.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            ShowData(results, listBox1);
         }
 
         private void frmLDAP_Shown(object sender, EventArgs e)
@@ -308,6 +213,9 @@ namespace PSSTool
             txtLDAP.Text = _details[1].Trim();
             txtEmail.Text = _details[3].Trim();
             txtManager.Text = _details[4].Trim();
+            txtLocation.Text = _details[5].Trim();
+            txtPosition.Text = _details[6].Trim();
+            txtStatus.Text = _details[7].Trim();
 
         }
 
@@ -355,53 +263,9 @@ namespace PSSTool
                 return;
             }
 
-            try
-            {
+            SearchResultCollection results = FindByLDAP("healthy.bewell.ca", ldapName);
 
-                SearchResultCollection results = FindByLDAP("healthy.bewell.ca", ldapName);
-
-                listBox1.Items.Clear();
-
-                if (results.Count > 0)
-                {
-
-                    foreach (SearchResult result in results)
-                    {
-                        string _empNo = result.Properties["employeeNumber"].Count > 0 ? result.Properties["employeeNumber"][0].ToString() : "No EmpNo";
-                        string _ldapName = result.Properties["sAMAccountName"].Count > 0 ? result.Properties["sAMAccountName"][0].ToString() : "No LDAP Name";
-                        string _firstName = result.Properties["givenName"].Count > 0 ? result.Properties["givenName"][0].ToString() : "No FirstName";
-                        string _lastName = result.Properties["sn"].Count > 0 ? result.Properties["sn"][0].ToString() : "No LastName";
-                        string _mail = result.Properties["mail"].Count > 0 ? result.Properties["mail"][0].ToString() : "No email";
-                        string _manager = result.Properties["manager"].Count > 0 ? SearchDisplayName("healthy.bewell.ca", result.Properties["manager"][0].ToString()) : "Mgr Not Found";
-                        //string _manager = result.Properties["manager"].Count > 0 ? result.Properties["manager"][0].ToString() : "Mgr Not Found";
-
-                        //foreach (string propName in result.Properties.PropertyNames)
-                        //{
-                        //    ResultPropertyValueCollection valueCollection = result.Properties[propName];
-                        //    foreach (Object propertyValue in valueCollection)
-                        //    {
-                        //        Console.WriteLine("Property: " + propName + ": " + propertyValue.ToString());
-                        //    }
-                        //}
-
-
-                        listBox1.Items.Add(_empNo + " | " + _ldapName + " | " + _lastName + ", " + _firstName + " | " + _mail + " | " + _manager);
-                    }
-
-                    if (listBox1.Items.Count == 1)
-                    {
-                        listBox1.SelectedIndex = 0;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Not Found.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ERROR: " + ex.Message, "Ooops, may mali.");
-            }
+            ShowData(results, listBox1);
         }
 
         private void txtSearchByLDAP_KeyPress(object sender, KeyPressEventArgs e)
@@ -780,6 +644,29 @@ namespace PSSTool
             Show();
             Activate();
             MessageBox.Show(lineCtr + " record(s) processed.");
+        }
+
+        private static SearchResultCollection SearchLDAP(string _domain, string _filter)
+        {
+            var rootEntry = new DirectoryEntry("LDAP://" + _domain);
+
+            var searcher = new DirectorySearcher(rootEntry, _filter);
+            searcher.PropertiesToLoad.Add("sAMAccountName");
+            searcher.PropertiesToLoad.Add("mail");
+            searcher.PropertiesToLoad.Add("employeeNumber");
+            searcher.PropertiesToLoad.Add("givenName");
+            searcher.PropertiesToLoad.Add("sn");
+            searcher.PropertiesToLoad.Add("manager");
+            searcher.PropertiesToLoad.Add("departmentnumber");
+            searcher.PropertiesToLoad.Add("title");
+            searcher.PropertiesToLoad.Add("useraccountcontrol");
+
+            return searcher.FindAll();
+        }
+
+        private void lblMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

@@ -92,5 +92,10 @@ namespace WindowsFormsApplication1
         {
             Close();
         }
+
+        private void lblMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
     }
 }

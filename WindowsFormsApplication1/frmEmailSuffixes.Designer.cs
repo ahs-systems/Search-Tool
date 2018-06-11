@@ -44,6 +44,7 @@
             this.btnShowValidList = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnRemoveFromList = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.lblMinimize = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
             this.lblClose.Image = ((System.Drawing.Image)(resources.GetObject("lblClose.Image")));
-            this.lblClose.Location = new System.Drawing.Point(657, 1);
+            this.lblClose.Location = new System.Drawing.Point(657, 3);
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(22, 23);
             this.lblClose.TabIndex = 64;
@@ -308,11 +309,24 @@
             this.bunifuSeparator1.Transparency = 255;
             this.bunifuSeparator1.Vertical = true;
             // 
+            // lblMinimize
+            // 
+            this.lblMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.lblMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.lblMinimize, BunifuAnimatorNS.DecorationType.None);
+            this.lblMinimize.Image = ((System.Drawing.Image)(resources.GetObject("lblMinimize.Image")));
+            this.lblMinimize.Location = new System.Drawing.Point(633, 3);
+            this.lblMinimize.Name = "lblMinimize";
+            this.lblMinimize.Size = new System.Drawing.Size(22, 23);
+            this.lblMinimize.TabIndex = 74;
+            this.lblMinimize.Click += new System.EventHandler(this.lblMinimize_Click);
+            // 
             // frmEmailSuffixes
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(684, 401);
+            this.Controls.Add(this.lblMinimize);
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.btnShowValidList);
             this.Controls.Add(this.btnRemoveFromList);
@@ -347,5 +361,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnShowValidList;
         private Bunifu.Framework.UI.BunifuFlatButton btnRemoveFromList;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
+        private System.Windows.Forms.Label lblMinimize;
     }
 }

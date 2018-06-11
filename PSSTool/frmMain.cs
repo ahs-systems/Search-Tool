@@ -78,5 +78,10 @@ namespace PSSTool
             _frm.ShowDialog();
             Show();
         }
+
+        private void lblMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
     }
 }

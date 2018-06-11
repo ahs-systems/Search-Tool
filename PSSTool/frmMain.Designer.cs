@@ -37,6 +37,7 @@
             this.bunifuTileButton2 = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnEmpUnitSearch = new Bunifu.Framework.UI.BunifuTileButton();
             this.timerClose = new System.Windows.Forms.Timer(this.components);
+            this.lblMinimize = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblClose
@@ -136,11 +137,24 @@
             this.timerClose.Interval = 3600000;
             this.timerClose.Tick += new System.EventHandler(this.timerClose_Tick);
             // 
+            // lblMinimize
+            // 
+            this.lblMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.lblMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMinimize.Image = ((System.Drawing.Image)(resources.GetObject("lblMinimize.Image")));
+            this.lblMinimize.Location = new System.Drawing.Point(376, 3);
+            this.lblMinimize.Name = "lblMinimize";
+            this.lblMinimize.Size = new System.Drawing.Size(22, 23);
+            this.lblMinimize.TabIndex = 72;
+            this.lblMinimize.Click += new System.EventHandler(this.lblMinimize_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(425, 132);
+            this.Controls.Add(this.lblMinimize);
             this.Controls.Add(this.btnEmpUnitSearch);
             this.Controls.Add(this.bunifuTileButton2);
             this.Controls.Add(this.btnGetLDAP);
@@ -165,6 +179,7 @@
         private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton2;
         private Bunifu.Framework.UI.BunifuTileButton btnEmpUnitSearch;
         private System.Windows.Forms.Timer timerClose;
+        private System.Windows.Forms.Label lblMinimize;
     }
 }
 

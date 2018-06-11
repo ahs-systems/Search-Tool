@@ -216,6 +216,18 @@
   <metadata name="bunifuDragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>119, 21</value>
   </metadata>
+  <data name="lblMinimize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABYAAAAXCAYAAAAP6L+eAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAAHdElNRQfiBgsTFANm3vlOAAAAB3RFWHRBdXRob3IAqa7M
+        SAAAAAx0RVh0RGVzY3JpcHRpb24AEwkhIwAAAAp0RVh0Q29weXJpZ2h0AKwPzDoAAAAOdEVYdENyZWF0
+        aW9uIHRpbWUANfcPCQAAAAl0RVh0U29mdHdhcmUAXXD/OgAAAAt0RVh0RGlzY2xhaW1lcgC3wLSPAAAA
+        CHRFWHRXYXJuaW5nAMAb5ocAAAAHdEVYdFNvdXJjZQD1/4PrAAAACHRFWHRDb21tZW50APbMlr8AAAAG
+        dEVYdFRpdGxlAKju0icAAABhSURBVEhLY/j//z9NMFZBamCsgtTAKJzj9kb/KcHIZlHNUBgeNRiORw2G
+        41GD4XgYGXwpJ+n/p0+fSMIgPQQNvtXXhlUzPkyUwZRi+hkMwtgUkoKRzUIxmJoYqyDl+D8DAL62GZxk
+        J4z/AAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEANTIAAAEAIAAgKwAAFgAAACgAAAA1AAAAZAAAAAEAIAAAAAAAaCkAAMMOAADDDgAAAAAAAAAA

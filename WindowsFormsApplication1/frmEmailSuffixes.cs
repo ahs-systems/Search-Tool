@@ -130,7 +130,7 @@ namespace WindowsFormsApplication1
 
             string _emailSuffix = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[3].Value.ToString();
 
-            DialogResult _res = MessageBox.Show("Are you sure you want to add \"" + _emailSuffix + 
+            DialogResult _res = MessageBox.Show("Are you sure you want to add \"" + _emailSuffix +
                 "\" to the list of valid suffixes?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (_res == DialogResult.No)
@@ -148,10 +148,10 @@ namespace WindowsFormsApplication1
                     _cmd.CommandType = CommandType.StoredProcedure;
                     _cmd.Parameters.AddWithValue("Action", "Add");
                     _cmd.Parameters.AddWithValue("EmailSuffix", _emailSuffix.ToLower());
-                    int _ret =_cmd.ExecuteNonQuery();
+                    int _ret = _cmd.ExecuteNonQuery();
                     if (_ret != 0)
                     {
-                        MessageBox.Show("\"" + _emailSuffix + "\" was successfully added to the valid list of email suffixes.","Confirm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("\"" + _emailSuffix + "\" was successfully added to the valid list of email suffixes.", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ShowInvalidList();
                     }
                     else
@@ -215,6 +215,11 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void lblMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }
