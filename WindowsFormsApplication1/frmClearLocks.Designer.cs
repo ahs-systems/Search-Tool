@@ -43,8 +43,8 @@
             this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblClose = new System.Windows.Forms.Label();
-            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.lblMinimize = new System.Windows.Forms.Label();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +53,7 @@
             this.btnSearchName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.transFrm.SetDecoration(this.btnSearchName, BunifuAnimatorNS.DecorationType.None);
             this.btnSearchName.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchName.Image")));
-            this.btnSearchName.Location = new System.Drawing.Point(338, 53);
+            this.btnSearchName.Location = new System.Drawing.Point(347, 53);
             this.btnSearchName.Name = "btnSearchName";
             this.btnSearchName.Size = new System.Drawing.Size(38, 34);
             this.btnSearchName.TabIndex = 42;
@@ -66,10 +66,11 @@
             this.txtSearchStr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.txtSearchStr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.txtSearchStr, BunifuAnimatorNS.DecorationType.None);
+            this.txtSearchStr.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchStr.ForeColor = System.Drawing.Color.Gainsboro;
-            this.txtSearchStr.Location = new System.Drawing.Point(172, 59);
+            this.txtSearchStr.Location = new System.Drawing.Point(181, 57);
             this.txtSearchStr.Name = "txtSearchStr";
-            this.txtSearchStr.Size = new System.Drawing.Size(160, 20);
+            this.txtSearchStr.Size = new System.Drawing.Size(160, 26);
             this.txtSearchStr.TabIndex = 40;
             this.txtSearchStr.Tag = "btnSearchName";
             this.txtSearchStr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchStr_KeyPress);
@@ -78,8 +79,9 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.transFrm.SetDecoration(this.label2, BunifuAnimatorNS.DecorationType.None);
+            this.label2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(0, 44);
+            this.label2.Location = new System.Drawing.Point(9, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(166, 48);
             this.label2.TabIndex = 41;
@@ -123,10 +125,11 @@
             this.txtUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.txtUser, BunifuAnimatorNS.DecorationType.None);
+            this.txtUser.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.ForeColor = System.Drawing.Color.Gainsboro;
             this.txtUser.Location = new System.Drawing.Point(634, 61);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(160, 20);
+            this.txtUser.Size = new System.Drawing.Size(160, 26);
             this.txtUser.TabIndex = 44;
             this.txtUser.Tag = "btnFindByUser";
             this.txtUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchStr_KeyPress);
@@ -135,8 +138,9 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.transFrm.SetDecoration(this.label1, BunifuAnimatorNS.DecorationType.None);
+            this.label1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(405, 50);
+            this.label1.Location = new System.Drawing.Point(407, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(223, 37);
             this.label1.TabIndex = 45;
@@ -182,13 +186,13 @@
             this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
             this.transFrm.SetDecoration(this.lblTitle, BunifuAnimatorNS.DecorationType.None);
             this.lblTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(844, 29);
             this.lblTitle.TabIndex = 49;
-            this.lblTitle.Text = "View Locks";
+            this.lblTitle.Text = "   View Locks";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblClose
@@ -202,13 +206,6 @@
             this.lblClose.TabIndex = 62;
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
-            // bunifuDragControl1
-            // 
-            this.bunifuDragControl1.Fixed = true;
-            this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = this.lblTitle;
-            this.bunifuDragControl1.Vertical = true;
-            // 
             // lblMinimize
             // 
             this.lblMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
@@ -220,6 +217,13 @@
             this.lblMinimize.Size = new System.Drawing.Size(22, 23);
             this.lblMinimize.TabIndex = 69;
             this.lblMinimize.Click += new System.EventHandler(this.lblMinimize_Click);
+            // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this.lblTitle;
+            this.bunifuDragControl1.Vertical = true;
             // 
             // frmClearLocks
             // 

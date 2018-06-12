@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLDAP));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -67,8 +67,8 @@
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.lblMinimize = new System.Windows.Forms.Label();
-            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.lblCount = new System.Windows.Forms.Label();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.SuspendLayout();
             // 
             // textBox1
@@ -77,11 +77,11 @@
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.textBox1, BunifuAnimatorNS.DecorationType.None);
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.textBox1.Location = new System.Drawing.Point(303, 46);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(130, 22);
+            this.textBox1.Size = new System.Drawing.Size(130, 26);
             this.textBox1.TabIndex = 1;
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
@@ -92,7 +92,7 @@
             this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.listBox1, BunifuAnimatorNS.DecorationType.None);
             this.listBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.ForeColor = System.Drawing.Color.GreenYellow;
+            this.listBox1.ForeColor = System.Drawing.Color.YellowGreen;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.ItemHeight = 15;
@@ -109,11 +109,11 @@
             this.firstNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.firstNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.firstNameTextBox, BunifuAnimatorNS.DecorationType.None);
-            this.firstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstNameTextBox.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.firstNameTextBox.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.firstNameTextBox.Location = new System.Drawing.Point(303, 119);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(174, 22);
+            this.firstNameTextBox.Size = new System.Drawing.Size(174, 26);
             this.firstNameTextBox.TabIndex = 5;
             this.firstNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.firstNameTextBox_KeyPress);
             // 
@@ -123,11 +123,11 @@
             this.lastNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.lastNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.lastNameTextBox, BunifuAnimatorNS.DecorationType.None);
-            this.lastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lastNameTextBox.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastNameTextBox.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lastNameTextBox.Location = new System.Drawing.Point(483, 119);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(157, 22);
+            this.lastNameTextBox.Size = new System.Drawing.Size(157, 26);
             this.lastNameTextBox.TabIndex = 6;
             this.lastNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.firstNameTextBox_KeyPress);
             // 
@@ -165,7 +165,7 @@
             this.btnSearchName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
             this.btnSearchName.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchName.Image")));
-            this.btnSearchName.Location = new System.Drawing.Point(439, 34);
+            this.btnSearchName.Location = new System.Drawing.Point(439, 39);
             this.btnSearchName.Name = "btnSearchName";
             this.btnSearchName.Size = new System.Drawing.Size(38, 34);
             this.btnSearchName.TabIndex = 34;
@@ -179,7 +179,7 @@
             this.transFrm.SetDecoration(this.label4, BunifuAnimatorNS.DecorationType.None);
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(304, 142);
+            this.label4.Location = new System.Drawing.Point(301, 145);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 12);
             this.label4.TabIndex = 35;
@@ -192,7 +192,7 @@
             this.transFrm.SetDecoration(this.label5, BunifuAnimatorNS.DecorationType.None);
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(483, 143);
+            this.label5.Location = new System.Drawing.Point(481, 145);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 12);
             this.label5.TabIndex = 36;
@@ -206,7 +206,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(645, 111);
+            this.button2.Location = new System.Drawing.Point(645, 112);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(38, 34);
             this.button2.TabIndex = 37;
@@ -233,7 +233,7 @@
             this.txtLDAP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.txtLDAP, BunifuAnimatorNS.DecorationType.None);
             this.txtLDAP.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLDAP.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtLDAP.ForeColor = System.Drawing.Color.YellowGreen;
             this.txtLDAP.Location = new System.Drawing.Point(92, 227);
             this.txtLDAP.Name = "txtLDAP";
             this.txtLDAP.ReadOnly = true;
@@ -247,7 +247,7 @@
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.txtEmail, BunifuAnimatorNS.DecorationType.None);
             this.txtEmail.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtEmail.ForeColor = System.Drawing.Color.YellowGreen;
             this.txtEmail.Location = new System.Drawing.Point(418, 227);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
@@ -274,7 +274,7 @@
             this.txtEmpName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.txtEmpName, BunifuAnimatorNS.DecorationType.None);
             this.txtEmpName.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmpName.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtEmpName.ForeColor = System.Drawing.Color.YellowGreen;
             this.txtEmpName.Location = new System.Drawing.Point(92, 196);
             this.txtEmpName.Name = "txtEmpName";
             this.txtEmpName.ReadOnly = true;
@@ -314,7 +314,7 @@
             this.txtManager.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.txtManager, BunifuAnimatorNS.DecorationType.None);
             this.txtManager.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtManager.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtManager.ForeColor = System.Drawing.Color.YellowGreen;
             this.txtManager.Location = new System.Drawing.Point(418, 196);
             this.txtManager.Name = "txtManager";
             this.txtManager.ReadOnly = true;
@@ -341,7 +341,7 @@
             this.txtEmpNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.txtEmpNo, BunifuAnimatorNS.DecorationType.None);
             this.txtEmpNo.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmpNo.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtEmpNo.ForeColor = System.Drawing.Color.YellowGreen;
             this.txtEmpNo.Location = new System.Drawing.Point(92, 164);
             this.txtEmpNo.Name = "txtEmpNo";
             this.txtEmpNo.ReadOnly = true;
@@ -369,7 +369,7 @@
             this.btnSearchByLDAP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchByLDAP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
             this.btnSearchByLDAP.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchByLDAP.Image")));
-            this.btnSearchByLDAP.Location = new System.Drawing.Point(439, 73);
+            this.btnSearchByLDAP.Location = new System.Drawing.Point(439, 77);
             this.btnSearchByLDAP.Name = "btnSearchByLDAP";
             this.btnSearchByLDAP.Size = new System.Drawing.Size(38, 34);
             this.btnSearchByLDAP.TabIndex = 51;
@@ -383,7 +383,7 @@
             this.transFrm.SetDecoration(this.label10, BunifuAnimatorNS.DecorationType.None);
             this.label10.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.label10.Location = new System.Drawing.Point(153, 88);
+            this.label10.Location = new System.Drawing.Point(153, 86);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(146, 18);
             this.label10.TabIndex = 50;
@@ -395,17 +395,18 @@
             this.txtSearchByLDAP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.txtSearchByLDAP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.txtSearchByLDAP, BunifuAnimatorNS.DecorationType.None);
-            this.txtSearchByLDAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchByLDAP.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchByLDAP.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtSearchByLDAP.Location = new System.Drawing.Point(303, 85);
+            this.txtSearchByLDAP.Location = new System.Drawing.Point(303, 83);
             this.txtSearchByLDAP.Name = "txtSearchByLDAP";
-            this.txtSearchByLDAP.Size = new System.Drawing.Size(130, 22);
+            this.txtSearchByLDAP.Size = new System.Drawing.Size(130, 26);
             this.txtSearchByLDAP.TabIndex = 49;
             this.txtSearchByLDAP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchByLDAP_KeyPress);
             // 
             // label11
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
             this.transFrm.SetDecoration(this.label11, BunifuAnimatorNS.DecorationType.None);
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
@@ -438,22 +439,22 @@
             // 
             this.transFrm.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.transFrm.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(30);
-            animation1.RotateCoeff = 0.5F;
-            animation1.RotateLimit = 0.2F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.transFrm.DefaultAnimation = animation1;
+            animation3.AnimateOnlyDifferences = true;
+            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
+            animation3.LeafCoeff = 0F;
+            animation3.MaxTime = 1F;
+            animation3.MinTime = 0F;
+            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
+            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
+            animation3.MosaicSize = 0;
+            animation3.Padding = new System.Windows.Forms.Padding(30);
+            animation3.RotateCoeff = 0.5F;
+            animation3.RotateLimit = 0.2F;
+            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
+            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
+            animation3.TimeCoeff = 0F;
+            animation3.TransparencyCoeff = 0F;
+            this.transFrm.DefaultAnimation = animation3;
             this.transFrm.MaxAnimationTime = 2000;
             // 
             // lblTitle
@@ -476,7 +477,7 @@
             this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.lblClose, BunifuAnimatorNS.DecorationType.None);
             this.lblClose.Image = ((System.Drawing.Image)(resources.GetObject("lblClose.Image")));
-            this.lblClose.Location = new System.Drawing.Point(706, 3);
+            this.lblClose.Location = new System.Drawing.Point(726, 3);
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(22, 23);
             this.lblClose.TabIndex = 61;
@@ -489,7 +490,7 @@
             this.txtLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.txtLocation, BunifuAnimatorNS.DecorationType.None);
             this.txtLocation.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLocation.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtLocation.ForeColor = System.Drawing.Color.YellowGreen;
             this.txtLocation.Location = new System.Drawing.Point(418, 165);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.ReadOnly = true;
@@ -516,7 +517,7 @@
             this.txtPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.txtPosition, BunifuAnimatorNS.DecorationType.None);
             this.txtPosition.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPosition.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtPosition.ForeColor = System.Drawing.Color.YellowGreen;
             this.txtPosition.Location = new System.Drawing.Point(92, 258);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.ReadOnly = true;
@@ -543,7 +544,7 @@
             this.txtStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.transFrm.SetDecoration(this.txtStatus, BunifuAnimatorNS.DecorationType.None);
             this.txtStatus.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStatus.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtStatus.ForeColor = System.Drawing.Color.YellowGreen;
             this.txtStatus.Location = new System.Drawing.Point(467, 257);
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.ReadOnly = true;
@@ -569,18 +570,11 @@
             this.lblMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transFrm.SetDecoration(this.lblMinimize, BunifuAnimatorNS.DecorationType.None);
             this.lblMinimize.Image = ((System.Drawing.Image)(resources.GetObject("lblMinimize.Image")));
-            this.lblMinimize.Location = new System.Drawing.Point(681, 3);
+            this.lblMinimize.Location = new System.Drawing.Point(701, 3);
             this.lblMinimize.Name = "lblMinimize";
             this.lblMinimize.Size = new System.Drawing.Size(22, 23);
             this.lblMinimize.TabIndex = 68;
             this.lblMinimize.Click += new System.EventHandler(this.lblMinimize_Click);
-            // 
-            // bunifuDragControl1
-            // 
-            this.bunifuDragControl1.Fixed = true;
-            this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = this.lblTitle;
-            this.bunifuDragControl1.Vertical = true;
             // 
             // lblCount
             // 
@@ -593,6 +587,13 @@
             this.lblCount.TabIndex = 73;
             this.lblCount.Text = "Count:";
             this.lblCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this.lblTitle;
+            this.bunifuDragControl1.Vertical = true;
             // 
             // frmLDAP
             // 
@@ -608,7 +609,6 @@
             this.Controls.Add(this.txtLocation);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.lblClose);
-            this.Controls.Add(this.btnBatchByID);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnSearchByLDAP);
@@ -635,16 +635,17 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnBatchByID);
             this.transFrm.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.Gainsboro;
+            this.ForeColor = System.Drawing.Color.YellowGreen;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLDAP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Search LDAP and Email";
+            this.Text = "LDAP Search";
             this.Load += new System.EventHandler(this.frmLDAP_Load);
             this.Shown += new System.EventHandler(this.frmLDAP_Shown);
             this.ResumeLayout(false);
