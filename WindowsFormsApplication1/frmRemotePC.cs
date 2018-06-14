@@ -2,7 +2,7 @@
 using System.Net;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1
+namespace SearchTool
 {
     public partial class frmRemotePC : Form
     {

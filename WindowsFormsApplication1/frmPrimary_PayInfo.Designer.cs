@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace SearchTool
 {
     partial class frmPrimary_PayInfo
     {

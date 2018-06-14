@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace WindowsFormsApplication1
+namespace SearchTool
 {
     public partial class frmPPandStartDate : Form
     {

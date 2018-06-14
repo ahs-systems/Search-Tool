@@ -39,7 +39,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="EPPlus">
-      <HintPath>..\WindowsFormsApplication1\bin\Debug\EPPlus.dll</HintPath>
+      <HintPath>..\WindowsFormsApplication1\Resources\EPPlus.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />

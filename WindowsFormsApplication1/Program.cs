@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1
+namespace SearchTool
 {
     static class Program
     {
@@ -24,31 +24,31 @@ namespace WindowsFormsApplication1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Process[] result = Process.GetProcessesByName();
-            //if (result.Length > 1)
-            //{
-            //    MessageBox.Show("There is already a instance running.", "Information");
-            //    System.Environment.Exit(0);
-            //}
-            try
+            AppDomain.CurrentDomain.AssemblyResolve += (Object sender, ResolveEventArgs args) =>
             {
-                AppDomain.CurrentDomain.AssemblyResolve += (Object sender, ResolveEventArgs args) =>
+                String thisExe = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+                System.Reflection.AssemblyName embeddedAssembly = new System.Reflection.AssemblyName(args.Name);
+                String resourceName = ""; // = thisExe + "." + embeddedAssembly.Name + ".dll";
+                if (embeddedAssembly.Name.Contains("Bunifu"))
                 {
-                    String thisExe = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
-                    System.Reflection.AssemblyName embeddedAssembly = new System.Reflection.AssemblyName(args.Name);
-                    String resourceName = thisExe + "." + embeddedAssembly.Name + ".dll";
-                    using (var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
-                    {
-                        Byte[] assemblyData = new Byte[stream.Length];
-                        stream.Read(assemblyData, 0, assemblyData.Length);
-                        return System.Reflection.Assembly.Load(assemblyData);
-                    }
-                };
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+                    resourceName = "WindowsFormsApplication1.Resources.Bunifu_UI_v1.5.3.dll";
+                }
+                else if (embeddedAssembly.Name.Contains("EPPlus"))
+                {
+                    resourceName = "WindowsFormsApplication1.Resources.EPPlus.dll";
+                }
+                else if (embeddedAssembly.Name.Contains("ExcelLibrary"))
+                {
+                    resourceName = "WindowsFormsApplication1.Resources.EPPlus.dll";
+                }
+
+                using (var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+                {
+                    Byte[] assemblyData = new Byte[stream.Length];
+                    stream.Read(assemblyData, 0, assemblyData.Length);
+                    return System.Reflection.Assembly.Load(assemblyData);
+                }
+            };
 
             //Application.Run(new frmSearch());
             Application.Run(new frmMainNew());

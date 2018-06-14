@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 
 
-namespace WindowsFormsApplication1
+namespace SearchTool
 {
     public partial class exceptionLookupForm : Form
     {

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 //using EASendEmail;
 
-namespace WindowsFormsApplication1
+namespace SearchTool
 {
     public partial class frmLDAP : Form
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace WindowsFormsApplication1
+namespace SearchTool
 {
     class SearchMethods
     {

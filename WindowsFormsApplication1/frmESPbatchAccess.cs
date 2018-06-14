@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1
+namespace SearchTool
 {
     public partial class frmESPbatchAccess : Form
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace WindowsFormsApplication1
+namespace SearchTool
 {
     public sealed class MemoryMappedFile : IDisposable
     {

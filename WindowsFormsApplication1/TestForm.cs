@@ -10,7 +10,7 @@ using System.DirectoryServices;
 using System.Security.Principal;
 
 
-namespace WindowsFormsApplication1
+namespace SearchTool
 {
     public partial class TestForm : Form
     {

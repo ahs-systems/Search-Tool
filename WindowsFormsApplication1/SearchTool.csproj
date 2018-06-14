@@ -41,16 +41,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\..\..\..\Downloads\Bunifu\Bunifu_UI_v1.5.3.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>Resources\Bunifu_UI_v1.5.3.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="EPPlus">
-      <HintPath>..\..\File6\File6\bin\Debug\EPPlus.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>Resources\EPPlus.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ExcelLibrary">
-      <HintPath>.\ExcelLibrary.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>Resources\ExcelLibrary.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Exchange.WebServices, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Exchange.WebServices.2.2\lib\40\Microsoft.Exchange.WebServices.dll</HintPath>
@@ -279,6 +279,9 @@
     <Content Include="images\Report.png" />
     <Content Include="images\save.png" />
     <Content Include="images\Zoom-icon.png" />
+    <EmbeddedResource Include="Resources\Bunifu_UI_v1.5.3.dll" />
+    <EmbeddedResource Include="Resources\EPPlus.dll" />
+    <EmbeddedResource Include="Resources\ExcelLibrary.dll" />
     <Content Include="tools.ico" />
     <None Include="images\20170316_144735.jpg" />
   </ItemGroup>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApplication1.Properties {
+namespace SearchTool.Properties {
     using System;
     
     
@@ -57,6 +57,36 @@ namespace WindowsFormsApplication1.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Bunifu_UI_v1_5_3 {
+            get {
+                object obj = ResourceManager.GetObject("Bunifu_UI_v1_5_3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] EPPlus {
+            get {
+                object obj = ResourceManager.GetObject("EPPlus", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ExcelLibrary {
+            get {
+                object obj = ResourceManager.GetObject("ExcelLibrary", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }
