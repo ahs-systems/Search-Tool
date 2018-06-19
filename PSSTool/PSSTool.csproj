@@ -53,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
+    <Compile Include="frmClearLocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClearLocks.Designer.cs">
+      <DependentUpon>frmClearLocks.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmailSuffixes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmClearLocks.resx">
+      <DependentUpon>frmClearLocks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmailSuffixes.resx">
       <DependentUpon>frmEmailSuffixes.cs</DependentUpon>
     </EmbeddedResource>

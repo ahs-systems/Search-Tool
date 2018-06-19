@@ -39,7 +39,7 @@ namespace SearchTool
                 }
                 else if (embeddedAssembly.Name.Contains("ExcelLibrary"))
                 {
-                    resourceName = "WindowsFormsApplication1.Resources.EPPlus.dll";
+                    resourceName = "WindowsFormsApplication1.Resources.ExcelLibrary.dll";
                 }
 
                 using (var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))

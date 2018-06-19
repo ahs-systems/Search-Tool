@@ -76,5 +76,13 @@ namespace PSSTool
         {
             WindowState = FormWindowState.Minimized;
         }
+
+        private void btnClearLocks_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmClearLocks _frm = new frmClearLocks();
+            _frm.ShowDialog();
+            Show();
+        }
     }
 }

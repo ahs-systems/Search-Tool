@@ -228,7 +228,7 @@
             this.transFrm.SetDecoration(this.txtLDAP, BunifuAnimatorNS.DecorationType.None);
             this.txtLDAP.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLDAP.ForeColor = System.Drawing.Color.YellowGreen;
-            this.txtLDAP.Location = new System.Drawing.Point(99, 255);
+            this.txtLDAP.Location = new System.Drawing.Point(99, 256);
             this.txtLDAP.Name = "txtLDAP";
             this.txtLDAP.ReadOnly = true;
             this.txtLDAP.Size = new System.Drawing.Size(240, 26);
@@ -241,7 +241,7 @@
             this.transFrm.SetDecoration(this.txtEmail, BunifuAnimatorNS.DecorationType.None);
             this.txtEmail.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.YellowGreen;
-            this.txtEmail.Location = new System.Drawing.Point(452, 255);
+            this.txtEmail.Location = new System.Drawing.Point(452, 256);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(295, 26);
@@ -253,7 +253,7 @@
             this.transFrm.SetDecoration(this.label6, BunifuAnimatorNS.DecorationType.None);
             this.label6.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(406, 261);
+            this.label6.Location = new System.Drawing.Point(406, 259);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 18);
             this.label6.TabIndex = 40;
@@ -303,7 +303,7 @@
             this.transFrm.SetDecoration(this.txtManager, BunifuAnimatorNS.DecorationType.None);
             this.txtManager.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtManager.ForeColor = System.Drawing.Color.YellowGreen;
-            this.txtManager.Location = new System.Drawing.Point(452, 223);
+            this.txtManager.Location = new System.Drawing.Point(452, 222);
             this.txtManager.Name = "txtManager";
             this.txtManager.ReadOnly = true;
             this.txtManager.Size = new System.Drawing.Size(295, 26);
@@ -315,7 +315,7 @@
             this.transFrm.SetDecoration(this.label8, BunifuAnimatorNS.DecorationType.None);
             this.label8.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
-            this.label8.Location = new System.Drawing.Point(416, 229);
+            this.label8.Location = new System.Drawing.Point(416, 225);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 18);
             this.label8.TabIndex = 45;
@@ -579,7 +579,7 @@
             this.transFrm.SetDecoration(this.label13, BunifuAnimatorNS.DecorationType.None);
             this.label13.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
-            this.label13.Location = new System.Drawing.Point(402, 192);
+            this.label13.Location = new System.Drawing.Point(402, 191);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(50, 18);
             this.label13.TabIndex = 65;
@@ -605,7 +605,7 @@
             this.transFrm.SetDecoration(this.txtPosition, BunifuAnimatorNS.DecorationType.None);
             this.txtPosition.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPosition.ForeColor = System.Drawing.Color.YellowGreen;
-            this.txtPosition.Location = new System.Drawing.Point(99, 290);
+            this.txtPosition.Location = new System.Drawing.Point(99, 289);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.ReadOnly = true;
             this.txtPosition.Size = new System.Drawing.Size(240, 26);

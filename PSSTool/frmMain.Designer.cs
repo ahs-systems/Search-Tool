@@ -38,6 +38,7 @@
             this.btnEmpUnitSearch = new Bunifu.Framework.UI.BunifuTileButton();
             this.timerClose = new System.Windows.Forms.Timer(this.components);
             this.lblMinimize = new System.Windows.Forms.Label();
+            this.btnClearLocks = new Bunifu.Framework.UI.BunifuTileButton();
             this.SuspendLayout();
             // 
             // lblClose
@@ -46,7 +47,7 @@
             this.lblClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
             this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblClose.Image = ((System.Drawing.Image)(resources.GetObject("lblClose.Image")));
-            this.lblClose.Location = new System.Drawing.Point(399, 3);
+            this.lblClose.Location = new System.Drawing.Point(536, 3);
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(22, 23);
             this.lblClose.TabIndex = 62;
@@ -60,9 +61,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(425, 29);
+            this.lblTitle.Size = new System.Drawing.Size(562, 29);
             this.lblTitle.TabIndex = 61;
-            this.lblTitle.Text = "PSS Tool v2018.06.07";
+            this.lblTitle.Text = "PSS Tool v2018.06.19";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // bunifuDragControl1
@@ -85,7 +86,7 @@
             this.btnGetLDAP.ImageZoom = 30;
             this.btnGetLDAP.LabelPosition = 20;
             this.btnGetLDAP.LabelText = "LDAP Search";
-            this.btnGetLDAP.Location = new System.Drawing.Point(15, 45);
+            this.btnGetLDAP.Location = new System.Drawing.Point(18, 45);
             this.btnGetLDAP.Margin = new System.Windows.Forms.Padding(6);
             this.btnGetLDAP.Name = "btnGetLDAP";
             this.btnGetLDAP.Size = new System.Drawing.Size(121, 70);
@@ -105,7 +106,7 @@
             this.bunifuTileButton2.ImageZoom = 30;
             this.bunifuTileButton2.LabelPosition = 35;
             this.bunifuTileButton2.LabelText = "Update Valid Email Suffixes in ASC";
-            this.bunifuTileButton2.Location = new System.Drawing.Point(152, 45);
+            this.bunifuTileButton2.Location = new System.Drawing.Point(153, 45);
             this.bunifuTileButton2.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuTileButton2.Name = "bunifuTileButton2";
             this.bunifuTileButton2.Size = new System.Drawing.Size(121, 70);
@@ -125,7 +126,7 @@
             this.btnEmpUnitSearch.ImageZoom = 35;
             this.btnEmpUnitSearch.LabelPosition = 20;
             this.btnEmpUnitSearch.LabelText = "Emp/Unit Search";
-            this.btnEmpUnitSearch.Location = new System.Drawing.Point(289, 45);
+            this.btnEmpUnitSearch.Location = new System.Drawing.Point(288, 45);
             this.btnEmpUnitSearch.Margin = new System.Windows.Forms.Padding(6);
             this.btnEmpUnitSearch.Name = "btnEmpUnitSearch";
             this.btnEmpUnitSearch.Size = new System.Drawing.Size(121, 70);
@@ -143,17 +144,38 @@
             this.lblMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
             this.lblMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMinimize.Image = ((System.Drawing.Image)(resources.GetObject("lblMinimize.Image")));
-            this.lblMinimize.Location = new System.Drawing.Point(376, 3);
+            this.lblMinimize.Location = new System.Drawing.Point(513, 3);
             this.lblMinimize.Name = "lblMinimize";
             this.lblMinimize.Size = new System.Drawing.Size(22, 23);
             this.lblMinimize.TabIndex = 72;
             this.lblMinimize.Click += new System.EventHandler(this.lblMinimize_Click);
             // 
+            // btnClearLocks
+            // 
+            this.btnClearLocks.BackColor = System.Drawing.Color.Transparent;
+            this.btnClearLocks.color = System.Drawing.Color.Transparent;
+            this.btnClearLocks.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
+            this.btnClearLocks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClearLocks.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearLocks.ForeColor = System.Drawing.Color.DarkGray;
+            this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
+            this.btnClearLocks.ImagePosition = 7;
+            this.btnClearLocks.ImageZoom = 25;
+            this.btnClearLocks.LabelPosition = 35;
+            this.btnClearLocks.LabelText = "Search Locked Records";
+            this.btnClearLocks.Location = new System.Drawing.Point(423, 45);
+            this.btnClearLocks.Margin = new System.Windows.Forms.Padding(6);
+            this.btnClearLocks.Name = "btnClearLocks";
+            this.btnClearLocks.Size = new System.Drawing.Size(121, 72);
+            this.btnClearLocks.TabIndex = 73;
+            this.btnClearLocks.Click += new System.EventHandler(this.btnClearLocks_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(45)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(425, 132);
+            this.ClientSize = new System.Drawing.Size(562, 132);
+            this.Controls.Add(this.btnClearLocks);
             this.Controls.Add(this.lblMinimize);
             this.Controls.Add(this.btnEmpUnitSearch);
             this.Controls.Add(this.bunifuTileButton2);
@@ -180,6 +202,7 @@
         private Bunifu.Framework.UI.BunifuTileButton btnEmpUnitSearch;
         private System.Windows.Forms.Timer timerClose;
         private System.Windows.Forms.Label lblMinimize;
+        private Bunifu.Framework.UI.BunifuTileButton btnClearLocks;
     }
 }
 
