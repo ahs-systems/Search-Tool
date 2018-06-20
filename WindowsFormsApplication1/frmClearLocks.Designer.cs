@@ -192,7 +192,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(844, 29);
             this.lblTitle.TabIndex = 49;
-            this.lblTitle.Text = "   View Locks";
+            this.lblTitle.Text = "   Search Locked Records";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblClose
@@ -248,7 +248,7 @@
             this.MaximizeBox = false;
             this.Name = "frmClearLocks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Clear Locks";
+            this.Text = "Search Locked Records";
             this.Load += new System.EventHandler(this.frmClearLocks_Load);
             this.Shown += new System.EventHandler(this.frmClearLocks_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

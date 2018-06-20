@@ -266,9 +266,9 @@ namespace SearchTool
             this.btnClearLocks.ForeColor = System.Drawing.Color.DarkGray;
             this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
             this.btnClearLocks.ImagePosition = 7;
-            this.btnClearLocks.ImageZoom = 30;
-            this.btnClearLocks.LabelPosition = 20;
-            this.btnClearLocks.LabelText = "View Locks";
+            this.btnClearLocks.ImageZoom = 25;
+            this.btnClearLocks.LabelPosition = 35;
+            this.btnClearLocks.LabelText = "Search Locked Records";
             this.btnClearLocks.Location = new System.Drawing.Point(167, 8);
             this.btnClearLocks.Margin = new System.Windows.Forms.Padding(6);
             this.btnClearLocks.Name = "btnClearLocks";
@@ -1375,7 +1375,7 @@ namespace SearchTool
             this.Name = "frmMainNew";
             this.Opacity = 0.8D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.06.14";
+            this.Text = "SömëKindä Tööl v2018.06.19";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.Load += new System.EventHandler(this.frmMainNew_Load);
