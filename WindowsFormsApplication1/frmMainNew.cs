@@ -2289,6 +2289,9 @@ namespace SearchTool
                 btnFile126.Update();
 
                 GetFileListFromFTP();
+
+                // Reminder to do the People Import
+                MessageBox.Show("Friendly Reminder:\n\nPlease don't forget to do the People Import! :)", "Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

@@ -1375,7 +1375,7 @@ namespace SearchTool
             this.Name = "frmMainNew";
             this.Opacity = 0.8D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.06.19";
+            this.Text = "SömëKindä Tööl v2018.06.22";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.Load += new System.EventHandler(this.frmMainNew_Load);
