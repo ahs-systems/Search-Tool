@@ -131,7 +131,7 @@ namespace PSSTool
             {
                 btnSendEmail.Visible = txtTCG.Visible = true;
                 string _tcg = Common.GetTCG(lstResult.SelectedItem.ToString().Substring(0, 10), cboZone.SelectedItem.ToString());
-                txtTCG.Text = "Timecard Group: " + _tcg;
+                txtTCG.Text = "Timecard Group:   " + _tcg;
             }
         }
 

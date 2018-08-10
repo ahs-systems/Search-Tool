@@ -231,8 +231,10 @@ namespace SearchTool
             }
         }
 
-        public static void LoadIt(string _appName)
+        public static bool LoadIt(string _appName)
         {
+            bool _ret = false;
+
             try
             {
                 using (SqlConnection myConnection = new SqlConnection(BooServer))
@@ -250,21 +252,28 @@ namespace SearchTool
                     if (_reader.HasRows)
                     {
                         _reader.Read();
-                        if (_reader["AppID"].ToString() != "2")
+                        if (_reader["AppID"].ToString() != "22")
                         {
                             MessageBox.Show(_reader["Err"].ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Application.Exit();
+                            _ret = false;
 
+                        }
+                        else
+                        {
+                            _ret = true;
                         }
                     }
 
                     _reader.Close();
                     _reader.Dispose();
                 }
+
+                return _ret;
             }
-            catch (System.Exception err)
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message);
+                return false;
             }
         }
 

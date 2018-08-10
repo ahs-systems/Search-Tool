@@ -29,6 +29,7 @@ namespace PSSTool
 
             // Check if valid user
             string _username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "");
+            //_username = "dfipcg";
             if (!Common.CheckUsers(_username.ToUpper()))
             {
                 MessageBox.Show("Error: Unknown user.\n\nApplication will now close.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

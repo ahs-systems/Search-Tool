@@ -15,7 +15,7 @@ using System.Windows.Forms;
 namespace SearchTool
 {
     public partial class frmMainNew : Form
-    {        
+    {
         BunifuTileButton _prevActiveButton = null;
 
         byte _searchMode; //1=occupation, 2=employee, 3=unit
@@ -28,7 +28,11 @@ namespace SearchTool
 
         private void frmMainNew_Load(object sender, EventArgs e)
         {
-            Common.LoadIt("SearchTool");
+            if (!Common.LoadIt("SearchTool"))
+            {
+                Close();
+                return;
+            }
 
             // Get the current user and put it in a global variable
             Common.CurrentUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Replace(@"HEALTHY\", "");
@@ -516,33 +520,16 @@ namespace SearchTool
                 _conn.Open();
 
                 SqlCommand _comm = _conn.CreateCommand();
-                _comm.CommandText = "select emp.e_empid EMPID from emp " +
-                 "inner join empPosition on emp.e_empid = empPosition.ep_empid " +
-                 "inner join employmentStatus on emp.e_empid = employmentStatus.EMS_EmpID " +
-                 "where emp.e_empnbr = @V_SEARCH and empPosition.ep_todate >= GetDAte() " +
-                 "AND EmploymentStatus.EMS_EmploymentType = 1 AND EmploymentStatus.EMS_EndDate >= GetDAte() ";
+                _comm.CommandText = "SELECT TCG_Desc from TimeCardGroup where TCG_TCardGroupID = " +
+                    "(select TOP 1 ETCI_TimeCardGroupID from EmpTimeCardInfo ETCI where ETCI_EmpID = " +
+                    "(select E_EmpID from emp where E_EmpNbr = @_empID) ORDER BY ETCI_PayPeriodID DESC)";
 
-                _comm.Parameters.Add(new SqlParameter("V_SEARCH", _empID));
+                _comm.Parameters.Add(new SqlParameter("_empID", _empID));
                 SqlDataReader _reader = _comm.ExecuteReader();
                 if (_reader.HasRows)
                 {
                     _reader.Read();
-
-                    string _retEmpID = _reader["EMPID"].ToString();
-
-                    _comm.CommandText = "select tcg_desc from timecardgroup where tcg_tcardgroupid = " +
-                        "(select tc_tcardgroupid from timecard where tc_empid = " + _retEmpID + " and " +
-                        "tc_payperiodid = (select max(tc_payperiodid) from timecard where tc_empid = " + _retEmpID + "))";
-
-                    _comm.Parameters.Clear();
-                    _reader.Close();
-                    _reader = _comm.ExecuteReader();
-
-                    if (_reader.HasRows)
-                    {
-                        _reader.Read();
-                        _ret = _reader["tcg_desc"].ToString().Trim();
-                    }
+                    _ret = _reader["tcg_desc"].ToString().Trim();                    
                 }
                 else
                 {
@@ -2291,6 +2278,7 @@ namespace SearchTool
                 GetFileListFromFTP();
 
                 // Reminder to do the People Import
+                Activate();
                 MessageBox.Show("Friendly Reminder:\n\nPlease don't forget to do the People Import! :)", "Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -2358,6 +2346,7 @@ namespace SearchTool
             RFLOA_Rehire("Rehire " + GetPrevious_PPRange(DateTime.Now.ToString("ddMMMyyyy")), "PayPeriod: " + GetPrevious_PP(DateTime.Now.ToString("ddMMMyyyy")),
                          "Please select the 'Rehire' file", btnRehire,
                          @"\\jeeves.crha-health.ab.ca\rsss_systems\Payroll\Rehires\Rehires " + GetPrevious_PPRange(DateTime.Now.ToString("ddMMMyyyy")) + ".xlsx");
+
         }
 
         private void RFLOA_Rehire(string _headerCenter, string _headerRight, string _openFileTitle, BunifuTileButton _btn, string _path)
@@ -2950,7 +2939,7 @@ namespace SearchTool
         private void btnUserTrainings_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
-            System.Diagnostics.Process.Start("http://wssql07v03/Reports_PRDINST03/Pages/Report.aspx?ItemPath=%2fMyLearningLink%2fWorkforce+ESP%2fPSS+(Workforce+ESP)+Courses+-+Learner+Completions+Lookup&ViewMode=Detail");
+            System.Diagnostics.Process.Start("http://wssql07v03/Reports_PRDINST03/Pages/Report.aspx?ItemPath=%2fMyLearningLink%2fUserReports%2fWorkforce+ESP%2fPSS+(Workforce+ESP)+Courses+-+Learner+Completions+Lookup&ViewMode=Detail");
             //HideMe();
             //frmTrainings _frm = new frmTrainings();
             //_frm.ShowDialog();
@@ -4637,6 +4626,35 @@ namespace SearchTool
                 btnSickOnStat.LabelText = "Sick On A Stat";
                 Cursor = Cursors.Default;
                 Update();
+            }
+        }
+
+        private void timerCloseAt1_Tick(object sender, EventArgs e)
+        {
+            if (DateTime.Now.Hour >= 13 && 
+                DateTime.Now.Hour <= 14 &&  
+                (DateTime.Today.ToString("MM/dd/yyyy") == "07/04/2018" ||
+                 DateTime.Today.ToString("MM/dd/yyyy") == "07/18/2018" ||
+                 DateTime.Today.ToString("MM/dd/yyyy") == "08/01/2018" ||
+                 DateTime.Today.ToString("MM/dd/yyyy") == "08/15/2018" ||
+                 DateTime.Today.ToString("MM/dd/yyyy") == "08/29/2018" ||
+                 DateTime.Today.ToString("MM/dd/yyyy") == "09/12/2018" ||
+                 DateTime.Today.ToString("MM/dd/yyyy") == "09/26/2018" ||
+                 DateTime.Today.ToString("MM/dd/yyyy") == "10/10/2018" ||
+                 DateTime.Today.ToString("MM/dd/yyyy") == "07/02/2018") && 
+                Cursor != Cursors.WaitCursor) Application.Exit();
+        }
+
+        private void btnTabtabSpace_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(@"\\jeeves.crha-health.ab.ca\rsss_systems\Operations - RSSS Systems Group\Automated Files\(F8)TabTabSpace.exe"))
+            {
+                WindowState = FormWindowState.Minimized;
+                System.Diagnostics.Process.Start(@"\\jeeves.crha-health.ab.ca\rsss_systems\Operations - RSSS Systems Group\Automated Files\(F8)TabTabSpace.exe");
+            }
+            else
+            {
+                MessageBox.Show("Cannot find the '(F8)TabTabSpace.exe' in 'Automated Files' folder.", "Cannot Find File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
     }

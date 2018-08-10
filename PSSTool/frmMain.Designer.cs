@@ -63,7 +63,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(562, 29);
             this.lblTitle.TabIndex = 61;
-            this.lblTitle.Text = "PSS Tool v2018.06.19";
+            this.lblTitle.Text = "PSS Tool v2018.07.05";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // bunifuDragControl1
@@ -122,10 +122,10 @@
             this.btnEmpUnitSearch.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmpUnitSearch.ForeColor = System.Drawing.Color.DarkGray;
             this.btnEmpUnitSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpUnitSearch.Image")));
-            this.btnEmpUnitSearch.ImagePosition = 7;
-            this.btnEmpUnitSearch.ImageZoom = 35;
-            this.btnEmpUnitSearch.LabelPosition = 20;
-            this.btnEmpUnitSearch.LabelText = "Emp/Unit Search";
+            this.btnEmpUnitSearch.ImagePosition = 0;
+            this.btnEmpUnitSearch.ImageZoom = 32;
+            this.btnEmpUnitSearch.LabelPosition = 32;
+            this.btnEmpUnitSearch.LabelText = "Emp/Unit Search in ESP";
             this.btnEmpUnitSearch.Location = new System.Drawing.Point(288, 45);
             this.btnEmpUnitSearch.Margin = new System.Windows.Forms.Padding(6);
             this.btnEmpUnitSearch.Name = "btnEmpUnitSearch";
@@ -159,10 +159,10 @@
             this.btnClearLocks.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearLocks.ForeColor = System.Drawing.Color.DarkGray;
             this.btnClearLocks.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLocks.Image")));
-            this.btnClearLocks.ImagePosition = 7;
+            this.btnClearLocks.ImagePosition = 3;
             this.btnClearLocks.ImageZoom = 25;
             this.btnClearLocks.LabelPosition = 35;
-            this.btnClearLocks.LabelText = "Search Locked Records";
+            this.btnClearLocks.LabelText = "Search Locked Records in ESP";
             this.btnClearLocks.Location = new System.Drawing.Point(423, 45);
             this.btnClearLocks.Margin = new System.Windows.Forms.Padding(6);
             this.btnClearLocks.Name = "btnClearLocks";

@@ -172,7 +172,7 @@
             this.txtTCG.ForeColor = System.Drawing.Color.GreenYellow;
             this.txtTCG.Location = new System.Drawing.Point(26, 325);
             this.txtTCG.Name = "txtTCG";
-            this.txtTCG.Size = new System.Drawing.Size(522, 23);
+            this.txtTCG.Size = new System.Drawing.Size(522, 32);
             this.txtTCG.TabIndex = 70;
             this.txtTCG.Text = "label3";
             this.txtTCG.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -225,7 +225,7 @@
             // 
             this.lblMsg.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.lblMsg.Location = new System.Drawing.Point(23, 357);
+            this.lblMsg.Location = new System.Drawing.Point(23, 365);
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.Size = new System.Drawing.Size(522, 27);
             this.lblMsg.TabIndex = 76;
