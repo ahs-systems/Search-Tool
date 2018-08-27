@@ -31,8 +31,8 @@ namespace SearchTool
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation8 = new BunifuAnimatorNS.Animation();
-            BunifuAnimatorNS.Animation animation7 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainNew));
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlHandle = new System.Windows.Forms.Panel();
@@ -54,6 +54,7 @@ namespace SearchTool
             this.bunifuTileButton1 = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnRemote = new Bunifu.Framework.UI.BunifuTileButton();
             this.bunifuTileButton2 = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnTabtabSpace = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnExceptionLookup = new Bunifu.Framework.UI.BunifuTileButton();
             this.lblClose = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -107,7 +108,6 @@ namespace SearchTool
             this.formatFile6ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transFrm = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.timerCloseAt1 = new System.Windows.Forms.Timer(this.components);
-            this.btnTabtabSpace = new Bunifu.Framework.UI.BunifuTileButton();
             this.pnlMain.SuspendLayout();
             this.pnlMisc.SuspendLayout();
             this.pnlFormatting.SuspendLayout();
@@ -509,6 +509,29 @@ namespace SearchTool
             this.bunifuTileButton2.TabIndex = 14;
             this.toolTip1.SetToolTip(this.bunifuTileButton2, "Update the list of valid email suffixes in ASC");
             this.bunifuTileButton2.Click += new System.EventHandler(this.bunifuTileButton2_Click);
+            // 
+            // btnTabtabSpace
+            // 
+            this.btnTabtabSpace.BackColor = System.Drawing.Color.Transparent;
+            this.btnTabtabSpace.color = System.Drawing.Color.Transparent;
+            this.btnTabtabSpace.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
+            this.btnTabtabSpace.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transFrm.SetDecoration(this.btnTabtabSpace, BunifuAnimatorNS.DecorationType.None);
+            this.transPanel.SetDecoration(this.btnTabtabSpace, BunifuAnimatorNS.DecorationType.None);
+            this.btnTabtabSpace.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTabtabSpace.ForeColor = System.Drawing.Color.DarkGray;
+            this.btnTabtabSpace.Image = ((System.Drawing.Image)(resources.GetObject("btnTabtabSpace.Image")));
+            this.btnTabtabSpace.ImagePosition = -5;
+            this.btnTabtabSpace.ImageZoom = 40;
+            this.btnTabtabSpace.LabelPosition = 32;
+            this.btnTabtabSpace.LabelText = "Launch Tabtab Space";
+            this.btnTabtabSpace.Location = new System.Drawing.Point(471, 168);
+            this.btnTabtabSpace.Margin = new System.Windows.Forms.Padding(6);
+            this.btnTabtabSpace.Name = "btnTabtabSpace";
+            this.btnTabtabSpace.Size = new System.Drawing.Size(121, 70);
+            this.btnTabtabSpace.TabIndex = 18;
+            this.toolTip1.SetToolTip(this.btnTabtabSpace, "Launch TabtabSpace App");
+            this.btnTabtabSpace.Click += new System.EventHandler(this.btnTabtabSpace_Click);
             // 
             // btnExceptionLookup
             // 
@@ -1293,22 +1316,22 @@ namespace SearchTool
             // 
             this.transPanel.AnimationType = BunifuAnimatorNS.AnimationType.HorizSlide;
             this.transPanel.Cursor = null;
-            animation8.AnimateOnlyDifferences = true;
-            animation8.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation8.BlindCoeff")));
-            animation8.LeafCoeff = 0F;
-            animation8.MaxTime = 1F;
-            animation8.MinTime = 0F;
-            animation8.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation8.MosaicCoeff")));
-            animation8.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation8.MosaicShift")));
-            animation8.MosaicSize = 0;
-            animation8.Padding = new System.Windows.Forms.Padding(0);
-            animation8.RotateCoeff = 0F;
-            animation8.RotateLimit = 0F;
-            animation8.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation8.ScaleCoeff")));
-            animation8.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation8.SlideCoeff")));
-            animation8.TimeCoeff = 0F;
-            animation8.TransparencyCoeff = 0F;
-            this.transPanel.DefaultAnimation = animation8;
+            animation4.AnimateOnlyDifferences = true;
+            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
+            animation4.LeafCoeff = 0F;
+            animation4.MaxTime = 1F;
+            animation4.MinTime = 0F;
+            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
+            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
+            animation4.MosaicSize = 0;
+            animation4.Padding = new System.Windows.Forms.Padding(0);
+            animation4.RotateCoeff = 0F;
+            animation4.RotateLimit = 0F;
+            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
+            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
+            animation4.TimeCoeff = 0F;
+            animation4.TransparencyCoeff = 0F;
+            this.transPanel.DefaultAnimation = animation4;
             // 
             // mnuFormat2and6
             // 
@@ -1342,22 +1365,22 @@ namespace SearchTool
             // 
             this.transFrm.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.transFrm.Cursor = null;
-            animation7.AnimateOnlyDifferences = true;
-            animation7.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation7.BlindCoeff")));
-            animation7.LeafCoeff = 0F;
-            animation7.MaxTime = 1F;
-            animation7.MinTime = 0F;
-            animation7.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation7.MosaicCoeff")));
-            animation7.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation7.MosaicShift")));
-            animation7.MosaicSize = 0;
-            animation7.Padding = new System.Windows.Forms.Padding(30);
-            animation7.RotateCoeff = 0.5F;
-            animation7.RotateLimit = 0.2F;
-            animation7.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation7.ScaleCoeff")));
-            animation7.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation7.SlideCoeff")));
-            animation7.TimeCoeff = 0F;
-            animation7.TransparencyCoeff = 0F;
-            this.transFrm.DefaultAnimation = animation7;
+            animation3.AnimateOnlyDifferences = true;
+            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
+            animation3.LeafCoeff = 0F;
+            animation3.MaxTime = 1F;
+            animation3.MinTime = 0F;
+            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
+            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
+            animation3.MosaicSize = 0;
+            animation3.Padding = new System.Windows.Forms.Padding(30);
+            animation3.RotateCoeff = 0.5F;
+            animation3.RotateLimit = 0.2F;
+            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
+            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
+            animation3.TimeCoeff = 0F;
+            animation3.TransparencyCoeff = 0F;
+            this.transFrm.DefaultAnimation = animation3;
             this.transFrm.TimeStep = 0.03F;
             // 
             // timerCloseAt1
@@ -1365,29 +1388,6 @@ namespace SearchTool
             this.timerCloseAt1.Enabled = true;
             this.timerCloseAt1.Interval = 120000;
             this.timerCloseAt1.Tick += new System.EventHandler(this.timerCloseAt1_Tick);
-            // 
-            // btnTabtabSpace
-            // 
-            this.btnTabtabSpace.BackColor = System.Drawing.Color.Transparent;
-            this.btnTabtabSpace.color = System.Drawing.Color.Transparent;
-            this.btnTabtabSpace.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(73)))));
-            this.btnTabtabSpace.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transFrm.SetDecoration(this.btnTabtabSpace, BunifuAnimatorNS.DecorationType.None);
-            this.transPanel.SetDecoration(this.btnTabtabSpace, BunifuAnimatorNS.DecorationType.None);
-            this.btnTabtabSpace.Font = new System.Drawing.Font("Century Gothic", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTabtabSpace.ForeColor = System.Drawing.Color.DarkGray;
-            this.btnTabtabSpace.Image = ((System.Drawing.Image)(resources.GetObject("btnTabtabSpace.Image")));
-            this.btnTabtabSpace.ImagePosition = -5;
-            this.btnTabtabSpace.ImageZoom = 40;
-            this.btnTabtabSpace.LabelPosition = 32;
-            this.btnTabtabSpace.LabelText = "Launch Tabtab Space";
-            this.btnTabtabSpace.Location = new System.Drawing.Point(471, 168);
-            this.btnTabtabSpace.Margin = new System.Windows.Forms.Padding(6);
-            this.btnTabtabSpace.Name = "btnTabtabSpace";
-            this.btnTabtabSpace.Size = new System.Drawing.Size(121, 70);
-            this.btnTabtabSpace.TabIndex = 18;
-            this.toolTip1.SetToolTip(this.btnTabtabSpace, "Launch TabtabSpace App");
-            this.btnTabtabSpace.Click += new System.EventHandler(this.btnTabtabSpace_Click);
             // 
             // frmMainNew
             // 
@@ -1407,7 +1407,7 @@ namespace SearchTool
             this.Name = "frmMainNew";
             this.Opacity = 0.8D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SömëKindä Tööl v2018.08.10";
+            this.Text = "SömëKindä Tööl v2018.08.27";
             this.Activated += new System.EventHandler(this.frmMainNew_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainNew_Deactivate);
             this.Load += new System.EventHandler(this.frmMainNew_Load);

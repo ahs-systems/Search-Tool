@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Media;
 using System.Runtime.InteropServices;
@@ -134,12 +135,14 @@ namespace Sandbox
                     count[iteration] = loopCount - 1;
                     myCommand.Dispose();
 
+                    List<string> sites = new List<string>() { "ACH", "FMC", "PLC", "RGH", "SPT", "SHC", "07"};
+
                     string _sscCount = "";
                     for (int i = 0; i < count.Length; i++)
                     {
-                        _sscCount += count[i] + " , ";
+                        _sscCount += sites[i].PadRight(4,' ')  + " - " + count[i] + "\n";
                     }
-                    MessageBox.Show(_sscCount);
+                    MessageBox.Show(_sscCount,"Unit Count per Site");
                 }
             }
             catch (Exception ex)

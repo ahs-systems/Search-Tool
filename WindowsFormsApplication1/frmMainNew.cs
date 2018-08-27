@@ -692,13 +692,13 @@ namespace SearchTool
             {
                 using (SqlConnection myConnection = new SqlConnection())
                 {
-                    myConnection.ConnectionString = Common.SystemsServer; //@"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\items.mdb;Uid=Admin;Pwd=;";
+                    myConnection.ConnectionString = Common.BooServer; //@"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\items.mdb;Uid=Admin;Pwd=;";
                     myConnection.Open();
 
                     SqlCommand myCommand = myConnection.CreateCommand();
 
                     // Check if the record is already existing 
-                    myCommand.CommandText = "SELECT * FROM ItemsRpt_OccupationChange WHERE PayPeriod = @_PayPeriod AND PayPeriod_Year = @_PayPeriod_Year and ItemsReportLetter = @_ItemsReportLetter " +
+                    myCommand.CommandText = "SELECT * FROM APP.ItemsRpt_OccupationChange WHERE PayPeriod = @_PayPeriod AND PayPeriod_Year = @_PayPeriod_Year and ItemsReportLetter = @_ItemsReportLetter " +
                             "AND Emp_Num = @_Emp_num";
                     myCommand.Parameters.AddWithValue("_PayPeriod", _data.pp);
                     myCommand.Parameters.AddWithValue("_PayPeriod_Year", _data.ppYear);
@@ -715,7 +715,7 @@ namespace SearchTool
                         _dr.Close();
                         myCommand.Parameters.Clear();
 
-                        myCommand.CommandText = "Insert into ItemsRpt_OccupationChange (ItemsReportLetter, PayPeriod, PayPeriod_Year, Site, Emp_Num, Emp_Name, Unit, OccFrom, OccTo, Comments, EnteredBy) values " +
+                        myCommand.CommandText = "Insert into APP.ItemsRpt_OccupationChange (ItemsReportLetter, PayPeriod, PayPeriod_Year, Site, Emp_Num, Emp_Name, Unit, OccFrom, OccTo, Comments, EnteredBy) values " +
                         "(@_ItemsReportLetter, @_PayPeriod, @_PayPeriod_Year, @_Site, @_Emp_Num, @_Emp_Name, @_Unit, @_OccFrom, @_OccTo, @_Comments, @_EnteredBy)";
 
 
@@ -757,13 +757,13 @@ namespace SearchTool
             {
                 using (SqlConnection myConnection = new SqlConnection())
                 {
-                    myConnection.ConnectionString = Common.SystemsServer; //@"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\items.mdb;Uid=Admin;Pwd=;";
+                    myConnection.ConnectionString = Common.BooServer; //@"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\items.mdb;Uid=Admin;Pwd=;";
                     myConnection.Open();
 
                     SqlCommand myCommand = myConnection.CreateCommand();
 
                     // Check if the record is already existing 
-                    myCommand.CommandText = "SELECT * FROM ItemsRpt_UnitToUnitTransfer WHERE PayPeriod = @_PayPeriod AND PayPeriod_Year = @_PayPeriod_Year and ItemsReportLetter = @_ItemsReportLetter " +
+                    myCommand.CommandText = "SELECT * FROM APP.ItemsRpt_UnitToUnitTransfer WHERE PayPeriod = @_PayPeriod AND PayPeriod_Year = @_PayPeriod_Year and ItemsReportLetter = @_ItemsReportLetter " +
                             "AND Emp_Num = @_Emp_num";
                     myCommand.Parameters.AddWithValue("_PayPeriod", _data.pp);
                     myCommand.Parameters.AddWithValue("_PayPeriod_Year", _data.ppYear);
@@ -781,7 +781,7 @@ namespace SearchTool
                         myCommand.Parameters.Clear();
 
 
-                        myCommand.CommandText = "Insert into ItemsRpt_UnitToUnitTransfer (ItemsReportLetter, PayPeriod, PayPeriod_Year, Site, Emp_Num, Emp_Name, UnitFrom, UnitTo, Occupation, Status, ChangeInOccupation, ChangeInSite, Comments, EnteredBy) values " +
+                        myCommand.CommandText = "Insert into APP.ItemsRpt_UnitToUnitTransfer (ItemsReportLetter, PayPeriod, PayPeriod_Year, Site, Emp_Num, Emp_Name, UnitFrom, UnitTo, Occupation, Status, ChangeInOccupation, ChangeInSite, Comments, EnteredBy) values " +
                                 "(@_ItemsReportLetter, @_PayPeriod, @_PayPeriod_Year, @_Site, @_Emp_Num, @_Emp_Name, @_UnitFrom, @_UnitTo, @_Occupation, @_Status, @_ChangeInOccupation, @_ChangeInSite, @_Comments, @_EnteredBy)";
 
                         myCommand.Parameters.AddWithValue("_ItemsReportLetter", _data.itemsReportLetter);
@@ -1626,19 +1626,19 @@ namespace SearchTool
                 }
 
                 // insert the EE in the list to check for previous NPF or previous INACTIVE
-                using (SqlConnection _conn = new SqlConnection(Common.SystemsServer))
+                using (SqlConnection _conn = new SqlConnection(Common.BooServer))
                 {
                     _conn.Open();
                     using (SqlCommand _comm = _conn.CreateCommand())
                     {
-                        _comm.CommandText = "SELECT EmpID FROM NFPChecking WHERE EmpID = @_empID AND CurrentStat = 0";
+                        _comm.CommandText = "SELECT EmpID FROM APP.NFPChecking WHERE EmpID = @_empID AND CurrentStat = 0";
                         _comm.Parameters.AddWithValue("_empID", _empNo);
                         SqlDataReader _dr = _comm.ExecuteReader();
                         if (!_dr.HasRows)
                         {
                             _dr.Close();
                             _comm.Parameters.Clear();
-                            _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_PayInfo, CurrentStat) VALUES (2, @_empID, @_name, @_prevUnit, 0)";
+                            _comm.CommandText = "INSERT INTO APP.NFPChecking (Type, EmpID, Name, Prev_PayInfo, CurrentStat) VALUES (2, @_empID, @_name, @_prevUnit, 0)";
                             _comm.Parameters.AddWithValue("_empID", _empNo);
                             _comm.Parameters.AddWithValue("_name", GetEmpName(_empNo.Substring(0, 8)));
                             _comm.Parameters.AddWithValue("_prevUnit", _tcg);
@@ -1669,19 +1669,19 @@ namespace SearchTool
                             if (_tcg.ToUpper().Contains("NOT FOR PAYROLL") || _tcg.ToUpper().Contains("INACTIVE")) // check all those that their current Timecard Group is "Not for Payroll" or "INACTIVE"
                             {
                                 _ctrNFP++;
-                                using (SqlConnection _conn = new SqlConnection(Common.SystemsServer))
+                                using (SqlConnection _conn = new SqlConnection(Common.BooServer))
                                 {
                                     _conn.Open();
                                     using (SqlCommand _comm = _conn.CreateCommand())
                                     {
-                                        _comm.CommandText = "SELECT EmpID FROM NFPChecking WHERE EmpID = @_empID AND CurrentStat = 0";
+                                        _comm.CommandText = "SELECT EmpID FROM APP.NFPChecking WHERE EmpID = @_empID AND CurrentStat = 0";
                                         _comm.Parameters.AddWithValue("_empID", values[1]);
                                         SqlDataReader _dr = _comm.ExecuteReader();
                                         if (!_dr.HasRows)
                                         {
                                             _dr.Close();
                                             _comm.Parameters.Clear();
-                                            _comm.CommandText = "INSERT INTO NFPChecking (Type, EmpID, Name, Prev_PayInfo, CurrentStat) VALUES (@_type, @_empID, @_name, @_prevUnit, 0)";
+                                            _comm.CommandText = "INSERT INTO APP.NFPChecking (Type, EmpID, Name, Prev_PayInfo, CurrentStat) VALUES (@_type, @_empID, @_name, @_prevUnit, 0)";
                                             _comm.Parameters.AddWithValue("_type", values[0]);
                                             _comm.Parameters.AddWithValue("_empID", values[1]);
                                             _comm.Parameters.AddWithValue("_name", GetEmpName(values[1].Substring(0, 8)));
@@ -4647,15 +4647,71 @@ namespace SearchTool
 
         private void btnTabtabSpace_Click(object sender, EventArgs e)
         {
-            if (File.Exists(@"\\jeeves.crha-health.ab.ca\rsss_systems\Operations - RSSS Systems Group\Automated Files\(F8)TabTabSpace.exe"))
+            var buttonClicked = (MouseEventArgs) e;
+            if (buttonClicked.Button == MouseButtons.Left)
             {
-                WindowState = FormWindowState.Minimized;
-                System.Diagnostics.Process.Start(@"\\jeeves.crha-health.ab.ca\rsss_systems\Operations - RSSS Systems Group\Automated Files\(F8)TabTabSpace.exe");
+
+                if (File.Exists(@"\\jeeves.crha-health.ab.ca\rsss_systems\Operations - RSSS Systems Group\Automated Files\(F8)TabTabSpace.exe"))
+                {
+                    WindowState = FormWindowState.Minimized;
+                    System.Diagnostics.Process.Start(@"\\jeeves.crha-health.ab.ca\rsss_systems\Operations - RSSS Systems Group\Automated Files\(F8)TabTabSpace.exe");
+                }
+                else
+                {
+                    MessageBox.Show("Cannot find the '(F8)TabTabSpace.exe' in 'Automated Files' folder.", "Cannot Find File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
             else
             {
-                MessageBox.Show("Cannot find the '(F8)TabTabSpace.exe' in 'Automated Files' folder.", "Cannot Find File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                try
+                {
+                    using (SqlConnection myConnection = new SqlConnection())
+                    {
+                        myConnection.ConnectionString = Common.ESPServer;
+                        myConnection.Open();
+
+                        SqlCommand myCommand = myConnection.CreateCommand();
+
+                        myCommand.CommandText = "select U_Desc from unit where (U_Desc like '0%' OR U_Desc like 'N%') AND U_Active = 1 ORDER BY U_DESC";
+
+                        SqlDataReader myReader = myCommand.ExecuteReader();
+
+                        int[] count = new int[7];
+
+                        int iteration = 0;
+
+                        int loopCount = 0;
+                        if (myReader.HasRows)
+                        {
+                            while (myReader.Read())
+                            {
+                                if (myReader["U_Desc"].ToString().Trim().Contains("Staffing Service"))
+                                {
+                                    count[iteration] = loopCount - 1;
+                                    iteration++;
+                                    loopCount = 0;
+                                }
+                                loopCount++;
+                            }
+                        }
+                        count[iteration] = loopCount - 1;
+                        myCommand.Dispose();
+
+                        List<string> sites = new List<string>() { "ACH", "FMC", "PLC", "RGH", "SPT", "SHC", "07" };
+
+                        string _sscCount = "";
+                        for (int i = 0; i < count.Length; i++)
+                        {
+                            _sscCount += sites[i].PadRight(4, ' ') + " - " + count[i] + "\n";
+                        }
+                        MessageBox.Show(_sscCount, "Unit Count per Site");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ooops, there's an error: " + ex.Message, "ERROR");
+                }
             }
-        }
+        }        
     }
 }

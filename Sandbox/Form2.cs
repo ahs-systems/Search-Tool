@@ -23,5 +23,10 @@ namespace Sandbox
                 MessageBox.Show("More than one IP address found on the machine");
             }
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
