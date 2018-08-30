@@ -529,7 +529,7 @@ namespace SearchTool
                 if (_reader.HasRows)
                 {
                     _reader.Read();
-                    _ret = _reader["tcg_desc"].ToString().Trim();                    
+                    _ret = _reader["tcg_desc"].ToString().Trim();
                 }
                 else
                 {
@@ -1958,6 +1958,7 @@ namespace SearchTool
                             changeInUnit = changeInOcc = false;
                             #endregion
 
+                            // Save the data in Excel
                             worksheet.Row(lineCtr).Height = 23;
                             worksheet.Row(lineCtr).Style.Font.Name = "Verdana";
                             worksheet.Row(lineCtr).Style.Font.Size = 11;
@@ -2005,7 +2006,7 @@ namespace SearchTool
                         if (_ret != "")
                         {
                             worksheet.Cells[lineCtr - empLineCtr, 11].Value = GetEmpName(currEmp.Substring(0, 8));
-                            worksheet.Cells[lineCtr, 11].Value = _ret;
+                            worksheet.Cells[lineCtr - (empLineCtr - 1), 11].Value = _ret;
                         }
                         else
                         {
@@ -4631,8 +4632,8 @@ namespace SearchTool
 
         private void timerCloseAt1_Tick(object sender, EventArgs e)
         {
-            if (DateTime.Now.Hour >= 13 && 
-                DateTime.Now.Hour <= 14 &&  
+            if (DateTime.Now.Hour >= 13 &&
+                DateTime.Now.Hour <= 14 &&
                 (DateTime.Today.ToString("MM/dd/yyyy") == "07/04/2018" ||
                  DateTime.Today.ToString("MM/dd/yyyy") == "07/18/2018" ||
                  DateTime.Today.ToString("MM/dd/yyyy") == "08/01/2018" ||
@@ -4641,13 +4642,13 @@ namespace SearchTool
                  DateTime.Today.ToString("MM/dd/yyyy") == "09/12/2018" ||
                  DateTime.Today.ToString("MM/dd/yyyy") == "09/26/2018" ||
                  DateTime.Today.ToString("MM/dd/yyyy") == "10/10/2018" ||
-                 DateTime.Today.ToString("MM/dd/yyyy") == "07/02/2018") && 
+                 DateTime.Today.ToString("MM/dd/yyyy") == "07/02/2018") &&
                 Cursor != Cursors.WaitCursor) Application.Exit();
         }
 
         private void btnTabtabSpace_Click(object sender, EventArgs e)
         {
-            var buttonClicked = (MouseEventArgs) e;
+            var buttonClicked = (MouseEventArgs)e;
             if (buttonClicked.Button == MouseButtons.Left)
             {
 
@@ -4712,6 +4713,6 @@ namespace SearchTool
                     MessageBox.Show("Ooops, there's an error: " + ex.Message, "ERROR");
                 }
             }
-        }        
+        }
     }
 }
