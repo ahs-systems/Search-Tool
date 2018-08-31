@@ -4080,7 +4080,16 @@ namespace SearchTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (ex.Message.Contains("Buffer cannot be null"))
+                {
+                    MessageBox.Show("ERROR: " + ex.Message +
+                        "\n\nPlease try opening the excel file first in Excel then click on SAVE to overwrite the existing one then close it and then try to process it again.\n\nGoodluck! :)", 
+                        "Whoot whoot! Error on Excel file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("ERROR: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             finally
             {
